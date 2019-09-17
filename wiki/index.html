@@ -141,6 +141,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>.rep macro</li>
+
 <li>$:/config/markdown/dialect</li>
 
 <li>$:/core</li>
@@ -375,9 +377,9 @@ Error message and password prompt
 
 <li>Table Test</li>
 
-<li>This is a test</li>
+<li>Test of details macro</li>
 
-<li>This is second test</li>
+<li>This is a test</li>
 
 <li>鋪瓦用沙漿拌合比例及構成</li>
 
@@ -391,6 +393,14 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20190420123908099" modified="20190917114838765" tags="" title=".rep macro" type="text/vnd.tiddlywiki">
+<pre>\define .rep(del, ins)
+&lt;del&gt;$del$&lt;/del&gt; &lt;ins&gt;$ins$&lt;/ins&gt;
+\end
+
+An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who stood by me.
+</pre>
+</div>
 <div created="20190420124621308" modified="20190420124623023" title="$:/config/markdown/dialect">
 <pre>Maruku</pre>
 </div>
@@ -9667,7 +9677,7 @@ Error message and password prompt
 <div created="20190420121059436" modified="20190917114747124" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20190917114749826" list="[[Table Test]] GettingStarted" modified="20190917114749826" title="$:/StoryList">
+<div created="20190917114749826" list="[[Test of details macro]] GettingStarted" modified="20190917114815961" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190917034930071" modified="20190917034943335" title="$:/temp/advancedsearch">
@@ -10631,16 +10641,17 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 |text  |goses | here|
 |table |footer| here|f</pre>
 </div>
+<div created="20190917114851260" modified="20190917114952438" tags="" title="Test of details macro">
+<pre>&lt;&lt;details sum:&quot;Show/Hide me&quot; text:&quot;This is the text inside details can be hidden or displayed on demand&quot;&gt;&gt;
+
+&lt;&lt;details sum:&quot;Show/Hide Example II&quot; text:&quot;This is the text inside details can be hidden or displayed on demand. It is shown by default. The status is open&quot; status:&quot;open&quot;&gt;&gt;
+
+&lt;&lt;details sum:&quot;Example III Using auxilliary classes&quot; text:&quot;This is the text inside details can be hidden or displayed on demand. It is shown by default. The status is empty&quot; class:&quot;alert-primary&quot;&gt;&gt;
+
+&lt;&lt;details sum:&quot;Example IV Extra classes&quot; text:&quot;This is the text inside details can be hidden or displayed on demand. It is shown by default. The status is open&quot; status:&quot;open&quot; class:&quot;text-white bg-dark&quot;&gt;&gt;</pre>
+</div>
 <div created="20190418033242226" modified="20190418033301089" tags="" title="This is a test">
 <pre>This is a test</pre>
-</div>
-<div created="20190420123908099" modified="20190917015418985" tags="" title="This is second test" type="text/vnd.tiddlywiki">
-<pre>\define .rep(del, ins)
-&lt;del&gt;$del$&lt;/del&gt; &lt;ins&gt;$ins$&lt;/ins&gt;
-\end
-
-An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who stood by me.
-</pre>
 </div>
 <div created="20190916114542034" modified="20190916114607053" tags="" title="鋪瓦用沙漿拌合比例及構成">
 <pre>!鋪瓦用沙漿拌合比例及構成
