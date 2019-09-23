@@ -199,6 +199,8 @@ Error message and password prompt
 
 <li>$:/state/slider-macro/macro/.di/Code-225736387</li>
 
+<li>$:/state/slider-macro/macro/extxt-macro/Code--2114757039</li>
+
 <li>$:/state/slider-macro/macro/slider-macro/Code--49026255</li>
 
 <li>$:/state/slider-macro/macro/slider-macro/My Label--49026255</li>
@@ -449,8 +451,6 @@ Error message and password prompt
 
 <li>DIY</li>
 
-<li>Draft of 'New Tiddler'</li>
-
 <li>English</li>
 
 <li>Grammar</li>
@@ -472,6 +472,8 @@ Error message and password prompt
 <li>macro/slider-macro</li>
 
 <li>macro/wikitext-macros</li>
+
+<li>New Tiddler</li>
 
 <li>not yet</li>
 
@@ -9830,6 +9832,9 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190920032153426" modified="20190920032804412" title="$:/state/slider-macro/macro/.di/Code-225736387">
 <pre>yes</pre>
 </div>
+<div created="20190923120335766" modified="20190923120335766" title="$:/state/slider-macro/macro/extxt-macro/Code--2114757039">
+<pre>yes</pre>
+</div>
 <div created="20190920032146163" modified="20190920032447983" title="$:/state/slider-macro/macro/slider-macro/Code--49026255">
 <pre>no</pre>
 </div>
@@ -9854,8 +9859,8 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190918091646785" modified="20190918101439351" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190420121059436" modified="20190923034148935" title="$:/state/tab/sidebar--595412856">
-<pre>Table of Contents</pre>
+<div created="20190420121059436" modified="20190923120354755" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20190918090451332" modified="20190918093028622" title="$:/state/toc/Contents-DIY--1876907615">
 <pre>close</pre>
@@ -9905,7 +9910,7 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190919031553112" modified="20190919031553112" title="$:/state/toc/Contents/English-Word--565514155">
 <pre>open</pre>
 </div>
-<div created="20190923014943856" list="[[Draft of 'New Tiddler']] [[Plugin Resource]] [[Android Platform]] GettingStarted [[Table of Contents]]" modified="20190923034155192" title="$:/StoryList">
+<div created="20190923120329565" list="[[New Tiddler]] Showcase GettingStarted [[Table of Contents]]" modified="20190923120410001" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190917034930071" modified="20190920105526502" title="$:/temp/advancedsearch">
@@ -10873,19 +10878,6 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20190923034829465" draft.of="New Tiddler" draft.title="New Tiddler" modified="20190923040908739" tags="" title="Draft of 'New Tiddler'">
-<pre>\define unique-title(baseTitle:&quot;New Tiddler&quot;, template:&quot;&quot;, fields:&quot;&quot; n:0)
-&lt;$set name=&quot;qid&quot; value=&lt;$macrocall $name=&quot;qualify&quot; $title=$baseTitle$ &gt; ***  &gt;
-&lt;&lt;qid&gt;&gt;
-&lt;$set name=&quot;newTitle&quot; value={{{[&lt;__qid__&gt;addprefix[##]]}}}&gt;
-&lt;&lt;newTitle&gt;&gt;
-&lt;h1 id=&lt;&lt;qid&gt;&gt; &gt;* &lt;&lt;qualify $baseTitle1$&gt;&gt;*  &lt;&lt;qid&gt;&gt;&lt;/h1&gt;
-&lt;/$set&gt;
-&lt;/$set&gt;
-\end
-
-&lt;&lt;unique-title&gt;&gt;</pre>
-</div>
 <div created="20190918090548313" modified="20190918090802171" tags="Contents" title="English" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;list-links &quot;[tag[English]sort[title]]&quot;&gt;&gt;
 </pre>
@@ -11432,6 +11424,41 @@ The wiki-text macros are set of macro for documenting TW codes. Edit this tiddle
 
 * wikitext-example(src)
 * wikitext-example-without-html(src)</pre>
+</div>
+<div created="20190923034829465" modified="20190923120701468" tags="" title="New Tiddler">
+<pre>\define .ilinka(baseTitle:&quot;New Heading&quot;)
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[#]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;h1 id=&lt;&lt;v1&gt;&gt; &gt;$baseTitle$&lt;&lt;qualify&gt;&gt;&lt;/h1&gt;
+&lt;/$wikify&gt;
+\end
+
+\define .ilink(baseTitle:&quot;New Heading&quot;, linkText:null)
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$linkText$&lt;/a&gt;
+&lt;/$wikify&gt;
+\end
+
+&lt;&lt;.ilinka &quot;Hello there&quot;&gt;&gt;
+
+br
+
+&lt;&lt;.ilinka &quot;Hello there 2&quot;&gt;&gt;
+
+br
+
+&lt;&lt;.ilinka &quot;Hello there 3&quot;&gt;&gt;
+
+br
+
+br
+
+br
+
+&lt;&lt;.ilink &quot;Hello there&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;Hello there 2&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;Hello there 3&quot;&gt;&gt;</pre>
 </div>
 <div created="20190918091213048" modified="20190918091232293" tags="Test" title="not yet">
 <pre>not yet</pre>
