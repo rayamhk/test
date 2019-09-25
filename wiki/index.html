@@ -451,6 +451,10 @@ Error message and password prompt
 
 <li>DIY</li>
 
+<li>Draft of 'macro/.di 1'</li>
+
+<li>Draft of 'test 101'</li>
+
 <li>English</li>
 
 <li>Grammar</li>
@@ -473,8 +477,6 @@ Error message and password prompt
 
 <li>macro/wikitext-macros</li>
 
-<li>New Tiddler</li>
-
 <li>not yet</li>
 
 <li>Plugin Resource</li>
@@ -488,6 +490,8 @@ Error message and password prompt
 <li>Table Test</li>
 
 <li>Test</li>
+
+<li>test 101</li>
 
 <li>Test of badge macro</li>
 
@@ -9850,8 +9854,8 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190916114629156" modified="20190916114629156" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20190418033153447" modified="20190917115419871" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Saving</pre>
+<div created="20190418033153447" modified="20190925082929294" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
 <div created="20190418033155354" modified="20190918092246904" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
@@ -9910,7 +9914,7 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190919031553112" modified="20190919031553112" title="$:/state/toc/Contents/English-Word--565514155">
 <pre>open</pre>
 </div>
-<div created="20190923120329565" list="[[New Tiddler]] Showcase GettingStarted [[Table of Contents]]" modified="20190923120410001" title="$:/StoryList">
+<div created="20190925073244900" list="[[Draft of 'test 101']] [[Draft of 'macro/.di 1']] macro/.di" modified="20190925105641502" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190917034930071" modified="20190920105526502" title="$:/temp/advancedsearch">
@@ -10649,8 +10653,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20190420124021105" dependents="" description="Basic theme" modified="20190420124021105" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" server-url="https://tiddlywiki.com/library/v5.1.19/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.19/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.19">
 <pre></pre>
 </div>
-<div created="20190919115809315" modified="20190920105701801" title="$:/temp/search">
-<pre>macro</pre>
+<div created="20190919115809315" modified="20190925104849051" title="$:/temp/search">
+<pre>find</pre>
 </div>
 <div created="20190420124021025" modified="20190420124021025" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.19/index.html" url="https://tiddlywiki.com/library/v5.1.19/index.html">
 <pre>loaded</pre>
@@ -10877,6 +10881,122 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
+</div>
+<div author="rayam" created="20190925105516195" creator="Mohammad" description="Detele and insert text" draft.of="macro/.di 1" draft.title="macro/.di 1" modified="20190925110508859" modifier="Mohammad" syntax="&lt;&lt;.di del ins&gt;&gt;" tags="rayam $:/tags/Macro" title="Draft of 'macro/.di 1'">
+<pre>\define .linka0(Title:&quot;Title Heading&quot; type:h2 qty:&quot; &quot;) 
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[#]]}}}$qty$&quot;&quot;&quot; output=text&gt;
+&lt;$type$ id=&lt;&lt;v1&gt;&gt; &gt;$Title$&lt;/$type$&gt;
+&lt;/$wikify&gt;
+\end
+
+\define .link0(Title:&quot;Title Heading&quot; Leading:&quot;Go to&quot; qty:&quot; &quot;) 
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}$qty$&quot;&quot;&quot; output=text&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$Leading$ $Title$&lt;&lt;/a&gt;
+&lt;/$wikify&gt;
+\end
+
+\define .ilinka(Title:&quot;New Heading&quot; type:h2 qty)
+&lt;$set name=&quot;qty1&quot; filter=&quot;xsw2$qty$1qaz +[match[xsw21qaz]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=&lt;&lt;__qty__&gt;&gt; &gt;
+&lt;$macrocall $name=&quot;.linka0&quot; Title=&lt;&lt;__Title__&gt;&gt; type=$type$ qty=&lt;&lt;qty1&gt;&gt; /&gt;
+&lt;/$set&gt;
+\end
+
+\define .ilink(Title:&quot;New Heading&quot;, Leading:&quot;Go to&quot;, qty)
+&lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=$qty$&gt;
+&lt;$set name=&quot;qty2&quot; value=&lt;&lt;qualify&gt;&gt; &gt;
+
+
+no$qty$txt |&lt;&lt;qty1&gt;&gt;|&lt;&lt;qty2&gt;&gt;
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qty1&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$Leading$ $Title$&lt;/a&gt;
+&lt;/$wikify&gt;
+&lt;/$set&gt;
+\end
+
+
+!! Purpose
+&lt;&lt;&lt;
+Detele and insert text.
+&lt;&lt;&lt;
+
+!! Syntax
+&lt;&lt;&lt;
+```
+&lt;&lt;.di del ins&gt;&gt;
+```
+
+!! Content and parameters
+|Parameter |Type |Description |h
+|del |optional|text deleted |
+|ins |optional|text inserted|
+&lt;&lt;&lt;
+
+&lt;$macrocall $name=slider-macro label=&quot;Code&quot; text=&quot;&quot;&quot;
+&lt;&lt;&lt;
+&lt;&lt;show-macro&gt;&gt;
+&lt;&lt;&lt;
+
+!! Revisions
+&lt;&lt;&lt;
+;Rev 0.01
+: preliminary version
+&lt;&lt;&lt;
+
+!! Reference
+&lt;&lt;&lt;
+null
+&lt;&lt;&lt;
+&quot;&quot;&quot;/&gt;
+
+!! Examples
+&lt;&lt;&lt;
+description
+&lt;$macrocall $name=&quot;wikitext-example-without-html&quot; 
+src=&quot;&quot;&quot;
+&lt;&lt;.linka0 &quot;Link Across Tiddler&quot; h1 12345&gt;&gt;
+&lt;&lt;.ilinka &quot;H1&quot; h1&gt;&gt;
+&lt;&lt;.ilinka &quot;Hello there 2&quot;&gt;&gt;(default is h2)
+&lt;&lt;.ilinka &quot;Hello there 3&quot; h3&gt;&gt;
+
+*&lt;&lt;.ilink &quot;Link Across Tiddler&quot; &quot;Go to&quot; 12345&gt;&gt;
+*&lt;&lt;.ilink &quot;H1&quot; &quot;Go:&quot;&gt;&gt;
+*&lt;&lt;.ilink &quot;H2 &quot;&gt;&gt;
+*&lt;&lt;.ilink &quot;H3&quot;&gt;&gt;
+&quot;&quot;&quot;/&gt;
+&lt;&lt;&lt;
+</pre>
+</div>
+<div created="20190923034829465" draft.of="test 101" draft.title="test 101" modified="20190925105648450" tags="" title="Draft of 'test 101'" type="text/vnd.tiddlywiki">
+<pre>\define .ilinka(baseTitle:&quot;New Heading&quot; typ:h1)
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[#]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;$typ$ id=&lt;&lt;v1&gt;&gt; &gt;$baseTitle$&lt;/$typ$&gt;
+&lt;/$wikify&gt;
+\end
+
+\define .ilink(baseTitle:&quot;New Heading&quot;, linkText:&quot;Go to&quot;)
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$linkText$ $baseTitle$&lt;&lt;v3&gt;&gt;&lt;/a&gt;
+&lt;/$wikify&gt;
+\end
+
+&lt;&lt;.ilinka &quot;H1: default is h1&quot;&gt;&gt;
+
+&lt;&lt;.ilinka &quot;H2&quot; h2&gt;&gt;
+
+&lt;&lt;.ilinka &quot;H3&quot; h3&gt;&gt;
+
+&lt;&lt;.ilinka &quot;H4&quot; h4&gt;&gt;
+
+
+
+&lt;&lt;.ilink &quot;H1: default is h1&quot; &quot;Click Here to&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;H2&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;H3&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;H4&quot;&gt;&gt;
+</pre>
 </div>
 <div created="20190918090548313" modified="20190918090802171" tags="Contents" title="English" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;list-links &quot;[tag[English]sort[title]]&quot;&gt;&gt;
@@ -11425,41 +11545,6 @@ The wiki-text macros are set of macro for documenting TW codes. Edit this tiddle
 * wikitext-example(src)
 * wikitext-example-without-html(src)</pre>
 </div>
-<div created="20190923034829465" modified="20190923120701468" tags="" title="New Tiddler">
-<pre>\define .ilinka(baseTitle:&quot;New Heading&quot;)
-&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[#]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
-&lt;h1 id=&lt;&lt;v1&gt;&gt; &gt;$baseTitle$&lt;&lt;qualify&gt;&gt;&lt;/h1&gt;
-&lt;/$wikify&gt;
-\end
-
-\define .ilink(baseTitle:&quot;New Heading&quot;, linkText:null)
-&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
-&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$linkText$&lt;/a&gt;
-&lt;/$wikify&gt;
-\end
-
-&lt;&lt;.ilinka &quot;Hello there&quot;&gt;&gt;
-
-br
-
-&lt;&lt;.ilinka &quot;Hello there 2&quot;&gt;&gt;
-
-br
-
-&lt;&lt;.ilinka &quot;Hello there 3&quot;&gt;&gt;
-
-br
-
-br
-
-br
-
-&lt;&lt;.ilink &quot;Hello there&quot;&gt;&gt;
-
-&lt;&lt;.ilink &quot;Hello there 2&quot;&gt;&gt;
-
-&lt;&lt;.ilink &quot;Hello there 3&quot;&gt;&gt;</pre>
-</div>
 <div created="20190918091213048" modified="20190918091232293" tags="Test" title="not yet">
 <pre>not yet</pre>
 </div>
@@ -11517,6 +11602,38 @@ https://www.youtube.com/watch?v=DaxuMgcdoJY
 <pre>&lt;&lt;list-links &quot;[tag[test]sort[title]]&quot;&gt;&gt;
 
 &lt;&lt;tabs tabsList:&quot;[tag[Test]]&quot; default:&quot;demo/xx&quot; class:&quot;tc-horizontal&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20190923034829465" modified="20190925091656761" tags="" title="test 101" type="text/vnd.tiddlywiki">
+<pre>\define .ilinka(baseTitle:&quot;New Heading&quot; typ:h1)
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[#]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;$typ$ id=&lt;&lt;v1&gt;&gt; &gt;$baseTitle$&lt;/$typ$&gt;
+&lt;/$wikify&gt;
+\end
+
+\define .ilink(baseTitle:&quot;New Heading&quot;, linkText:&quot;Go to&quot;)
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$linkText$ $baseTitle$&lt;&lt;v3&gt;&gt;&lt;/a&gt;
+&lt;/$wikify&gt;
+\end
+
+&lt;&lt;.ilinka &quot;H1: default is h1&quot;&gt;&gt;
+
+&lt;&lt;.ilinka &quot;H2&quot; h2&gt;&gt;
+
+&lt;&lt;.ilinka &quot;H3&quot; h3&gt;&gt;
+
+&lt;&lt;.ilinka &quot;H4&quot; h4&gt;&gt;
+
+
+
+&lt;&lt;.ilink &quot;H1: default is h1&quot; &quot;Click Here to&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;H2&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;H3&quot;&gt;&gt;
+
+&lt;&lt;.ilink &quot;H4&quot;&gt;&gt;
 </pre>
 </div>
 <div created="20190917115320267" modified="20190918091245133" tags="Test" title="Test of badge macro">
