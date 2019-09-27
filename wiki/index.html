@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/sidebar</li>
+
 <li>$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -194,6 +196,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
+
+<li>$:/view</li>
 
 <li>7 grammar rules you really should pay attention to</li>
 
@@ -9505,10 +9509,15 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190418033202367" modified="20190925112301971" title="$:/GitHub/Username">
 <pre>rayamhk</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[macro/.ilink and .ilinka]]</pre>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;https://rayamhk.github.io/test/wiki/##H2%E2%80%931452278623&quot;
+        }
+    }
+}</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9703,6 +9712,9 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190925111220464" modified="20190925111220464" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
+<div created="20190927103152783" modified="20190927112629400" title="$:/state/sidebar">
+<pre>yes</pre>
+</div>
 <div created="20190927030144728" modified="20190927030144728" title="$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623">
 <pre>yes</pre>
 </div>
@@ -9712,10 +9724,10 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190925112244212" modified="20190925112244212" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20190925111211913" modified="20190925111211913" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20190925111211913" modified="20190927113021294" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
-<div created="20190927025756542" list="$:/Import [[macro/.ilink and .ilinka]] GettingStarted [[Table of Contents]]" modified="20190927025759430" title="$:/StoryList">
+<div created="20190927090459325" list="[[macro/.ilink and .ilinka]] GettingStarted [[Table of Contents]]" modified="20190927112805629" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9887,6 +9899,9 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 </div>
 <div created="20190916114632316" modified="20190916114632316" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
+</div>
+<div created="20190927094759297" modified="20190927113036991" title="$:/view">
+<pre>classic</pre>
 </div>
 <div created="20190420124201453" modified="20190918090951156" tags="Grammar" title="7 grammar rules you really should pay attention to" type="text/x-markdown">
 <pre># 7 grammar rules you really should pay attention to
@@ -10279,38 +10294,27 @@ src=&quot;&quot;&quot;&lt;&lt;.di crossout added &gt;&gt;
 &lt;&lt;&lt;
 </pre>
 </div>
-<div author="rayam" created="20190925105516195" creator="Mohammad" description="Detele and insert text" modified="20190927035720173" modifier="Mohammad" syntax="&lt;&lt;.di del ins&gt;&gt;" tags="rayam $:/tags/Macro" title="macro/.ilink and .ilinka">
-<pre>\define .linka0(Title type qty) 
+<div author="rayam" created="20190927094716441" creator="Mohammad" description="Detele and insert text" modified="20190927112919870" modifier="Mohammad" syntax="&lt;&lt;.di del ins&gt;&gt;" tags="$:/tags/Macro rayam" title="macro/.ilink and .ilinka">
+<pre>\define .ilinka0(Title type qty) 
 &lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[#]]}}}$qty$&quot;&quot;&quot; output=text&gt;
-&lt;$type$ id=&lt;&lt;v1&gt;&gt; &gt;$Title$&lt;/$type$&gt; : &lt;&lt;v1&gt;&gt;
+&lt;$type$ id=&lt;&lt;v1&gt;&gt; &gt;$Title$&lt;/$type$&gt;
 &lt;/$wikify&gt;
 \end
 
 \define .ilinka(Title:&quot;Title Heading&quot; type:h2 qty)
 &lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=&lt;&lt;__qty__&gt;&gt; &gt;
-&lt;$macrocall $name=&quot;.linka0&quot; Title=&lt;&lt;__Title__&gt;&gt; type=$type$ qty=&lt;&lt;qty1&gt;&gt; /&gt;
+&lt;$macrocall $name=&quot;.ilinka0&quot; Title=&lt;&lt;__Title__&gt;&gt; type=$type$ qty=&lt;&lt;qty1&gt;&gt; /&gt;
 &lt;/$set&gt;
 \end
 
-\define .ilink0(Title:&quot;Title Heading&quot;, Leading:&quot;Go to&quot;, qty)
+\define .ilink(Title:&quot;Title Heading&quot;, Leading:&quot;:&quot;, qty)
 &lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=$qty$&gt;
 &lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qty1&gt;&gt;&quot;&quot;&quot; output=text&gt;
-&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$Leading$ $Title$&lt;/a&gt; &lt;&lt;v1&gt;&gt;
-&lt;/$wikify&gt;
-&lt;/$set&gt;
-\end
-
-\define .ilink(Title:&quot;Title Heading&quot;, Leading:&quot;Go to:&quot;, qty)
-&lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=$qty$&gt;
-&lt;$wikify name=v1 
-text=&quot;&quot;&quot;
-{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qty1&gt;&gt;
+&lt;$wikify name=v2 text=&quot;&quot;&quot;
+{{{[[$Leading$]suffix[:]removesuffix[:]]}}}
+{{{[[$Leading$]suffix[:]then[ $Title$]else[ $Leading$]]}}}
 &quot;&quot;&quot; output=text&gt;
-&lt;$wikify name=v2 
-text=&quot;&quot;&quot;{{{
-[[$Leading$]suffix[:]then[$Leading$ $Title$]else[$Leading$]]
-}}}&quot;&quot;&quot; output=text&gt;
-&lt;a href=&lt;&lt;v1&gt;&gt; &gt; &lt;&lt;v2&gt;&gt;&lt;/a&gt; : &lt;&lt;v1&gt;&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt; &lt;&lt;v2&gt;&gt;&lt;/a&gt;
 &lt;/$wikify&gt;
 &lt;/$wikify&gt;
 &lt;/$set&gt;
@@ -10355,21 +10359,18 @@ null
 description
 &lt;$macrocall $name=&quot;wikitext-example-without-html&quot; 
 src=&quot;&quot;&quot;
-&lt;&lt;.linka0 &quot;This Tid&quot; h1 12345&gt;&gt;
-&lt;&lt;.ilinka &quot;Top H1&quot; h1&gt;&gt;
-&lt;&lt;.ilinka &quot;Mid H2&quot;&gt;&gt;(default is h2)
-&lt;&lt;.ilinka &quot;End H3&quot; h3&gt;&gt;
+&lt;&lt;.ilinka &quot;Link Across Tiddler&quot; h1 12345&gt;&gt;
+&lt;&lt;.ilinka &quot;H1&quot; h1&gt;&gt;
+&lt;&lt;.ilinka &quot;H2&quot;&gt;&gt;(default is h2)
+&lt;&lt;.ilinka &quot;H3&quot; h3&gt;&gt;
 
-*&lt;&lt;.ilink &quot;This Tid&quot; &quot;Go to this tid only&quot; 12345&gt;&gt;
-*&lt;&lt;.ilink &quot;Top H1&quot; &quot;-&gt;:&quot;&gt;&gt;
-*&lt;&lt;.ilink &quot;Mid H2&quot;&gt;&gt;
-*&lt;&lt;.ilink &quot;End H3&quot; &quot;Ending&quot;&gt;&gt;
-
-*&lt;&lt;.ilink0 &quot;This Tid&quot; &quot;Go to this tid only&quot; 12345&gt;&gt;
-*&lt;&lt;.ilink0 &quot;Top H1&quot; &quot;-&gt;:&quot;&gt;&gt;
-*&lt;&lt;.ilink0 &quot;Mid H2&quot;&gt;&gt;
-*&lt;&lt;.ilink0 &quot;End H3&quot; &quot;Ending&quot;&gt;&gt;
-
+*&lt;&lt;.ilink &quot;Link Across Tiddler&quot; &quot;Go to the top&quot; 12345&gt;&gt;
+&gt;Set qty to unique value for a global anchor.
+*&lt;&lt;.ilink &quot;H1&quot; &quot;Going to :&quot;&gt;&gt;
+&gt;Leading is ending with `:` to attach the title.
+*&lt;&lt;.ilink &quot;H2&quot; &quot;Going to::&quot;&gt;&gt;
+&gt;Ending with `::` to attach `:` and title.
+*&lt;&lt;.ilink &quot;H3&quot;&gt;&gt;
 &quot;&quot;&quot;/&gt;
 &lt;&lt;&lt;
 </pre>
