@@ -173,7 +173,15 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/markdown</li>
 
+<li>$:/plugins/wikilabs/link-to-tabs</li>
+
 <li>$:/SiteTitle</li>
+
+<li>$:/state/extxt-macro/Draft of 'macro/extxt-macro'/My Label-1312824223</li>
+
+<li>$:/state/extxt-macro/macro/extxt-macro/Click to extent--2114757039</li>
+
+<li>$:/state/extxt-macro/macro/extxt-macro/My Label--2114757039</li>
 
 <li>$:/state/showeditpreview</li>
 
@@ -181,11 +189,15 @@ Error message and password prompt
 
 <li>$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623</li>
 
+<li>$:/state/slider-macro/macro/extxt-macro/Code--2114757039</li>
+
 <li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab-2065006209</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
+
+<li>$:/state/toc/Contents-TiddlyWiki--565514155</li>
 
 <li>$:/StoryList</li>
 
@@ -9509,15 +9521,10 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190418033202367" modified="20190925112301971" title="$:/GitHub/Username">
 <pre>rayamhk</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled&quot;: {
-            &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;https://rayamhk.github.io/test/wiki/##H2%E2%80%931452278623&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[$:/plugins/wikilabs/link-to-tabs]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9706,8 +9713,53 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
     }
 }</pre>
 </div>
+<div author="Mario Pietsch" core-version="&gt;=5.1.6" created="20190902044104561" dependents="" description="Internal links are added to tabs if selected" list="readme license" modified="20190902044104561" plugin-type="plugin" title="$:/plugins/wikilabs/link-to-tabs" type="application/json" version="0.1.1">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/core/macros/tabs&quot;: {
+            &quot;title&quot;: &quot;$:/core/macros/tabs&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Macro&quot;,
+            &quot;text&quot;: &quot;\\define tabs(tabsList,default,state:\&quot;$:/state/tab\&quot;,class,template)\n&lt;div class=\&quot;tc-tab-set $class$\&quot;&gt;\n&lt;div class=\&quot;tc-tab-buttons $class$\&quot;&gt;\n&lt;$list filter=\&quot;$tabsList$\&quot; variable=\&quot;currentTab\&quot;&gt;&lt;$set name=\&quot;save-currentTiddler\&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$tiddler tiddler=&lt;&lt;currentTab&gt;&gt;&gt;&lt;$button set=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; setTo=&lt;&lt;currentTab&gt;&gt; default=\&quot;$default$\&quot; selectedClass=\&quot;tc-tab-selected\&quot; tooltip={{!!tooltip}}&gt;\n&lt;$transclude tiddler={{!!icon}}/&gt;\n&lt;$tiddler tiddler=&lt;&lt;save-currentTiddler&gt;&gt;&gt;\n&lt;$set name=\&quot;tv-wikilinks\&quot; value=\&quot;no\&quot;&gt;\n&lt;$transclude tiddler=&lt;&lt;currentTab&gt;&gt; field=\&quot;caption\&quot;&gt;\n&lt;$macrocall $name=\&quot;currentTab\&quot; $type=\&quot;text/plain\&quot; $output=\&quot;text/plain\&quot;/&gt;\n&lt;/$transclude&gt;\n&lt;/$set&gt;&lt;/$tiddler&gt;&lt;/$button&gt;&lt;span class=\&quot;wltc-link-to-tab\&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; &gt;{{$:/core/images/link}}&lt;/$link&gt;&lt;/span&gt;&lt;/$tiddler&gt;&lt;/$set&gt;&lt;/$list&gt;\n&lt;/div&gt;\n&lt;div class=\&quot;tc-tab-divider $class$\&quot;/&gt;\n&lt;div class=\&quot;tc-tab-content $class$\&quot;&gt;\n&lt;$list filter=\&quot;$tabsList$\&quot; variable=\&quot;currentTab\&quot;&gt;\n\n&lt;$reveal type=\&quot;match\&quot; state=&lt;&lt;qualify \&quot;$state$\&quot;&gt;&gt; text=&lt;&lt;currentTab&gt;&gt; default=\&quot;$default$\&quot;&gt;\n\n&lt;$transclude tiddler=\&quot;$template$\&quot; mode=\&quot;block\&quot;&gt;\n\n&lt;$transclude tiddler=&lt;&lt;currentTab&gt;&gt; mode=\&quot;block\&quot;/&gt;\n\n&lt;/$transclude&gt;\n\n&lt;/$reveal&gt;\n\n&lt;/$list&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n\\end&quot;
+        },
+        &quot;$:/core/ui/ControlPanel/Settings/link-to-tabs&quot;: {
+            &quot;title&quot;: &quot;$:/core/ui/ControlPanel/Settings/link-to-tabs&quot;,
+            &quot;caption&quot;: &quot;Link-to-Tabs plugin&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel/Settings&quot;,
+            &quot;text&quot;: &quot;&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/link-to-tabs/config\&quot; field=\&quot;show-all-links\&quot; checked=\&quot;inline\&quot; unchecked=\&quot;none\&quot; default=\&quot;none\&quot;&gt; Show internal tab link for ''all tabs''&lt;/$checkbox&gt;\n\n&lt;$checkbox tiddler=\&quot;$:/plugins/wikilabs/link-to-tabs/config\&quot; field=\&quot;show-single-link\&quot; checked=\&quot;inline\&quot; unchecked=\&quot;none\&quot; default=\&quot;inline\&quot;&gt; Show internal tab link for ''selected tabs''&lt;/$checkbox&gt;\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/link-to-tabs/config&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/link-to-tabs/config&quot;,
+            &quot;show-all-links&quot;: &quot;none&quot;,
+            &quot;show-single-link&quot;: &quot;inline&quot;,
+            &quot;text&quot;: &quot;This tiddler is used to configure the \&quot;Link-to-tabs\&quot; plugin behaviour. \n\nThere are 2 fields, which are used by [[$:/plugins/wikilabs/link-to-tabs/styles]] enable and disable the internal links. \n\n* show-all-links: {{!!show-all-links}}\n* show-single-link: {{!!show-single-link}}\n&quot;
+        },
+        &quot;$:/plugins/wikilabs/link-to-tabs/license&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/link-to-tabs/license&quot;,
+            &quot;text&quot;: &quot;Link-to-Tabs-Macro (c) Mario Pietsch - 2016-2018\n\nhttps://opensource.org/licenses/BSD-3-Clause&quot;
+        },
+        &quot;$:/plugins/wikilabs/link-to-tabs/styles&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/link-to-tabs/styles&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;text&quot;: &quot;&lt;pre&gt;\n\n.wltc-link-to-tab {\n  display: {{$:/plugins/wikilabs/link-to-tabs/config!!show-all-links}};\n  position: relative;\n  top: -1em;\n  left: -1.3em;\n  font-size: 0.7em;\n  opacity: 0.7;\n  margin-right: -1em;\n}\n\n.wltc-link-to-tab svg{\n  width: 1.4em;\n  height: 1.4em;\n}\n\n.wltc-link-to-tab:hover {\n  opacity: 1;\n}\n\n.tc-tab-selected + .wltc-link-to-tab {\n  display: {{$:/plugins/wikilabs/link-to-tabs/config!!show-single-link}};\n}\n\n.tc-vertical &gt; .wltc-link-to-tab {\n  top: -1.9em;\n  left: 0;\n  height: 0;\n  float: right;\n}\n\n&lt;/pre&gt;&quot;
+        },
+        &quot;$:/plugins/wikilabs/link-to-tabs/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/wikilabs/link-to-tabs/readme&quot;,
+            &quot;text&quot;: &quot;This plugin adds a little link icon to every tab. \n\n''Important:'' This plugin changes the core tabs macro.\n\n! Lint-to-Tabs Settings\n\n{{$:/core/ui/ControlPanel/Settings/link-to-tabs}}&quot;
+        }
+    }
+}</pre>
+</div>
 <div created="20190916115136030" modified="20190916115151880" title="$:/SiteTitle">
 <pre>My Dairy Notes</pre>
+</div>
+<div created="20190927115337445" modified="20190927115339162" title="$:/state/extxt-macro/Draft of 'macro/extxt-macro'/My Label-1312824223">
+<pre>no</pre>
+</div>
+<div created="20190927114849332" modified="20190927115718449" title="$:/state/extxt-macro/macro/extxt-macro/Click to extent--2114757039">
+<pre>yes</pre>
+</div>
+<div created="20190927114857112" modified="20190927115719711" title="$:/state/extxt-macro/macro/extxt-macro/My Label--2114757039">
+<pre>no</pre>
 </div>
 <div created="20190925111220464" modified="20190925111220464" title="$:/state/showeditpreview">
 <pre>yes</pre>
@@ -9718,16 +9770,22 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190927030144728" modified="20190927030144728" title="$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623">
 <pre>yes</pre>
 </div>
+<div created="20190927114905461" modified="20190927115353935" title="$:/state/slider-macro/macro/extxt-macro/Code--2114757039">
+<pre>no</pre>
+</div>
 <div created="20190925112239600" modified="20190925112239600" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
 <div created="20190925112244212" modified="20190925112244212" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20190925111211913" modified="20190927113021294" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20190925111211913" modified="20190927115923329" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div created="20190927090459325" list="[[macro/.ilink and .ilinka]] GettingStarted [[Table of Contents]]" modified="20190927112805629" title="$:/StoryList">
+<div created="20190927114716348" modified="20190927114716348" title="$:/state/toc/Contents-TiddlyWiki--565514155">
+<pre>open</pre>
+</div>
+<div created="20190927090459325" list="$:/Import macro/extxt-macro [[Android Platform]] Showcase [[Plugin Resource]] macro/.di [[macro/.ilink and .ilinka]] GettingStarted [[Table of Contents]]" modified="20190927115816170" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10375,7 +10433,7 @@ src=&quot;&quot;&quot;
 &lt;&lt;&lt;
 </pre>
 </div>
-<div author="Rob Holez (modified by Mohammad)" created="20190920032851718" creator="Mohammad" description="Slider macro shows (hides) its content." modified="20190920114416877" modifier="Mohammad" syntax="&lt;&lt;slider-macro label:&quot;&quot; text:&quot;&quot;&gt;&gt;" tags="$:/tags/Stylesheet yazd $:/tags/Macro" title="macro/extxt-macro" url="https://hoelz.ro/files/fts.html#Query%20Examples">
+<div author="rayam" created="20190920032851718" creator="Mohammad" description="extxt-macro shows (hides) its content." modified="20190927115700094" modifier="Mohammad" syntax="&lt;&lt;extxt-macro label:&quot;&quot; text:&quot;&quot;&gt;&gt;" tags="$:/tags/Stylesheet yazd $:/tags/Macro" title="macro/extxt-macro">
 <pre>\define extxt-macro(label, text)
 &lt;$set name=&quot;revealState&quot; value=&lt;&lt;qualify &quot;$:/state/extxt-macro/$(currentTiddler)$/$label$&quot;&gt;&gt;&gt;
 &lt;span&gt;
@@ -10388,15 +10446,16 @@ $label$    &lt;/$button&gt;
       &amp;gt;
     &lt;/$button&gt;
   &lt;/$reveal&gt; 
-&lt;/span&gt;
 
-&lt;$reveal type=&quot;match&quot; state=&lt;&lt;revealState&gt;&gt; text=&quot;yes&quot;&gt;
+  &lt;$reveal type=&quot;match&quot; state=&lt;&lt;revealState&gt;&gt; text=&quot;yes&quot;&gt;
 $text$
-&lt;/$reveal&gt;
+  &lt;/$reveal&gt;
+  
   &lt;$reveal type=&quot;match&quot; state=&lt;&lt;revealState&gt;&gt; text=&quot;yes&quot;&gt;
     &lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot; set=&lt;&lt;revealState&gt;&gt; setTo=&quot;no&quot;&gt;&amp;lt;&lt;/$button&gt;
   &lt;/$reveal&gt; 
 
+&lt;/span&gt;
 &lt;/$set&gt;
 \end
 
@@ -10408,7 +10467,7 @@ shows (hides) its content. The content is passed using the //text// parameter.
 !! Syntax
 &lt;&lt;&lt;
 ```
-&lt;&lt;slider-macro label:&quot;&quot; text:&quot;&quot;&gt;&gt;
+&lt;&lt;extxt-macro label:&quot;&quot; text:&quot;&quot;&gt;&gt;
 ```
 
 !! Content and parameters
@@ -10450,11 +10509,6 @@ description
 src=&quot;&quot;&quot;&lt;&lt;extxt-macro &quot;Click to extent&quot; &quot;This is a simple test!&quot;&gt;&gt;
 &quot;&quot;&quot;/&gt;
 &lt;&lt;&lt;
-
-button.tc-extxt {
-  border: 2px solid pink;
-  color: red;
-}
 </pre>
 </div>
 <div created="20181213121411187" creator="Mohammad" modified="20190322165619327" modifier="Mohammad" tags="find-macro $:/tags/Macro" title="macro/find">
@@ -10645,8 +10699,19 @@ The wiki-text macros are set of macro for documenting TW codes. Edit this tiddle
 <div created="20190918091213048" modified="20190918091232293" tags="Test" title="not yet">
 <pre>not yet</pre>
 </div>
-<div created="20190919110618170" modified="20190919110647186" tags="TiddlyWiki" title="Plugin Resource">
-<pre>* https://tw-scripts.github.io/Yazd/</pre>
+<div created="20190919110618170" modified="20190927120113470" tags="TiddlyWiki" title="Plugin Resource">
+<pre>* https://tw-scripts.github.io/Yazd/
+
+;BJ Tools
+:a collection of TW related projects
+:http://bjtools.tiddlyspot.com
+
+;TW and CSS Transition
+:http://csstransition.tiddlyspot.com
+
+;Shiraz
+:shiraz a set of css and macros
+:https://kookma.github.io/Shiraz/</pre>
 </div>
 <div created="20190920114316000" modified="20190920114339318" tags="TiddlyWiki" title="Showcase">
 <pre>http://tw5-zh.tiddlyspot.com/</pre>
@@ -10681,10 +10746,11 @@ https://www.youtube.com/watch?v=DaxuMgcdoJY
 * I don't (really) care for it.
 * I'm not (really) a ... person. </pre>
 </div>
-<div created="20190918090114917" modified="20190918095307483" tags="$:/tags/SideBar" title="Table of Contents">
+<div created="20190918090114917" modified="20190927114651512" tags="$:/tags/SideBar" title="Table of Contents">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-selective-expandable &quot;Contents&quot; &quot;sort[title]&quot;&gt;&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+</pre>
 </div>
 <div created="20190917034738781" modified="20190918091406826" tags="Test" title="Table Test" type="text/vnd.tiddlywiki">
 <pre>|table-striped-row|k
