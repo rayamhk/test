@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623</li>
+
 <li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab-2065006209</li>
@@ -198,6 +200,8 @@ Error message and password prompt
 <li>Android Platform</li>
 
 <li>DIY</li>
+
+<li>Draft of 'macro/.ilink and .ilinka'</li>
 
 <li>English</li>
 
@@ -9750,6 +9754,9 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190925111220464" modified="20190925111220464" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
+<div created="20190927030144728" modified="20190927030144728" title="$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623">
+<pre>yes</pre>
+</div>
 <div created="20190925112239600" modified="20190925112239600" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
@@ -9759,7 +9766,7 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190925111211913" modified="20190925111211913" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20190925111214760" list="[[macro/.ilink and .ilinka]] GettingStarted [[Table of Contents]]" modified="20190925112236349" title="$:/StoryList">
+<div created="20190927025756542" list="[[test 101]] [[Draft of 'macro/.ilink and .ilinka']] GettingStarted [[Table of Contents]]" modified="20190927025759430" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9775,19 +9782,19 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/waiman/Downloads/upgrade%20(1).html&quot;
+            &quot;text&quot;: &quot;https://rayamhk.github.io/test/wiki/&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;rayamhk.github.io&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;rayamhk.github.io&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -9795,7 +9802,7 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/waiman/Downloads/upgrade%20(1).html&quot;
+            &quot;text&quot;: &quot;/test/wiki/&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9803,7 +9810,7 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
+            &quot;text&quot;: &quot;https://rayamhk.github.io&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -10042,6 +10049,101 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
+</div>
+<div author="rayam" created="20190925105516195" creator="Mohammad" description="Detele and insert text" draft.of="macro/.ilink and .ilinka" draft.title="macro/.ilink and .ilinka" modified="20190927034044697" modifier="Mohammad" syntax="&lt;&lt;.di del ins&gt;&gt;" tags="rayam $:/tags/Macro" title="Draft of 'macro/.ilink and .ilinka'">
+<pre>\define .linka0(Title type qty) 
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[#]]}}}$qty$&quot;&quot;&quot; output=text&gt;
+&lt;$type$ id=&lt;&lt;v1&gt;&gt; &gt;$Title$&lt;/$type$&gt;
+&lt;/$wikify&gt;
+\end
+
+\define .ilinka(Title:&quot;Title Heading&quot; type:h2 qty)
+&lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=&lt;&lt;__qty__&gt;&gt; &gt;
+&lt;$macrocall $name=&quot;.linka0&quot; Title=&lt;&lt;__Title__&gt;&gt; type=$type$ qty=&lt;&lt;qty1&gt;&gt; /&gt;
+&lt;/$set&gt;
+\end
+
+\define .ilink0(Title:&quot;Title Heading&quot;, Leading:&quot;Go to&quot;, qty)
+&lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=$qty$&gt;
+&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qty1&gt;&gt;&quot;&quot;&quot; output=text&gt;
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$Leading$ $Title$&lt;/a&gt;
+&lt;/$wikify&gt;
+&lt;/$set&gt;
+\end
+
+\define .ilink(Title:&quot;Title Heading&quot;, Leading:&quot;Go to:&quot;, qty)
+&lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=$qty$&gt;
+&lt;$wikify name=v1 
+text=&quot;&quot;&quot;
+{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qty1&gt;&gt;
+&quot;&quot;&quot; output=text&gt;
+&lt;$wikify name=v2 
+text=&quot;&quot;&quot;{{{
+[[$Leading$]suffix[:]then[$Leading$ $Title$]else[$Leading$]]
+}}}&quot;&quot;&quot; output=text&gt;
+&lt;$wikify name=v3 
+text=&quot;&quot;&quot;{{{no&lt;v2&gt;txt +[match[notxt]then[yes]else[no]]
+}}}&quot;&quot;&quot; output=text&gt;
+
+
+&lt;a href=&lt;&lt;v1&gt;&gt; &gt; &lt;&lt;v2&gt;&gt; &lt;/a&gt;
+&lt;/$wikify&gt;
+&lt;/$wikify&gt;
+&lt;/$wikify&gt;
+&lt;/$set&gt;
+\end
+
+!! Purpose
+&lt;&lt;&lt;
+for inner link and inner anchor
+&lt;&lt;&lt;
+
+!! Syntax
+&lt;&lt;&lt;
+```
+&lt;&lt;.di del ins&gt;&gt;
+```
+
+!! Content and parameters
+|Parameter |Type |Description |h
+|del |optional|text deleted |
+|ins |optional|text inserted|
+&lt;&lt;&lt;
+
+&lt;$macrocall $name=slider-macro label=&quot;Code&quot; text=&quot;&quot;&quot;
+&lt;&lt;&lt;
+&lt;&lt;show-macro&gt;&gt;
+&lt;&lt;&lt;
+
+!! Revisions
+&lt;&lt;&lt;
+;Rev 0.01
+: preliminary version
+&lt;&lt;&lt;
+
+!! Reference
+&lt;&lt;&lt;
+null
+&lt;&lt;&lt;
+&quot;&quot;&quot;/&gt;
+
+!! Examples
+&lt;&lt;&lt;
+description
+&lt;$macrocall $name=&quot;wikitext-example-without-html&quot; 
+src=&quot;&quot;&quot;
+&lt;&lt;.linka0 &quot;This Tid&quot; h1 12345&gt;&gt;
+&lt;&lt;.ilinka &quot;Top H1&quot; h1&gt;&gt;
+&lt;&lt;.ilinka &quot;Mid H2&quot;&gt;&gt;(default is h2)
+&lt;&lt;.ilinka &quot;End H3&quot; h3&gt;&gt;
+
+*&lt;&lt;.ilink &quot;This Tid&quot; &quot;Go to this tid only&quot; 12345&gt;&gt;
+*&lt;&lt;.ilink &quot;Top H1&quot; &quot;-&gt;:&quot;&gt;&gt;
+*&lt;&lt;.ilink &quot;Mid H2&quot;&gt;&gt;
+*&lt;&lt;.ilink &quot;End H3&quot; &quot;Ending&quot;&gt;&gt;
+&quot;&quot;&quot;/&gt;
+&lt;&lt;&lt;
+</pre>
 </div>
 <div created="20190918090548313" modified="20190918090802171" tags="Contents" title="English" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;list-links &quot;[tag[English]sort[title]]&quot;&gt;&gt;
