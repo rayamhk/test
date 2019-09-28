@@ -185,6 +185,14 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023</li>
+
+<li>$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Syntax-614935023</li>
+
+<li>$:/state/slider-macro/macro/.ilink and .ilinka 1/Code-414993123</li>
+
+<li>$:/state/slider-macro/macro/.ilink and .ilinka 1/Syntax-414993123</li>
+
 <li>$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -248,8 +256,6 @@ Error message and password prompt
 <li>Table Test</li>
 
 <li>Test</li>
-
-<li>test 101</li>
 
 <li>Test of badge macro</li>
 
@@ -9753,10 +9759,22 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190927120550882" modified="20190927120553068" title="$:/state/plugin-info--1763372400-$:/plugins/kookma/shiraz--479113107">
 <pre>contents</pre>
 </div>
-<div created="20190925111220464" modified="20190925111220464" title="$:/state/showeditpreview">
+<div created="20190925111220464" modified="20190928084017748" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20190927112629400" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20190928085614859" title="$:/state/sidebar">
+<pre>yes</pre>
+</div>
+<div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
+<pre>no</pre>
+</div>
+<div created="20190928074912472" modified="20190928074928301" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Syntax-614935023">
+<pre>no</pre>
+</div>
+<div created="20190928084703105" modified="20190928084703105" title="$:/state/slider-macro/macro/.ilink and .ilinka 1/Code-414993123">
+<pre>yes</pre>
+</div>
+<div created="20190928084700931" modified="20190928084700931" title="$:/state/slider-macro/macro/.ilink and .ilinka 1/Syntax-414993123">
 <pre>yes</pre>
 </div>
 <div created="20190927030144728" modified="20190927030144728" title="$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623">
@@ -9771,7 +9789,7 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190925111211913" modified="20190927120517502" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20190927120535839" list="[[macro/.ilink and .ilinka]] $:/Import $:/plugins/wikilabs/link-to-tabs $:/ControlPanel $:/plugins/kookma/shiraz GettingStarted [[Table of Contents]]" modified="20190927121044305" title="$:/StoryList">
+<div created="20190928074530755" list="[[macro/.ilink and .ilinka]] GettingStarted [[Table of Contents]]" modified="20190928085730852" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10338,37 +10356,33 @@ src=&quot;&quot;&quot;&lt;&lt;.di crossout added &gt;&gt;
 &lt;&lt;&lt;
 </pre>
 </div>
-<div author="rayam" created="20190927094716441" creator="Mohammad" description="Detele and insert text" modified="20190927112919870" modifier="Mohammad" syntax="&lt;&lt;.di del ins&gt;&gt;" tags="$:/tags/Macro rayam" title="macro/.ilink and .ilinka">
-<pre>\define .ilinka0(Title type qty) 
-&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[#]]}}}$qty$&quot;&quot;&quot; output=text&gt;
-&lt;$type$ id=&lt;&lt;v1&gt;&gt; &gt;$Title$&lt;/$type$&gt;
-&lt;/$wikify&gt;
+<div author="rayam" created="20190928074639800" creator="Mohammad" description="Detele and insert text" modified="20190928090357391" modifier="Mohammad" syntax="&lt;&lt;.di del ins&gt;&gt;" tags="$:/tags/Macro rayam" title="macro/.ilink and .ilinka">
+<pre>\define .wikify(Filter) 
+&lt;$wikify name=v1 text=&lt;&lt;__Filter__&gt;&gt; &gt;&lt;&lt;v1&gt;&gt;&lt;/$wikify&gt;
 \end
 
 \define .ilinka(Title:&quot;Title Heading&quot; type:h2 qty)
 &lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=&lt;&lt;__qty__&gt;&gt; &gt;
-&lt;$macrocall $name=&quot;.ilinka0&quot; Title=&lt;&lt;__Title__&gt;&gt; type=$type$ qty=&lt;&lt;qty1&gt;&gt; /&gt;
+&lt;$type$ id={{{[[$Title$]] +[encodeuri[]addprefix[#]addsuffix&lt;qty1&gt;]}}}&gt;$Title$&lt;/$type$&gt;
 &lt;/$set&gt;
 \end
 
 \define .ilink(Title:&quot;Title Heading&quot;, Leading:&quot;:&quot;, qty)
-&lt;$set name=&quot;qty1&quot; filter=&quot;no$qty$txt +[match[notxt]]&quot; value=&lt;&lt;qualify&gt;&gt;  emptyValue=$qty$&gt;
-&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$Title$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qty1&gt;&gt;&quot;&quot;&quot; output=text&gt;
-&lt;$wikify name=v2 text=&quot;&quot;&quot;
-{{{[[$Leading$]suffix[:]removesuffix[:]]}}}
-{{{[[$Leading$]suffix[:]then[ $Title$]else[ $Leading$]]}}}
-&quot;&quot;&quot; output=text&gt;
-&lt;a href=&lt;&lt;v1&gt;&gt; &gt; &lt;&lt;v2&gt;&gt;&lt;/a&gt;
-&lt;/$wikify&gt;
-&lt;/$wikify&gt;
+&lt;$set name=&quot;qty1&quot; filter=&quot;n0$qty$tXt +[match[n0tXt]]&quot; value=&lt;&lt;qualify &gt;&gt;  emptyValue=&lt;&lt;__qty__&gt;&gt; &gt;
+&lt;a href={{{[[$Title$]] +[encodeuri[]addprefix[##]addsuffix&lt;qty1&gt;]}}}&gt; 
+&lt;&lt;.wikify &quot;&quot;&quot;{{{[[$Leading$]suffix[:]removesuffix[:]]}}}&quot;&quot;&quot;&gt;&gt;
+&lt;&lt;.wikify &quot;&quot;&quot;{{{[[$Leading$]suffix[:]then[$Title$]else[$Leading$]]}}}&quot;&quot;&quot;&gt;&gt;
+&lt;/a&gt;
 &lt;/$set&gt;
 \end
+
 
 !! Purpose
 &lt;&lt;&lt;
 for inner link and inner anchor
 &lt;&lt;&lt;
 
+&lt;$macrocall $name=slider-macro label=&quot;Syntax&quot; text=&quot;&quot;&quot;
 !! Syntax
 &lt;&lt;&lt;
 ```
@@ -10380,6 +10394,8 @@ for inner link and inner anchor
 |del |optional|text deleted |
 |ins |optional|text inserted|
 &lt;&lt;&lt;
+&quot;&quot;&quot;/&gt;
+
 
 &lt;$macrocall $name=slider-macro label=&quot;Code&quot; text=&quot;&quot;&quot;
 &lt;&lt;&lt;
@@ -10743,38 +10759,6 @@ https://www.youtube.com/watch?v=DaxuMgcdoJY
 <pre>&lt;&lt;list-links &quot;[tag[test]sort[title]]&quot;&gt;&gt;
 
 &lt;&lt;tabs tabsList:&quot;[tag[Test]]&quot; default:&quot;demo/xx&quot; class:&quot;tc-horizontal&quot;&gt;&gt;
-</pre>
-</div>
-<div created="20190923034829465" modified="20190925091656761" tags="" title="test 101" type="text/vnd.tiddlywiki">
-<pre>\define .ilinka(baseTitle:&quot;New Heading&quot; typ:h1)
-&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[#]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
-&lt;$typ$ id=&lt;&lt;v1&gt;&gt; &gt;$baseTitle$&lt;/$typ$&gt;
-&lt;/$wikify&gt;
-\end
-
-\define .ilink(baseTitle:&quot;New Heading&quot;, linkText:&quot;Go to&quot;)
-&lt;$wikify name=v1 text=&quot;&quot;&quot;{{{[[$baseTitle$]] +[encodeuri[]addprefix[##]]}}}&lt;&lt;qualify&gt;&gt;&quot;&quot;&quot; output=text&gt;
-&lt;a href=&lt;&lt;v1&gt;&gt; &gt;$linkText$ $baseTitle$&lt;&lt;v3&gt;&gt;&lt;/a&gt;
-&lt;/$wikify&gt;
-\end
-
-&lt;&lt;.ilinka &quot;H1: default is h1&quot;&gt;&gt;
-
-&lt;&lt;.ilinka &quot;H2&quot; h2&gt;&gt;
-
-&lt;&lt;.ilinka &quot;H3&quot; h3&gt;&gt;
-
-&lt;&lt;.ilinka &quot;H4&quot; h4&gt;&gt;
-
-
-
-&lt;&lt;.ilink &quot;H1: default is h1&quot; &quot;Click Here to&quot;&gt;&gt;
-
-&lt;&lt;.ilink &quot;H2&quot;&gt;&gt;
-
-&lt;&lt;.ilink &quot;H3&quot;&gt;&gt;
-
-&lt;&lt;.ilink &quot;H4&quot;&gt;&gt;
 </pre>
 </div>
 <div created="20190917115320267" modified="20190918091245133" tags="Test" title="Test of badge macro">
