@@ -169,6 +169,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/plugin/bj/storytabs</li>
+
 <li>$:/plugins/bj/storytabs</li>
 
 <li>$:/plugins/kookma/shiraz</li>
@@ -180,6 +182,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/state/plugin-info--1284604328-$:/plugins/wikilabs/link-to-tabs--1981748087</li>
+
+<li>$:/state/plugin-info--1294685090-$:/plugins/bj/storytabs---217911603</li>
 
 <li>$:/state/plugin-info--1763372400-$:/plugins/kookma/shiraz--479113107</li>
 
@@ -202,6 +206,10 @@ Error message and password prompt
 <li>$:/state/tab-2065006209</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
+
+<li>$:/state/toc/Contents-Test--565514155</li>
+
+<li>$:/state/toc/Contents-TiddlyWiki--565514155</li>
 
 <li>$:/StoryList</li>
 
@@ -9533,6 +9541,26 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
+<div created="20190930095028134" modified="20190930095359545" tags="" title="$:/plugin/bj/storytabs" type="text/vnd.tiddlywiki">
+<pre>&lt;div  class=&quot;tc-tab-buttons&quot; &gt;
+&lt;$list filter=&quot;[list[$:/StoryList]]&quot; history=&quot;$:/HistoryList&quot; variable=&quot;currentTab&quot;&gt;
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/HistoryList!!current-tiddler&quot; text=&lt;&lt;currentTab&gt;&gt;&gt;
+&lt;div style=&quot;display:inline-block;&quot;&gt;
+&lt;$button to=&lt;&lt;currentTab&gt;&gt;  class=&quot;tc-tab-selected&quot; style=&quot;margin-right: 0.0em; border-right: 0.0em&quot;&gt;
+&lt;$macrocall $name=&quot;currentTab&quot; $type=&quot;text/plain&quot; $output=&quot;text/plain&quot;/&gt;
+&lt;/$button&gt;
+&lt;$button message=&quot;tm-close-tiddler&quot; param=&lt;&lt;currentTab&gt;&gt; class=&quot;tc-tab-selected&quot;  style=&quot;border-left: 0.0em;&quot;&gt;&amp;times;&lt;/$button&gt;&lt;/div&gt;&lt;/$reveal&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/HistoryList!!current-tiddler&quot; text=&lt;&lt;currentTab&gt;&gt;&gt;
+&lt;div style=&quot;display:inline-block;&quot;&gt;
+&lt;$button to=&lt;&lt;currentTab&gt;&gt; style=&quot;margin-right: 0.0em;&quot; &gt;
+&lt;$macrocall $name=&quot;currentTab&quot; $type=&quot;text/plain&quot; $output=&quot;text/plain&quot;/&gt;
+&lt;/$button&gt;&lt;$button message=&quot;tm-close-tiddler&quot; param=&lt;&lt;currentTab&gt;&gt;&gt;
+&amp;times;&lt;/$button&gt;&lt;/div&gt;&lt;/$reveal&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+
+</pre>
+</div>
 <div author="Jeffrey Wilkinson aka BJ" bag="default" core-version="&gt;=5.1.11" dependents="" description="story tabs" list="license readme" plugin-type="plugin" revision="0" source="https://github.com/buggyj/tw5-tools" title="$:/plugins/bj/storytabs" type="application/json" version="1.11.0">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -9791,6 +9819,9 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190927121046623" modified="20190927121053103" title="$:/state/plugin-info--1284604328-$:/plugins/wikilabs/link-to-tabs--1981748087">
 <pre>readme</pre>
 </div>
+<div created="20190930095001946" modified="20190930095001946" title="$:/state/plugin-info--1294685090-$:/plugins/bj/storytabs---217911603">
+<pre>readme</pre>
+</div>
 <div created="20190927120550882" modified="20190927120553068" title="$:/state/plugin-info--1763372400-$:/plugins/kookma/shiraz--479113107">
 <pre>contents</pre>
 </div>
@@ -9815,16 +9846,22 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190927030144728" modified="20190930022629119" title="$:/state/slider-macro/macro/.ilink and .ilinka/Code--1452278623">
 <pre>yes</pre>
 </div>
-<div created="20190925112239600" modified="20190927120538036" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
+<div created="20190925112239600" modified="20190930095014007" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
 <div created="20190925112244212" modified="20190925112244212" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20190925111211913" modified="20190930094710237" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190925111211913" modified="20190930095507628" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20190930094653430" list="$:/Import $:/plugins/bj/storytabs GettingStarted [[Table of Contents]]" modified="20190930094759478" title="$:/StoryList">
+<div created="20190930094019467" modified="20190930094019467" title="$:/state/toc/Contents-Test--565514155">
+<pre>open</pre>
+</div>
+<div created="20190930094021136" modified="20190930094021136" title="$:/state/toc/Contents-TiddlyWiki--565514155">
+<pre>open</pre>
+</div>
+<div created="20190930094848833" list="[[Test of badge macro]] [[Homophones: The Most Confusing Words in English]]" modified="20190930095940844" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10000,8 +10037,8 @@ An important part of my life &lt;&lt;.rep have has&gt;&gt; been the people who s
 <div created="20190916114632316" modified="20190916114632316" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20190927094759297" modified="20190927113036991" title="$:/view">
-<pre>classic</pre>
+<div created="20190927094759297" modified="20190930095449002" title="$:/view">
+<pre>zoomin</pre>
 </div>
 <div created="20190420124201453" modified="20190918090951156" tags="Grammar" title="7 grammar rules you really should pay attention to" type="text/x-markdown">
 <pre># 7 grammar rules you really should pay attention to
@@ -10766,8 +10803,20 @@ The wiki-text macros are set of macro for documenting TW codes. Edit this tiddle
 <div created="20190919110618170" modified="20190919110647186" tags="TiddlyWiki" title="Plugin Resource">
 <pre>* https://tw-scripts.github.io/Yazd/</pre>
 </div>
-<div created="20190920114316000" modified="20190920114339318" tags="TiddlyWiki" title="Showcase">
-<pre>http://tw5-zh.tiddlyspot.com/</pre>
+<div created="20190920114316000" modified="20190930094856837" tags="TiddlyWiki" title="Showcase">
+<pre>; ~TiddlyWiki 舞
+: http://tw5-zh.tiddlyspot.com/
+
+; BJ Tools
+: a collection of TW related projects
+: http://bjtools.tiddlyspot.com
+
+; TW and CSS Transition
+: http://csstransition.tiddlyspot.com
+
+; Shiraz
+: shiraz a set of css and macros
+: https://kookma.github.io/Shiraz/</pre>
 </div>
 <div created="20190919030732793" modified="20190919032421029" tags="Usage" title="Stop saying I don't like it">
 <pre>Stop saying I don't like it - Polite Advanced English Vocabulary
