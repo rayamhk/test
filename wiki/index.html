@@ -299,6 +299,8 @@ Error message and password prompt
 
 <li>Android Platform</li>
 
+<li>Day3 - Playing with CSS Variables and JS</li>
+
 <li>DIY</li>
 
 <li>Draft of 'New Tiddler'</li>
@@ -368,6 +370,8 @@ Error message and password prompt
 <li>Table Test</li>
 
 <li>Tag Cloud Example</li>
+
+<li>Temp Note</li>
 
 <li>Test</li>
 
@@ -10042,8 +10046,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191009084141989" modified="20191009085316922" title="$:/state/plugin-info-925752734-$:/plugins/malgam/version-control--51470053">
 <pre>usage</pre>
 </div>
-<div created="20190925111220464" modified="20191031074625756" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20190925111220464" modified="20191101023840828" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20190927103152783" modified="20191031121912923" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -10090,8 +10094,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191024122253323" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191031123803047" title="$:/state/tab/sidebar--595412856">
-<pre>Table of Contents</pre>
+<div created="20190925111211913" modified="20191101020356327" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
 <pre>open</pre>
@@ -10129,7 +10133,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191031072220548" list="Javascript DIY [[Javascript - prototype object]] [[Javascript - By Value vs By Reference]] GettingStarted [[Table of Contents]] Test" modified="20191031123924207" title="$:/StoryList">
+<div created="20191101020359557" list="[[Day3 - Playing with CSS Variables and JS]] [[Temp Note]] [[Javascript - By Value vs By Reference]] GettingStarted [[Table of Contents]]" modified="20191101020359557" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10196,8 +10200,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191009084508627" modified="20191009084849505" title="$:/temp/saveTid">
 <pre>$:/_vc/20191009164849/$:/_vc/20191009164655/List of Shadow Tiddlers</pre>
 </div>
-<div created="20190930015354048" modified="20191031102722881" title="$:/temp/search">
-<pre>wiki</pre>
+<div created="20190930015354048" modified="20191101020353870" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -10715,6 +10719,139 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 
 * https://github.com/donmor/Tiddloid</pre>
 </div>
+<div created="20191101023836938" modified="20191101025156419" tags="" title="Day3 - Playing with CSS Variables and JS">
+<pre>```
+h2 Update CSS Variables with #[span.h1 JS]
+    .controls
+        .input
+            label(for=&quot;spacing&quot;) Spacing:
+            input(id=&quot;spacing&quot; type=&quot;range&quot; name=&quot;spacing&quot; min=&quot;10&quot; max=&quot;200&quot; value=&quot;10&quot; data-unit=&quot;px&quot;)
+        
+        .input
+            label(for=&quot;blur&quot;) Blur:
+            input(id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;0&quot; data-unit=&quot;px&quot;)
+
+        .input        
+            label(for=&quot;brightness&quot;) Brightness:
+            input(id=&quot;brightness&quot; type=&quot;range&quot; name=&quot;brightness&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+
+        .input
+            label(for=&quot;contrast&quot;) Contrast:
+            input(id=&quot;contrast&quot; type=&quot;range&quot; name=&quot;contrast&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+        
+        .input
+            label(for=&quot;grayscale&quot;) GrayScale:
+            input(id=&quot;grayscale&quot; type=&quot;range&quot; name=&quot;grayscale&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
+        
+        .input
+            label(for=&quot;hue-rotate&quot;) Hue-rotate:
+            input(id=&quot;hue-rotate&quot; type=&quot;range&quot; name=&quot;hue-rotate&quot; min=&quot;0&quot; max=&quot;360&quot; value=&quot;0&quot; data-unit=&quot;deg&quot;)
+        
+        .input
+            label(for=&quot;invert&quot;) Invert:
+            input(id=&quot;invert&quot; type=&quot;range&quot; name=&quot;invert&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
+        .input
+            label(for=&quot;opacity&quot;) Opacity:
+            input(id=&quot;opacity&quot; type=&quot;range&quot; name=&quot;opacity&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+
+        .input
+
+            label(for=&quot;saturate&quot;) Saturate:
+            input(id=&quot;saturate&quot; type=&quot;range&quot; name=&quot;saturate&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+        .input
+            label(for=&quot;sepia&quot;) Sepia:
+            input(id=&quot;sepia&quot; type=&quot;range&quot; name=&quot;sepia&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
+    div
+        img(src=&quot;https://source.unsplash.com/7bwQXzbF6KE/800x500&quot;)
+```
+
+
+```
+&lt;Style&gt;
+:root {
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 0px;
+    --brightness: 100%;
+    --contrast: 100%;
+    --grayscale: 0%;
+    --hue-rotate: 0deg;
+    --invert: 0%;
+    --opacity: 100%;
+    --saturate: 100%;
+    --sepia: 0%;
+}
+
+img {
+    display:block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast)) drop-shadow(0px 0px 5px var(--base)) grayscale(var(--grayscale)) hue-rotate(var(--hue-rotate)) invert(var(--invert)) opacity(var(--opacity)) saturate(var(--saturate)) sepia(var(--sepia));
+}
+
+.hl {
+    color: var(--base);
+}
+
+
+/*
+      misc styles, nothing to do with CSS variables
+    */
+
+body {
+    text-align: center;
+}
+
+body {
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 32px;
+}
+
+.controls {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.input {
+    width: 33%;
+    display: flex;
+}
+label {
+    font-size: 30px;
+    width: 50%;
+    text-align: right;
+    margin-right: 5px;
+}
+
+input {
+    width: 100px;
+}
+&lt;/Style&gt;
+```
+
+```
+// 選擇網頁上的元素
+const inputs = document.querySelectorAll('.controls input')
+
+// 當使用者拉動更新元素時設定 CSS 變數值
+function updateProperty () {
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + this.dataset.unit)
+    console.log(`--${this.name}`, this.value + this.dataset.unit)
+}
+
+// 監控每一個 input 元素
+inputs.forEach(input =&gt; {
+    input.addEventListener('input', updateProperty)
+})
+```</pre>
+</div>
 <div created="20190918090341398" modified="20190918090415513" tags="Contents" title="DIY">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
@@ -11115,8 +11252,7 @@ var f = false;
 </pre>
 </div>
 <div created="20191031072226483" modified="20191031083516376" tags="" title="javascript初學者學習分享">
-<pre>
-!! 標籤`&lt;script&gt;`中是否要加入`type=&quot;text/javascript&quot;`問題
+<pre>!! 標籤`&lt;script&gt;`中是否要加入`type=&quot;text/javascript&quot;`問題
 : 老舊的實例可能會在`&lt;script&gt;` 標籤中使用type=&quot;text/javascript&quot;。現在已經不必這樣做了。~JavaScript 是所有現代瀏覽器以及HTML5 中的默認腳本語言。
 
 !! javascript正確於html放置位置 
@@ -12008,6 +12144,14 @@ https://www.youtube.com/watch?v=DaxuMgcdoJY
 
 !!! Source
 https://kookma.github.io/TW-Scripts/#Tag%20Cloud</pre>
+</div>
+<div created="20191101023353815" modified="20191101023831935" tags="" title="Temp Note">
+<pre>! Pug to Html Converter
+&lt;&lt;&lt; 
+  https://www.undefinednull.com/pug-to-html/
+&lt;&lt;&lt;
+
+No</pre>
 </div>
 <div created="20190918091137630" modified="20190919115646154" tags="Contents" title="Test">
 <pre>&lt;&lt;list-links &quot;[tag[test]sort[title]]&quot;&gt;&gt;
