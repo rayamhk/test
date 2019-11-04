@@ -251,6 +251,8 @@ Error message and password prompt
 
 <li>$:/state/toc/Contents-English--1876907615</li>
 
+<li>$:/state/toc/Contents-Javascript--1876907615</li>
+
 <li>$:/state/toc/Contents-Test--1876907615</li>
 
 <li>$:/state/toc/Contents-Test--565514155</li>
@@ -303,6 +305,8 @@ Error message and password prompt
 
 <li>DIY</li>
 
+<li>Draft of 'JS30 - Day 01 - JavaScript Drum Kit'</li>
+
 <li>Draft of 'New Tiddler'</li>
 
 <li>English</li>
@@ -329,9 +333,11 @@ Error message and password prompt
 
 <li>Joke 2</li>
 
-<li>JS30 - Day02 - JS and CSS Clock</li>
+<li>JS30 - Day 01 - JavaScript Drum Kit</li>
 
-<li>JS30 - Day3 - Playing with CSS Variables and JS</li>
+<li>JS30 - Day 02 - JS and CSS Clock</li>
+
+<li>JS30 - Day 03 - Playing with CSS Variables and JS</li>
 
 <li>Just for test</li>
 
@@ -10098,10 +10104,13 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191024122253323" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191101020356327" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20190925111211913" modified="20191104032404596" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
+<pre>open</pre>
+</div>
+<div created="20191104032414089" modified="20191104032414089" title="$:/state/toc/Contents-Javascript--1876907615">
 <pre>open</pre>
 </div>
 <div created="20191031104226371" modified="20191031104226371" title="$:/state/toc/Contents-Test--1876907615">
@@ -10137,7 +10146,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191104021038070" list="[[JS30 - Day02 - JS and CSS Clock]] [[JS30 - Day3 - Playing with CSS Variables and JS]] GettingStarted [[Table of Contents]]" modified="20191104024217144" title="$:/StoryList">
+<div created="20191104021038070" list="[[Draft of 'JS30 - Day 01 - JavaScript Drum Kit']] GettingStarted [[Table of Contents]]" modified="20191104024217144" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10736,6 +10745,167 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
+</div>
+<div created="20191104032519100" draft.of="JS30 - Day 01 - JavaScript Drum Kit" draft.title="JS30 - Day 01 - JavaScript Drum Kit" modified="20191104035200328" tags="Javascript" title="Draft of 'JS30 - Day 01 - JavaScript Drum Kit'">
+<pre>https://pjchender.github.io/2017/09/26/js30-day-01-javascript-drum-kit/
+
+; 偵測鍵盤按鍵
+:利用在 window 上監聽 keydown 事件來偵測使用者按下的按鍵
+
+```
+window.addEventListener('keydown', e =&gt; {
+    e.key        // 偵測使用者按下按鍵的字母
+    e.keycode    // 偵測使用者按下按鍵的鍵碼
+})
+```
+
+; 播放音效(使用`&lt;audio&gt;`)
+```
+&lt;audio data-key=&quot;65&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav&quot;&gt;&lt;/audio&gt;
+```
+
+```
+const audio = document.querySelector(&quot;audio[data-key='65']&quot;);
+audio.currentTime = 0; //  讓每次回到音效檔的起始點
+audio.play(); //  播放元素的音效
+```
+
+; 為元素增加／移除 class
+:利用 `el.classList.add/remove/toggle` 來為元素添加／移除／切換 class：
+
+```
+const block = document.querySelector('.block')
+
+// 為 block 這個元素添加／移除／切換 active 這個 class
+block.classList.add('active')
+block.classList.remove('active')
+block.classList.toggle('active')
+```
+
+; 監聽 transitionend
+: 利用transitionend事件，監聽所有 block 上有 transition 的 CSS 屬性，並且透過 propertyName 來判斷是哪個 css 屬性：
+
+```
+const block = document.querySelector('.block')
+// 監聽所有 block 上有 transition 的 CSS 屬性
+block.addEventListener('transitionend', e =&gt; {
+    console.log(e.propertyName)
+})
+```
+
+作品頁面
+
+https://codepen.io/PJCHENder/pen/NdpXRQ
+
+```
+
+&lt;style&gt;
+/* sass to css ===
+
+*
+    // border: 1px solid
+html, body
+    height: 100%
+.wrapper
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+.button
+    margin: 0 10px
+    width: 50px 
+    height: 50px
+    border-style: none
+    border-radius: 3px
+    transition: 0.07s
+    &amp;:hover
+        background-color: #CCC
+.playing
+    border: 3px solid #FFC600
+    transform: scale(1.5)
+
+=== */
+
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button {
+	margin: 0 10px;
+	width: 50px;
+	height: 50px;
+	border-style: none;
+	border-radius: 3px;
+	transition: 0.07s;
+}
+
+.button:hover {
+	background-color: #CCC;
+}
+
+.playing {
+	border: 3px solid #FFC600;
+	transform: scale(1.5);
+}    
+&lt;/style&gt;    
+&lt;!-- pug to html ===
+.wrapper
+    button.button(data-key=&quot;65&quot; class=&quot;key&quot;) A
+    button.button(data-key=&quot;66&quot; class=&quot;key&quot;) B
+    button.button(data-key=&quot;67&quot; class=&quot;key&quot;) C
+
+    audio(data-key=&quot;65&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav&quot;)
+    audio(data-key=&quot;66&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/clap.wav&quot;)
+    audio(data-key=&quot;67&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/hihat.wav&quot;)
+=== --&gt;
+    
+&lt;div class=&quot;wrapper&quot;&gt;
+    &lt;button class=&quot;button key&quot; data-key=&quot;65&quot;&gt;A&lt;/button&gt;
+    &lt;button class=&quot;button key&quot; data-key=&quot;66&quot;&gt;B&lt;/button&gt;
+    &lt;button class=&quot;button key&quot; data-key=&quot;67&quot;&gt;C&lt;/button&gt;
+    &lt;audio data-key=&quot;65&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;66&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/clap.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;67&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/hihat.wav&quot;&gt;&lt;/audio&gt;
+&lt;/div&gt;
+&lt;!-- js --&gt;
+&lt;script&gt;
+//  播放音效的函式
+let playSound = function(e) {
+    const audio = document.querySelector(`audio[data-key=&quot;${e.keyCode}&quot;]`);
+    const key = document.querySelector(`.key[data-key=&quot;${e.keyCode}&quot;]`); //  取得按鍵對應的元素
+    if (!audio) return; //  如果沒有按到對應的按鍵，則停止此函式
+    audio.currentTime = 0; //  讓每次回到音效檔的起始點
+    audio.play(); //  播放元素的音效
+    key.classList.add('playing'); ///為該元素增加 class
+}
+
+//  移除 class 的函式
+let removeTransition = function(e) {
+    if (e.propertyName !== 'transform') return; //    省略掉其他 propertyName 不是 transform 的物件
+    this.classList.remove('playing'); //  把 playing 這個 class 移除
+}
+
+// 監聽每一個按鍵是否有 transitionend 事件
+let listenTransitionEnd = function() {
+    const keys = document.querySelectorAll('.key'); //  選出所有具有 .key 的元素，回傳成陣列
+    keys.forEach((key) =&gt; {
+        key.addEventListener('transitionend', removeTransition)
+    }); //  利用 forEach 方法讀取 NodeList 並為每一個元素加上 transitionend 事件，事件執行時會促發 removeTransition 
+};
+
+listenTransitionEnd();
+window.addEventListener('keydown', playSound);
+
+// console.log('========');
+&lt;/script&gt;
+```</pre>
 </div>
 <div created="20191018075737072" draft.title="中诺电话机使用说明书" modified="20191018075737072" title="Draft of 'New Tiddler'">
 <pre></pre>
@@ -11348,7 +11518,56 @@ Teacher: &quot;Johnny, where in the heck do you get seven from?!&quot;
 
 Johnny: &quot;Because I've already got a freaking cat!&quot;</pre>
 </div>
-<div created="20191104024616079" modified="20191104031601223" tags="Javascript" title="JS30 - Day02 - JS and CSS Clock">
+<div created="20191104032519100" modified="20191104033114387" tags="Javascript" title="JS30 - Day 01 - JavaScript Drum Kit">
+<pre>https://pjchender.github.io/2017/09/26/js30-day-01-javascript-drum-kit/
+
+; 偵測鍵盤按鍵
+:利用在 window 上監聽 keydown 事件來偵測使用者按下的按鍵
+
+```
+window.addEventListener('keydown', e =&gt; {
+    e.key        // 偵測使用者按下按鍵的字母
+    e.keycode    // 偵測使用者按下按鍵的鍵碼
+})
+```
+
+; 播放音效(使用`&lt;audio&gt;`)
+```
+&lt;audio data-key=&quot;65&quot; src=&quot;https://pjchender.github.io/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav&quot;&gt;&lt;/audio&gt;
+```
+
+```
+const audio = document.querySelector(&quot;audio[data-key='65']&quot;);
+audio.currentTime = 0; //  讓每次回到音效檔的起始點
+audio.play(); //  播放元素的音效
+```
+
+; 為元素增加／移除 class
+:利用 `el.classList.add/remove/toggle` 來為元素添加／移除／切換 class：
+
+```
+const block = document.querySelector('.block')
+
+// 為 block 這個元素添加／移除／切換 active 這個 class
+block.classList.add('active')
+block.classList.remove('active')
+block.classList.toggle('active')
+```
+
+; 監聽 transitionend
+: 利用transitionend事件，監聽所有 block 上有 transition 的 CSS 屬性，並且透過 propertyName 來判斷是哪個 css 屬性：
+
+```
+const block = document.querySelector('.block')
+// 監聽所有 block 上有 transition 的 CSS 屬性
+block.addEventListener('transitionend', e =&gt; {
+    console.log(e.propertyName)
+})
+```
+
+作品頁面</pre>
+</div>
+<div created="20191104024616079" modified="20191104033128079" tags="Javascript" title="JS30 - Day 02 - JS and CSS Clock">
 <pre>https://pjchender.github.io/2017/09/26/js30-day02-js-and-css-clock/
 
 取得現在的時間
@@ -11497,7 +11716,7 @@ function refreshCurrentTime () {
 let intervalId = setInterval(refreshCurrentTime, 300)
 &lt;/script&gt;</pre>
 </div>
-<div created="20191104021356712" modified="20191104024433748" tags="Javascript" title="JS30 - Day3 - Playing with CSS Variables and JS">
+<div created="20191104021356712" modified="20191104033140270" tags="Javascript" title="JS30 - Day 03 - Playing with CSS Variables and JS">
 <pre>https://pjchender.github.io/2017/09/26/js30-day03-css-variables/
 
 我們利用 `:root{--&lt;varName&gt;: &lt;varValue&gt;}` 來建立 CSS 的變數，並且在 CSS 屬性值中使用 `var(--&lt;varName&gt;)` 來代入變數的值：
