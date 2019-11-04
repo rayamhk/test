@@ -289,6 +289,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>$:/trashbin/Day3 - Playing with CSS Variables and JS</li>
+
 <li>$:/trashbin/New Tiddler 1</li>
 
 <li>$:/view</li>
@@ -298,8 +300,6 @@ Error message and password prompt
 <li>7 grammar rules you really should pay attention to</li>
 
 <li>Android Platform</li>
-
-<li>Day3 - Playing with CSS Variables and JS</li>
 
 <li>DIY</li>
 
@@ -328,6 +328,10 @@ Error message and password prompt
 <li>Joke 1</li>
 
 <li>Joke 2</li>
+
+<li>JS30 - Day02 - JS and CSS Clock</li>
+
+<li>JS30 - Day3 - Playing with CSS Variables and JS</li>
 
 <li>Just for test</li>
 
@@ -10046,10 +10050,10 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191009084141989" modified="20191009085316922" title="$:/state/plugin-info-925752734-$:/plugins/malgam/version-control--51470053">
 <pre>usage</pre>
 </div>
-<div created="20190925111220464" modified="20191101023840828" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20190925111220464" modified="20191104025011524" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20191031121912923" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20191104024214310" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -10133,7 +10137,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191101020359557" list="[[Day3 - Playing with CSS Variables and JS]] [[Temp Note]] [[Javascript - By Value vs By Reference]] GettingStarted [[Table of Contents]]" modified="20191101020359557" title="$:/StoryList">
+<div created="20191104021038070" list="[[JS30 - Day02 - JS and CSS Clock]] [[JS30 - Day3 - Playing with CSS Variables and JS]] GettingStarted [[Table of Contents]]" modified="20191104024217144" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10314,6 +10318,15 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 </div>
 <div created="20190916114632316" modified="20190916114632316" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
+</div>
+<div created="20191104022153788" modified="20191104022153788" tags="$:/tags/trashbin" title="$:/trashbin/Day3 - Playing with CSS Variables and JS" type="application/json">
+<pre>{
+    &quot;text&quot;: &quot;```\nh2 Update CSS Variables with #[span.h1 JS]\n    .controls\n        .input\n            label(for=\&quot;spacing\&quot;) Spacing:\n            input(id=\&quot;spacing\&quot; type=\&quot;range\&quot; name=\&quot;spacing\&quot; min=\&quot;10\&quot; max=\&quot;200\&quot; value=\&quot;10\&quot; data-unit=\&quot;px\&quot;)\n        \n        .input\n            label(for=\&quot;blur\&quot;) Blur:\n            input(id=\&quot;blur\&quot; type=\&quot;range\&quot; name=\&quot;blur\&quot; min=\&quot;0\&quot; max=\&quot;25\&quot; value=\&quot;0\&quot; data-unit=\&quot;px\&quot;)\n\n        .input        \n            label(for=\&quot;brightness\&quot;) Brightness:\n            input(id=\&quot;brightness\&quot; type=\&quot;range\&quot; name=\&quot;brightness\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;100\&quot; data-unit=\&quot;%\&quot;)\n\n        .input\n            label(for=\&quot;contrast\&quot;) Contrast:\n            input(id=\&quot;contrast\&quot; type=\&quot;range\&quot; name=\&quot;contrast\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;100\&quot; data-unit=\&quot;%\&quot;)\n        \n        .input\n            label(for=\&quot;grayscale\&quot;) GrayScale:\n            input(id=\&quot;grayscale\&quot; type=\&quot;range\&quot; name=\&quot;grayscale\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;0\&quot; data-unit=\&quot;%\&quot;)\n        \n        .input\n            label(for=\&quot;hue-rotate\&quot;) Hue-rotate:\n            input(id=\&quot;hue-rotate\&quot; type=\&quot;range\&quot; name=\&quot;hue-rotate\&quot; min=\&quot;0\&quot; max=\&quot;360\&quot; value=\&quot;0\&quot; data-unit=\&quot;deg\&quot;)\n        \n        .input\n            label(for=\&quot;invert\&quot;) Invert:\n            input(id=\&quot;invert\&quot; type=\&quot;range\&quot; name=\&quot;invert\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;0\&quot; data-unit=\&quot;%\&quot;)\n        .input\n            label(for=\&quot;opacity\&quot;) Opacity:\n            input(id=\&quot;opacity\&quot; type=\&quot;range\&quot; name=\&quot;opacity\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;100\&quot; data-unit=\&quot;%\&quot;)\n\n        .input\n\n            label(for=\&quot;saturate\&quot;) Saturate:\n            input(id=\&quot;saturate\&quot; type=\&quot;range\&quot; name=\&quot;saturate\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;100\&quot; data-unit=\&quot;%\&quot;)\n        .input\n            label(for=\&quot;sepia\&quot;) Sepia:\n            input(id=\&quot;sepia\&quot; type=\&quot;range\&quot; name=\&quot;sepia\&quot; min=\&quot;0\&quot; max=\&quot;200\&quot; value=\&quot;0\&quot; data-unit=\&quot;%\&quot;)\n    div\n        img(src=\&quot;https://source.unsplash.com/7bwQXzbF6KE/800x500\&quot;)\n```\n\n\n```\n&lt;Style&gt;\n:root {\n    --base: #ffc600;\n    --spacing: 10px;\n    --blur: 0px;\n    --brightness: 100%;\n    --contrast: 100%;\n    --grayscale: 0%;\n    --hue-rotate: 0deg;\n    --invert: 0%;\n    --opacity: 100%;\n    --saturate: 100%;\n    --sepia: 0%;\n}\n\nimg {\n    display:block;\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: var(--spacing);\n    background: var(--base);\n    filter: blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast)) drop-shadow(0px 0px 5px var(--base)) grayscale(var(--grayscale)) hue-rotate(var(--hue-rotate)) invert(var(--invert)) opacity(var(--opacity)) saturate(var(--saturate)) sepia(var(--sepia));\n}\n\n.hl {\n    color: var(--base);\n}\n\n\n/*\n      misc styles, nothing to do with CSS variables\n    */\n\nbody {\n    text-align: center;\n}\n\nbody {\n    background: #193549;\n    color: white;\n    font-family: 'helvetica neue', sans-serif;\n    font-weight: 100;\n    font-size: 32px;\n}\n\n.controls {\n    margin-bottom: 50px;\n    display: flex;\n    justify-content: flex-start;\n    align-content: center;\n    flex-wrap: wrap;\n}\n.input {\n    width: 33%;\n    display: flex;\n}\nlabel {\n    font-size: 30px;\n    width: 50%;\n    text-align: right;\n    margin-right: 5px;\n}\n\ninput {\n    width: 100px;\n}\n&lt;/Style&gt;\n```\n\n```\n// 選擇網頁上的元素\nconst inputs = document.querySelectorAll('.controls input')\n\n// 當使用者拉動更新元素時設定 CSS 變數值\nfunction updateProperty () {\n    document.documentElement.style.setProperty(`--${this.name}`, this.value + this.dataset.unit)\n    console.log(`--${this.name}`, this.value + this.dataset.unit)\n}\n\n// 監控每一個 input 元素\ninputs.forEach(input =&gt; {\n    input.addEventListener('input', updateProperty)\n})\n```&quot;,
+    &quot;title&quot;: &quot;Day3 - Playing with CSS Variables and JS&quot;,
+    &quot;tags&quot;: &quot;&quot;,
+    &quot;modified&quot;: &quot;20191101025156419&quot;,
+    &quot;created&quot;: &quot;20191101023836938&quot;
+}</pre>
 </div>
 <div created="20191030113638772" modified="20191030113638772" tags="$:/tags/trashbin" title="$:/trashbin/New Tiddler 1" type="application/json">
 <pre>{
@@ -10718,139 +10731,6 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <pre>* https://github.com/Marxsal/Quinoid01
 
 * https://github.com/donmor/Tiddloid</pre>
-</div>
-<div created="20191101023836938" modified="20191101025156419" tags="" title="Day3 - Playing with CSS Variables and JS">
-<pre>```
-h2 Update CSS Variables with #[span.h1 JS]
-    .controls
-        .input
-            label(for=&quot;spacing&quot;) Spacing:
-            input(id=&quot;spacing&quot; type=&quot;range&quot; name=&quot;spacing&quot; min=&quot;10&quot; max=&quot;200&quot; value=&quot;10&quot; data-unit=&quot;px&quot;)
-        
-        .input
-            label(for=&quot;blur&quot;) Blur:
-            input(id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;0&quot; data-unit=&quot;px&quot;)
-
-        .input        
-            label(for=&quot;brightness&quot;) Brightness:
-            input(id=&quot;brightness&quot; type=&quot;range&quot; name=&quot;brightness&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
-
-        .input
-            label(for=&quot;contrast&quot;) Contrast:
-            input(id=&quot;contrast&quot; type=&quot;range&quot; name=&quot;contrast&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
-        
-        .input
-            label(for=&quot;grayscale&quot;) GrayScale:
-            input(id=&quot;grayscale&quot; type=&quot;range&quot; name=&quot;grayscale&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
-        
-        .input
-            label(for=&quot;hue-rotate&quot;) Hue-rotate:
-            input(id=&quot;hue-rotate&quot; type=&quot;range&quot; name=&quot;hue-rotate&quot; min=&quot;0&quot; max=&quot;360&quot; value=&quot;0&quot; data-unit=&quot;deg&quot;)
-        
-        .input
-            label(for=&quot;invert&quot;) Invert:
-            input(id=&quot;invert&quot; type=&quot;range&quot; name=&quot;invert&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
-        .input
-            label(for=&quot;opacity&quot;) Opacity:
-            input(id=&quot;opacity&quot; type=&quot;range&quot; name=&quot;opacity&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
-
-        .input
-
-            label(for=&quot;saturate&quot;) Saturate:
-            input(id=&quot;saturate&quot; type=&quot;range&quot; name=&quot;saturate&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
-        .input
-            label(for=&quot;sepia&quot;) Sepia:
-            input(id=&quot;sepia&quot; type=&quot;range&quot; name=&quot;sepia&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
-    div
-        img(src=&quot;https://source.unsplash.com/7bwQXzbF6KE/800x500&quot;)
-```
-
-
-```
-&lt;Style&gt;
-:root {
-    --base: #ffc600;
-    --spacing: 10px;
-    --blur: 0px;
-    --brightness: 100%;
-    --contrast: 100%;
-    --grayscale: 0%;
-    --hue-rotate: 0deg;
-    --invert: 0%;
-    --opacity: 100%;
-    --saturate: 100%;
-    --sepia: 0%;
-}
-
-img {
-    display:block;
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: var(--spacing);
-    background: var(--base);
-    filter: blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast)) drop-shadow(0px 0px 5px var(--base)) grayscale(var(--grayscale)) hue-rotate(var(--hue-rotate)) invert(var(--invert)) opacity(var(--opacity)) saturate(var(--saturate)) sepia(var(--sepia));
-}
-
-.hl {
-    color: var(--base);
-}
-
-
-/*
-      misc styles, nothing to do with CSS variables
-    */
-
-body {
-    text-align: center;
-}
-
-body {
-    background: #193549;
-    color: white;
-    font-family: 'helvetica neue', sans-serif;
-    font-weight: 100;
-    font-size: 32px;
-}
-
-.controls {
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: wrap;
-}
-.input {
-    width: 33%;
-    display: flex;
-}
-label {
-    font-size: 30px;
-    width: 50%;
-    text-align: right;
-    margin-right: 5px;
-}
-
-input {
-    width: 100px;
-}
-&lt;/Style&gt;
-```
-
-```
-// 選擇網頁上的元素
-const inputs = document.querySelectorAll('.controls input')
-
-// 當使用者拉動更新元素時設定 CSS 變數值
-function updateProperty () {
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + this.dataset.unit)
-    console.log(`--${this.name}`, this.value + this.dataset.unit)
-}
-
-// 監控每一個 input 元素
-inputs.forEach(input =&gt; {
-    input.addEventListener('input', updateProperty)
-})
-```</pre>
 </div>
 <div created="20190918090341398" modified="20190918090415513" tags="Contents" title="DIY">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -11467,6 +11347,445 @@ Johnny: &quot;Seven!&quot;
 Teacher: &quot;Johnny, where in the heck do you get seven from?!&quot;
 
 Johnny: &quot;Because I've already got a freaking cat!&quot;</pre>
+</div>
+<div created="20191104024616079" modified="20191104031601223" tags="Javascript" title="JS30 - Day02 - JS and CSS Clock">
+<pre>https://pjchender.github.io/2017/09/26/js30-day02-js-and-css-clock/
+
+取得現在的時間
+
+```
+let now = new Date()
+let hour = now.getHours()
+let minute = now.getMinutes()
+let second = now.getSeconds()
+```
+
+將時間轉換成角度
+
+```
+let hourDeg = (hour / 12) * 360
+let minuteDeg = (minute / 60) * 360
+let secondDeg = (second / 60) * 360
+```
+
+利用 `el.style.&lt;styleAttribute&gt;` 來操作 CSS：
+
+```
+const hourHand = document.querySelector('.hour-hand')
+hourHand.style.transform = `rotate(${hourDeg + 90}deg) scaleX(0.7)`
+```
+
+完成作品
+https://codepen.io/PJCHENder/pen/JNzRKW
+
+```
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+html {
+      background:#018DED url(http://unsplash.it/1500/1000?image=881&amp;blur=50);
+      background-size:cover;
+      font-family:'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display:flex;
+      flex:1;
+      min-height: 100vh;
+      align-items: center;
+    }
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border:20px solid white;
+      border-radius:50%;
+      margin:50px auto;
+      position: relative;
+      padding:2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+    .hand {
+      width:50%;
+      height:6px;
+      background:black;
+      position: absolute;
+      top:50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(.17,.67,.96,1.24);
+        
+        border-radius: 30% 0 0 30%;
+    }
+
+.hour-hand{
+    transform: scale(0.5)
+}
+.second-hand{
+    opacity: 0.7;
+}
+.center{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: -4px -4px darken(#FFF, 24) inset;
+}
+&lt;/style&gt;
+
+&lt;!-- source pug for html ===
+.clock
+    .clock-face
+        .hand.hour-hand
+        .hand.min-hand
+        .hand.second-hand
+        .center
+=== --&gt;
+&lt;div class=&quot;clock&quot;&gt;
+    &lt;div class=&quot;clock-face&quot;&gt;
+        &lt;div class=&quot;hand hour-hand&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;hand min-hand&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;hand second-hand&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Js --&gt;
+&lt;script&gt;
+const hourHand = document.querySelector('.hour-hand')
+const minHand = document.querySelector('.min-hand')
+const secondHand = document.querySelector('.second-hand')
+
+// STEP1: 建立更新時間的函式
+function refreshCurrentTime () {
+    let now = new Date()
+
+    // STEP2: 取得現在時間的小時並給回角度
+    let hour = now.getHours()
+    let hourDeg = (hour / 12) * 360
+    hourHand.style.transform = `rotate(${hourDeg + 90}deg) scaleX(0.7)`
+  
+   
+    // STEP3: 取得現在時間的分並給回角度
+    let minute = now.getMinutes()
+    let minuteDeg = (minute / 60) * 360
+    minHand.style.transform = `rotate(${minuteDeg + 90}deg)`
+    
+    // STEP4: 取得現在時間的秒並給回角度
+    let second = now.getSeconds()
+    let secondDeg = (second / 60) * 360
+    secondHand.style.transform = `rotate(${secondDeg + 90}deg) scale(0.9, 0.5)`
+    // console.log(second)
+    
+}
+let intervalId = setInterval(refreshCurrentTime, 300)
+&lt;/script&gt;</pre>
+</div>
+<div created="20191104021356712" modified="20191104024433748" tags="Javascript" title="JS30 - Day3 - Playing with CSS Variables and JS">
+<pre>https://pjchender.github.io/2017/09/26/js30-day03-css-variables/
+
+我們利用 `:root{--&lt;varName&gt;: &lt;varValue&gt;}` 來建立 CSS 的變數，並且在 CSS 屬性值中使用 `var(--&lt;varName&gt;)` 來代入變數的值：
+
+```
+/* 建立 css 變數 */
+:root {
+    --base: #ffc600;
+    --spacing: 10px;
+}
+
+/* 使用 css 變數 */
+img {
+    display:block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: var(--spacing);
+    background: var(--base);
+}
+```
+
+我們可以利用 `document.documentElement.style.setProperty('--&lt;varName&gt;', '&lt;varValue&gt;')` 來動態修改 CSS 變數的值，但要記得要加上單位（例如，px）：
+
+```
+document.documentElement.style.setProperty(`--${this.name}`, this.value + this.dataset.unit)
+```
+
+我們可以在 html 中利用 data attribute 設值
+
+```
+&lt;div class=&quot;tooltip&quot; data-content=&quot;hello&quot;&gt;&lt;/div&gt;
+```
+
+在 JS 中我們可以使用 el.dataset 來取得 data-attribute 的值
+
+```
+const block = document.querySelector('.block')
+console.log(block.dataset.content)
+```
+&lt;hr&gt;
+
+https://codepen.io/PJCHENder/pen/Lyazao?editors=1000
+
+!! Html (pug)
+
+```
+h2 Update CSS Variables with #[span.h1 JS]
+    .controls
+        .input
+            label(for=&quot;spacing&quot;) Spacing:
+            input(id=&quot;spacing&quot; type=&quot;range&quot; name=&quot;spacing&quot; min=&quot;10&quot; max=&quot;200&quot; value=&quot;10&quot; data-unit=&quot;px&quot;)
+        
+        .input
+            label(for=&quot;blur&quot;) Blur:
+            input(id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;0&quot; data-unit=&quot;px&quot;)
+
+        .input        
+            label(for=&quot;brightness&quot;) Brightness:
+            input(id=&quot;brightness&quot; type=&quot;range&quot; name=&quot;brightness&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+
+        .input
+            label(for=&quot;contrast&quot;) Contrast:
+            input(id=&quot;contrast&quot; type=&quot;range&quot; name=&quot;contrast&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+        
+        .input
+            label(for=&quot;grayscale&quot;) GrayScale:
+            input(id=&quot;grayscale&quot; type=&quot;range&quot; name=&quot;grayscale&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
+        
+        .input
+            label(for=&quot;hue-rotate&quot;) Hue-rotate:
+            input(id=&quot;hue-rotate&quot; type=&quot;range&quot; name=&quot;hue-rotate&quot; min=&quot;0&quot; max=&quot;360&quot; value=&quot;0&quot; data-unit=&quot;deg&quot;)
+        
+        .input
+            label(for=&quot;invert&quot;) Invert:
+            input(id=&quot;invert&quot; type=&quot;range&quot; name=&quot;invert&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
+        .input
+            label(for=&quot;opacity&quot;) Opacity:
+            input(id=&quot;opacity&quot; type=&quot;range&quot; name=&quot;opacity&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+
+        .input
+
+            label(for=&quot;saturate&quot;) Saturate:
+            input(id=&quot;saturate&quot; type=&quot;range&quot; name=&quot;saturate&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot;)
+        .input
+            label(for=&quot;sepia&quot;) Sepia:
+            input(id=&quot;sepia&quot; type=&quot;range&quot; name=&quot;sepia&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot;)
+    div
+        img(src=&quot;https://source.unsplash.com/7bwQXzbF6KE/800x500&quot;)
+
+```
+The above pub code can be convert to html by: https://pughtml.com/
+
+!! CSS
+
+```
+:root {
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 0px;
+    --brightness: 100%;
+    --contrast: 100%;
+    --grayscale: 0%;
+    --hue-rotate: 0deg;
+    --invert: 0%;
+    --opacity: 100%;
+    --saturate: 100%;
+    --sepia: 0%;
+}
+
+img {
+    display:block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast)) drop-shadow(0px 0px 5px var(--base)) grayscale(var(--grayscale)) hue-rotate(var(--hue-rotate)) invert(var(--invert)) opacity(var(--opacity)) saturate(var(--saturate)) sepia(var(--sepia));
+}
+
+.hl {
+    color: var(--base);
+}
+
+
+/*
+      misc styles, nothing to do with CSS variables
+    */
+
+body {
+    text-align: center;
+}
+
+body {
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 32px;
+}
+
+.controls {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.input {
+    width: 33%;
+    display: flex;
+}
+label {
+    font-size: 30px;
+    width: 50%;
+    text-align: right;
+    margin-right: 5px;
+}
+
+input {
+    width: 100px;
+}
+```
+
+!! Js
+
+```
+// 選擇網頁上的元素
+const inputs = document.querySelectorAll('.controls input')
+
+// 當使用者拉動更新元素時設定 CSS 變數值
+function updateProperty () {
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + this.dataset.unit)
+    console.log(`--${this.name}`, this.value + this.dataset.unit)
+}
+
+// 監控每一個 input 元素
+inputs.forEach(input =&gt; {
+    input.addEventListener('input', updateProperty)
+})
+```
+
+!! Converted and merged html code
+
+```
+&lt;style&gt;
+:root {
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 0px;
+    --brightness: 100%;
+    --contrast: 100%;
+    --grayscale: 0%;
+    --hue-rotate: 0deg;
+    --invert: 0%;
+    --opacity: 100%;
+    --saturate: 100%;
+    --sepia: 0%;
+}
+
+img {
+    display:block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast)) drop-shadow(0px 0px 5px var(--base)) grayscale(var(--grayscale)) hue-rotate(var(--hue-rotate)) invert(var(--invert)) opacity(var(--opacity)) saturate(var(--saturate)) sepia(var(--sepia));
+}
+
+.hl {
+    color: var(--base);
+}
+
+
+/*
+      misc styles, nothing to do with CSS variables
+    */
+
+body {
+    text-align: center;
+}
+
+body {
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 32px;
+}
+
+.controls {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.input {
+    width: 33%;
+    display: flex;
+}
+label {
+    font-size: 30px;
+    width: 50%;
+    text-align: right;
+    margin-right: 5px;
+}
+
+input {
+    width: 100px;
+}  
+&lt;/style&gt;
+
+&lt;h2&gt;Update CSS Variables with &lt;span class=&quot;h1&quot;&gt;JS&lt;/span&gt;
+    &lt;div class=&quot;controls&quot;&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;spacing&quot;&gt;Spacing:&lt;/label&gt;&lt;input id=&quot;spacing&quot; type=&quot;range&quot; name=&quot;spacing&quot; min=&quot;10&quot; max=&quot;200&quot; value=&quot;10&quot; data-unit=&quot;px&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;blur&quot;&gt;Blur:&lt;/label&gt;&lt;input id=&quot;blur&quot; type=&quot;range&quot; name=&quot;blur&quot; min=&quot;0&quot; max=&quot;25&quot; value=&quot;0&quot; data-unit=&quot;px&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt; &lt;label for=&quot;brightness&quot;&gt;Brightness:&lt;/label&gt;&lt;input id=&quot;brightness&quot; type=&quot;range&quot; name=&quot;brightness&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;contrast&quot;&gt;Contrast:&lt;/label&gt;&lt;input id=&quot;contrast&quot; type=&quot;range&quot; name=&quot;contrast&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;grayscale&quot;&gt;GrayScale:&lt;/label&gt;&lt;input id=&quot;grayscale&quot; type=&quot;range&quot; name=&quot;grayscale&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;hue-rotate&quot;&gt;Hue-rotate:&lt;/label&gt;&lt;input id=&quot;hue-rotate&quot; type=&quot;range&quot; name=&quot;hue-rotate&quot; min=&quot;0&quot; max=&quot;360&quot; value=&quot;0&quot; data-unit=&quot;deg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;invert&quot;&gt;Invert:&lt;/label&gt;&lt;input id=&quot;invert&quot; type=&quot;range&quot; name=&quot;invert&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;opacity&quot;&gt;Opacity:&lt;/label&gt;&lt;input id=&quot;opacity&quot; type=&quot;range&quot; name=&quot;opacity&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;saturate&quot;&gt;Saturate:&lt;/label&gt;&lt;input id=&quot;saturate&quot; type=&quot;range&quot; name=&quot;saturate&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;100&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;input&quot;&gt;&lt;label for=&quot;sepia&quot;&gt;Sepia:&lt;/label&gt;&lt;input id=&quot;sepia&quot; type=&quot;range&quot; name=&quot;sepia&quot; min=&quot;0&quot; max=&quot;200&quot; value=&quot;0&quot; data-unit=&quot;%&quot; /&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;&lt;img src=&quot;https://source.unsplash.com/7bwQXzbF6KE/800x500&quot; /&gt;&lt;/div&gt;
+&lt;/h2&gt;
+&lt;script&gt;
+// 選擇網頁上的元素
+const inputs = document.querySelectorAll('.controls input')
+
+// 當使用者拉動更新元素時設定 CSS 變數值
+function updateProperty () {
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + this.dataset.unit)
+    console.log(`--${this.name}`, this.value + this.dataset.unit)
+}
+
+// 監控每一個 input 元素
+inputs.forEach(input =&gt; {
+    input.addEventListener('input', updateProperty)
+})
+&lt;/script&gt;
+```
+
+
+
+
+
+</pre>
 </div>
 <div created="20191030081501562" modified="20191030084535313" tags="" title="Just for test">
 <pre>\define details1(title,text)
