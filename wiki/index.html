@@ -309,8 +309,6 @@ Error message and password prompt
 
 <li>DIY</li>
 
-<li>Draft of 'macro/show-macro'</li>
-
 <li>Draft of 'New Tiddler'</li>
 
 <li>English</li>
@@ -10110,8 +10108,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191024122253323" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191105025254465" title="$:/state/tab/sidebar--595412856">
-<pre>$:/plugins/kookma/trashbin/sidebar-tab</pre>
+<div created="20190925111211913" modified="20191105034251874" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
 <pre>open</pre>
@@ -10152,7 +10150,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191105020032864" list="[[Javascript - 初學者學習分享]] [[Draft of 'macro/show-macro']] [[Explanation of A Simple Toc]] [[Extract Contents Between Html Tags]] GettingStarted [[Table of Contents]]" modified="20191105025312008" title="$:/StoryList">
+<div created="20191105020032864" list="GettingStarted [[Table of Contents]]" modified="20191105034247386" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10751,33 +10749,6 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
-</div>
-<div created="20190317174614898" creator="Mohammad" draft.of="macro/show-macro" draft.title="macro/show-macro" modified="20191105020757503" modifier="Mohammad" tags="$:/tags/Macro" title="Draft of 'macro/show-macro'">
-<pre>\define disp-macro-contents(p)
-&lt;$macrocall $name=find begin=&quot; &quot; end=&quot;(&quot; text=&lt;&lt;__p__&gt;&gt; output=&quot;disp-macro-name&quot; mode=&quot;first&quot;/&gt;
-&lt;pre&gt;\define&lt;$text text=&lt;&lt;__p__&gt;&gt; /&gt;\end&lt;/pre&gt;
-\end
-
-\define disp-macro-name(p)
-&lt;h4&gt; 
-    &lt;div style=&quot;display: inline-block;vertical-align:middle;fill:darkred;&quot;&gt;{{$:/core/images/file}}&lt;/div&gt;
-    &lt;span style=&quot;text-transform:uppercase;font-weight:500;color:darkred;&quot;&gt;&lt;$text text=$p$ /&gt;&lt;/span&gt;
-&lt;/h4&gt;
-
-\end
-
-\define show-macro()
-&lt;$macrocall $name='find'
-  text={{!!text}}
-  begin=&quot;\define&quot;
-  end=&quot;\end&quot;
-  output=&quot;disp-macro-contents&quot;/&gt;
-\end
-
-!! Macro
-&lt;&lt;&lt;
-&lt;&lt;show-macro&gt;&gt;
-&lt;&lt;&lt;</pre>
 </div>
 <div created="20191018075737072" draft.title="中诺电话机使用说明书" modified="20191018075737072" title="Draft of 'New Tiddler'">
 <pre></pre>
