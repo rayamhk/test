@@ -309,8 +309,6 @@ Error message and password prompt
 
 <li>DIY</li>
 
-<li>Draft of 'Extract Contents Between Html Tags'</li>
-
 <li>Draft of 'macro/show-macro'</li>
 
 <li>Draft of 'New Tiddler'</li>
@@ -335,7 +333,7 @@ Error message and password prompt
 
 <li>Javascript - prototype object</li>
 
-<li>Javascript初學者學習分享</li>
+<li>Javascript - 初學者學習分享</li>
 
 <li>join filter source code</li>
 
@@ -10112,8 +10110,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191024122253323" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191105020455227" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190925111211913" modified="20191105025254465" title="$:/state/tab/sidebar--595412856">
+<pre>$:/plugins/kookma/trashbin/sidebar-tab</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
 <pre>open</pre>
@@ -10154,7 +10152,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191105020032864" list="[[Draft of 'macro/show-macro']] [[Explanation of A Simple Toc]] [[Draft of 'Extract Contents Between Html Tags']] GettingStarted [[Table of Contents]]" modified="20191105024545785" title="$:/StoryList">
+<div created="20191105020032864" list="[[Javascript - 初學者學習分享]] [[Draft of 'macro/show-macro']] [[Explanation of A Simple Toc]] [[Extract Contents Between Html Tags]] GettingStarted [[Table of Contents]]" modified="20191105025312008" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10754,48 +10752,6 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div created="20191030105854966" draft.of="Extract Contents Between Html Tags" draft.title="Extract Contents Between Html Tags" modified="20191105024829584" tags="[[TiddlyWiki Solutions]]" title="Draft of 'Extract Contents Between Html Tags'">
-<pre>\define extract-from-tag(tid, tagname)
-&lt;$list filter=&quot;&quot;&quot;[{$tid$}splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
-&lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;splitregexp[&lt;/$tagname$&gt;]butlast[1]]&quot;&quot;&quot; variable=item2&gt;
-&lt;$text text=&lt;&lt;item2&gt;&gt;/&gt;&lt;br/&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-\end
-
-\define extract-from-tag-test(tagname)
-&lt;$list filter=&quot;&quot;&quot;[&lt;test-data&gt;splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
-&lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;splitregexp[&lt;/$tagname$&gt;]butlast[1]]&quot;&quot;&quot; variable=item2&gt;
-&lt;$text text=&lt;&lt;item2&gt;&gt;/&gt;&lt;br/&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-\end
-
-\define test-data()
-&lt;h1 class=&quot;myclass&quot;&gt; This is a text&lt;/h1&gt;
- remainder of text
-&lt;div style=&quot;color:reg;font-size:1.2rem;&quot;&gt;
- A division goes here ...
-&lt;/div&gt;
-&lt;tag&gt;CONTENT 1&lt;/tag&gt;
- text not wanted 
-&lt;tag&gt;CONTENT 2&lt;/tag&gt;
-  text not wanted 
-&lt;tag&gt;CONTENT 3&lt;/tag&gt;
-\end
-
-~~~~
-
-&lt;&lt;extract-from-tag-test h1&gt;&gt;
-
-&lt;&lt;extract-from-tag-test div&gt;&gt;
-
-&lt;&lt;extract-from-tag-test tag&gt;&gt;
-
-
-!! Source:
-http://tw-regexp.tiddlyspot.com/#Extract%20Contents%20between%20Html%20Tags</pre>
-</div>
 <div created="20190317174614898" creator="Mohammad" draft.of="macro/show-macro" draft.title="macro/show-macro" modified="20191105020757503" modifier="Mohammad" tags="$:/tags/Macro" title="Draft of 'macro/show-macro'">
 <pre>\define disp-macro-contents(p)
 &lt;$macrocall $name=find begin=&quot; &quot; end=&quot;(&quot; text=&lt;&lt;__p__&gt;&gt; output=&quot;disp-macro-name&quot; mode=&quot;first&quot;/&gt;
@@ -10991,7 +10947,7 @@ A &quot;path&quot; variable will be needed for the expandable stuff. path is dif
 
 https://groups.google.com/forum/#!topic/TiddlyWiki/tB9mwNkQMvY</pre>
 </div>
-<div created="20191030105854966" modified="20191105024625436" tags="[[TiddlyWiki Solutions]]" title="Extract Contents Between Html Tags">
+<div created="20191030105854966" modified="20191105024903846" tags="[[TiddlyWiki Solutions]]" title="Extract Contents Between Html Tags">
 <pre>\define extract-from-tag(tid, tagname)
 &lt;$list filter=&quot;&quot;&quot;[{$tid$}splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
 &lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;splitregexp[&lt;/$tagname$&gt;]butlast[1]]&quot;&quot;&quot; variable=item2&gt;
@@ -11009,9 +10965,16 @@ https://groups.google.com/forum/#!topic/TiddlyWiki/tB9mwNkQMvY</pre>
 \end
 
 \define test-data()
-&lt;h1 class=&quot;myclass&quot;&gt; This is a text&lt;/h1&gt; remainder of text
-&lt;div style=&quot;color:reg;font-size:1.2rem;&quot;&gt;A division goes here ...&lt;/div&gt;
-&lt;tag&gt;CONTENT 1&lt;/tag&gt; text not wanted &lt;tag&gt;CONTENT 2&lt;/tag&gt;  text not wanted &lt;tag&gt;CONTENT 3&lt;/tag&gt;
+&lt;h1 class=&quot;myclass&quot;&gt; This is a text&lt;/h1&gt;
+ remainder of text
+&lt;div style=&quot;color:reg;font-size:1.2rem;&quot;&gt;
+ A division goes here ...
+&lt;/div&gt;
+&lt;tag&gt;CONTENT 1&lt;/tag&gt;
+ text not wanted 
+&lt;tag&gt;CONTENT 2&lt;/tag&gt;
+  text not wanted 
+&lt;tag&gt;CONTENT 3&lt;/tag&gt;
 \end
 
 ~~~~
@@ -11344,7 +11307,7 @@ var f = false;
 
 </pre>
 </div>
-<div created="20191031072226483" modified="20191104122355869" tags="Javascript" title="Javascript初學者學習分享">
+<div created="20191031072226483" modified="20191105025122455" tags="Javascript" title="Javascript - 初學者學習分享">
 <pre>!! 標籤`&lt;script&gt;`中是否要加入`type=&quot;text/javascript&quot;`問題
 : 老舊的實例可能會在`&lt;script&gt;` 標籤中使用type=&quot;text/javascript&quot;。現在已經不必這樣做了。~JavaScript 是所有現代瀏覽器以及HTML5 中的默認腳本語言。
 
