@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Syntax-614935023</li>
 
+<li>$:/state/slider-macro/Draft of 'Reveal Example'/Code--1888722653</li>
+
 <li>$:/state/slider-macro/macro/.ilink and .ilinka 1/Code-414993123</li>
 
 <li>$:/state/slider-macro/macro/.ilink and .ilinka 1/Syntax-414993123</li>
@@ -311,6 +313,8 @@ Error message and password prompt
 
 <li>Draft of 'New Tiddler'</li>
 
+<li>Draft of 'Reveal Example'</li>
+
 <li>English</li>
 
 <li>Example of regexp filter</li>
@@ -326,6 +330,8 @@ Error message and password prompt
 <li>HTML Tool</li>
 
 <li>Javascript</li>
+
+<li>Javascript - Arrow Functions</li>
 
 <li>Javascript - By Value vs By Reference</li>
 
@@ -10066,6 +10072,9 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20190928074912472" modified="20190928074928301" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Syntax-614935023">
 <pre>no</pre>
 </div>
+<div created="20191105102922147" modified="20191105102922976" title="$:/state/slider-macro/Draft of 'Reveal Example'/Code--1888722653">
+<pre>no</pre>
+</div>
 <div created="20190928084703105" modified="20190928084703105" title="$:/state/slider-macro/macro/.ilink and .ilinka 1/Code-414993123">
 <pre>yes</pre>
 </div>
@@ -10078,8 +10087,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191030080005266" modified="20191030080014716" title="$:/state/tab--1128538129">
 <pre>Test of details macro</pre>
 </div>
-<div created="20191104113916189" modified="20191104122022751" title="$:/state/tab--1280166252">
-<pre>Recent 20</pre>
+<div created="20191104113916189" modified="20191105102932163" title="$:/state/tab--1280166252">
+<pre>Recent All</pre>
 </div>
 <div created="20191004082232960" modified="20191030082144911" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
@@ -10108,8 +10117,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191024122253323" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191105034251874" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190925111211913" modified="20191105102526183" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
 <pre>open</pre>
@@ -10150,7 +10159,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191105020032864" list="GettingStarted [[Table of Contents]]" modified="20191105034247386" title="$:/StoryList">
+<div created="20191105102544914" list="[[Javascript - Arrow Functions]] Showcase macro/slider-macro [[Draft of 'Reveal Example']] [[Explanation of A Simple Toc]] [[Javascript - prototype object]] GettingStarted [[Table of Contents]]" modified="20191105111915266" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10217,8 +10226,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191009084508627" modified="20191009084849505" title="$:/temp/saveTid">
 <pre>$:/_vc/20191009164849/$:/_vc/20191009164655/List of Shadow Tiddlers</pre>
 </div>
-<div created="20190930015354048" modified="20191105015725675" title="$:/temp/search">
-<pre>show</pre>
+<div created="20190930015354048" modified="20191105112156000" title="$:/temp/search">
+<pre>slider</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -10753,6 +10762,27 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <div created="20191018075737072" draft.title="中诺电话机使用说明书" modified="20191018075737072" title="Draft of 'New Tiddler'">
 <pre></pre>
 </div>
+<div created="20191104122202907" draft.of="Reveal Example" draft.title="Reveal Example" modified="20191105102918519" tags="[[TiddlyWiki Example]]" title="Draft of 'Reveal Example'">
+<pre>\define linkifytitle(title)
+&lt;$link to=$title$&gt;&lt;$view tiddler=$title$ field=&quot;title&quot; format=&quot;text&quot;&gt;$title$&lt;/$view&gt;&lt;/$link&gt; 
+\end
+
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/oRecentsystemtids&quot; text=&quot;show&quot;&gt;
+
+&amp;nbsp;&lt;$button set=&quot;$:/state/oRecentsystemtids&quot; setTo=&quot;show&quot; style=&quot;border:0px; background-color:transparent; color:gray;&quot;&gt;System tiddlers ▷&lt;/$button&gt;
+
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/oRecentsystemtids&quot; text=&quot;show&quot;&gt;
+
+&amp;nbsp;&lt;$button set=&quot;$:/state/oRecentsystemtids&quot; setTo=&quot;hide&quot; style=&quot;border:0px; background-color:transparent; color:black;&quot;&gt;System tiddlers shown ◁&lt;/$button&gt;
+&lt;$list filter=&quot;[prefix[$:]] -[[$:/HistoryList]] -[prefix[$:/state]] -[prefix[$:/temp]] +[!sort[modified]limit[10]]&quot;&gt;
+&lt;li&gt;&lt;&lt;linkifytitle &quot;{{!!title}}&quot;&gt;&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;hr&gt;
+&lt;/$reveal&gt;
+
+&lt;&lt;slider-macro label:&quot;Code&quot; text:&quot;&quot;&gt;&gt;</pre>
+</div>
 <div created="20190918090548313" modified="20190918090802171" tags="Contents" title="English" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;list-links &quot;[tag[English]sort[title]]&quot;&gt;&gt;
 </pre>
@@ -11190,6 +11220,50 @@ If you’ve enjoyed this introduction to some of the quirks of the English langu
 <div created="20191031123654663" modified="20191031123908797" tags="Contents" title="Javascript">
 <pre>&lt;&lt;list-links &quot;[tag[Javascript]sort[title]]&quot;&gt;&gt;
 </pre>
+</div>
+<div created="20191105115224652" modified="20191105122820743" tags="Javascript" title="Javascript - Arrow Functions">
+<pre>!! Syntax
+```
+([param] [, param]) =&gt; {
+   statements
+}
+
+param =&gt; expression
+```
+
+```
+// Before:
+hello = function() {
+  return &quot;Hello World!&quot;;
+}
+
+// With Arrow Function:
+hello = () =&gt; {
+  return &quot;Hello World!&quot;;
+}
+```
+
+```
+// Arrow Functions return value by default. 
+hello = () =&gt; &quot;Hello World!&quot;; 
+// but this works only if the function has only one statement
+
+// Arrow Function With Parameters:
+hello = (val) =&gt; &quot;Hello &quot; + val;
+
+// Arrow Function Without Parentheses for one Parameter only:
+hello = val =&gt; &quot;Hello &quot; + val;
+```
+
+```
+const funcA = x =&gt; x + 1
+const funcB = x =&gt; { x + 1 }
+const funcC = x =&gt; { return x + 1 }
+
+funcA(1) //2
+funcB(1) //undefined
+funcC(1) //2
+```</pre>
 </div>
 <div created="20191031110306376" modified="20191031124003705" tags="Javascript" title="Javascript - By Value vs By Reference">
 <pre>&lt;&lt;alert primary text:&quot;在 ~JavaScript 中 primitive type（Boolean, String, Number, null, undefined）都屬於 By Value。&quot; class:&quot;leftbar border-primary&quot;&gt;&gt;
@@ -12675,7 +12749,7 @@ More text there
 &lt;/$vars&gt;
 </pre>
 </div>
-<div created="20191104122202907" modified="20191104122223161" tags="" title="Reveal Example">
+<div created="20191104122202907" modified="20191105102641112" tags="[[TiddlyWiki Example]]" title="Reveal Example">
 <pre>\define linkifytitle(title)
 &lt;$link to=$title$&gt;&lt;$view tiddler=$title$ field=&quot;title&quot; format=&quot;text&quot;&gt;$title$&lt;/$view&gt;&lt;/$link&gt; 
 \end
