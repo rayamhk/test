@@ -309,11 +309,17 @@ Error message and password prompt
 
 <li>DIY</li>
 
+<li>Draft of 'Extract Contents Between Html Tags'</li>
+
+<li>Draft of 'macro/show-macro'</li>
+
 <li>Draft of 'New Tiddler'</li>
 
 <li>English</li>
 
 <li>Example of regexp filter</li>
+
+<li>Explanation of A Simple Toc</li>
 
 <li>Extract Contents Between Html Tags</li>
 
@@ -10055,7 +10061,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20190925111220464" modified="20191104102748461" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20191104101551503" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20191105024310230" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -10106,8 +10112,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191024122253323" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191104120841880" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20190925111211913" modified="20191105020455227" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
 <pre>open</pre>
@@ -10148,7 +10154,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191104112627461" list="$:/ControlPanel GettingStarted [[Table of Contents]]" modified="20191104124618889" title="$:/StoryList">
+<div created="20191105020032864" list="[[Draft of 'macro/show-macro']] [[Explanation of A Simple Toc]] [[Draft of 'Extract Contents Between Html Tags']] GettingStarted [[Table of Contents]]" modified="20191105024545785" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191030082140016" title="$:/temp/advancedsearch">
@@ -10215,8 +10221,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191009084508627" modified="20191009084849505" title="$:/temp/saveTid">
 <pre>$:/_vc/20191009164849/$:/_vc/20191009164655/List of Shadow Tiddlers</pre>
 </div>
-<div created="20190930015354048" modified="20191104115406633" title="$:/temp/search">
-<pre>det</pre>
+<div created="20190930015354048" modified="20191105015725675" title="$:/temp/search">
+<pre>show</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -10748,6 +10754,75 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div created="20191030105854966" draft.of="Extract Contents Between Html Tags" draft.title="Extract Contents Between Html Tags" modified="20191105024829584" tags="[[TiddlyWiki Solutions]]" title="Draft of 'Extract Contents Between Html Tags'">
+<pre>\define extract-from-tag(tid, tagname)
+&lt;$list filter=&quot;&quot;&quot;[{$tid$}splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;splitregexp[&lt;/$tagname$&gt;]butlast[1]]&quot;&quot;&quot; variable=item2&gt;
+&lt;$text text=&lt;&lt;item2&gt;&gt;/&gt;&lt;br/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define extract-from-tag-test(tagname)
+&lt;$list filter=&quot;&quot;&quot;[&lt;test-data&gt;splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;splitregexp[&lt;/$tagname$&gt;]butlast[1]]&quot;&quot;&quot; variable=item2&gt;
+&lt;$text text=&lt;&lt;item2&gt;&gt;/&gt;&lt;br/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define test-data()
+&lt;h1 class=&quot;myclass&quot;&gt; This is a text&lt;/h1&gt;
+ remainder of text
+&lt;div style=&quot;color:reg;font-size:1.2rem;&quot;&gt;
+ A division goes here ...
+&lt;/div&gt;
+&lt;tag&gt;CONTENT 1&lt;/tag&gt;
+ text not wanted 
+&lt;tag&gt;CONTENT 2&lt;/tag&gt;
+  text not wanted 
+&lt;tag&gt;CONTENT 3&lt;/tag&gt;
+\end
+
+~~~~
+
+&lt;&lt;extract-from-tag-test h1&gt;&gt;
+
+&lt;&lt;extract-from-tag-test div&gt;&gt;
+
+&lt;&lt;extract-from-tag-test tag&gt;&gt;
+
+
+!! Source:
+http://tw-regexp.tiddlyspot.com/#Extract%20Contents%20between%20Html%20Tags</pre>
+</div>
+<div created="20190317174614898" creator="Mohammad" draft.of="macro/show-macro" draft.title="macro/show-macro" modified="20191105020757503" modifier="Mohammad" tags="$:/tags/Macro" title="Draft of 'macro/show-macro'">
+<pre>\define disp-macro-contents(p)
+&lt;$macrocall $name=find begin=&quot; &quot; end=&quot;(&quot; text=&lt;&lt;__p__&gt;&gt; output=&quot;disp-macro-name&quot; mode=&quot;first&quot;/&gt;
+&lt;pre&gt;\define&lt;$text text=&lt;&lt;__p__&gt;&gt; /&gt;\end&lt;/pre&gt;
+\end
+
+\define disp-macro-name(p)
+&lt;h4&gt; 
+    &lt;div style=&quot;display: inline-block;vertical-align:middle;fill:darkred;&quot;&gt;{{$:/core/images/file}}&lt;/div&gt;
+    &lt;span style=&quot;text-transform:uppercase;font-weight:500;color:darkred;&quot;&gt;&lt;$text text=$p$ /&gt;&lt;/span&gt;
+&lt;/h4&gt;
+
+\end
+
+\define show-macro()
+&lt;$macrocall $name='find'
+  text={{!!text}}
+  begin=&quot;\define&quot;
+  end=&quot;\end&quot;
+  output=&quot;disp-macro-contents&quot;/&gt;
+\end
+
+!! Macro
+&lt;&lt;&lt;
+&lt;&lt;show-macro&gt;&gt;
+&lt;&lt;&lt;</pre>
+</div>
 <div created="20191018075737072" draft.title="中诺电话机使用说明书" modified="20191018075737072" title="Draft of 'New Tiddler'">
 <pre></pre>
 </div>
@@ -10801,7 +10876,122 @@ More text there
 
 </pre>
 </div>
-<div created="20191030105854966" modified="20191030113524396" tags="[[TiddlyWiki Solutions]]" title="Extract Contents Between Html Tags">
+<div created="20191105014132514" modified="20191105024448278" tags="[[TiddlyWiki Example]]" title="Explanation of A Simple Toc">
+<pre>\define toc-caption() &lt;$view field=&quot;caption&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$view&gt;
+
+\define getItemClass() [all[current]]-[&lt;tv-history-list&gt;get[current-tiddler]]
+
+\define toc-body(tag,sort:&quot;&quot;)
+\whitespace trim
+&lt;ol class=&quot;tc-toc&quot;&gt;
+  &lt;$list filter=&quot;&quot;&quot;[all[shadows+tiddlers]tag&lt;__tag__&gt;!has[draft.of]$sort$] -[enlist&lt;visited&gt;]&quot;&quot;&quot;&gt;
+    &lt;$set name=visited filter=&quot;[enlist&lt;visited&gt;] [&lt;currentTiddler&gt;]&quot;&gt;
+      &lt;$set name=&quot;toc-item-class&quot; filter=&lt;&lt;getItemClass&gt;&gt; emptyValue=&quot;toc-item-selected&quot; value=&quot;toc-item&quot;&gt;
+        &lt;li class=&lt;&lt;toc-item-class&gt;&gt; title=&lt;&lt;visited&gt;&gt;&gt;
+          &lt;$set name=&quot;tv-wikilinks&quot; filter=&quot;[all[current]get[toc-link]] ~yes&quot;&gt;
+            &lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;
+          &lt;/$set&gt;
+          &lt;$macrocall $name=&quot;toc-body&quot; tag=&lt;&lt;currentTiddler&gt;&gt; sort=&lt;&lt;__sort__&gt;&gt;/&gt;
+        &lt;/li&gt;
+      &lt;/$set&gt;
+    &lt;/$set&gt;
+  &lt;/$list&gt;
+&lt;/ol&gt;
+\end
+
+\define toc(tag,sort:&quot;&quot;,exclude)
+\whitespace trim
+&lt;$set name=visited filter=&lt;&lt;__exclude__&gt;&gt; &gt;
+  &lt;$macrocall $name=&quot;toc-body&quot;  tag=&lt;&lt;__tag__&gt;&gt; sort=&lt;&lt;__sort__&gt;&gt;/&gt;
+&lt;/$set&gt;
+\end
+
+\define display-raw(p) &lt;pre&gt;&lt;$text text=&lt;&lt;__p__&gt;&gt; /&gt;&lt;/pre&gt;
+
+\define show-first(breaker)
+&lt;$macrocall 
+$name=find 
+begin=&quot;&quot; 
+end=&lt;&lt;__breaker__&gt;&gt; 
+text={{!!text}} 
+output=&quot;display-raw&quot; 
+mode=&quot;first&quot;/&gt;
+\end
+
+~~~~
+&lt;&lt;show-first ~~~~&gt;&gt;
+
+
+* `toc-caption()` to display &quot;caption&quot; (if available __and__ defined) or the &quot;title&quot;
+
+* `getItemClass()` reads some history info, for advanced styling.
+
+* `toc()` is the wrapper, that contains some initialisation functions. 
+** `sort` parameter is not important for the recursion function.
+** `tag` variable is passed unmodified to the `toc-body()`
+**  A new variable `visited` is introduced which contains elements of the TOC have already been visited. It hasn't been used by `toc()`, so there should be no naming and interpretation conflict! 
+**`visited` is initialized with the `exclude` filter. This allows us, to exclude certain elements, by marking them as `visited`
+
+* `toc-body(tag,sort:&quot;&quot;)` is the macro, that is called recursively. 
+** The 1st important line is the list-widget. With the very first run, the tag will be `Contents` as called in `&lt;&lt;toc &quot;Contents&quot;&gt;&gt;`
+*** `&lt;$list filter=&quot;&quot;&quot;[all[shadows+tiddlers]tag&lt;__tag__&gt;!has[draft.of]$sort$] -[enlist&lt;visited&gt;]&quot;&quot;&quot;&gt;` The filter contains 2 runs.
+*** The first run: `[all[shadows+tiddlers]tag&lt;__tag__&gt;!has[draft.of]$sort$]`  will return all tiddlers tagged: Contents, excluding tiddlers in edit-mode. 
+*** The second run: will eliminate all tiddlers, that have been already visited: -`[enlist&lt;visited&gt;]`. With the initial call: `&lt;&lt;toc &quot;Contents&quot;&gt;&gt;` the variable `visited` will be empty. 
+
+** The 2nd important line is: `&lt;$set name=visited filter=&quot;[enlist&lt;visited&gt;] [&lt;currentTiddler&gt;]&quot;&gt;`
+
+This line creates a new visited variable. The new value will be visited elements from A) PLUS the [&lt;currentTiddler&gt;]  ... 
+This is a PUSH ... add new value to the &quot;stack&quot; of existing variables. 
+
+C)
+The line &lt;$set name=&quot;toc-item-class&quot; ... is for styling only and not discussed here
+
+D) 
+&lt;li class=&lt;&lt;toc-item-class&gt;&gt; title=&lt;&lt;visited&gt;&gt; &gt; ... for debugging. If the elements are hovered, the visited path whill be shown. 
+
+E)
+&lt;$set name=&quot;tv-wikilinks&quot; filter=&quot;[all[current]get[toc-link]] ~yes&quot;&gt;
+  &lt;$link&gt;&lt;&lt;toc-caption&gt;&gt;&lt;/$link&gt;
+&lt;/$set&gt;
+
+Creates the link. no fruther discussion
+
+F)
+&lt;$macrocall $name=&quot;toc-body&quot; tag=&lt;&lt;currentTiddler&gt;&gt; sort=&lt;&lt;__sort__&gt;&gt;/&gt;
+
+Calls the toc-body() macro with the &quot;new&quot; tag=&lt;&lt;currentTiddler&gt;&gt; ... So we can continue with A) -&gt; recursion
+
+IMPORTANT
+        &lt;/li&gt;
+      &lt;/$set&gt;
+    &lt;/$set&gt;
+  &lt;/$list&gt;
+&lt;/ol&gt;
+
+Those elements are NOT executed yet, since the &quot;program&quot; jumps recursively into toc-body(), as long as new  tagged elements are found. 
+
+If no new elements are fund it starts executing the close commands eg: &lt;/$set&gt;, which is a POP command for 1 visited variable, that has been created. 
+
+I hope this helps a little bit better, since it is using a &quot;real world&quot; example. 
+
+The visited variable is the &quot;infinite recursion protection&quot;. 
+
+A &quot;path&quot; variable will be needed for the expandable stuff. path is different to visited. 
+
+.
+
+
+! Demo:
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+&lt;&lt;toc &quot;Contents&quot;&gt;&gt;
+&lt;/div&gt;
+
+
+
+
+https://groups.google.com/forum/#!topic/TiddlyWiki/tB9mwNkQMvY</pre>
+</div>
+<div created="20191030105854966" modified="20191105024625436" tags="[[TiddlyWiki Solutions]]" title="Extract Contents Between Html Tags">
 <pre>\define extract-from-tag(tid, tagname)
 &lt;$list filter=&quot;&quot;&quot;[{$tid$}splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
 &lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;splitregexp[&lt;/$tagname$&gt;]butlast[1]]&quot;&quot;&quot; variable=item2&gt;
@@ -10823,6 +11013,8 @@ More text there
 &lt;div style=&quot;color:reg;font-size:1.2rem;&quot;&gt;A division goes here ...&lt;/div&gt;
 &lt;tag&gt;CONTENT 1&lt;/tag&gt; text not wanted &lt;tag&gt;CONTENT 2&lt;/tag&gt;  text not wanted &lt;tag&gt;CONTENT 3&lt;/tag&gt;
 \end
+
+~~~~
 
 &lt;&lt;extract-from-tag-test h1&gt;&gt;
 
