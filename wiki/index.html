@@ -319,6 +319,8 @@ Error message and password prompt
 
 <li>Explanation of A Simple Toc</li>
 
+<li>Extract content in CONTENT in the text field</li>
+
 <li>Extract Contents Between Html Tags</li>
 
 <li>Grammar</li>
@@ -10063,7 +10065,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20190925111220464" modified="20191104102748461" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20191106061858940" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20191106080829340" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -10159,7 +10161,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191106072328446" list="Showcase GettingStarted [[Table of Contents]]" modified="20191106072328446" title="$:/StoryList">
+<div created="20191106072328446" list="[[HTML Tool]] Showcase macro/slider-macro GettingStarted [[Table of Contents]]" modified="20191106125449110" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191106053244714" title="$:/temp/advancedsearch">
@@ -10226,8 +10228,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191009084508627" modified="20191009084849505" title="$:/temp/saveTid">
 <pre>$:/_vc/20191009164849/$:/_vc/20191009164655/List of Shadow Tiddlers</pre>
 </div>
-<div created="20190930015354048" modified="20191106072326139" title="$:/temp/search">
-<pre>show</pre>
+<div created="20190930015354048" modified="20191106084236165" title="$:/temp/search">
+<pre>find</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -10927,6 +10929,53 @@ A &quot;path&quot; variable will be needed for the expandable stuff. path is dif
 
 https://groups.google.com/forum/#!topic/TiddlyWiki/tB9mwNkQMvY</pre>
 </div>
+<div created="20191106074551630" modified="20191106080213664" tags="[[TiddlyWiki Solutions]]" title="Extract content in CONTENT in the text field">
+<pre>\define mas01()
+Morbi non enim facilisis, lacinia odio volutpat, congue arcu. Sed vel ullamcorper
+magna, maximus malesuada nulla. Fusce pharetra commodo facilisis. &lt;russ class=&quot;fred&quot;&gt;---- #1 This is not
+ Latin.----&lt;/russ&gt; Integer in justo ac diam &lt;russ class=&quot;fred&quot;&gt;---- #2 This is not Latin either.----&lt;/russ&gt;
+lobortis eleifend. Nullam vitae sollicitudin risus. Etiam ut aliquet nulla.
+Morbi facilisis urna id lacus feugiat suscipit.
+
+Quisque a nulla luctus lacus tincidunt euismod. Duis condimentum luctus leo a tristique.
+Donec quis vulputate arcu, non lacinia purus. Nullam sit amet interdum
+lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/russ&gt;
+\end
+
+!! Query:
+&lt;&lt;&lt;
+How do I filter to extract content in &lt;russ&gt;CONTENT&lt;/russ&gt; in the text field?
+&lt;&lt;&lt;
+
+!! Source:
+&lt;&lt;&lt;
+https://groups.google.com/forum/#!msg/tiddlywiki/OjPbDsFB4e4/wSUT30G7AQAJ
+&lt;&lt;&lt;
+
+!! Tiddler mas01:
+&lt;&lt;&lt;
+The text is: &lt;pre&gt;&lt;$text text=&lt;&lt;mas01&gt;&gt;/&gt;&lt;/pre&gt;
+&lt;&lt;&lt;
+
+!! Solution:
+&lt;&lt;&lt;
+The code is: &lt;$macrocall $name=&quot;wikitext-example-without-html&quot; 
+src=&quot;&quot;&quot;&lt;$vars realchars=&quot;[^\s]+&quot;&gt;
+&lt;$list filter=&quot;[&lt;mas01&gt;splitregexp[\n]join[ ]splitregexp[&lt;russ.*?&gt;]butfirst[1]]&quot; variable=item&gt;
+&lt;$list filter=&quot;[&lt;item&gt;splitregexp[&lt;/russ&gt;]butlast[1]]&quot; variable=item2&gt;
+&lt;$text text=&lt;&lt;item2&gt;&gt;/&gt;&lt;br/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+&quot;&quot;&quot;/&gt;
+&lt;&lt;&lt;
+
+!! Remark:
+&lt;&lt;&lt;
+- The tiddler `mas01` was modified to macro for demo purpose.&lt;br&gt;
+- The filter with `[{mas01}...]` was modified to `[&lt;mas01&gt;...]`
+&lt;&lt;&lt;</pre>
+</div>
 <div created="20191030105854966" modified="20191105024903846" tags="[[TiddlyWiki Solutions]]" title="Extract Contents Between Html Tags">
 <pre>\define extract-from-tag(tid, tagname)
 &lt;$list filter=&quot;&quot;&quot;[{$tid$}splitregexp[\n]join[ ]splitregexp[&lt;$tagname$.*?&gt;]butfirst[1]]&quot;&quot;&quot; variable=item&gt;
@@ -11186,7 +11235,7 @@ Res – plural of re, as in the musical scale (doh re mi, for fans of The Sound 
 
 If you’ve enjoyed this introduction to some of the quirks of the English language and you’d like to advance your English skills further by learning some more, why not apply to study on one of our English as a Foreign Language (EFL) courses?</pre>
 </div>
-<div created="20191104094139268" modified="20191104102008268" tags="" title="HTML Tool">
+<div created="20191104094139268" modified="20191106125458783" tags="" title="HTML Tool">
 <pre>; Real-Time HTML Editor
 : https://htmledit.squarefree.com/
 ; Online HTML Viewer
@@ -11194,7 +11243,9 @@ If you’ve enjoyed this introduction to some of the quirks of the English langu
 ; Pug to Html Converter
 : https://www.undefinednull.com/pug-to-html/
 ; PUG to HTML Online
-: https://pughtml.com/ | ,,https://github.com/shidhincr/pug-to-html,,</pre>
+: https://pughtml.com/ | ,,https://github.com/shidhincr/pug-to-html,,
+
+http://www.mergely.com/editor</pre>
 </div>
 <div created="20191031123654663" modified="20191031123908797" tags="Contents" title="Javascript">
 <pre>&lt;&lt;list-links &quot;[tag[Javascript]sort[title]]&quot;&gt;&gt;
@@ -12780,17 +12831,19 @@ More text there
 &lt;/$reveal&gt;
 </pre>
 </div>
-<div created="20190920114316000" modified="20191106073448219" tags="TiddlyWiki" title="Showcase">
-<pre>; TiddlyWiki 舞:  ,,基礎文件正體中文版,,
+<div created="20190920114316000" modified="20191106125517892" tags="TiddlyWiki" title="Showcase">
+<pre>; TiddlyWiki 舞
+: 基礎文件正體中文版
 : http://tw5-zh.tiddlyspot.com/
 
-; BJ Tools: ,,a collection of TW related projects,,
+; BJ Tools: a collection of TW related projects
 : http://bjtools.tiddlyspot.com
 
 ; TW and CSS Transition
 : http://csstransition.tiddlyspot.com
 
-; Shiraz: ,,shiraz a set of css and macros,,
+; Shiraz
+: shiraz a set of css and macros
 : https://kookma.github.io/Shiraz/
 
 ; Scripts in Tiddlywiki
@@ -12809,13 +12862,13 @@ More text there
 : https://kookma.github.io/slider/
 
 ; Trashbin-mod
-: ,,A small mod of Kookma's trashbin plugin so it will be compatible with JD's Plain Revisions plugin,,
+: A small mod of Kookma's trashbin plugin so it will be compatible with JD's Plain Revisions plugin
 : https://hchaase.github.io/TW-Trashbin-mod/
 : http://j.d.tiddlyspot.com/
 : http://j.d.revisions.tiddlyspot.com/
 
 ; Simple Tiddler Version Control
-: ,,A simple system for saving selected versions of a tiddler.,,
+: A simple system for saving selected versions of a tiddler.
 : http://malsandbox.tiddlyspot.com/
 
 ; My Cookbook
@@ -12828,7 +12881,23 @@ More text there
 : http://tw-regexp.tiddlyspot.com/
 
 ; Skeeve's plugins: Pick filter
-: https://skeeve.github.io/tw5-plugins/</pre>
+: https://skeeve.github.io/tw5-plugins/
+
+; References Collective
+: A central TW references &amp; resources portal
+: http://twguidedoc.tiddlyspot.com
+
+; Formulas for TiddlyWiki
+: https://evanbalster.com/tiddlywiki/formulas.html
+
+; SK Plugins for Editor Toolbar 
+: http://skplugins.tiddlyspot.com/
+
+; TW widget tutorials
+: https://btheado.github.io/tw-widget-tutorial/
+
+; RegExp in Tiddlywiki
+: http://tw-regexp.tiddlyspot.com/#Extract%20Contents%20between%20Html%20Tags</pre>
 </div>
 <div created="20191031095653229" modified="20191031104257884" tags="Test" title="Sticky Style Test">
 <pre>&lt;style&gt;
