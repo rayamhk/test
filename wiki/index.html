@@ -313,6 +313,8 @@ Error message and password prompt
 
 <li>Draft of 'New Tiddler'</li>
 
+<li>Draft of 'token test experimental'</li>
+
 <li>English</li>
 
 <li>Example of regexp filter</li>
@@ -418,6 +420,8 @@ Error message and password prompt
 <li>TiddlyWiki Example</li>
 
 <li>TiddlyWiki Solutions</li>
+
+<li>token test experimental</li>
 
 <li>Untitled</li>
 
@@ -10161,7 +10165,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191106072328446" list="[[HTML Tool]] Showcase macro/slider-macro GettingStarted [[Table of Contents]]" modified="20191106125449110" title="$:/StoryList">
+<div created="20191107014023806" list="macro/find [[Draft of 'token test experimental']] [[Extract content in CONTENT in the text field]] [[HTML Tool]] GettingStarted [[Table of Contents]]" modified="20191107035713795" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191106053244714" title="$:/temp/advancedsearch">
@@ -10764,6 +10768,190 @@ I hesitate to state what should be obvious, but sometimes the obvious must be st
 <div created="20191018075737072" draft.title="中诺电话机使用说明书" modified="20191018075737072" title="Draft of 'New Tiddler'">
 <pre></pre>
 </div>
+<div created="20191107032116991" draft.of="token test experimental" draft.title="token test experimental" modified="20191107040233140" tags="" title="Draft of 'token test experimental'">
+<pre>\define findregexp(text, begin, end, output:&quot;simple&quot;, mode:&quot;all&quot;)
+&lt;$vars 
+  fulltext=&lt;&lt;__text__&gt;&gt;
+  start=&lt;&lt;__begin__&gt;&gt;
+  stop=&lt;&lt;__end__&gt;&gt;
+  output-macro=&lt;&lt;__output__&gt;&gt;
+&gt;
+&lt;$vars tkn=  &gt;
+&lt;$list variable=&quot;p1&quot; filter=&quot;[&lt;fulltext&gt;splitbefore&lt;start&gt;]&quot;&gt;
+&lt;$list variable=&quot;p2&quot; filter=&quot;[&lt;fulltext&gt;removeprefix&lt;p1&gt;]&quot;&gt;
+&lt;$list variable=&quot;p3&quot; filter=&quot;[&lt;p2&gt;splitbefore&lt;stop&gt;removesuffix&lt;stop&gt;]&quot;&gt;
+&lt;$macrocall $name=&lt;&lt;output-macro&gt;&gt; p=&lt;&lt;p3&gt;&gt; /&gt;
+&lt;$reveal type=&quot;match&quot; text=&quot;all&quot; default=&lt;&lt;__mode__&gt;&gt; &gt;
+&lt;$macrocall $name=&quot;find&quot;
+  text={{{[&lt;p2&gt;removeprefix&lt;p3&gt;removeprefix&lt;stop&gt;]}}}
+  begin=&lt;&lt;start&gt;&gt;
+  end=&lt;&lt;stop&gt;&gt;
+  output=&lt;&lt;output-macro&gt;&gt;
+/&gt;
+&lt;/$reveal&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+\end
+
+\define run()
+&lt;&lt;gettokenbefore &quot;abc#efg#hij&quot; &quot;#&quot;&gt;&gt;&lt;hr&gt;
+&lt;&lt;gettoken &quot;abc#efg#hij&quot; &quot;#&quot;&gt;&gt;&lt;hr&gt;
+&lt;&lt;gettokenafter &quot;abc#efg#1&quot; &quot;#&quot;&gt;&gt;
+
+&lt;$vars realchars=&quot;[^\s]+&quot;&gt;
+
+
+&lt;$list filter=&quot;[&lt;mas01&gt;splitregexp[\n]join[ ]splitregexp[&lt;russ.*?&gt;]butfirst[1]]&quot; variable=item&gt;
+&lt;!--&lt;br&gt;**&lt;&lt;item&gt;&gt;**--&gt;
+&lt;$list filter=&quot;[&lt;item&gt;splitregexp[&lt;/russ&gt;]butlast[1]]&quot; variable=item2&gt;
+&lt;$text text=&lt;&lt;item2&gt;&gt;/&gt;&lt;br/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+
+\end
+
+\define mas01()
+Morbi non enim facilisis, lacinia odio volutpat, congue arcu. Sed vel ullamcorper
+magna, maximus malesuada nulla. Fusce pharetra commodo facilisis. &lt;russ class=&quot;fred&quot;&gt;---- #1 This is not
+ Latin.----&lt;/russ&gt; Integer in justo ac diam &lt;russ class=&quot;fred&quot;&gt;---- #2 This is not Latin either.----&lt;/russ&gt;
+lobortis eleifend. Nullam vitae sollicitudin risus. Etiam ut aliquet nulla.
+Morbi facilisis urna id lacus feugiat suscipit.
+
+Quisque a nulla luctus lacus tincidunt euismod. Duis condimentum luctus leo a tristique.
+Donec quis vulputate arcu, non lacinia purus. Nullam sit amet interdum
+lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/russ&gt;
+\end
+
+
+
+\define gettoken0(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;`f1`&lt;&lt;f1&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; 
+variable=f2&gt;`f2`&lt;&lt;f2&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;removeprefix&lt;f1&gt;]&quot;&quot;&quot; 
+variable=f3&gt;`f3`&lt;&lt;f3&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettoken(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; 
+variable=f2&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;removeprefix&lt;f1&gt;]&quot;&quot;&quot; 
+variable=f3&gt;&lt;&lt;f3&gt;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenbefore0(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; 
+variable=f&gt;`f`&lt;&lt;f&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenbefore(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; 
+variable=f&gt;&lt;&lt;f&gt;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenafter0(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;`f1`&lt;&lt;f1&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; 
+variable=f2&gt;`f2`&lt;&lt;f2&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;]&quot;&quot;&quot; 
+variable=f3&gt;`f3`&lt;&lt;f3&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;f3&gt;]&quot;&quot;&quot; 
+variable=f4&gt;`f4`&lt;&lt;f4&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenafter(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; variable=f2&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;]&quot;&quot;&quot; 
+variable=f3&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;f3&gt;]&quot;&quot;&quot; variable=f4&gt;&lt;&lt;f4&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define textstr() abc#efg#hij
+
+\define tkstr() #
+
+&lt;&lt;run&gt;&gt;
+
+
+!! Tiddler gettokenafter:
+&lt;&lt;&lt;
+The text is: &lt;pre&gt;&lt;$text text=&lt;&lt;gettokenafter&gt;&gt;/&gt;&lt;/pre&gt;
+&lt;&lt;&lt;
+
+!! Tiddler gettokenafter0:
+&lt;&lt;&lt;
+The text is: &lt;pre&gt;&lt;$text text=&lt;&lt;gettokenafter0&gt;&gt;/&gt;&lt;/pre&gt;
+&lt;&lt;&lt;
+
+
+
+
+</pre>
+</div>
 <div created="20190918090548313" modified="20190918090802171" tags="Contents" title="English" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;list-links &quot;[tag[English]sort[title]]&quot;&gt;&gt;
 </pre>
@@ -11235,7 +11423,7 @@ Res – plural of re, as in the musical scale (doh re mi, for fans of The Sound 
 
 If you’ve enjoyed this introduction to some of the quirks of the English language and you’d like to advance your English skills further by learning some more, why not apply to study on one of our English as a Foreign Language (EFL) courses?</pre>
 </div>
-<div created="20191104094139268" modified="20191106125458783" tags="" title="HTML Tool">
+<div created="20191104094139268" modified="20191107014226541" tags="" title="HTML Tool">
 <pre>; Real-Time HTML Editor
 : https://htmledit.squarefree.com/
 ; Online HTML Viewer
@@ -11244,8 +11432,8 @@ If you’ve enjoyed this introduction to some of the quirks of the English langu
 : https://www.undefinednull.com/pug-to-html/
 ; PUG to HTML Online
 : https://pughtml.com/ | ,,https://github.com/shidhincr/pug-to-html,,
-
-http://www.mergely.com/editor</pre>
+; Mergely: Diff online, merge document
+: http://www.mergely.com/editor</pre>
 </div>
 <div created="20191031123654663" modified="20191031123908797" tags="Contents" title="Javascript">
 <pre>&lt;&lt;list-links &quot;[tag[Javascript]sort[title]]&quot;&gt;&gt;
@@ -13032,6 +13220,120 @@ https://kookma.github.io/TW-Scripts/#Tag%20Cloud</pre>
 </div>
 <div created="20191030101825658" modified="20191030112557658" tags="TiddlyWiki" title="TiddlyWiki Solutions">
 <pre>&lt;&lt;list-links &quot;[tag[TiddlyWiki Solutions]sort[title]]&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20191107032116991" modified="20191107034419943" tags="" title="token test experimental">
+<pre>\define gettoken0(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;`f1`&lt;&lt;f1&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; 
+variable=f2&gt;`f2`&lt;&lt;f2&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;removeprefix&lt;f1&gt;]&quot;&quot;&quot; 
+variable=f3&gt;`f3`&lt;&lt;f3&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettoken(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; 
+variable=f2&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;removeprefix&lt;f1&gt;]&quot;&quot;&quot; 
+variable=f3&gt;&lt;&lt;f3&gt;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenbefore0(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; 
+variable=f&gt;`f`&lt;&lt;f&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenbefore(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; 
+variable=f&gt;&lt;&lt;f&gt;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenafter0(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;`f1`&lt;&lt;f1&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; 
+variable=f2&gt;`f2`&lt;&lt;f2&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;]&quot;&quot;&quot; 
+variable=f3&gt;`f3`&lt;&lt;f3&gt;&gt;;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;f3&gt;]&quot;&quot;&quot; 
+variable=f4&gt;`f4`&lt;&lt;f4&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettokenafter(src,regfind)
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regfind=&lt;&lt;__regfind__&gt;&gt;
+&gt;
+&lt;$list filter=&quot;[&lt;regfind&gt;!is[blank]]&quot; variable=v&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regfind&gt;splitregexp&lt;regfind&gt;] +[nth[2]]&quot;&quot;&quot; variable=f2&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;]&quot;&quot;&quot; 
+variable=f3&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;f3&gt;]&quot;&quot;&quot; variable=f4&gt;&lt;&lt;f4&gt;&gt;;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define textstr() abc#efg#hij
+
+\define tkstr() #
+
+&lt;&lt;gettokenbefore &quot;abc#efg#hij&quot; &quot;#&quot;&gt;&gt;&lt;hr&gt;
+&lt;&lt;gettoken &quot;abc#efg#hij&quot; &quot;#&quot;&gt;&gt;&lt;hr&gt;
+&lt;&lt;gettokenafter &quot;abc#efg#1&quot; &quot;#&quot;&gt;&gt;
+
+
 </pre>
 </div>
 <div title="Untitled" type="text/html">
