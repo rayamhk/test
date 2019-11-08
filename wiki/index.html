@@ -379,6 +379,8 @@ Error message and password prompt
 
 <li>Markup Reference</li>
 
+<li>New Tiddler</li>
+
 <li>not yet</li>
 
 <li>old stuff</li>
@@ -10075,7 +10077,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20190925111220464" modified="20191107114412614" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20191108040743207" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20191108124728297" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -10171,7 +10173,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191108021604585" list="macro/find [[token test experimental]] [[old stuff]] GettingStarted [[Table of Contents]]" modified="20191108022502523" title="$:/StoryList">
+<div created="20191108081637576" list="GettingStarted [[Table of Contents]]" modified="20191108081637576" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191106053244714" title="$:/temp/advancedsearch">
@@ -13550,6 +13552,191 @@ width:16px;
 }
 &lt;/style&gt;</pre>
 </div>
+<div created="20191108102105838" modified="20191108124721132" tags="" title="New Tiddler">
+<pre>\define run()
+&lt;&lt;gettokentest&gt;&gt;
+&lt;hr&gt;
+
+&lt;$macrocall $name=findregx
+src=&quot;&lt;russ ssfd&gt;abc adsffs&lt;/russ&gt;,&quot;
+start=&quot;&lt;russ[^\w]+.*?&gt;&quot;
+stop=&quot;&lt;/russ&gt;&quot;
+mode=&quot;all&quot;
+/&gt;
+\end
+
+
+\define runok()
+&lt;$macrocall $name=findregx
+src=&lt;&lt;mas01&gt;&gt;
+start=&quot;&lt;russ[^\w]+.*?&gt;&quot;
+stop=&quot;&lt;/russ&gt;&quot;
+mode=&quot;all&quot;
+/&gt;
+\end
+
+\define findregx(src,start,stop,mode)
+\whitespace trim
+&lt;$vars
+src=&lt;&lt;__src__&gt;&gt;
+start=&lt;&lt;__start__&gt;&gt;
+stop=&lt;&lt;__stop__&gt;&gt;
+mode=&lt;&lt;__mode__&gt;&gt;
+dump=&quot;dumpv&quot;
+&gt;
+&lt;&lt;dp src&gt;&gt;
+&lt;$wikify name=tk1 text=&quot;&quot;&quot;&lt;$macrocall $name=gettoken-core src=&lt;&lt;src&gt;&gt; regx=&lt;&lt;start&gt;&gt; act=t mode=html /&gt;&quot;&quot;&quot; &gt;&lt;&lt;dp tk1&gt;&gt;
+&lt;$list filter=&quot;[&lt;tk1&gt;!is[blank]nth[1]]&quot;&gt;
+&lt;$wikify name=a1 text=&quot;&quot;&quot;&lt;$macrocall $name=gettoken-core src=&lt;&lt;src&gt;&gt; regx=&lt;&lt;start&gt;&gt; act=bt mode=html /&gt;&quot;&quot;&quot; &gt;&lt;&lt;dp a1&gt;&gt;
+&lt;$wikify name=a2 text=&quot;&quot;&quot;&lt;$macrocall $name=gettoken-core src=&lt;&lt;src&gt;&gt; regx=&lt;&lt;start&gt;&gt; act=e mode=html /&gt;&quot;&quot;&quot; &gt;&lt;&lt;dp a2&gt;&gt;
+
+&lt;hr&gt;
+
+&lt;$wikify name=tk2 text=&quot;&quot;&quot;&lt;$macrocall $name=gettoken-core src=&lt;&lt;a2&gt;&gt; regx=&lt;&lt;stop&gt;&gt; act=t mode=html /&gt;&quot;&quot;&quot; &gt;&lt;&lt;dp tk2&gt;&gt;
+&lt;$list filter=&quot;[&lt;tk2&gt;!is[blank]nth[1]]&quot;&gt;
+&lt;$wikify name=b1 text=&quot;&quot;&quot;&lt;$macrocall $name=gettoken-core src=&lt;&lt;a2&gt;&gt; regx=&lt;&lt;stop&gt;&gt; act=b mode=html /&gt;&quot;&quot;&quot; &gt;&lt;&lt;dp b1&gt;&gt;
+&lt;$wikify name=b2 text=&quot;&quot;&quot;&lt;$macrocall $name=gettoken-core src=&lt;&lt;a2&gt;&gt; regx=&lt;&lt;stop&gt;&gt; act=e mode=html /&gt;&quot;&quot;&quot; &gt;&lt;&lt;dp b2&gt;&gt;
+
+&lt;hr&gt;
+
+@@color:red; &lt;$text text=&lt;&lt;tk1&gt;&gt;/&gt;&lt;$text text=&lt;&lt;b1&gt;&gt;/&gt;&lt;$text text=&lt;&lt;tk2&gt;&gt;/&gt;&lt;br&gt;@@
+
+&lt;hr&gt;
+
+&lt;$reveal type=&quot;match&quot; text=&quot;all&quot; default=&lt;&lt;mode&gt;&gt; &gt;
+&lt;$macrocall $name=&quot;findregx&quot;
+  src={{{[&lt;b2&gt;]}}}
+  start=&lt;&lt;start&gt;&gt;
+  stop=&lt;&lt;stop&gt;&gt;
+  output=&lt;&lt;output-macro&gt;&gt;
+  mode=&lt;&lt;mode&gt;&gt;
+/&gt;
+&lt;/$reveal&gt;
+
+
+
+&lt;/$wikify&gt;
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+
+&lt;/$wikify&gt;
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+
+
+&lt;/$vars&gt;
+\end
+
+
+\define gettokentest()
+&lt;h1&gt;Final:&lt;/h1&gt;
+&lt;$macrocall 
+$name=gettoken
+src=&quot;&lt;russ sfdfds&gt;1234566&lt;/russ&gt;&quot; 
+regx=&quot;&lt;/russ&gt;&quot;
+&gt;
+\end
+
+\define gtk(beg,tkn,end,act:&quot;t&quot;)
+&lt;$list filter=&quot;[[$act$]search[b]]&quot;&gt;&lt;$text text=&lt;&lt;__beg__&gt;&gt; /&gt;&lt;/$list&gt;&lt;$list filter=&quot;[[$act$]search[t]]&quot;&gt;&lt;$text text=&lt;&lt;__tkn__&gt;&gt; /&gt;&lt;/$list&gt;&lt;$list filter=&quot;[[$act$]search[e]]&quot;&gt;&lt;$text text=&lt;&lt;__end__&gt;&gt; /&gt;&lt;/$list&gt;
+\end
+
+\define gettoken(src,regx,act:&quot;t&quot;)
+\whitespace trim
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regx=&lt;&lt;__regx__&gt;&gt;
+act=&lt;&lt;__act__&gt;&gt;
+dump=dumpv
+&gt;
+&lt;$list filter=&quot;[&lt;regx&gt;!is[blank]]&quot; variable=check&gt;&lt;&lt;dp check&gt;&gt;
+&lt;$vars 
+head={{{[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[1]]}}}
+p2={{{[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[2]]}}}
+&gt;
+&lt;&lt;dp head&gt;&gt;&lt;&lt;dp p2&gt;&gt;
+&lt;$vars p3={{{[&lt;src&gt;splitbefore&lt;p2&gt;removesuffix&lt;p2&gt;]}}}&gt;
+&lt;&lt;dp p3&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;p3&gt;removeprefix&lt;head&gt;!is[blank]]&quot;&quot;&quot; variable=token&gt;&lt;&lt;dp token&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;p3&gt;]&quot;&quot;&quot; variable=tail&gt;&lt;&lt;dp tail&gt;&gt;
+&lt;$macrocall $name=gtk
+beg=&lt;&lt;head&gt;&gt;
+tkn=&lt;&lt;token&gt;&gt;
+end=&lt;&lt;tail&gt;&gt;
+act=&lt;&lt;act&gt;&gt;
+/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define gettoken-core(src,regx,act:&quot;t&quot;,count)
+\whitespace trim
+&lt;$vars 
+src=&lt;&lt;__src__&gt;&gt;
+regx=&lt;&lt;__regx__&gt;&gt;
+act=&lt;&lt;__act__&gt;&gt;
+dump=&quot;&quot;
+&gt;
+&lt;$list filter=&quot;[&lt;regx&gt;!is[blank]]&quot; variable=check&gt;&lt;&lt;dp check&gt;&gt;
+&lt;$vars 
+head={{{[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[1]]}}}
+p2={{{[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[2]]}}}
+&gt;
+&lt;&lt;dp head&gt;&gt;&lt;&lt;dp p2&gt;&gt;
+&lt;$vars p3={{{[&lt;src&gt;splitbefore&lt;p2&gt;removesuffix&lt;p2&gt;]}}}&gt;
+&lt;&lt;dp p3&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;p3&gt;removeprefix&lt;head&gt;!is[blank]]&quot;&quot;&quot; variable=token&gt;&lt;&lt;dp token&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;p3&gt;]&quot;&quot;&quot; variable=tail&gt;&lt;&lt;dp tail&gt;&gt;
+&lt;$macrocall $name=gtk
+beg=&lt;&lt;head&gt;&gt;
+tkn=&lt;&lt;token&gt;&gt;
+end=&lt;&lt;tail&gt;&gt;
+act=&lt;&lt;act&gt;&gt;
+/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+\end
+
+\define dumpv(n)
+\whitespace trim
+`$n$`[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;
+\end
+
+\define dp(n)
+&lt;$macrocall $name=&lt;&lt;dump&gt;&gt; n=$n$ /&gt;
+\end
+
+
+\define mas01()
+Morbi non enim facilisis, lacinia odio volutpat, congue arcu. Sed vel ullamcorper
+magna, maximus malesuada nulla. Fusce pharetra commodo facilisis. &lt;russ class=&quot;fred&quot;&gt;---- #1 This is not
+ Latin.----&lt;/russ&gt; Integer in justo ac diam &lt;russ class=&quot;fred&quot;&gt;---- #2 This is not Latin either.----&lt;/russ&gt;
+lobortis eleifend. Nullam vitae sollicitudin risus. Etiam ut aliquet nulla.
+Morbi facilisis urna id lacus feugiat suscipit.
+
+Quisque a nulla luctus lacus tincidunt euismod. Duis condimentum luctus leo a tristique.
+Donec quis vulputate arcu, non lacinia purus. Nullam sit amet interdum
+lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/russ&gt;,
+\end
+
+
+
+
+&lt;&lt;run&gt;&gt;
+
+
+</pre>
+</div>
 <div created="20190918091213048" modified="20190918091232293" tags="Test" title="not yet">
 <pre>not yet</pre>
 </div>
@@ -13964,7 +14151,7 @@ https://kookma.github.io/TW-Scripts/#Tag%20Cloud</pre>
 <pre>&lt;&lt;list-links &quot;[tag[TiddlyWiki Solutions]sort[title]]&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20191107032116991" modified="20191108040741793" tags="" title="token test experimental">
+<div created="20191107032116991" modified="20191108124725145" tags="" title="token test experimental">
 <pre>\define simple(p)
 &lt;$text text=&lt;&lt;__p__&gt;&gt; /&gt;
 \end
@@ -13978,9 +14165,6 @@ https://kookma.github.io/TW-Scripts/#Tag%20Cloud</pre>
 &lt;$macrocall $name=&lt;&lt;debug-print&gt;&gt; n=&lt;&lt;__n__&gt;&gt; /&gt;
 \end
 
-
-
-
 \define findregexp(text, begin, end, output:&quot;simple&quot;, mode:&quot;all&quot;)
 &lt;$vars 
   fulltext=&lt;&lt;__text__&gt;&gt;
@@ -13989,7 +14173,6 @@ https://kookma.github.io/TW-Scripts/#Tag%20Cloud</pre>
   output-macro=&lt;&lt;__output__&gt;&gt;
   mode=&lt;&lt;__mode__&gt;&gt;
   debug-print=dump0
-
 &gt;
 &lt;&lt;dp fulltext&gt;&gt;
 &lt;$wikify name=&quot;tkn&quot; 
@@ -14095,7 +14278,7 @@ Morbi facilisis urna id lacus feugiat suscipit.
 
 Quisque a nulla luctus lacus tincidunt euismod. Duis condimentum luctus leo a tristique.
 Donec quis vulputate arcu, non lacinia purus. Nullam sit amet interdum
-lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/russ&gt;--
+lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/russ&gt;
 \end
 
 
@@ -14235,11 +14418,11 @@ variable=f3&gt;&lt;&lt;dp f3&gt;&gt;
 src=&lt;&lt;__src__&gt;&gt;
 regx=&lt;&lt;__regx__&gt;&gt;
 &gt;
-&lt;$list filter=&quot;[&lt;regx&gt;!is[blank]]&quot; variable=v&gt;
-&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;] +[nth[1]]&quot;&quot;&quot; variable=f1&gt;
-&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;] +[nth[2]]&quot;&quot;&quot; variable=f2&gt;
-&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;f2&gt;removesuffix&lt;f2&gt;]&quot;&quot;&quot; 
-variable=f3&gt;
+&lt;$list filter=&quot;[&lt;regx&gt;!is[blank]]&quot; variable=check&gt;&lt;&lt;dp check&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[1]]&quot;&quot;&quot; variable=p1&gt;&lt;&lt;dp p1&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[2]]&quot;&quot;&quot; variable=p2&gt;&lt;&lt;dp p2&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;splitbefore&lt;p2&gt;removesuffix&lt;p2&gt;]&quot;&quot;&quot; 
+variable=p3&gt;&lt;&lt;dp p3&gt;&gt;
 &lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;f3&gt;]&quot;&quot;&quot; variable=f4&gt;&lt;&lt;f4&gt;&gt;;
 &lt;/$list&gt;
 &lt;/$list&gt;
