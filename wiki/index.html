@@ -307,6 +307,8 @@ Error message and password prompt
 
 <li>7 grammar rules you really should pay attention to</li>
 
+<li>About Marco</li>
+
 <li>Android Platform</li>
 
 <li>DIY</li>
@@ -375,7 +377,11 @@ Error message and password prompt
 
 <li>macro/wikitext-macros</li>
 
+<li>Markup Reference</li>
+
 <li>not yet</li>
+
+<li>old stuff</li>
 
 <li>Plugin Resource</li>
 
@@ -424,6 +430,8 @@ Error message and password prompt
 <li>Untitled</li>
 
 <li>Usage</li>
+
+<li>Use of wikitext</li>
 
 <li>Wikitext - Example - Without - Html</li>
 
@@ -10163,7 +10171,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191107093145586" list="GettingStarted [[Table of Contents]]" modified="20191107105359548" title="$:/StoryList">
+<div created="20191108021604585" list="[[token test experimental]] [[old stuff]] GettingStarted [[Table of Contents]]" modified="20191108021604585" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191106053244714" title="$:/temp/advancedsearch">
@@ -10752,6 +10760,40 @@ As I noted in my  [previous article](http://theweek.com/article/index/240882/7-b
 
 
 I hesitate to state what should be obvious, but sometimes the obvious must be stated. So here goes: Do not use  _it's, you're_  or  _who's_  when you mean  _its, your_  or  _whose_. Or vice versa!</pre>
+</div>
+<div created="20191108012031259" modified="20191108012112375" tags="TiddlyWiki" title="About Marco">
+<pre>Macro Definitions in WikiText
+
+---
+*Macro example using a `\define` and end with `\end`.
+
+```
+\define sayhi(name:&quot;Bugs Bunny&quot; address:&quot;Rabbit Hole Hill&quot;)
+Hi, I'm $name$ and I live in $address$.
+\end
+```
+
+* Macro in a single line without an `\end` marker
+
+```
+\define sayhi(name:&quot;Bugs Bunny&quot;) Hi, I'm $name$.
+```
+
+---
+*placeholders for parameters: `$this$`
+*placeholders for variables or macro: `$(this)$`
+
+```
+\define say-hi-using-variables()
+Hi, I'm $(name)$ and I live in $(address)$.
+\end
+
+\define name() Bugs
+
+&lt;$set name=&quot;address&quot; value=&quot;Rabbit Hole Hill&quot;&gt;
+&lt;&lt;say-hi-using-variables&gt;&gt;
+&lt;/$set&gt;
+```</pre>
 </div>
 <div created="20190919100525542" modified="20190919100656955" tags="TiddlyWiki" title="Android Platform">
 <pre>* https://github.com/Marxsal/Quinoid01
@@ -12686,8 +12728,894 @@ The wiki-text macros are set of macro for documenting TW codes. Edit this tiddle
 * wikitext-example(src)
 * wikitext-example-without-html(src)</pre>
 </div>
+<div created="20191108012214421" modified="20191108012326978" tags="[[TiddlyWiki Example]]" title="Markup Reference">
+<pre>&lt;dl class=&quot;tb5-markup&quot;&gt;
+&lt;dt&gt;
+
+```
+''bold''
+```
+&lt;/dt&gt;
+&lt;dd&gt;''bold''&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+//italics//
+```
+&lt;/dt&gt;
+&lt;dd&gt;//italics//&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+''//bold italics//''
+```
+&lt;/dt&gt;
+&lt;dd&gt;''//bold italics//''&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+__underline__
+```
+&lt;/dt&gt;
+&lt;dd&gt;__underline__&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+~~strikethrough~~
+```
+&lt;/dt&gt;
+&lt;dd&gt;~~strikethrough~~&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+super^^script^^
+```
+&lt;/dt&gt;
+&lt;dd&gt;super^^script^^&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+sub,,script,,
+```
+&lt;/dt&gt;
+&lt;dd&gt;sub,,script,,&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+foo -- bar
+foo --- bar
+```
+&lt;/dt&gt;
+&lt;dd&gt;foo -- bar (En dash)&lt;br&gt;foo --- bar (Em dash)&lt;br&gt;&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+!Heading 1
+!!Heading 2
+!!!Heading 3
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+!Heading 1
+!!Heading 2
+!!!Heading 3
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+---
+horizontal rules
+&lt;hr&gt;
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+---
+horizontal rules
+&lt;hr&gt;
+&lt;/dd&gt;
+
+&lt;dt&gt;&lt;pre&gt;&amp;#96;code&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
+&lt;dd&gt;`code` ...via backticks&lt;/dd&gt;
+
+&lt;dt&gt;&lt;pre&gt;&amp;#96;&amp;#96;with &amp;#96;backticks&amp;#96; &amp;#96;&amp;#96;&lt;/pre&gt;&lt;/dt&gt;
+&lt;dd&gt;``with `backticks` ``&lt;/dd&gt;
+
+&lt;dt&gt;
+&lt;pre&gt;&amp;#96;&amp;#96;&amp;#96;
+monospaced
+codeblock
+&amp;#96;&amp;#96;&amp;#96;&lt;/pre&gt;
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+```
+monospaced
+codeblock
+```
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+&quot;&quot;&quot;
+force
+hard
+linebreaks
+like
+this...
+&quot;&quot;&quot;
+```
+&lt;/dt&gt;
+
+
+&lt;dd&gt;
+
+&quot;&quot;&quot;
+force
+hard
+linebreaks
+like
+this...
+&quot;&quot;&quot;
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+...since
+new paragraphs
+need two linebreaks
+
+in tw5
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+...since
+new paragraphs
+need two linebreaks
+
+in tw5
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+&gt; block
+&gt;&gt; quotes
+&gt;&gt;&gt; are &lt;/dd&gt;easy
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+&gt; block
+&gt;&gt; quotes
+&gt;&gt;&gt; are &lt;br&gt;easy
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+&lt;&lt;&lt;
+real
+easy
+&lt;&lt;&lt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+&lt;&lt;&lt;
+real
+easy
+&lt;&lt;&lt;
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+* unordered
+** list
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+* unordered
+** list
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+# ordered
+## list
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+# ordered
+## list
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+;definition
+:term
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+;definition
+:term
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+# mixed
+#* lists
+#;you
+#:know
+#&gt;like so
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+# mixed
+#* lists
+#;you
+#:know
+#&gt;like so
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+!.h1-class.red CSS
+#.li-class.red classes
+*.li-class.red can be
+;.dt-class.red assigned
+:.dd-class.red like
+&gt;.blockquote-class.red this
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+!.h1-class.red CSS
+#.li-class.red classes
+*.li-class.red can be
+;.dt-class.red assigned
+:.dd-class.red like
+&gt;.blockquote-class.red this
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+[[The Tiddler]]
+[[pretty title|The Tiddler]]
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+[[The Tiddler]]&lt;br&gt;
+[[pretty title|The Tiddler]]
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+CamelCase
+~SuppressedCamelCase
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+CamelCase&lt;br&gt;
+~SuppressedWikiLink
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+http://tiddlywiki.com
+[[pretty|http://pretty.com]]
+~http://not.alink.com
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+http://tiddlywiki.com&lt;br&gt;
+[[google|http://google.com]]&lt;br&gt;
+~http://not.alink.com
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+file://///windows/network&lt;br&gt;
+file:///c:/Windows/foo&lt;br&gt;
+file:///linux/local&lt;br&gt;
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+file://///windows/network&lt;br&gt;
+file:///c:/Windows/foo&lt;br&gt;
+file:///linux/local&lt;br&gt;
+`file:///` only via local tw!
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+[ext[forced.link.com]]
+[ext[tw|tiddlywiki.com]]
+[ext[foo|file:///c:/foo]]
+[ext[relative/path]]
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+[ext[forced.link.com]]&lt;br&gt;
+[ext[tw|tiddlywiki.com]]&lt;br&gt;
+[ext[foo|file:///c:/foo]]&lt;br&gt;
+[ext[relative/path]]
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+[img[example.jpg]]
+[img[tooltip|example.jpg]]
+[img width=16 [example.jpg]]
+[img class=&quot;tc-image&quot; [example.jpg]]
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+[img[http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
+[img[tooltip|http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
+[img width=16 [http://www.tiddlywiki.com/favicon.ico]]&lt;br&gt;
+[img class=&quot;tc-image&quot; [http://www.tiddlywiki.com/favicon.ico]]
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+[img[http://www.tiddlywiki.com/favicon.ico]]
+[img[path/image.jpg]]
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+[img[http://www.tiddlywiki.com/favicon.ico]]
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+[img width={{!!mywidth}} class=&lt;&lt;image-classes&gt;&gt; [example.jpg]]
+
+{{example.jpg}}
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+params via
+[[transclusion|http://tiddlywiki.com/#Transclusion%20in%20WikiText]] or
+[[macro|http://tiddlywiki.com/#Macros%20in%20WikiText]]&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+embed via transclusion
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+@@.myStyleClass.red
+;term
+:definition
+@@
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+@@.myStyleClass.red
+;term
+:definition
+@@
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+@@color:red;
+;css styles
+:apply directly like this
+@@
+
+@@color:red; or this @@
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+@@color:red;
+;css styles
+:apply directly like this
+@@
+
+@@color:red; or this @@
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+@@.tc-tiddler-frame
+@@width:200px;height:50px;
+or combine both
+@@
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+@@.tc-tiddler-frame
+@@width:200px;height:50px;
+or combine both
+@@
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+@@.purple Am I purple?@@
+
+&lt;style&gt;
+.purple{color:purple;}
+&lt;/style&gt;
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+@@.purple Am I purple?@@
+
+&lt;style&gt;
+.purple{color:purple;}
+&lt;/style&gt;
+&lt;/dd&gt;
+
+&lt;dt style=&quot;font-size:80%;&quot;&gt;
+
+```
+| !Header | !Header | Mhhh ?!? |
+|^NE |^ N |^ NW|
+|W | ✦ | E|
+|,SW |, S |, SE|
+|merge|left|&lt;|
+|and|now| vertical |
+|&gt;| right|~|
+```
+&lt;/dt&gt;
+&lt;dd style=&quot;font-size:80%;&quot;&gt;
+
+| !Header | !Header | Mhhh ?!? |
+|^NW |^ @@padding:0 7px 14px 7px;display:block; N@@ |^ NE|
+|W | ✦ | @@padding:7px 0;display:block; E@@|
+|,SW |, @@padding:14px 7px 0 7px;display:block; S@@ |, SE|
+|merge|left|&lt;|
+|and|now| vertical |
+|&gt;| right|~|
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+&lt;article class=&quot;hello&quot;&gt;
+HTML tags work like that.
+&lt;!-- even comments --&gt;
+&lt;/article&gt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+&lt;article class=&quot;hello&quot;&gt;
+HTML tags work like that.
+&lt;!-- even comments --&gt;
+&lt;/article&gt;
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+&lt;a href={{TiddlerWithURL}}&gt;link&lt;/a&gt;
+&lt;b class=&lt;&lt;getClass&gt;&gt;&gt;bold&lt;/b&gt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+&lt;a href={{TiddlerWithURL}}&gt;link&lt;/a&gt;
+&lt;b class=&lt;&lt;version&gt;&gt;&gt;bold&lt;/b&gt;
+
+set attributes via transclusion or macro
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+&lt;div address=&quot;&quot;&quot;attribute,
+&quot;quoted&quot;,
+with,
+linebreaks.&quot;&quot;&quot;&gt;inspect me!&lt;/div&gt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+&lt;div address=&quot;&quot;&quot;attribute,
+&quot;quoted&quot;,
+with,
+linebreaks.&quot;&quot;&quot;&gt;inspect me!&lt;/div&gt;
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+*nest&lt;div&gt;
+
+;via
+:html
+&lt;/div&gt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+*nest &lt;div&gt;
+
+;via
+:html
+&lt;/div&gt;
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+{{Foo}}
+{{Foo||Bar}}
+{{||Foo}}
+{{Foo!!bar}}
+{{!!bar}}
+{{Foo##index}}
+{{##index}}
+{{{ [tag[Foo]] }}}
+{{{ [tag[Foo]] ||Bar}}}
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+» [[transcludes|http://tiddlywiki.com/#Transclusion%20in%20WikiText]] tiddler `Foo`&lt;br&gt;
+» `Foo` with template `Bar`&lt;br&gt;
+» template `Foo` for `CurrentTiddler`&lt;br&gt;
+» field `bar` of `Foo`&lt;br&gt;
+» field `bar` of `CurrentTiddler`&lt;br&gt;
+» `index` of datatiddler `Foo`&lt;br&gt;
+» `index` of `CurrentTiddler` (=data)&lt;br&gt;
+» list of tiddlers tagged `Foo`&lt;br&gt;
+» same using template `Bar`
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+\define run(foo:'bar') [[$foo$]]
+
+&lt;&lt;run &quot;foo bar&quot;&gt;&gt;
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+» defines macro `run`&lt;br&gt;
+» with parameter `foo`&lt;br&gt;
+» whose value defaults to `bar`&lt;br&gt;
+» outputs a link to value of param:&lt;br&gt;
+&amp;nbsp;&amp;nbsp;[[foo bar]]
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+\define test()
+I am $(x)$.
+\end
+
+&lt;$set name=&quot;x&quot; value=&quot;y
+of z&quot;&gt;
+&lt;&lt;test&gt;&gt;
+&lt;/$set&gt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+» defines macro test which&lt;br&gt;
+» outputs value of variable x&lt;br&gt;&lt;br&gt;
+
+» sets variable x to: &quot;y&lt;br&gt;
+&amp;nbsp;&amp;nbsp;of z&quot; //(multiline allowed)//&lt;br&gt;
+» runs macro test which outputs:&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&quot;I am y of z.&quot;
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+\define test(x, y, z:'0')
+$x$ $y$ $z$
+\end
+
+&lt;$macrocall
+$name=&quot;test&quot;
+x=&lt;&lt;version&gt;&gt;
+y={{!!title}}/&gt;
+```
+&lt;/dt&gt;
+
+&lt;dd&gt;
+
+» defines macro test&lt;br&gt;
+» outputs 3 params&lt;br&gt;&lt;br&gt;
+
+» calls test via macrocall widget&lt;br&gt;
+» using macro version as param x&lt;br&gt;
+» and transclusion as param y&lt;br&gt;&lt;br&gt;
+
+» outputs:&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&lt;&lt;version&gt;&gt; Markup 0
+&lt;/dd&gt;
+
+
+
+&lt;dt&gt;
+
+```
+$$$text/unknown
+plain text, not //formatted//
+$$$
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+$$$text/unknown
+plain text, not //formatted//
+$$$
+
+&lt;br&gt;
+These are [[Typed Blocks|http://tiddlywiki.com/#Typed%20Blocks%20in%20WikiText]]
+&lt;/dd&gt;
+
+
+&lt;dt&gt;
+
+```
+$$$image/svg+xml
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;150&quot; height=&quot;100&quot;&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;green&quot; /&gt;
+&lt;/svg&gt;
+$$$
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+$$$image/svg+xml
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;150&quot; height=&quot;100&quot;&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;green&quot; /&gt;
+&lt;/svg&gt;
+$$$
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+$$$.svg
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;150&quot; height=&quot;100&quot;&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;red&quot; /&gt;
+&lt;/svg&gt;
+$$$
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+$$$.svg
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;150&quot; height=&quot;100&quot;&gt;
+  &lt;circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;red&quot; /&gt;
+&lt;/svg&gt;
+$$$
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+$$$text/vnd.tiddlywiki&gt;text/html
+This is ''some'' wikitext
+$$$
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+$$$text/vnd.tiddlywiki&gt;text/html
+This is ''some'' wikitext
+$$$
+&lt;/dd&gt;
+
+&lt;dt&gt;
+
+```
+$$$text/vnd.tiddlywiki&gt;text/plain
+This is ''some'' wikitext
+$$$
+```
+&lt;/dt&gt;
+&lt;dd&gt;
+
+$$$text/vnd.tiddlywiki&gt;text/plain
+This is ''some'' wikitext
+$$$
+&lt;/dd&gt;
+
+
+&lt;/dl&gt;
+
+&lt;style&gt;
+dl.tb5-markup{
+overflow:hidden;
+}
+
+dl.tb5-markup .red{
+color:red;
+}
+
+.tb5-markup &gt; dt{
+display:block;
+float:left;
+clear:left;
+margin:2% 1em 0 0;
+padding;
+font-weight:normal;
+width:48%;
+}
+
+.tb5-markup &gt; dt &gt; pre{
+margin:0;
+}
+
+.tb5-markup &gt; dd{
+display:block;
+float:left;
+width:48%;
+margin:1em 0 0 0;
+padding:0;
+}
+
+.tb5-markup &gt; dd &gt; p,
+.tb5-markup &gt; dd &gt; h1,
+.tb5-markup &gt; dd &gt; pre,
+.tb5-markup &gt; dd &gt; ul,
+.tb5-markup &gt; dd &gt; ol,
+.tb5-markup &gt; dd &gt; dl,
+.tb5-markup &gt; dd &gt; table,
+.tb5-markup &gt; dd &gt; blockquote,
+.tb5-markup &gt; dd &gt; blockquote &gt;p{
+margin:0;
+}
+
+.tb5-markup .tc-image{
+width:16px;
+}
+&lt;/style&gt;</pre>
+</div>
 <div created="20190918091213048" modified="20190918091232293" tags="Test" title="not yet">
 <pre>not yet</pre>
+</div>
+<div created="20191108021107583" modified="20191108021124221" tags="" title="old stuff">
+<pre>\define filtercat(1,2,3) {{{ [&lt;$1$&gt;addprefix&lt;$2$&gt;addsuffix&lt;$3$&gt;] }}}
+\define filterout(1,2,3) {{{ [&lt;$1$&gt;removeprefix[{]removesuffix[}] ] }}}
+---
+!!Define example:
+
+&lt;$vars btxt=&quot;&quot; etxt=&quot;!!created&quot; filterstr=&lt;&lt;filtercat currentTiddler btxt etxt&gt;&gt; &gt;
+&lt;$set name=myVariable value=&lt;&lt;filterstr&gt;&gt; &gt;
+text filterstr:(&lt;$text text=&lt;&lt;filterstr&gt;&gt; /&gt;)&lt;br&gt;
+filterstr:(&lt;&lt;filterstr&gt;&gt;)&lt;br&gt;
+
+text myvariable:(&lt;$text text=&lt;&lt;myVariable&gt;&gt; /&gt;)&lt;br&gt;
+myvariable:(&lt;&lt;myVariable&gt;&gt;)&lt;br&gt;
+
+&lt;/$set&gt;
+&lt;/$vars&gt;&lt;br&gt;
+
+---
+&lt;$vars myVariable={{{ [&lt;currentTiddler&gt;addprefix[{{]addsuffix[!!created}}]] }}} &gt;
+text myvariable:(&lt;$text text=&lt;&lt;myVariable&gt;&gt;/&gt;)&lt;br&gt;
+myvariable:(&lt;&lt;myVariable&gt;&gt;)&lt;br&gt;
+&lt;/$vars&gt;&lt;br&gt;
+
+---
+
+&lt;$view field=&quot;created&quot; format=&quot;date&quot; template=&quot;YYYY0MM0DD0hh0mm0ss&quot;/&gt;&lt;br&gt;
+
+---
+&lt;$view field=&quot;created&quot;/&gt;&lt;br&gt;
+
+---
+{{!!created}}&lt;br&gt;
+&lt;$set name=&quot;myVariable&quot; tiddler=&lt;&lt;currentTiddler&gt;&gt; field=created &gt;
+&lt;$text text=&lt;&lt;myVariable&gt;&gt;/&gt;
+&lt;/$set&gt;&lt;br&gt;
+
+---
+var widget:&lt;br&gt;
+&lt;$vars fv2=&quot;!!&quot; fv1=&lt;&lt;currentTiddler&gt;&gt; fv3=&quot;created&quot; &gt;
+&lt;$set name=&quot;myVariable&quot; filter=&quot;[&lt;fv2&gt;addprefix&lt;fv1&gt;addsuffix&lt;fv3&gt;]&quot; select=0 &gt;
+(&lt;$text text=&lt;&lt;myVariable&gt;&gt;/&gt;)&lt;br&gt;
+({{&lt;&lt;myVariable&gt;&gt;}})&lt;br&gt;
+&lt;/$set&gt;&lt;br&gt;
+&lt;/$vars&gt;
+
+---
+text widget:&lt;br&gt;
+(&lt;$text text={{{ [&lt;currentTiddler&gt;addprefix[$:/myprefix/]] }}}/&gt;)&lt;br&gt;
+
+---
+set widget:&lt;br&gt;
+&lt;$set name=&quot;myVariable&quot; value={{{ [&lt;currentTiddler&gt;addprefix[{{]addsuffix[!!created}}]] }}} &gt;
+(&lt;$text text=&lt;&lt;myVariable&gt;&gt;/&gt;)&lt;br&gt;
+(&lt;&lt;myVariable&gt;&gt;)&lt;br&gt;
+&lt;/$set&gt;&lt;br&gt;
+
+---
+vars widget:&lt;br&gt;
+&lt;$vars myVariable={{{ [&lt;currentTiddler&gt;addprefix[{{]addsuffix[!!created}}]] }}} &gt;
+(&lt;$text text=&lt;&lt;myVariable&gt;&gt;/&gt;)&lt;br&gt;
+(&lt;&lt;myVariable&gt;&gt;)&lt;br&gt;
+&lt;/$vars&gt;&lt;br&gt;
+</pre>
 </div>
 <div created="20190919110618170" modified="20190919110647186" tags="TiddlyWiki" title="Plugin Resource">
 <pre>* https://tw-scripts.github.io/Yazd/</pre>
@@ -13325,6 +14253,32 @@ The text is: &lt;pre&gt;&lt;$text text=&lt;&lt;gettokenafter0&gt;&gt;/&gt;&lt;/p
 </div>
 <div created="20190919032222259" modified="20190919032300813" tags="English" title="Usage">
 <pre>&lt;&lt;list-links &quot;[tag[Usage]sort[title]]&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20191108005708605" modified="20191108012123814" tags="TiddlyWiki" title="Use of wikitext">
+<pre>```
+&lt;$view field=&quot;created&quot; format=&quot;date&quot; template=&quot;YYYY0MM0DD0hh0mm0ss&quot;/&gt;
+```
+
+!! Filter
+```
+[[Recipe book]] ScrambledEggs [[Mom's apple pie]] &lt;-- [[sth]] short hand of [title[sth]]
+
+[!tag[Recipe]] &lt;-- reverse of [tag[Recipe]]
+
+[serving[4]] &lt;-- short hand of [field:serving[4]]
+
+[tag[Vegetarian]!tag[soup]serving[4]]
+
+[serving[3]] [serving[4]] [serving[5]] +[tag[Vegetarian]] +[sort[title]]
+
+[tag[Vegetarian]] -[title[ScrambledEggs]] -BeansOnToast
+
+[tag{Preference}]  &lt;--text reference
+
+[search&lt;currentTiddler&gt;]  &lt;--variable
+```
+
 </pre>
 </div>
 <div created="20191104103248038" modified="20191104103321040" tags="" title="Wikitext - Example - Without - Html">
