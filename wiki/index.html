@@ -379,7 +379,9 @@ Error message and password prompt
 
 <li>Markup Reference</li>
 
-<li>New Tiddler</li>
+<li>New Tiddler (not work) too many problem</li>
+
+<li>New Tiddler mark up</li>
 
 <li>not yet</li>
 
@@ -10128,8 +10130,8 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191024122253323" modified="20191106053517577" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Recent</pre>
 </div>
-<div created="20190925111211913" modified="20191109081645271" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20190925111211913" modified="20191109120328635" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20191024123749236" modified="20191024123749236" title="$:/state/toc/Contents-English--1876907615">
 <pre>open</pre>
@@ -10173,7 +10175,7 @@ src=&quot;&quot;&quot;&lt;ol&gt;&lt;$list filter=&quot;[all[shadows]] +[first[10
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191109081647563" list="[[New Tiddler]] [[token test experimental]] GettingStarted [[Table of Contents]]" modified="20191109081649452" title="$:/StoryList">
+<div created="20191109100742395" list="GettingStarted [[Table of Contents]]" modified="20191109114309969" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191004082204091" modified="20191106053244714" title="$:/temp/advancedsearch">
@@ -13552,7 +13554,7 @@ width:16px;
 }
 &lt;/style&gt;</pre>
 </div>
-<div created="20191108102105838" modified="20191109084404624" tags="" title="New Tiddler">
+<div created="20191108102105838" modified="20191109114248812" tags="" title="New Tiddler (not work) too many problem">
 <pre>\define gettoken(src,regx,act:&quot;t&quot;)
 \whitespace trim
 &lt;$vars 
@@ -13563,28 +13565,34 @@ dump=dumpv
 &gt;
 &lt;&lt;dp src&gt;&gt;
 &lt;$list filter=&quot;[&lt;regx&gt;!is[blank]]&quot; variable=check&gt;&lt;&lt;dp check&gt;&gt;
-&lt;$vars 
-head={{{[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[1]]}}}
-p2={{{[&lt;src&gt;regexp&lt;regx&gt;splitregexp&lt;regx&gt;nth[2]]}}}
+&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;regexp&lt;regx&gt;]&quot;&quot;&quot; variable=cond1&gt;&lt;&lt;dp cond1&gt;&gt;
+&lt;$vars head={{{[&lt;src&gt;splitregexp&lt;regx&gt;nth[1]]}}}
+p2={{{[&lt;src&gt;splitregexp&lt;regx&gt;nth[2]]}}}
 &gt;
-&lt;&lt;dp head&gt;&gt;&lt;&lt;dp p2&gt;&gt;
-&lt;$vars p3={{{[&lt;src&gt;removeprefix&lt;head&gt;] [&lt;src&gt;splitbefore&lt;p2&gt;removesuffix&lt;p2&gt;] +[nth[1]]}}}&gt;
-&lt;&lt;dp1 p3&gt;&gt;
-t1:&lt;$text text={{{[&lt;src&gt;splitbefore&lt;p2&gt;removesuffix&lt;p2&gt;]}}}/&gt;&lt;hr&gt;
-t2:&lt;$text text={{{[&lt;src&gt;removeprefix&lt;head&gt;]}}}/&gt;&lt;hr&gt;
-
-&lt;$list filter=&quot;&quot;&quot;[&lt;p3&gt;removeprefix&lt;head&gt;!is[blank]]&quot;&quot;&quot; variable=token&gt;&lt;&lt;dp token&gt;&gt;
-&lt;$list filter=&quot;&quot;&quot;[&lt;src&gt;removeprefix&lt;p3&gt;]&quot;&quot;&quot; variable=tail&gt;&lt;&lt;dp tail&gt;&gt;
+&lt;&lt;dp head&gt;&gt;
+&lt;&lt;dp p2&gt;&gt;
+&lt;$vars p3={{{[&lt;src&gt;splitbefore&lt;p2&gt;removesuffix&lt;p2&gt;]}}}&gt;
+&lt;&lt;dp p3&gt;&gt;
+&lt;$vars t={{{[&lt;src&gt;splitbefore&lt;p2&gt;removeprefix&lt;head&gt;removesuffix&lt;p2&gt;]}}} &gt;
+&lt;&lt;dp t&gt;&gt;
+&lt;$vars e={{{[&lt;src&gt;removeprefix&lt;head&gt;removeprefix&lt;t&gt;]}}} &gt;&lt;&lt;dp e&gt;&gt;
+&lt;$vars token={{{[&lt;t&gt;!is[blank]] [&lt;e&gt;] +[nth[1]]}}}
+tail={{{[&lt;t&gt;!is[blank]] [&lt;e&gt;] +[nth[2]]}}}
+&gt;
+&lt;hr&gt;
+&lt;&lt;dp head&gt;&gt;
+&lt;&lt;dp token&gt;&gt;
+&lt;&lt;dp tail&gt;&gt;
+&lt;hr&gt;
 &lt;$macrocall $name=gtk
 beg=&lt;&lt;head&gt;&gt;
 tkn=&lt;&lt;token&gt;&gt;
 end=&lt;&lt;tail&gt;&gt;
 act=&lt;&lt;act&gt;&gt;
 /&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
 &lt;/$vars&gt;
 &lt;/$vars&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/$vars&gt;
 \end
@@ -13593,14 +13601,15 @@ act=&lt;&lt;act&gt;&gt;
 &lt;h1&gt;P1:&lt;/h1&gt;
 &lt;$macrocall 
 $name=gettoken
-src=&quot;&lt;russ sfdfds asdf&gt;1234566&lt;/ruass&gt;&quot; 
-regx=&quot;&lt;/russ&gt;&quot;
+src=&quot;&lt;russ sfdfds asdf&gt;1234566&lt;/russ&gt;11&lt;/russ&gt;22&quot; 
+regx=&quot;&lt;/russ&gt;11&quot;
 /&gt;
+
 &lt;h1&gt;P2:&lt;/h1&gt;
 &lt;$macrocall 
 $name=gettoken
-src=&quot;&lt;russ sfdfds asdf&gt;1234566&lt;/ruass&gt;something&quot; 
-regx=&quot;&lt;/russ&gt;&quot;
+src=&quot;&lt;russ sfdfds asdf&gt;1234566&lt;/russ&gt;11&lt;/russ&gt;&quot; 
+regx=&quot;&lt;/russ&gt;11&quot;
 /&gt;
 
 \end
@@ -13749,6 +13758,32 @@ lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/rus
 
 &lt;&lt;run&gt;&gt;
 
+
+</pre>
+</div>
+<div created="20191109114334828" modified="20191109121353031" tags="" title="New Tiddler mark up">
+<pre>\define .zli(src)
+&lt;dt&gt;&lt;pre&gt;&lt;$text text=&lt;&lt;__src__&gt;&gt; /&gt;&lt;/pre&gt;&lt;/dt&gt;&lt;dd&gt;&lt;$wikify text=&lt;&lt;__src__&gt;&gt; name=v mode &gt;&lt;&lt;v&gt;&gt;&lt;/$wikify&gt;&lt;/dd&gt;
+\end
+
+&lt;dl class=&quot;tb5-markup&quot;&gt;
+&lt;&lt;.zli &quot; __underline__ &quot;&gt;&gt;
+&lt;&lt;.zli &quot; ''bold'' &quot;&gt;&gt;
+&lt;&lt;.zli &quot; ''//bold italics//'' &quot;&gt;&gt;
+&lt;&lt;.zli &quot; __underline__ &quot;&gt;&gt;
+&lt;&lt;.zli &quot; ~~strikethrough~~ &quot;&gt;&gt;
+&lt;&lt;.zli &quot; super^^script^^ &quot;&gt;&gt;
+&lt;&lt;.zli &quot; sub,,script,, &quot;&gt;&gt;
+&lt;&lt;.zli &quot; foo -- bar (En dash) &quot; &gt;&gt;
+&lt;&lt;.zli &quot; foo --- bar (Em dash) &quot;&gt;&gt;
+&lt;&lt;.zli 
+&quot;&quot;&quot;!Heading 1
+!!Heading 2
+!!!Heading 3
+&quot;&quot;&quot; &gt;&gt;
+
+
+&lt;/dl&gt;
 
 </pre>
 </div>
