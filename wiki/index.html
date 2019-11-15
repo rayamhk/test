@@ -647,6 +647,8 @@ Error message and password prompt
 
 <li>Test of details macro</li>
 
+<li>Test of Dictionary</li>
+
 <li>Test of Trans-text</li>
 
 <li>Testcase</li>
@@ -10649,7 +10651,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191112113231234" modified="20191112113231798" title="$:/state/shiraz/slider-macro/TiddlyWiki News/BJ Tools-1491930177">
 <pre>no</pre>
 </div>
-<div created="20190925111220464" modified="20191114095731822" title="$:/state/showeditpreview">
+<div created="20190925111220464" modified="20191115091924322" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
 <div created="20190927103152783" modified="20191114101324939" title="$:/state/sidebar">
@@ -10814,11 +10816,11 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191115025541658" list="Home Word" modified="20191115031307640" title="$:/StoryList">
+<div created="20191115082221300" list="[[Table of Contents]]" modified="20191115082304574" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20191114081306760" modified="20191115030517115" title="$:/temp/advancedsearch">
-<pre>test-hide</pre>
+<div created="20191114081306760" modified="20191115082304574" title="$:/temp/advancedsearch">
+<pre>collective</pre>
 </div>
 <div created="20191115030622470" modified="20191115030622470" title="$:/temp/commander">
 <pre>[[New Tiddler]]</pre>
@@ -10935,7 +10937,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20191114081301270" modified="20191115030517115" title="$:/temp/search">
+<div created="20191114081301270" modified="20191115084105400" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20191113124414932" modified="20191113124418015" title="$:/temp/slider-macro/$:/temp/commander/logs/tid-1/$(label$)/--1291313091">
@@ -15239,6 +15241,93 @@ https://kookma.github.io/TW-Scripts/#Tag%20Cloud</pre>
 &lt;&lt;details sum:&quot;Example III Using auxilliary classes&quot; src:&quot;This is the text inside details can be hidden or displayed on demand. It is shown by default. The status is empty&quot; class:&quot;alert-primary&quot;&gt;&gt;
 
 &lt;&lt;details sum:&quot;Example IV Extra classes&quot; src:&quot;This is the text inside details can be hidden or displayed on demand. It is shown by default. The status is open&quot; status:&quot;open&quot; class:&quot;text-white bg-dark&quot;&gt;&gt;</pre>
+</div>
+<div created="20191115083707949" modified="20191115083740845" tags="" title="Test of Dictionary">
+<pre>\define thisListMacro()
+&lt;b&gt;&lt;$view field=title/&gt;&lt;/b&gt;: {{exmp44/dictionary##$(thisIndex)$}}&lt;br&gt;
+\end
+\define thisEditListMacro()
+&lt;b&gt;&lt;$view field=title/&gt;&lt;/b&gt;: {{exmp44/dictionary##$(thisIndex)$}} &lt;$button&gt;Remove&lt;$action-deletefield $tiddler='exmp44/dictionary' $field=$(thisIndex)$ $value=''/&gt;&lt;/$button&gt;&lt;br&gt;
+\end
+
+\define thisRegEx()
+$(thisSearch)$(?i)
+\end
+
+\define thisSearchMacro()
+&lt;ol&gt;
+&lt;$list filter=&quot;[[exmp44/dictionary]indexes[]regexp:title[(?i)$(thisSearch)$]]&quot;&gt;
+&lt;li&gt;&lt;span style=&quot;color:darkred;&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/span&gt;: &lt;$transclude tiddler=&quot;exmp44/dictionary&quot; index=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ol&gt;
+\end
+
+\define thisEditMacro()
+&lt;ol&gt;
+&lt;$list filter=&quot;[[exmp44/dictionary]indexes[]regexp:title[(?i)$(thisSearch)$]]&quot;&gt;
+&lt;$set name=thisItem value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;li&gt;&lt;&lt;thisDeleteButton&gt;&gt; &lt;&lt;currentTiddler&gt;&gt; - &lt;$transclude tiddler=&quot;exmp44/dictionary&quot; index=&lt;&lt;currentTiddler&gt;&gt;/&gt;&lt;/li&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/ol&gt;
+\end
+
+\define thisDeleteButton()
+&lt;$button set='exmp44/dictionary##$(thisItem)$'&gt;{{$:/core/images/delete-button}}&lt;/$button&gt;
+\end
+
+\define addTerm()
+&lt;$action-setfield $tiddler='exmp44/dictionary' $index={{$:/temp/exmp44!!name}} $value={{$:/temp/exmp44!!meaning}}/&gt;
+&lt;$action-setfield $tiddler='$:/temp/exmp44' name='' meaning=''/&gt;
+\end
+
+
+
+This is a full example of using DataTiddler (dictionary or JSON tiddler) for creating a refence book or Word Dictionary. This project was created and authored by {{!!responder}}.
+
+The project includes:
+
+# Macros for add/remove index/value pairs from DataTiddler
+# Macros for making search in DataTiddler
+# Macros for listing index/value pairs
+# A DataTiddler (here a JSON: [[exmp44/dictionary]]) to store pairs of index/value.
+# Reveal widget is used to prevent adding term with no meaning (empty edit box)
+---
+
+!! Demo
+
+Term: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/temp/exmp44' field='name'/&gt;&lt;br&gt;
+Meaning: &lt;$edit-text class='tc-edit-texteditor' tiddler='$:/temp/exmp44' field='meaning'/&gt;&lt;br&gt;
+
+&lt;$reveal type='match' state='$:/temp/exmp44!!name' text=''&gt;
+&lt;$button&gt;Add Term&lt;/$button&gt;&lt;!-- This is a fake button, when term edit-text is empty --&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/temp/exmp44!!name' text=''&gt;
+&lt;$button actions=&lt;&lt;addTerm&gt;&gt; &gt;Add Term &lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='nomatch' state='$:/temp/exmp44/editreveal' text='edit'&gt;
+&lt;$button set='$:/temp/exmp44/editreveal' setTo='edit'&gt;Edit Dictionary&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/temp/exmp44/editreveal' text='edit'&gt;
+&lt;$button set='$:/temp/exmp44/editreveal' setTo='noedit'&gt;Done Editing&lt;/$button&gt;
+&lt;/$reveal&gt;
+
+!! Search
+Search: &lt;$edit-text tiddler='$:/temp/exmp44' field='search'/&gt;&lt;br&gt;
+&lt;$reveal type='nomatch' state='$:/temp/exmp44/editreveal' text='edit'&gt;
+Type in the search box to find specific items on the list
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/temp/exmp44/editreveal' text='edit'&gt;
+Click on the trashcan icon to remove an item
+&lt;/$reveal&gt;
+&lt;$set name='thisSearch' value={{$:/temp/exmp44!!search}}&gt;
+&lt;$reveal type='nomatch' state='$:/temp/exmp44/editreveal' text='edit'&gt;
+&lt;&lt;thisSearchMacro&gt;&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type='match' state='$:/temp/exmp44/editreveal' text='edit'&gt;
+&lt;&lt;thisEditMacro&gt;&gt;
+&lt;/$reveal&gt;
+&lt;/$set&gt;</pre>
 </div>
 <div created="20191112111911004" modified="20191112121201864" tags="" title="Test of Trans-text">
 <pre>\define trans-text(tid) 
