@@ -587,6 +587,8 @@ Error message and password prompt
 
 <li>old stuff</li>
 
+<li>pickgroup example</li>
+
 <li>Plugin Resource</li>
 
 <li>Read Only Mode</li>
@@ -10678,8 +10680,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191030080005266" modified="20191030080014716" title="$:/state/tab--1128538129">
 <pre>Test of details macro</pre>
 </div>
-<div created="20191104113916189" modified="20191114083949975" title="$:/state/tab--1280166252">
-<pre>Recent 20</pre>
+<div created="20191104113916189" modified="20191115025352301" title="$:/state/tab--1280166252">
+<pre>Recent Temperate Tiddlers</pre>
 </div>
 <div created="20191004082232960" modified="20191113095829123" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
@@ -10792,7 +10794,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191114075024277" list="$:/Import $:/plugins/skeeve/pickfilter Showcase [[slider-macro2 (Experimental)]] 執筆忘字 [[TiddlyWiki News]] GettingStarted [[Table of Contents]]" modified="20191114110438430" title="$:/StoryList">
+<div created="20191115025019518" list="[[pickgroup example]] GettingStarted [[Table of Contents]]" modified="20191115025019518" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191114081306760" title="$:/temp/advancedsearch">
@@ -14569,6 +14571,18 @@ vars widget:&lt;br&gt;
 (&lt;&lt;myVariable&gt;&gt;)&lt;br&gt;
 &lt;/$vars&gt;&lt;br&gt;
 </pre>
+</div>
+<div created="20191115024138327" modified="20191115025347891" tags="" title="pickgroup example">
+<pre>\define regx() (?gm)(?:;((?:\w|\W)*?))\n((?::(?:(?:\w|\W)*?)(\n|$))*)
+
+&lt;$list filter=&quot;[[Showcase]pickgroups:text&lt;regx&gt;]&quot;&gt;
+&lt;$splitgroups title=&quot;$1&quot; body=&quot;$2&quot; &gt;
+&lt;h3&gt;&lt;strong&gt;&lt;&lt;title&gt;&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;$list filter=&quot;[&lt;body&gt;split[: ]join[&lt;br&gt;]removeprefix[&lt;br&gt;]]&quot; variable=v &gt;
+&lt;&lt;v&gt;&gt;
+&lt;/$list&gt;&lt;br&gt;
+&lt;/$splitgroups&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div created="20190919110618170" modified="20190919110647186" tags="TiddlyWiki" title="Plugin Resource">
 <pre>* https://tw-scripts.github.io/Yazd/</pre>
