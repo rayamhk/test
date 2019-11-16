@@ -591,6 +591,8 @@ Error message and password prompt
 
 <li>My CSS</li>
 
+<li>New Tiddler</li>
+
 <li>New Tiddler (not work) too many problem</li>
 
 <li>New Tiddler mark up</li>
@@ -659,6 +661,8 @@ Error message and password prompt
 
 <li>TiddlyWiki News</li>
 
+<li>Tiddlywiki simle javascript macro and use of text/plain</li>
+
 <li>TiddlyWiki Solutions</li>
 
 <li>TiddlyWiki 舞</li>
@@ -676,6 +680,8 @@ Error message and password prompt
 <li>use filter for default value of parameters</li>
 
 <li>Use of wikitext</li>
+
+<li>Widget Module</li>
 
 <li>Wikitext - Example - Without - Html</li>
 
@@ -10651,7 +10657,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191112113231234" modified="20191112113231798" title="$:/state/shiraz/slider-macro/TiddlyWiki News/BJ Tools-1491930177">
 <pre>no</pre>
 </div>
-<div created="20190925111220464" modified="20191115091924322" title="$:/state/showeditpreview">
+<div created="20190925111220464" modified="20191116064742584" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
 <div created="20190927103152783" modified="20191114101324939" title="$:/state/sidebar">
@@ -10702,8 +10708,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191030080005266" modified="20191030080014716" title="$:/state/tab--1128538129">
 <pre>Test of details macro</pre>
 </div>
-<div created="20191104113916189" modified="20191115025536399" title="$:/state/tab--1280166252">
-<pre>Recent 20</pre>
+<div created="20191104113916189" modified="20191116045503166" title="$:/state/tab--1280166252">
+<pre>Recent All</pre>
 </div>
 <div created="20191004082232960" modified="20191115030523842" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
@@ -10816,7 +10822,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191115082221300" list="[[Table of Contents]]" modified="20191115082304574" title="$:/StoryList">
+<div created="20191116033335480" list="[[New Tiddler (not work) too many problem]] [[Test of Trans-text]] [[Draft of 'Recent State Tiddlers 1']] [[pickgroup example]] [[My CSS]] GettingStarted [[Table of Contents]]" modified="20191116045606111" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191115082304574" title="$:/temp/advancedsearch">
@@ -10937,8 +10943,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20191114081301270" modified="20191115084105400" title="$:/temp/search">
-<pre></pre>
+<div created="20191114081301270" modified="20191116045528165" title="$:/temp/search">
+<pre>find</pre>
 </div>
 <div created="20191113124414932" modified="20191113124418015" title="$:/temp/slider-macro/$:/temp/commander/logs/tid-1/$(label$)/--1291313091">
 <pre>no</pre>
@@ -14320,6 +14326,56 @@ width:16px;
   color: inherit;
 }</pre>
 </div>
+<div created="20191116045629728" modified="20191116072217099" tags="" title="New Tiddler">
+<pre>\define dp(n,s)
+`$s$$n$`&lt;br&gt;[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;&lt;&lt;$n$&gt;&gt;&lt;hr&gt;
+\end
+
+\define fnr(src,f,r)
+\whitespace trim
+&lt;$vars src=&lt;&lt;__src__&gt;&gt; f=&lt;&lt;__f__&gt;&gt; r=&lt;&lt;__r__&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;src&gt;split&lt;f&gt;join&lt;r&gt;]&quot; variable=v &gt;&lt;&lt;v&gt;&gt;&lt;/$list&gt;&lt;$vars&gt;
+\end
+
+\define findAndReplace(src,arrayfnr)
+\whitespace trim
+&lt;$vars src=&lt;&lt;__src__&gt;&gt; arrayfnr=&lt;&lt;__arrayfnr__&gt;&gt; &gt;
+
+&lt;$reveal type=&quot;match&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
+&lt;&lt;src&gt;&gt;
+&lt;/$reveal&gt;
+
+&lt;$reveal type=&quot;nomatch&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
+
+&lt;$vars 
+v0={{{ [&lt;arrayfnr&gt;split[(;)]nth[1]] }}} &gt;
+&lt;$vars 
+v1={{{[&lt;v0&gt;split[(|)]nth[1]]}}}
+p1={{{ [&lt;arrayfnr&gt;splitbefore&lt;v0&gt;] }}}
+&gt;
+
+&lt;$list filter=&quot;[&lt;v0&gt;split[(|)]nth[2]]&quot; variable=v2 &gt;
+&lt;$wikify 
+name=wiki 
+text=&quot;&quot;&quot;&lt;$macrocall $name=fnr src=&lt;&lt;src&gt;&gt; f=&lt;&lt;v1&gt;&gt; r=&lt;&lt;v2&gt;&gt; /&gt;&quot;&quot;&quot; output=html mode=inline&gt;
+
+&lt;$macrocall 
+$name=findAndReplace 
+src=&lt;&lt;wiki&gt;&gt; 
+arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[(;)]] }}} /&gt;
+
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+
+&lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+&lt;&lt;findAndReplace &quot;abc;;def;;gih&quot; &quot;;;(|)&lt;br&gt;(;)abc(|)123(;)gih(|)789&quot;&gt;&gt;</pre>
+</div>
 <div created="20191108102105838" modified="20191111025718760" tags="Testcase" title="New Tiddler (not work) too many problem">
 <pre>\define gettoken(src,regx,act:&quot;t&quot;)
 \whitespace trim
@@ -14617,13 +14673,13 @@ vars widget:&lt;br&gt;
 &lt;/$vars&gt;&lt;br&gt;
 </pre>
 </div>
-<div created="20191115024138327" modified="20191115025347891" tags="" title="pickgroup example">
+<div created="20191115024138327" modified="20191116045335945" tags="" title="pickgroup example">
 <pre>\define regx() (?gm)(?:;((?:\w|\W)*?))\n((?::(?:(?:\w|\W)*?)(\n|$))*)
 
 &lt;$list filter=&quot;[[Showcase]pickgroups:text&lt;regx&gt;]&quot;&gt;
 &lt;$splitgroups title=&quot;$1&quot; body=&quot;$2&quot; &gt;
 &lt;h3&gt;&lt;strong&gt;&lt;&lt;title&gt;&gt;&lt;/strong&gt;&lt;/h3&gt;
-&lt;$list filter=&quot;[&lt;body&gt;split[: ]join[&lt;br&gt;]removeprefix[&lt;br&gt;]]&quot; variable=v &gt;
+&lt;$list filter=&quot;[&lt;body&gt;removeprefix[:]split[://]join[_colon//_]split[:]join[&lt;br&gt;]split[_colon//_]join[://]]&quot; variable=v &gt;
 &lt;&lt;v&gt;&gt;
 &lt;/$list&gt;&lt;br&gt;
 &lt;/$splitgroups&gt;
@@ -15360,6 +15416,48 @@ Click on the trashcan icon to remove an item
 <div created="20191112104100514" modified="20191113120553871" tags="TiddlyWiki" title="TiddlyWiki News">
 <pre>&lt;&lt;list-tiddler-bytag &quot;TiddlyWiki News&quot;&gt;&gt;</pre>
 </div>
+<div created="20191116040613727" modified="20191116041533891" tags="[[TiddlyWiki Example]]" title="Tiddlywiki simle javascript macro and use of text/plain">
+<pre>some example of `application/javascript` macro
+
+```
+/*\
+title: daMacro
+type: application/javascript
+module-type: macro
+
+Macro that removes the path part of an absolute filename
+\*/
+(function(){
+
+    /*jslint node: true, browser: true */
+    /*global $tw: false */
+    &quot;use strict&quot;;
+
+    /*
+     Information about this macro
+     */
+
+    exports.name = &quot;removepath&quot;;
+
+    exports.params = [{name:&quot;filename&quot;}];
+
+    /*
+     Run the macro
+     */
+    exports.run = function(filename) {
+        return filename.substr(filename.lastIndexOf('/')+1);
+    };
+
+})();
+
+```
+
+use of `$output=text/plain` in macrocall
+
+```
+&lt;$macrocall $name=&quot;removepath&quot; filename=&quot;path/to/GettingStarted.tid&quot; $type=&quot;text/plain&quot;/&gt; 
+```</pre>
+</div>
 <div created="20191030101825658" modified="20191030112557658" tags="TiddlyWiki" title="TiddlyWiki Solutions">
 <pre>&lt;&lt;list-links &quot;[tag[TiddlyWiki Solutions]sort[title]]&quot;&gt;&gt;
 </pre>
@@ -15742,6 +15840,15 @@ https://bimlas.gitlab.io/tw5-highlight-searched-text/</pre>
 [search&lt;currentTiddler&gt;]  &lt;--variable
 ```
 
+</pre>
+</div>
+<div class="text-linebreak" created="20191116033107333" modified="20191116040856673" tags="[[TiddlyWiki Dev]]" title="Widget Module">
+<pre>!! WidgetModules
+https://tiddlywiki.com/dev/#WidgetModules
+
+1,
+2,
+3,
 </pre>
 </div>
 <div created="20191104103248038" modified="20191104103321040" tags="" title="Wikitext - Example - Without - Html">
