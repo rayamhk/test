@@ -595,6 +595,8 @@ Error message and password prompt
 
 <li>New Tiddler (not work) too many problem</li>
 
+<li>New Tiddler 1</li>
+
 <li>New Tiddler mark up</li>
 
 <li>old stuff</li>
@@ -10822,7 +10824,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191116033335480" list="[[New Tiddler (not work) too many problem]] [[Test of Trans-text]] [[Draft of 'Recent State Tiddlers 1']] [[pickgroup example]] [[My CSS]] GettingStarted [[Table of Contents]]" modified="20191116045606111" title="$:/StoryList">
+<div created="20191118022700859" list="[[New Tiddler 1]] [[New Tiddler]] GettingStarted [[Table of Contents]]" modified="20191118022700859" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191115082304574" title="$:/temp/advancedsearch">
@@ -14326,7 +14328,7 @@ width:16px;
   color: inherit;
 }</pre>
 </div>
-<div created="20191116045629728" modified="20191116072217099" tags="" title="New Tiddler">
+<div created="20191116045629728" modified="20191118023324932" tags="" title="New Tiddler">
 <pre>\define dp(n,s)
 `$s$$n$`&lt;br&gt;[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;&lt;&lt;$n$&gt;&gt;&lt;hr&gt;
 \end
@@ -14348,13 +14350,13 @@ width:16px;
 &lt;$reveal type=&quot;nomatch&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
 
 &lt;$vars 
-v0={{{ [&lt;arrayfnr&gt;split[(;)]nth[1]] }}} &gt;
+v0={{{ [&lt;arrayfnr&gt;split[||]nth[1]] }}} &gt;
 &lt;$vars 
-v1={{{[&lt;v0&gt;split[(|)]nth[1]]}}}
+v1={{{[&lt;v0&gt;split[|]nth[1]]}}}
 p1={{{ [&lt;arrayfnr&gt;splitbefore&lt;v0&gt;] }}}
 &gt;
 
-&lt;$list filter=&quot;[&lt;v0&gt;split[(|)]nth[2]]&quot; variable=v2 &gt;
+&lt;$list filter=&quot;[&lt;v0&gt;split[|]nth[2]]&quot; variable=v2 &gt;
 &lt;$wikify 
 name=wiki 
 text=&quot;&quot;&quot;&lt;$macrocall $name=fnr src=&lt;&lt;src&gt;&gt; f=&lt;&lt;v1&gt;&gt; r=&lt;&lt;v2&gt;&gt; /&gt;&quot;&quot;&quot; output=html mode=inline&gt;
@@ -14362,7 +14364,7 @@ text=&quot;&quot;&quot;&lt;$macrocall $name=fnr src=&lt;&lt;src&gt;&gt; f=&lt;&l
 &lt;$macrocall 
 $name=findAndReplace 
 src=&lt;&lt;wiki&gt;&gt; 
-arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[(;)]] }}} /&gt;
+arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 
 &lt;/$wikify&gt;
 &lt;/$list&gt;
@@ -14374,7 +14376,7 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[(;)]] }}} /&gt;
 &lt;/$vars&gt;
 \end
 
-&lt;&lt;findAndReplace &quot;abc;;def;;gih&quot; &quot;;;(|)&lt;br&gt;(;)abc(|)123(;)gih(|)789&quot;&gt;&gt;</pre>
+&lt;&lt;findAndReplace &quot;abc;;def;;gih&quot; &quot;;;|&lt;br&gt;||abc|123||gih|789&quot;&gt;&gt;</pre>
 </div>
 <div created="20191108102105838" modified="20191111025718760" tags="Testcase" title="New Tiddler (not work) too many problem">
 <pre>\define gettoken(src,regx,act:&quot;t&quot;)
@@ -14582,6 +14584,67 @@ lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/rus
 
 
 </pre>
+</div>
+<div created="20191118023339869" modified="20191118035719563" tags="" title="New Tiddler 1">
+<pre>\define dp(n,s)
+`$s$$n$`&lt;br&gt;[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;&lt;&lt;$n$&gt;&gt;&lt;hr&gt;
+\end
+
+\define fnrxx(src,f,r)
+\whitespace trim
+&lt;$vars src=&lt;&lt;__src__&gt;&gt; f=&lt;&lt;__f__&gt;&gt; r=&lt;&lt;__r__&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;src&gt;split&lt;f&gt;join&lt;r&gt;]&quot; variable=v &gt;&lt;&lt;v&gt;&gt;&lt;/$list&gt;&lt;$vars&gt;
+\end
+
+\define fnr-wiki(src,arrayfnr)
+\whitespace trim
+&lt;$vars src=&lt;&lt;__src__&gt;&gt; arrayfnr=&lt;&lt;__arrayfnr__&gt;&gt; &gt;
+
+&lt;$reveal type=&quot;match&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
+
+$src$
+&lt;/$reveal&gt;
+
+&lt;$reveal type=&quot;nomatch&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
+
+&lt;$vars 
+v0={{{ [&lt;arrayfnr&gt;split[||]nth[1]] }}} &gt;
+&lt;$vars 
+v1={{{[&lt;v0&gt;split[|]nth[1]]}}}
+p1={{{ [&lt;arrayfnr&gt;splitbefore&lt;v0&gt;] }}}
+&gt;
+
+&lt;$list filter=&quot;[&lt;v0&gt;split[|]nth[2]]&quot; variable=v2 &gt;
+&lt;!--&lt;$wikify 
+name=wiki 
+text=&quot;&quot;&quot;&lt;$macrocall $name=fnr src=&lt;&lt;src&gt;&gt; f=&lt;&lt;v1&gt;&gt; r=&lt;&lt;v2&gt;&gt; /&gt;&quot;&quot;&quot; output=html mode=inline&gt;
+--&gt;
+
+&lt;$vars wiki={{{ [&lt;src&gt;split&lt;v1&gt;join&lt;v2&gt;] }}}&gt;
+
+&lt;$macrocall 
+$name=fnr-wiki
+src=&lt;&lt;wiki&gt;&gt; 
+arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
+
+&lt;/$vars&gt;
+&lt;!--&lt;/$wikify&gt;--&gt;
+&lt;/$list&gt;
+
+&lt;/$vars&gt;
+&lt;/$vars&gt;
+
+&lt;/$reveal&gt;
+&lt;/$vars&gt;
+\end
+
+&lt;&lt;fnr-wiki &quot;&quot;&quot;
+
+|abc|def|gih|
+|123|456|789|
+
+&quot;&quot;&quot; 
+&quot;;;|&lt;br&gt;||abc|123||gih|789&quot;&gt;&gt;</pre>
 </div>
 <div created="20191109114334828" modified="20191111025649930" tags="Testcase" title="New Tiddler mark up">
 <pre>\define .zli(src)
