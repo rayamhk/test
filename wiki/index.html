@@ -553,6 +553,10 @@ Error message and password prompt
 
 <li>Javascript - 初學者學習分享</li>
 
+<li>JavaScript30 - 01 - JavaScript Drum Kit - Gua's Note</li>
+
+<li>JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note</li>
+
 <li>join filter source code</li>
 
 <li>Joke 1</li>
@@ -10659,10 +10663,10 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191112113231234" modified="20191112113231798" title="$:/state/shiraz/slider-macro/TiddlyWiki News/BJ Tools-1491930177">
 <pre>no</pre>
 </div>
-<div created="20190925111220464" modified="20191116064742584" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20190925111220464" modified="20191118113719427" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
-<div created="20190927103152783" modified="20191114101324939" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20191118121941445" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -10824,7 +10828,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191118022700859" list="[[New Tiddler 1]] [[New Tiddler]] GettingStarted [[Table of Contents]]" modified="20191118022700859" title="$:/StoryList">
+<div created="20191118082558574" list="[[JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note]] [[JavaScript30 - 01 - JavaScript Drum Kit - Gua's Note]] [[New Tiddler]] [[New Tiddler 1]] GettingStarted [[Table of Contents]] Javascript [[Javascript - 初學者學習分享]]" modified="20191118092016304" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191115082304574" title="$:/temp/advancedsearch">
@@ -10945,8 +10949,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20191114081301270" modified="20191116045528165" title="$:/temp/search">
-<pre>find</pre>
+<div created="20191114081301270" modified="20191118083101275" title="$:/temp/search">
+<pre>dp(</pre>
 </div>
 <div created="20191113124414932" modified="20191113124418015" title="$:/temp/slider-macro/$:/temp/commander/logs/tid-1/$(label$)/--1291313091">
 <pre>no</pre>
@@ -12223,9 +12227,9 @@ var f = false;
 
 </pre>
 </div>
-<div created="20191031072226483" modified="20191105025122455" tags="Javascript" title="Javascript - 初學者學習分享">
+<div created="20191031072226483" modified="20191118092101731" tags="Javascript" title="Javascript - 初學者學習分享">
 <pre>!! 標籤`&lt;script&gt;`中是否要加入`type=&quot;text/javascript&quot;`問題
-: 老舊的實例可能會在`&lt;script&gt;` 標籤中使用type=&quot;text/javascript&quot;。現在已經不必這樣做了。~JavaScript 是所有現代瀏覽器以及HTML5 中的默認腳本語言。
+: 老舊的實例可能會在`&lt;script&gt;` 標籤中使用type=&quot;text/javascript&quot;。現在已經不必這樣做了。JavaScript 是所有現代瀏覽器以及HTML5 中的默認腳本語言。
 
 !! javascript正確於html放置位置 
 : 1. 可位於HTML 的`&lt;body&gt;` 或`&lt;head&gt;` 部分中，或者同時存在於兩個部分中。
@@ -12343,6 +12347,408 @@ for (i=0;i&lt;=10;i++){
 //結果：0,1,2,4,5,6,7,8,9 跳過3
 ```
 </pre>
+</div>
+<div class="" created="20191118113435716" modified="20191118114235138" tags="" title="JavaScript30 - 01 - JavaScript Drum Kit - Gua's Note" type="text/vnd.tiddlywiki">
+<pre>```
+html {
+  font-size: 10px;
+  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+  background-size: cover;
+}
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+}
+```
+
+
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript30 - 01 - JavaScript Drum Kit | Gua's Note&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+    &lt;script src=&quot;ga.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;style&gt;
+        .GuaHsu-header {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+            color: #7ff3cb;
+            font-size: 20px;
+            font-weight: 100;
+        }
+
+        .GuaHsu-header span {
+            margin: 0 5px;
+        }
+
+        .GuaHsu-header a {
+            text-decoration: none;
+            color: unset;
+        }
+    &lt;/style&gt;
+    &lt;div class=&quot;GuaHsu-header&quot;&gt;
+        &lt;span&gt;&lt;a href=&quot;https://guahsu.io/categories/JavaScript30/&quot; target=&quot;_blank&quot;&gt;JavaScript30 心得&lt;/a&gt;&lt;/span&gt;
+        &lt;span&gt;|&lt;/span&gt;
+        &lt;span&gt;&lt;a href=&quot;https://github.com/guahsu/JavaScript30&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;keys&quot;&gt;
+        &lt;div data-key=&quot;65&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;A&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;clap&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;83&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;S&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;hihat&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;68&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;D&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;kick&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;70&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;F&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;openhat&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;71&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;G&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;boom&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;72&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;H&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;ride&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;74&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;J&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;snare&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;75&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;K&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;tom&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div data-key=&quot;76&quot; class=&quot;key&quot;&gt;
+            &lt;kbd&gt;L&lt;/kbd&gt;
+            &lt;span class=&quot;sound&quot;&gt;tink&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;audio data-key=&quot;65&quot; src=&quot;sounds/clap.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;83&quot; src=&quot;sounds/hihat.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;68&quot; src=&quot;sounds/kick.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;70&quot; src=&quot;sounds/openhat.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;71&quot; src=&quot;sounds/boom.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;72&quot; src=&quot;sounds/ride.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;74&quot; src=&quot;sounds/snare.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;75&quot; src=&quot;sounds/tom.wav&quot;&gt;&lt;/audio&gt;
+    &lt;audio data-key=&quot;76&quot; src=&quot;sounds/tink.wav&quot;&gt;&lt;/audio&gt;
+    &lt;script&gt;
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            e.target.classList.remove('playing');
+        }
+        function playSound(e) {
+            let keyNo = e.keyCode || this.getAttribute('data-key'); //add
+            const audio = document.querySelector(`audio[data-key=&quot;${keyNo}&quot;]`);
+            const key = document.querySelector(`div[data-key=&quot;${keyNo}&quot;]`);
+            if (!audio) return;
+
+            key.classList.add('playing');
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        const keys = Array.from(document.querySelectorAll('.key'));
+        const listenTarget = ['window', 'click']
+        keys.forEach(key =&gt; key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+        keys.forEach(key =&gt; key.addEventListener('click', playSound)); //add
+    &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+```</pre>
+</div>
+<div created="20191118120739697" modified="20191118121939130" tags="" title="JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note">
+<pre>```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript30 - 04 - Array Cardio Day 1 | Gua's Note&lt;/title&gt;
+    &lt;script src=&quot;ga.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+        &lt;style&gt;
+        .GuaHsu-header {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+            color: #7ff3cb;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .GuaHsu-header span{
+            margin: 0 5px;
+        }
+        .GuaHsu-header a{
+            text-decoration: none;
+            color: unset;
+        }
+    &lt;/style&gt;
+    &lt;div class=&quot;GuaHsu-header&quot;&gt;
+        &lt;span&gt;&lt;a href=&quot;https://guahsu.io/categories/JavaScript30/&quot; target=&quot;_blank&quot;&gt;JavaScript30 心得&lt;/a&gt;&lt;/span&gt;
+        &lt;span&gt;|&lt;/span&gt;
+        &lt;span&gt;&lt;a href=&quot;https://github.com/guahsu/JavaScript30&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;em&gt;～要打開console來看唷～&lt;/em&gt; ������&lt;/p&gt;
+    &lt;script&gt;
+        // Get your shorts on - this is an array workout!
+        // ## Array Cardio Day 1
+
+        // Some data we can work with
+
+        const inventors = [
+            { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+            { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+            { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+            { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+            { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+            { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+            { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+            { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+            { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+            { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+            { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+            { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+        ];
+
+        const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+
+        // Array.prototype.filter()
+        // 1. Filter the list of inventors for those who were born in the 1500'
+        // const fifteen = inventors.filter(function (inventor) {
+        //     if (inventor.year &gt;= 1500 &amp; inventor.year &lt;= 1600) {
+        //         return true;
+        //     }
+        // });
+        const fifteen = inventors.filter(inventor =&gt; (inventor.year &gt;= 1500 &amp;&amp; inventor.year &lt; 1600));
+        console.table(fifteen);
+        // 0: {first: &quot;Galileo&quot;, last: &quot;Galilei&quot;, year: 1564, passed: 1642}
+        // 1: {first: &quot;Johannes&quot;, last: &quot;Kepler&quot;, year: 1571, passed: 1630}
+		
+
+        // Array.prototype.map()
+        // 2. Give us an array of the inventor first and last names
+        const fullNames = inventors.map(inventor =&gt; `${inventor.first} ${inventor.last}`);
+        console.log(fullNames);
+		/*
+			0: &quot;Albert Einstein&quot;
+			1: &quot;Isaac Newton&quot;
+			2: &quot;Galileo Galilei&quot;
+			3: &quot;Marie Curie&quot;
+			4: &quot;Johannes Kepler&quot;
+			5: &quot;Nicolaus Copernicus&quot;
+			6: &quot;Max Planck&quot;
+			7: &quot;Katherine Blodgett&quot;
+			8: &quot;Ada Lovelace&quot;
+			9: &quot;Sarah E. Goode&quot;
+			10: &quot;Lise Meitner&quot;
+			11: &quot;Hanna Hammarström&quot;
+		*/ 
+
+        // Array.prototype.sort()
+        // 3. Sort the inventors by birthdate, oldest to youngest
+        // const ordered = inventors.sort(function(a, b) {
+        //   if(a.year &gt; b.year) {
+        //     return 1;
+        //   } else {
+        //     return -1;
+        //   }
+        // });
+
+        const ordered = inventors.sort((a, b) =&gt; a.year &gt; b.year ? 1 : -1);
+        console.table(ordered);
+		/*
+		    0: {first: &quot;Lise&quot;, last: &quot;Meitner&quot;, year: 1878, passed: 1968}
+            1: {first: &quot;Max&quot;, last: &quot;Planck&quot;, year: 1858, passed: 1947}
+            2: {first: &quot;Isaac&quot;, last: &quot;Newton&quot;, year: 1643, passed: 1727}
+            3: {first: &quot;Katherine&quot;, last: &quot;Blodgett&quot;, year: 1898, passed: 1979}
+            4: {first: &quot;Hanna&quot;, last: &quot;Hammarström&quot;, year: 1829, passed: 1909}
+            5: {first: &quot;Galileo&quot;, last: &quot;Galilei&quot;, year: 1564, passed: 1642}
+            6: {first: &quot;Albert&quot;, last: &quot;Einstein&quot;, year: 1879, passed: 1955}
+            7: {first: &quot;Nicolaus&quot;, last: &quot;Copernicus&quot;, year: 1473, passed: 1543}
+			8: {first: &quot;Marie&quot;, last: &quot;Curie&quot;, year: 1867, passed: 1934}
+			9: {first: &quot;Johannes&quot;, last: &quot;Kepler&quot;, year: 1571, passed: 1630}
+			10: {first: &quot;Sarah E.&quot;, last: &quot;Goode&quot;, year: 1855, passed: 1905}
+			11: {first: &quot;Ada&quot;, last: &quot;Lovelace&quot;, year: 1815, passed: 1852}
+		*/
+
+        // Array.prototype.reduce()
+        // 4. How many years did all the inventors live?
+        const totalYears = inventors.reduce((total, inventor) =&gt; {
+            return total + (inventor.passed - inventor.year);
+        }, 0);
+        console.log(totalYears);
+		// 861
+
+        // 5. Sort the inventors by years lived
+        const oldest = inventors.sort(function (a, b) {
+            const lastInventor = a.passed - a.year;
+            const nextInventor = b.passed - b.year;
+            return lastInventor &gt; nextInventor ? -1 : 1;
+        });
+        console.table(oldest);
+		/*
+			0: {first: &quot;Lise&quot;, last: &quot;Meitner&quot;, year: 1878, passed: 1968}
+			1: {first: &quot;Max&quot;, last: &quot;Planck&quot;, year: 1858, passed: 1947}
+			2: {first: &quot;Isaac&quot;, last: &quot;Newton&quot;, year: 1643, passed: 1727}
+			3: {first: &quot;Katherine&quot;, last: &quot;Blodgett&quot;, year: 1898, passed: 1979}
+			4: {first: &quot;Hanna&quot;, last: &quot;Hammarström&quot;, year: 1829, passed: 1909}
+			5: {first: &quot;Galileo&quot;, last: &quot;Galilei&quot;, year: 1564, passed: 1642}
+			6: {first: &quot;Albert&quot;, last: &quot;Einstein&quot;, year: 1879, passed: 1955}
+			7: {first: &quot;Nicolaus&quot;, last: &quot;Copernicus&quot;, year: 1473, passed: 1543}
+			8: {first: &quot;Marie&quot;, last: &quot;Curie&quot;, year: 1867, passed: 1934}
+			9: {first: &quot;Johannes&quot;, last: &quot;Kepler&quot;, year: 1571, passed: 1630}
+			10: {first: &quot;Sarah E.&quot;, last: &quot;Goode&quot;, year: 1855, passed: 1905}
+			11: {first: &quot;Ada&quot;, last: &quot;Lovelace&quot;, year: 1815, passed: 1852}
+		*/
+
+        // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+        // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+        // const category = document.querySelector('.mw-category');
+        // const links = Array.from(category.querySelectorAll('a'));
+        // const de = links
+        //             .map(link =&gt; link.textContent)
+        //             .filter(streetName =&gt; streetName.includes('de'));
+
+        // 7. sort Exercise
+        // Sort the people alphabetically by last name
+        const alpha = people.sort((lastOne, nextOne) =&gt; {
+            const [aLast, aFirst] = lastOne.split(', ');
+            const [bLast, bFirst] = nextOne.split(', ');
+            return aLast &gt; bLast ? 1 : -1;
+        });
+        console.log(alpha);
+		/*
+			0: &quot;Beck, Glenn&quot;
+			1: &quot;Becker, Carl&quot;
+			2: &quot;Beckett, Samuel&quot;
+			3: &quot;Beddoes, Mick&quot;
+			4: &quot;Beecher, Henry&quot;
+			5: &quot;Beethoven, Ludwig&quot;
+			6: &quot;Begin, Menachem&quot;
+			7: &quot;Belloc, Hilaire&quot;
+			8: &quot;Bellow, Saul&quot;
+			9: &quot;Ben-Gurion, David&quot;
+			10: &quot;Benchley, Robert&quot;
+			11: &quot;Benenson, Peter&quot;
+			12: &quot;Benjamin, Walter&quot;
+			13: &quot;Benn, Tony&quot;
+			14: &quot;Bennington, Chester&quot;
+			15: &quot;Benson, Leana&quot;
+			16: &quot;Bent, Silas&quot;
+			17: &quot;Bentsen, Lloyd&quot;
+			18: &quot;Berger, Ric&quot;
+			19: &quot;Bergman, Ingmar&quot;
+			20: &quot;Berio, Luciano&quot;
+			21: &quot;Berle, Milton&quot;
+			22: &quot;Berlin, Irving&quot;
+			23: &quot;Berne, Eric&quot;
+			24: &quot;Bernhard, Sandra&quot;
+			25: &quot;Berra, Yogi&quot;
+			26: &quot;Berry, Wendell&quot;
+			27: &quot;Berry, Halle&quot;
+			28: &quot;Bethea, Erin&quot;
+			29: &quot;Bevan, Aneurin&quot;
+			30: &quot;Bevel, Ken&quot;
+			31: &quot;Biden, Joseph&quot;
+			32: &quot;Bierce, Ambrose&quot;
+			33: &quot;Biko, Steve&quot;
+			34: &quot;Billings, Josh&quot;
+			35: &quot;Biondo, Frank&quot;
+			36: &quot;Birrell, Augustine&quot;
+			37: &quot;Black Elk&quot;
+			38: &quot;Blair, Tony&quot;
+			39: &quot;Blair, Robert&quot;
+			40: &quot;Blake, William&quot;
+		*/
+
+        // 8. Reduce Exercise
+        // Sum up the instances of each of these
+        const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
+
+        const transportation = data.reduce(function (obj, item) {
+            if (!obj[item]) {
+                obj[item] = 0;
+            }
+            obj[item]++;
+            return obj;
+        }, {});
+
+        console.log(transportation);
+		/*
+			bike: 2
+			car: 5
+			pogostick: 1
+			truck: 3
+			van: 2
+			walk: 2		
+		*/
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+```</pre>
 </div>
 <div created="20191030121029706" modified="20191030121121771" tags="" title="join filter source code" type="text/plain">
 <pre>/*\
@@ -14328,7 +14734,7 @@ width:16px;
   color: inherit;
 }</pre>
 </div>
-<div created="20191116045629728" modified="20191118023324932" tags="" title="New Tiddler">
+<div created="20191116045629728" modified="20191118084041326" tags="" title="New Tiddler">
 <pre>\define dp(n,s)
 `$s$$n$`&lt;br&gt;[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;&lt;&lt;$n$&gt;&gt;&lt;hr&gt;
 \end
@@ -14376,7 +14782,13 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 &lt;/$vars&gt;
 \end
 
-&lt;&lt;findAndReplace &quot;abc;;def;;gih&quot; &quot;;;|&lt;br&gt;||abc|123||gih|789&quot;&gt;&gt;</pre>
+&lt;&lt;findAndReplace 
+&quot;&quot;&quot;
+
+!!abc;;def;;gih
+&quot;&quot;&quot; 
+&quot;;;|&lt;br&gt;||abc|123||gih|789&quot;
+&gt;&gt;</pre>
 </div>
 <div created="20191108102105838" modified="20191111025718760" tags="Testcase" title="New Tiddler (not work) too many problem">
 <pre>\define gettoken(src,regx,act:&quot;t&quot;)
@@ -14585,21 +14997,14 @@ lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/rus
 
 </pre>
 </div>
-<div created="20191118023339869" modified="20191118035719563" tags="" title="New Tiddler 1">
+<div created="20191118023339869" modified="20191118084050634" tags="" title="New Tiddler 1">
 <pre>\define dp(n,s)
 `$s$$n$`&lt;br&gt;[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;&lt;&lt;$n$&gt;&gt;&lt;hr&gt;
-\end
-
-\define fnrxx(src,f,r)
-\whitespace trim
-&lt;$vars src=&lt;&lt;__src__&gt;&gt; f=&lt;&lt;__f__&gt;&gt; r=&lt;&lt;__r__&gt;&gt; &gt;
-&lt;$list filter=&quot;[&lt;src&gt;split&lt;f&gt;join&lt;r&gt;]&quot; variable=v &gt;&lt;&lt;v&gt;&gt;&lt;/$list&gt;&lt;$vars&gt;
 \end
 
 \define fnr-wiki(src,arrayfnr)
 \whitespace trim
 &lt;$vars src=&lt;&lt;__src__&gt;&gt; arrayfnr=&lt;&lt;__arrayfnr__&gt;&gt; &gt;
-
 &lt;$reveal type=&quot;match&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
 
 $src$
@@ -14607,28 +15012,15 @@ $src$
 
 &lt;$reveal type=&quot;nomatch&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
 
-&lt;$vars 
-v0={{{ [&lt;arrayfnr&gt;split[||]nth[1]] }}} &gt;
-&lt;$vars 
-v1={{{[&lt;v0&gt;split[|]nth[1]]}}}
+&lt;$vars v0={{{ [&lt;arrayfnr&gt;split[||]nth[1]] }}} &gt;
+&lt;$vars v1={{{[&lt;v0&gt;split[|]nth[1]]}}}
 p1={{{ [&lt;arrayfnr&gt;splitbefore&lt;v0&gt;] }}}
 &gt;
 
 &lt;$list filter=&quot;[&lt;v0&gt;split[|]nth[2]]&quot; variable=v2 &gt;
-&lt;!--&lt;$wikify 
-name=wiki 
-text=&quot;&quot;&quot;&lt;$macrocall $name=fnr src=&lt;&lt;src&gt;&gt; f=&lt;&lt;v1&gt;&gt; r=&lt;&lt;v2&gt;&gt; /&gt;&quot;&quot;&quot; output=html mode=inline&gt;
---&gt;
-
-&lt;$vars wiki={{{ [&lt;src&gt;split&lt;v1&gt;join&lt;v2&gt;] }}}&gt;
-
-&lt;$macrocall 
-$name=fnr-wiki
-src=&lt;&lt;wiki&gt;&gt; 
+&lt;$macrocall $name=fnr-wiki 
+src={{{ [&lt;src&gt;split&lt;v1&gt;join&lt;v2&gt;] }}}
 arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
-
-&lt;/$vars&gt;
-&lt;!--&lt;/$wikify&gt;--&gt;
 &lt;/$list&gt;
 
 &lt;/$vars&gt;
@@ -14640,6 +15032,7 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 
 &lt;&lt;fnr-wiki &quot;&quot;&quot;
 
+!!Hello
 |abc|def|gih|
 |123|456|789|
 
@@ -15532,12 +15925,12 @@ use of `$output=text/plain` in macrocall
 !! Demo
 http://tw5-zh.tiddlyspot.com/</pre>
 </div>
-<div created="20191107032116991" modified="20191111025732357" tags="Testcase" title="token test experimental">
-<pre>\define simple(p)
+<div created="20191107032116991" modified="20191118083735902" tags="Testcase" title="token test experimental">
+<pre>\define debug-simple(p)
 &lt;$text text=&lt;&lt;__p__&gt;&gt; /&gt;
 \end
 
-\define dump(n)
+\define debug-dump(n)
 \whitespace trim
 `$n$`[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;][&lt;&lt;$n$&gt;&gt;]&lt;br&gt;
 \end
@@ -15553,7 +15946,7 @@ http://tw5-zh.tiddlyspot.com/</pre>
   stop=&lt;&lt;__end__&gt;&gt;
   output-macro=&lt;&lt;__output__&gt;&gt;
   mode=&lt;&lt;__mode__&gt;&gt;
-  debug-print=dump0
+  debug-print=debug-dump
 &gt;
 &lt;&lt;dp fulltext&gt;&gt;
 &lt;$wikify name=&quot;tkn&quot; 
