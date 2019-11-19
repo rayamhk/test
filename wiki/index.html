@@ -571,6 +571,8 @@ Error message and password prompt
 
 <li>JavaScript30 - 05 - Flex Panel Gallery - Gua's Note</li>
 
+<li>JavaScript30 - 06 - Type Ahead - Gua's Note</li>
+
 <li>join filter source code</li>
 
 <li>Joke 1</li>
@@ -10850,7 +10852,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191119102123647" list="[[JavaScript30 - 05 - Flex Panel Gallery - Gua's Note]] [[JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note]] $:/AdvancedSearch $:/core/modules/filters/regexp.js $:/core/modules/filters.js $:/ControlPanel [[Find and replace trying]]" modified="20191119105119899" title="$:/StoryList">
+<div list="[[JavaScript30 - 06 - Type Ahead - Gua's Note]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191119104746755" title="$:/temp/advancedsearch">
@@ -13082,6 +13084,189 @@ kbd {
 &lt;/body&gt;
 
 &lt;/html&gt;
+```</pre>
+</div>
+<div created="20191119112327283" modified="20191119112648458" tags="Javascript" title="JavaScript30 - 06 - Type Ahead - Gua's Note">
+<pre>
+: Source: https://github.com/guahsu/JavaScript30/tree/master/06_Type-Ahead
+
+
+!! Html
+```
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript30 - 06 - Type Ahead | Gua's Note&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+    &lt;script src=&quot;ga.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;style&gt;
+        .GuaHsu-header {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+            color: #7ff3cb;
+            font-size: 20px;
+            font-weight: 100;
+        }
+
+        .GuaHsu-header span {
+            margin: 0 5px;
+        }
+
+        .GuaHsu-header a {
+            text-decoration: none;
+            color: unset;
+        }
+    &lt;/style&gt;
+    &lt;div class=&quot;GuaHsu-header&quot;&gt;
+        &lt;span&gt;&lt;a href=&quot;https://guahsu.io/categories/JavaScript30/&quot; target=&quot;_blank&quot;&gt;JavaScript30 心得&lt;/a&gt;&lt;/span&gt;
+        &lt;span&gt;|&lt;/span&gt;
+        &lt;span&gt;&lt;a href=&quot;https://github.com/guahsu/JavaScript30&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;form class=&quot;search-form&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;search&quot; placeholder=&quot;City or State&quot;&gt;
+        &lt;ul class=&quot;suggestions&quot;&gt;
+            &lt;li&gt;Filter for a city&lt;/li&gt;
+            &lt;li&gt;or a state&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+        const cities = [];
+        fetch(endpoint)
+            .then(blob =&gt; blob.json())
+            .then(data =&gt; cities.push(...data));
+
+        function findMatches(wordToMatch, cities) {
+            return cities.filter(place =&gt; {
+                // here we need to figure out if the city or state matches what was searched
+                const regex = new RegExp(wordToMatch, 'gi');
+                return place.city.match(regex) || place.state.match(regex)
+            });
+        }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function displayMatches() {
+            const matchArray = findMatches(this.value, cities);
+            const html = matchArray.map(place =&gt; {
+                const regex = new RegExp(this.value, 'gi');
+                const cityName = place.city.replace(regex, `&lt;span class=&quot;hl&quot;&gt;${this.value}&lt;/span&gt;`);
+                const stateName = place.state.replace(regex, `&lt;span class=&quot;hl&quot;&gt;${this.value}&lt;/span&gt;`);
+                return `
+      &lt;li&gt;
+        &lt;span class=&quot;name&quot;&gt;${cityName}, ${stateName}&lt;/span&gt;
+        &lt;span class=&quot;population&quot;&gt;${numberWithCommas(place.population)}&lt;/span&gt;
+      &lt;/li&gt;
+    `;
+            }).sort().join('');
+            suggestions.innerHTML = html;
+        }
+
+        const searchInput = document.querySelector('.search');
+        const suggestions = document.querySelector('.suggestions');
+
+        searchInput.addEventListener('change', displayMatches);
+        searchInput.addEventListener('keyup', displayMatches);
+
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+```
+
+
+!! Style.css
+```
+
+    html {
+      box-sizing: border-box;
+      background:#ffc600;
+      font-family:'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    input {
+      width: 100%;
+      padding:20px;
+    }
+
+    .search-form {
+      max-width:400px;
+      margin:50px auto;
+    }
+
+    input.search {
+      margin: 0;
+      text-align: center;
+      outline:0;
+      border: 10px solid #F7F7F7;
+      width: 120%;
+      left: -10%;
+      position: relative;
+      top: 10px;
+      z-index: 2;
+      border-radius: 5px;
+      font-size: 40px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+    }
+
+
+    .suggestions {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      /*perspective:20px;*/
+    }
+    .suggestions li {
+      background:white;
+      list-style: none;
+      border-bottom: 1px solid #D8D8D8;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+      margin:0;
+      padding:20px;
+      transition:background 0.2s;
+      display:flex;
+      justify-content:space-between;
+      text-transform: capitalize;
+    }
+
+    .suggestions li:nth-child(even) {
+      transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+      background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+    }
+    .suggestions li:nth-child(odd) {
+      transform: perspective(100px) rotateX(-3deg) translateY(3px);
+      background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+    }
+
+    span.population {
+      font-size: 15px;
+    }
+
+    .hl {
+      background:#ffc600;
+    }
+
+    a {
+      color:black;
+      background:rgba(0,0,0,0.1);
+      text-decoration: none;
+    }
+
 ```</pre>
 </div>
 <div created="20191030121029706" modified="20191030121121771" tags="" title="join filter source code" type="text/plain">
