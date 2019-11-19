@@ -569,6 +569,8 @@ Error message and password prompt
 
 <li>JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note</li>
 
+<li>JavaScript30 - 05 - Flex Panel Gallery - Gua's Note</li>
+
 <li>join filter source code</li>
 
 <li>Joke 1</li>
@@ -10731,8 +10733,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191104113916189" modified="20191119102539413" title="$:/state/tab--1280166252">
 <pre>Recent 20</pre>
 </div>
-<div created="20191004082232960" modified="20191115030523842" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div created="20191004082232960" modified="20191119103950184" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
 </div>
 <div created="20191009084408352" modified="20191009084408352" title="$:/state/tab--1550041217">
 <pre>$:/plugins/malgam/version-control/versionTab</pre>
@@ -10848,11 +10850,11 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191119102123647" list="[[Find and replace trying]]" modified="20191119103548127" title="$:/StoryList">
+<div created="20191119102123647" list="[[JavaScript30 - 05 - Flex Panel Gallery - Gua's Note]] [[JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note]] $:/AdvancedSearch $:/core/modules/filters/regexp.js $:/core/modules/filters.js $:/ControlPanel [[Find and replace trying]]" modified="20191119105119899" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20191114081306760" modified="20191115082304574" title="$:/temp/advancedsearch">
-<pre>collective</pre>
+<div created="20191114081306760" modified="20191119104746755" title="$:/temp/advancedsearch">
+<pre>modules/filter</pre>
 </div>
 <div created="20191115030622470" modified="20191115030622470" title="$:/temp/commander">
 <pre>[[New Tiddler]]</pre>
@@ -10969,8 +10971,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
     }
 }</pre>
 </div>
-<div created="20191114081301270" modified="20191119103424036" title="$:/temp/search">
-<pre>showcase</pre>
+<div created="20191114081301270" modified="20191119104722400" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20191113124414932" modified="20191113124418015" title="$:/temp/slider-macro/$:/temp/commander/logs/tid-1/$(label$)/--1291313091">
 <pre>no</pre>
@@ -12872,6 +12874,211 @@ kbd {
 			walk: 2		
 		*/
     &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+```</pre>
+</div>
+<div created="20191119110328317" modified="20191119110504721" tags="Javascript" title="JavaScript30 - 05 - Flex Panel Gallery - Gua's Note">
+<pre>: Source: https://github.com/guahsu/JavaScript30/tree/master/05_Flex-Panel-Gallery
+
+
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript30 - 05 - Flex Panel Gallery | Gua's Note&lt;/title&gt;
+    &lt;link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'&gt;
+    &lt;script src=&quot;ga.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;style&gt;
+        .GuaHsu-header {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+            color: #7ff3cb;
+            font-size: 20px;
+            font-weight: 100;
+        }
+
+        .GuaHsu-header span {
+            margin: 0 5px;
+        }
+
+        .GuaHsu-header a {
+            text-decoration: none;
+            color: unset;
+        }
+    &lt;/style&gt;
+    &lt;div class=&quot;GuaHsu-header&quot;&gt;
+        &lt;span&gt;&lt;a href=&quot;https://guahsu.io/categories/JavaScript30/&quot; target=&quot;_blank&quot;&gt;JavaScript30 心得&lt;/a&gt;&lt;/span&gt;
+        &lt;span&gt;|&lt;/span&gt;
+        &lt;span&gt;&lt;a href=&quot;https://github.com/guahsu/JavaScript30&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;style&gt;
+        html {
+            box-sizing: border-box;
+            background: #ffc600;
+            font-family: 'helvetica neue';
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .panels {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .panel {
+            background: #6B0F9C;
+            box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            align-items: center;
+            /* Safari transitionend event.propertyName === flex */
+            /* Chrome + FF transitionend event.propertyName === flex-grow */
+            transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+            flex: 1;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel1 {
+            background-image: url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500);
+        }
+
+        .panel2 {
+            background-image: url(https://source.unsplash.com/1CD3fd8kHnE/1500x1500);
+        }
+
+        .panel3 {
+            background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=faces&amp;cs=tinysrgb&amp;w=1500&amp;h=1500&amp;fit=crop&amp;s=967e8a713a4e395260793fc8c802901d);
+        }
+
+        .panel4 {
+            background-image: url(https://source.unsplash.com/ITjiVXcwVng/1500x1500);
+        }
+
+        .panel5 {
+            background-image: url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
+        }
+        /* Flex Items */
+
+        .panel&gt;* {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel&gt;*:first-child {
+            transform: translateY(-100%);
+        }
+
+        .panel.open-active&gt;*:first-child {
+            transform: translateY(0);
+        }
+
+        .panel&gt;*:last-child {
+            transform: translateY(100%);
+        }
+
+        .panel.open-active&gt;*:last-child {
+            transform: translateY(0);
+        }
+
+        .panel p {
+            text-transform: uppercase;
+            font-family: 'Amatic SC', cursive;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+            font-size: 2em;
+        }
+
+        .panel p:nth-child(2) {
+            font-size: 4em;
+        }
+
+        .panel.open {
+            flex: 5;
+            font-size: 40px;
+        }
+    &lt;/style&gt;
+
+
+    &lt;div class=&quot;panels&quot;&gt;
+        &lt;div class=&quot;panel panel1&quot;&gt;
+            &lt;p&gt;Hey&lt;/p&gt;
+            &lt;p&gt;Let's&lt;/p&gt;
+            &lt;p&gt;Dance&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;panel panel2&quot;&gt;
+            &lt;p&gt;Give&lt;/p&gt;
+            &lt;p&gt;Take&lt;/p&gt;
+            &lt;p&gt;Receive&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;panel panel3&quot;&gt;
+            &lt;p&gt;Experience&lt;/p&gt;
+            &lt;p&gt;It&lt;/p&gt;
+            &lt;p&gt;Today&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;panel panel4&quot;&gt;
+            &lt;p&gt;Give&lt;/p&gt;
+            &lt;p&gt;All&lt;/p&gt;
+            &lt;p&gt;You can&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;panel panel5&quot;&gt;
+            &lt;p&gt;Life&lt;/p&gt;
+            &lt;p&gt;In&lt;/p&gt;
+            &lt;p&gt;Motion&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const panels = document.querySelectorAll('.panel');
+
+        let lastClickPanel = document.querySelector('.panels');
+
+        function toggleOpen() {
+            if (this !== lastClickPanel) {
+                lastClickPanel.classList.remove('open');
+                lastClickPanel = this;
+            }
+            this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+            console.log(e.propertyName);
+            if (e.propertyName.includes('flex')) {
+                this.classList.toggle('open-active');
+            }
+        }
+
+        panels.forEach(panel =&gt; panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel =&gt; panel.addEventListener('transitionend', toggleActive));
+    &lt;/script&gt;
+
 &lt;/body&gt;
 
 &lt;/html&gt;
