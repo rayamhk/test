@@ -565,6 +565,8 @@ Error message and password prompt
 
 <li>Javascript - 初學者學習分享</li>
 
+<li>Javascript Tips</li>
+
 <li>JavaScript30 - 01 - JavaScript Drum Kit - Gua's Note</li>
 
 <li>JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note</li>
@@ -572,6 +574,8 @@ Error message and password prompt
 <li>JavaScript30 - 05 - Flex Panel Gallery - Gua's Note</li>
 
 <li>JavaScript30 - 06 - Type Ahead - Gua's Note</li>
+
+<li>Javascript30 - 07 - Array Cardio Day 2 - Gua's Note</li>
 
 <li>join filter source code</li>
 
@@ -10681,8 +10685,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191112113231234" modified="20191112113231798" title="$:/state/shiraz/slider-macro/TiddlyWiki News/BJ Tools-1491930177">
 <pre>no</pre>
 </div>
-<div created="20190925111220464" modified="20191118113719427" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20190925111220464" modified="20191120110048223" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20190927103152783" modified="20191118121941445" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -10777,7 +10781,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20191113095612213" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Shadows</pre>
 </div>
-<div created="20190925111211913" modified="20191119103400462" title="$:/state/tab/sidebar--595412856">
+<div created="20190925111211913" modified="20191120083010122" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191111025314112" modified="20191111030215213" title="$:/state/toc/Contents-DIY--1339420835">
@@ -10852,7 +10856,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[JavaScript30 - 06 - Type Ahead - Gua's Note]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div created="20191120071605205" list="GettingStarted [[Table of Contents]]" modified="20191120080323390" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191119104746755" title="$:/temp/advancedsearch">
@@ -11912,7 +11916,7 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 &quot;;;|&lt;br&gt;||abc|123||gih|789&quot;
 &gt;&gt;</pre>
 </div>
-<div created="20191118023339869" modified="20191118123012749" tags="" title="Find and replace trying 2">
+<div created="20191118023339869" modified="20191120072309547" tags="" title="Find and replace trying 2">
 <pre>\define dp(n,s)
 `$s$$n$`&lt;br&gt;[&lt;$text text=&lt;&lt;$n$&gt;&gt; /&gt;]&lt;br&gt;&lt;&lt;$n$&gt;&gt;&lt;hr&gt;
 \end
@@ -11928,7 +11932,7 @@ $src$
 &lt;$reveal type=&quot;nomatch&quot; text=0 default={{{ [&lt;arrayfnr&gt;length[]] }}}&gt;
 
 &lt;$vars v0={{{ [&lt;arrayfnr&gt;split[||]nth[1]] }}} &gt;
-&lt;$vars v1={{{[&lt;v0&gt;split[|]nth[1]]}}}
+&lt;$vars v1={{{ [&lt;v0&gt;split[|]nth[1]] }}}
 p1={{{ [&lt;arrayfnr&gt;splitbefore&lt;v0&gt;] }}}
 &gt;
 
@@ -12478,6 +12482,18 @@ for (i=0;i&lt;=10;i++){
 //結果：0,1,2,4,5,6,7,8,9 跳過3
 ```
 </pre>
+</div>
+<div created="20191120093617359" modified="20191120101535193" tags="Javascript" title="Javascript Tips">
+<pre>```
+//protect your variables with scope
+(function() {
+  var now = new Date();
+
+  function doSomething() {
+    alert('the time is ' + now);
+  }
+})();
+```</pre>
 </div>
 <div class="" created="20191118113435716" modified="20191118114235138" tags="" title="JavaScript30 - 01 - JavaScript Drum Kit - Gua's Note" type="text/vnd.tiddlywiki">
 <pre>```
@@ -13087,8 +13103,7 @@ kbd {
 ```</pre>
 </div>
 <div created="20191119112327283" modified="20191119112648458" tags="Javascript" title="JavaScript30 - 06 - Type Ahead - Gua's Note">
-<pre>
-: Source: https://github.com/guahsu/JavaScript30/tree/master/06_Type-Ahead
+<pre>: Source: https://github.com/guahsu/JavaScript30/tree/master/06_Type-Ahead
 
 
 !! Html
@@ -13267,6 +13282,94 @@ kbd {
       text-decoration: none;
     }
 
+```</pre>
+</div>
+<div created="20191120105758558" modified="20191120111131941" tags="Javascript" title="Javascript30 - 07 - Array Cardio Day 2 - Gua's Note">
+<pre>Use of `some()`, `every()`, `find()`, `findIndex()` &amp; `slice()` &amp; spared`...`
+
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;JavaScript30 - 07 - Array Cardio Day 2 | Gua's Note&lt;/title&gt;
+    &lt;script src=&quot;ga.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;style&gt;
+        .GuaHsu-header {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+            color: #7ff3cb;
+            font-size: 20px;
+            font-weight: 100;
+        }
+
+        .GuaHsu-header span {
+            margin: 0 5px;
+        }
+
+        .GuaHsu-header a {
+            text-decoration: none;
+            color: unset;
+        }
+    &lt;/style&gt;
+    &lt;div class=&quot;GuaHsu-header&quot;&gt;
+        &lt;span&gt;&lt;a href=&quot;https://guahsu.io/categories/JavaScript30/&quot; target=&quot;_blank&quot;&gt;JavaScript30 心得&lt;/a&gt;&lt;/span&gt;
+        &lt;span&gt;|&lt;/span&gt;
+        &lt;span&gt;&lt;a href=&quot;https://github.com/guahsu/JavaScript30&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;em&gt;~要打開console看唷~&lt;/em&gt; ������&lt;/p&gt;
+    &lt;script&gt;
+        // ## Array Cardio Day 2
+
+        const people = [
+            { name: 'Wes', year: 1988 },
+            { name: 'Kait', year: 1986 },
+            { name: 'Irv', year: 1970 },
+            { name: 'Lux', year: 2015 },
+        ];
+
+        const comments = [
+            { text: 'Love this!', id: 523423 },
+            { text: 'Super good', id: 823423 },
+            { text: 'You are the best', id: 2039842 },
+            { text: 'Ramen is my fav food ever', id: 123523 },
+            { text: 'Nice Nice Nice!', id: 542328 }
+        ];
+
+        // Some and Every Checks
+        // Array.prototype.some() // is at least one person 19?
+
+        const isAdult = people.some(person =&gt; ((new Date()).getFullYear()) - person.year &gt;= 19);
+        console.log({ isAdult });
+
+        // Array.prototype.every() // is everyone 19?
+        const allAdults = people.every(person =&gt; ((new Date()).getFullYear()) - person.year &gt;= 19);
+        console.log({ allAdults });
+
+        // Array.prototype.find()
+        // Find is like filter, but instead returns just the one you are looking for
+        // find the comment with the ID of 823423
+        const comment = comments.find(comment =&gt; comment.id === 823423);
+        console.log(comment);
+
+        // Array.prototype.findIndex()
+        // Find the comment with this ID
+        // delete the comment with the ID of 823423
+        const index = comments.findIndex(comment =&gt; comment.id === 823423);
+        const newComments = [
+            ...comments.slice(0, index),
+            ...comments.slice(index + 1)
+        ];
+        console.table(newComments);
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
 ```</pre>
 </div>
 <div created="20191030121029706" modified="20191030121121771" tags="" title="join filter source code" type="text/plain">
