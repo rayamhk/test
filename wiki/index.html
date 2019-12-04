@@ -847,6 +847,8 @@ Error message and password prompt
 
 <li>Recent Temperate Tiddlers</li>
 
+<li>regcap2.js</li>
+
 <li>Regexp and Regexps</li>
 
 <li>Regexp example 1</li>
@@ -906,6 +908,8 @@ Error message and password prompt
 <li>TW5 Highlight searched text plugin</li>
 
 <li>Untitled</li>
+
+<li>Untitled 1</li>
 
 <li>Usage</li>
 
@@ -10419,16 +10423,11 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190418033202367" modified="20190925112301971" title="$:/GitHub/Username">
 <pre>rayamhk</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled 1&quot;: {
-            &quot;title&quot;: &quot;Untitled 1&quot;,
-            &quot;text&quot;: &quot;&lt;html&gt;\r\n&lt;body&gt;\r\n&lt;!--StartFragment--&gt;&lt;pre style=\&quot;box-sizing: border-box; overflow: auto; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt;inherit&lt;/code&gt;&lt;/pre&gt;&lt;!--EndFragment--&gt;\r\n&lt;/body&gt;\r\n&lt;/html&gt;&quot;,
-            &quot;type&quot;: &quot;text/html&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Untitled 1]]
+# [[regcap2.js]]</pre>
 </div>
 <div created="20191024122513577" modified="20191024122516424" title="$:/Import!!popup-Untitled">
 <pre>no</pre>
@@ -11063,8 +11062,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20191121112650863" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191122024513970" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190925111211913" modified="20191204115532388" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191111025314112" modified="20191111030215213" title="$:/state/toc/Contents-DIY--1339420835">
 <pre>close</pre>
@@ -11138,7 +11137,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191122012541408" list="[[pick filter tips]] Showcase $:/ControlPanel $:/plugins/kookma/shiraz [[HTML Tool]] [[Online Tools]] GettingStarted [[Table of Contents]]" modified="20191122035517215" title="$:/StoryList">
+<div created="20191204115536999" list="$:/Import regcap2.js [[regexp pattern]] [[Find and replace trying 2]] GettingStarted [[Table of Contents]]" modified="20191204124344665" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191121111903188" title="$:/temp/advancedsearch">
@@ -16906,6 +16905,224 @@ Nos of Entries: &lt;$count filter=&lt;&lt;f&gt;&gt; /&gt;&lt;br/&gt;
 
 &lt;/$set&gt;</pre>
 </div>
+<div created="20191124014428189" modified="20191204113927393" module-type="filteroperator" tags="" title="regcap2.js" type="application/javascript">
+<pre>/*\
+title: $:/core/modules/filters/regcap.js
+type: application/javascript
+module-type: filteroperator
+
+Filter operator for regcap matching
+
+\*/
+(function () {
+  /*jslint node: true, browser: true */
+  /*global $tw: false */
+  &quot;use strict&quot;;
+
+  function escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&amp;');
+  }
+
+  // return a RegExp Object or null if error encountered
+  // text in format (?flag)(regexp) or (regexp)(?flag)
+  var errmsg=[]; // errmsg will save the last error
+  function regexpMaker(text) {
+    var regexp, flags, match = /^\(\?([gim]+)\)/.exec(text);
+    if (match) {
+      flags = match[1];
+      text = text.substr(match[0].length);
+    } else {
+      match = /\(\?([gim]+)\)$/.exec(text);
+      if (match) {
+        flags = match[1];
+        text = text.substr(0, text.length - match[0].length);
+      }
+    }
+    try {
+      regexp = new RegExp(text, flags);
+    } catch (e) {
+      errmsg.push(&quot;&quot; + e);
+      return null;
+    }
+    return regexp;
+  }
+
+  var suffixHas, suffixHasValue, suffixValue, suffixHasValue2;
+
+  function init0(o) {
+    if (o.suffixes) {
+      suffixHas = (idx, flag) =&gt; ((o.suffixes[idx] || []).indexOf(flag) !== -1);
+      suffixHasValue = (idx, flag, fallback) =&gt; {
+        var opt = (o.suffixes[idx] || []).find(e =&gt; e.startsWith(flag));
+        return (opt &amp;&amp; (opt.split(&quot; &quot;, 2).indexOf(flag) === 0)) ? opt.slice(flag.length).trim() : fallback;
+      };
+      suffixHasValue2 = (idx, flag, fallback, fallback2) =&gt; {
+        var str, opt = (o.suffixes[idx] || []).filter(e =&gt; (e.startsWith(flag + &quot; &quot;) || (e == flag)));
+        return (opt.length === 0) ? fallback2 :
+          (str = opt.find(e =&gt; e.startsWith(flag + &quot; &quot;))) ? str.slice(flag.length + 1) :
+          fallback;
+      };
+      suffixValue = (idx, fallback) =&gt; ((o.suffixes[idx] || []).length &gt; 0) ? o.suffixes[idx][0] : fallback;
+    } else {
+      suffixValue = (idx, fallback) =&gt; fallback;
+      suffixHas = (idx, flag) =&gt; false;
+      suffixHasValue = (idx, flag, fallback) =&gt; fallback;
+      suffixHasValue2 = (idx, flag, fallback, fallback2) =&gt; fallback2;
+    }
+  }
+
+  // split the input with '\0' by default, and return the nth item 
+  // user can define splitter text like:picknth[1 splitter-text]
+  /*  
+  exports.picknth = function (source, operator, options) {
+      console.log(&quot;picknth&quot;);
+      var tmp = (&quot;&quot; + operator.operand).split(&quot; &quot;)[0],
+        count = $tw.utils.getInt(tmp, 1),
+        joiner = (&quot;&quot; + operator.operand).slice(tmp.length).trim(),
+        results = [];
+
+      if (!joiner || !joiner.length) joiner = &quot;\0&quot;;
+      source(function (tiddler, title) {
+        (&quot;&quot; + title).split(joiner).forEach((x) =&gt; {
+          results.push(x)
+        });
+      });
+      return (count &lt; 1) ? results : results.slice(count - 1, count);
+    };
+  */
+
+  exports.picknth = function (source, operator, options) {
+    console.log(&quot;picknth&quot;);
+    init0(operator);
+    var joiner = suffixHasValue(0, &quot;sep&quot;, &quot;\0&quot;).trim();
+    var count = $tw.utils.getInt(operator.operand, 1);
+    var results = [];
+    source(function (tiddler, title) {
+      (&quot;&quot; + title).split(joiner).forEach((x) =&gt; results.push(x));
+    });
+    return (count &lt; 1) ? results : results.slice(count - 1, count);
+  };
+
+  exports.casereplacer = function (source, operator, options) {
+    init0(operator);
+    console.log(&quot;casereplace&quot;);
+    var results = [],
+      conds = [],
+      patts = [],
+      res = [],
+      opd = operator.operand;
+    var casemarker = suffixHasValue(0, &quot;casemarker&quot;, &quot;=case-&quot;);
+    var caseall = suffixHas(0, &quot;caseall&quot;);
+    source(function (tiddler, title) {
+      let m = title.split(casemarker, 2);
+      var reg;
+      if (m.length &gt; 1 &amp;&amp; (reg = regexpMaker(m[0]))) {
+        conds.push(reg);
+        patts.push(m[1]);
+      } else results.push(title);
+    });
+    results.forEach(function (item, index, array) {
+      var matched = false;
+      for (var i = 0; i &lt; conds.length; i++) {
+        if (item.search(conds[i]) &gt;= 0) {
+          item = item.replace(conds[i], patts[i]);
+          matched = true;
+        }
+        if (matched &amp;&amp; !caseall) break;
+      }
+      if (matched || (opd.length &amp;&amp; item.search(opd) &gt;= 0)) res.push(item);
+    });
+    return res;
+  };
+
+  exports.recompose = function (source, operator, options) {
+    var results = [],
+      res = [],
+      text = operator.operand;
+    var m, regexp;
+    var lastpos = 0,
+      unmatch = &quot;&quot;;
+    var suffix = escapeRegExp((operator.suffix || &quot;&quot;));
+    regexp = new RegExp(&quot;\\$(\\d+)&quot; + suffix, &quot;g&quot;);
+    console.log(regexp);
+    source(function (tiddler, title) {
+      results.push(title);
+    });
+    while ((m = regexp.exec(text))) {
+      if (m.index) res.push(text.substring(lastpos, m.index));
+      var idx = $tw.utils.getInt(m[1], -1);
+      if (idx &gt;= 0 &amp;&amp; idx &lt; results.length) res.push(results[idx]);
+      else res.push(m[0]);
+      lastpos = regexp.lastIndex;
+    }
+    res.push(text.substring(lastpos));
+    return [res.join(&quot;&quot;)];
+  };
+
+  // Export our filter function
+  exports.capture = function (source, operator, options) {
+    init0(operator);
+    console.log(&quot;capture&quot;);
+    var
+      fields = [],
+      results = [],
+      joiner = suffixHasValue2(1, &quot;join&quot;, &quot;\0&quot;, null),
+      keepMatch = suffixHas(1, &quot;keepMatch&quot;, false),
+      startpos = keepMatch ? 0 : 1,
+      keepUnmatch = suffixHas(1, &quot;keepUnmatch&quot;, false),
+      keepEmptyTitle = suffixHas(1, &quot;keepEmptyTitle&quot;, false),
+      groupNos = suffixHas(1, &quot;groupNos&quot;, false),
+      runReplacement = false,
+      replacement,
+      replaceMark = suffixHasValue2(1, &quot;replace&quot;, &quot;\0&quot;, null),
+      operand = &quot;&quot; + operator.operand,
+      invert = operator.prefix === &quot;!&quot;,
+      fieldname = suffixValue(0, &quot;title&quot;).toLowerCase(),
+      regexpString, regexp,
+      getFieldString = (tiddler, title) =&gt; {
+        return (tiddler) ? tiddler.getFieldString(fieldname) :
+          (fieldname === &quot;title&quot;) ? title : null;
+      };
+    if (replaceMark) {
+      let t = replaceMark.trim();
+      if (t.length) {
+        regexpString = operand.substring(0, operand.indexOf(t)) || operand;
+        replacement = operand.substring(regexpString.length + t.length).trim();
+        if (regexpString.length) runReplacement = true;
+      }
+    }
+    if (!regexpString) regexpString = operand;
+    if ((regexp = regexpMaker(regexpString)) === null)
+      return errmsg;
+    // Process the incoming tiddlers
+    source(function (tiddler, title) {
+      var text = getFieldString(tiddler, title);
+      if (text === null) return;
+      if (runReplacement) {
+        results.push(text.replace(regexp, replacement));
+        return;
+      }
+      var m;
+      // test start      
+      var lastpos = 0;
+      while ((m = regexp.exec(text))) {
+        if (keepUnmatch &amp;&amp; m.index)
+          results.push(text.substring(lastpos, m.index));
+        if (joiner)
+          results.push(m.slice(startpos).join(joiner));
+        else
+          for (var i = startpos; i &lt; m.length; ++i) results.push(m[i]);
+        lastpos = regexp.lastIndex;
+        if (!regexp.global) break;
+      }
+      if (keepUnmatch) results.push(text.substring(lastpos));
+      return;
+    });
+    return results;
+  };
+
+})();</pre>
+</div>
 <div created="20191030102004200" modified="20191030102321735" tags="[[TiddlyWiki Solutions]]" title="Regexp and Regexps">
 <pre>\define list-all-codes0()
 &lt;$set name=&quot;f&quot; filter=&quot;&quot;&quot;[has[veld]get[veld]]&quot;&quot;&quot;&gt;
@@ -16993,7 +17210,7 @@ More text there
 &lt;/$vars&gt;
 </pre>
 </div>
-<div created="20191121071033567" modified="20191121104939770" tags="" title="regexp pattern">
+<div created="20191121071033567" modified="20191204123955455" tags="" title="regexp pattern">
 <pre>\define regx-img-link()
 (?gm)(?:&lt;img src=\&quot;((?:\s|\S)*?)\&quot;(?:.)*?&gt;)
 \end
@@ -17872,6 +18089,13 @@ https://bimlas.gitlab.io/tw5-highlight-searched-text/</pre>
 <pre>&lt;html&gt;
 &lt;body&gt;
 &lt;!--StartFragment--&gt;&lt;h2 class=&quot;&quot; style=&quot;box-sizing: border-box; line-height: 1.2; font-weight: 300; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;日期&lt;/h2&gt;&lt;!--EndFragment--&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</div>
+<div title="Untitled 1" type="text/html">
+<pre>&lt;html&gt;
+&lt;body&gt;
+&lt;!--StartFragment--&gt;&lt;pre style=&quot;box-sizing: border-box; overflow: auto; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;code style=&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;&quot;&gt;inherit&lt;/code&gt;&lt;/pre&gt;&lt;!--EndFragment--&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 </div>
