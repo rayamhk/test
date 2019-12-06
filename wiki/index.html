@@ -855,6 +855,8 @@ Error message and password prompt
 
 <li>regexp pattern</li>
 
+<li>regulator expression collection</li>
+
 <li>Reveal Example (System tiddlers)</li>
 
 <li>Scripts in Tiddlywiki</li>
@@ -11062,7 +11064,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20191121112650863" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20191204115532388" title="$:/state/tab/sidebar--595412856">
+<div created="20190925111211913" modified="20191206044818406" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191111025314112" modified="20191111030215213" title="$:/state/toc/Contents-DIY--1339420835">
@@ -11137,7 +11139,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191204115536999" list="$:/Import regcap2.js [[regexp pattern]] [[Find and replace trying 2]] GettingStarted [[Table of Contents]]" modified="20191204124344665" title="$:/StoryList">
+<div created="20191206023623576" list="[[regulator expression collection]] [[Regexp example 1]] GettingStarted [[Table of Contents]]" modified="20191206023623576" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191121111903188" title="$:/temp/advancedsearch">
@@ -12017,8 +12019,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20191121112710604" dependents="" description="Basic theme" modified="20191121112710604" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" server-url="https://tiddlywiki.com/library/v5.1.21/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.21/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.21">
 <pre></pre>
 </div>
-<div created="20191114081301270" modified="20191122023835799" title="$:/temp/search">
-<pre>showcase</pre>
+<div created="20191114081301270" modified="20191206023617473" title="$:/temp/search">
+<pre>regexp example</pre>
 </div>
 <div created="20191121112710531" modified="20191121112710531" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.21/index.html" url="https://tiddlywiki.com/library/v5.1.21/index.html">
 <pre>loaded</pre>
@@ -17243,6 +17245,28 @@ More text there
 &lt;&lt;extract-text-title New1&gt;&gt;&lt;hr&gt;
 &lt;&lt;extract-text-p New1&gt;&gt;&lt;hr&gt;
 &lt;&lt;extract-img-link New1&gt;&gt;</pre>
+</div>
+<div created="20191206023630761" modified="20191206024649110" tags="" title="regulator expression collection">
+<pre>;Strong password: 
+:Minimum length of 6, at least one uppercase letter, at least one lowercase letter, at least one number, at least one special character.
+```
+(?=^.{6,}$)((?=.*\w)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[|!&quot;$%&amp;\/\(\)\?\^\'\\\+\-\*]))^.*
+```
+
+as
+
+```
+(?=^.{6,}$)     &lt;- begin and end with at least 6 char except newline
+(  capture group
+(?=.*\w)         &lt;- some chars
+(?=.*[A-Z])     &lt;- some uppercase
+(?=.*[a-z])      &lt;- some lowercase
+(?=.*[0-9])      &lt;- some number
+(?=.*[|!&quot;$%&amp;\/\(\)\?\^\'\\\+\-\*])   &lt;- some special chars
+)
+^.*                 &lt;- bol with 0~n nos of char
+```
+</pre>
 </div>
 <div created="20191104122202907" modified="20191111030009255" tags="Testcase" title="Reveal Example (System tiddlers)">
 <pre>\define linkifytitle(title)
