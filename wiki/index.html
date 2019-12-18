@@ -789,6 +789,8 @@ Error message and password prompt
 
 <li>Joke 2</li>
 
+<li>js avoid this point to different object</li>
+
 <li>js framework / library demo 1</li>
 
 <li>js framework / library demo 2</li>
@@ -10986,8 +10988,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191112113231234" modified="20191112113231798" title="$:/state/shiraz/slider-macro/TiddlyWiki News/BJ Tools-1491930177">
 <pre>no</pre>
 </div>
-<div created="20190925111220464" modified="20191217120032628" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20190925111220464" modified="20191218083130031" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20190927103152783" modified="20191118121941445" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11160,7 +11162,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20191217095241340" list="GettingStarted [[Table of Contents]]" modified="20191217115758105" title="$:/StoryList">
+<div created="20191218082345138" list="[[js framework / library demo 1]] [[js framework / library demo 4]] GettingStarted [[Table of Contents]]" modified="20191218083210202" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191114081306760" modified="20191206081132113" title="$:/temp/advancedsearch">
@@ -12040,8 +12042,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20191121112710604" dependents="" description="Basic theme" modified="20191121112710604" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" server-url="https://tiddlywiki.com/library/v5.1.21/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.21/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.21">
 <pre></pre>
 </div>
-<div created="20191114081301270" modified="20191217115755891" title="$:/temp/search">
-<pre>html</pre>
+<div created="20191114081301270" modified="20191218082341941" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20191121112710531" modified="20191121112710531" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.21/index.html" url="https://tiddlywiki.com/library/v5.1.21/index.html">
 <pre>loaded</pre>
@@ -14667,6 +14669,26 @@ Teacher: &quot;Johnny, where in the heck do you get seven from?!&quot;
 
 Johnny: &quot;Because I've already got a freaking cat!&quot;</pre>
 </div>
+<div created="20191218085701736" modified="20191218091752789" tags="Javascript" title="js avoid this point to different object">
+<pre>&lt;$macrocall $name=&quot;wikitext-copy&quot; 
+src=&quot;&quot;&quot;
+const objectWithThis = {
+  name: 'I am the object',
+  log: function () {
+    var self = this;    // 先透過 self 把原本的 this 存起來
+    self.name = 'Update current object name';  // 如同修改 this.name 的名稱
+
+    const setName = function(newName) {
+      self.name = newName; // here this.name is not point to objectWithThis as this is pointed to global object
+      console.log(self);
+    }
+
+    setName('Update object name to &quot;NEW NAME&quot;');
+    console.log(self);
+  }
+}
+&quot;&quot;&quot; /&gt;</pre>
+</div>
 <div created="20191217095243070" modified="20191217115414713" tags="Javascript" title="js framework / library demo 1">
 <pre>!! Requirement
 
@@ -15046,8 +15068,16 @@ $('#login').on('click', 'button', function() {
 
 </pre>
 </div>
-<div created="20191217114429982" modified="20191217115400405" tags="Javascript" title="js framework / library demo 4">
-<pre>!! Final and combined
+<div created="20191217114429982" modified="20191218093231096" tags="Javascript" title="js framework / library demo 4">
+<pre>!! Requirement
+
+* 當我們告訴它我們的姓（lastname）名（firstname）還有選擇的語言（language）時，它可以用正式（formal）和非正式（informal）的方式和我們打招呼。
+* 支援英文（English）和繁體中文（zh_tw）兩種語言。
+* 是一個可重複使用的 library/framework，也就是說，每一個安裝此 framework 的人可以直接使用，不會和它原本程式碼有所衝突。
+* 和 jQuery 只需要輸入 &quot;$( )&quot; 一樣，我們可以使用 &quot;G$( )&quot; 來建立物件。
+* 支援 jQuery ，可以把 greetr 產生的訊息直接顯示於HTML中
+
+!! Final and combined
 
 !!! index.html
 &lt;$macrocall $name=&quot;wikitext-copy&quot; 
@@ -15055,32 +15085,27 @@ src=&quot;&quot;&quot;
 &lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Untitled Document
-    &lt;/title&gt;
+    &lt;title&gt;Untitled Document&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;div id=&quot;app&quot;&gt;
       &lt;div id=&quot;login&quot;&gt;
         &lt;select id='Lang'&gt;
-          &lt;option value=&quot;en&quot; selected&gt;English
-          &lt;/option&gt;
-          &lt;option value=&quot;zh&quot;&gt;中文
-          &lt;/option&gt;
+          &lt;option value=&quot;en&quot; selected&gt;English&lt;/option&gt;
+          &lt;option value=&quot;zh&quot;&gt;中文&lt;/option&gt;
         &lt;/select&gt;
-        &lt;button&gt;登入
-        &lt;/button&gt;
+        &lt;button&gt;登入&lt;/button&gt;
       &lt;/div&gt;
-      &lt;h1 id=&quot;logMsg&quot;&gt;
-      &lt;/h1&gt;
+      &lt;h1 id=&quot;logMsg&quot;&gt;&lt;/h1&gt;
     &lt;/div&gt;
     &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;
     &lt;/script&gt;
     &lt;script&gt;
-      (function(global, $) {
+      (function(global, $) { // for using global obj and jquery
         var Greetr = function(firstname, lastname, language) {
           return new Greetr.init(firstname, lastname, language);
         }
-        let supportedLangs = ['en', 'zh'];
+        let supportedLangs = ['en', 'zh']; // some attribute
         let greetings = {
           en: 'Hello',
           zh: '你好'
@@ -15093,7 +15118,7 @@ src=&quot;&quot;&quot;
           en: 'Logged',
           zh: '登入'
         };
-        Greetr.prototype = {
+        Greetr.prototype = { // some method 
           fullName: function() {
             return this.firstname + ' ' + this.lastname;
           }
@@ -15156,17 +15181,17 @@ src=&quot;&quot;&quot;
             return this;
           }
         };
-        Greetr.init = function(firstname, lastname, language) {
-          let self = this;
-          self.firstname = firstname || '';
+        Greetr.init = function(firstname, lastname, language) { // constructor
+          var self = this;
+          self.firstname = firstname || ''; // set default value by ||
           self.lastname = lastname || '';
           self.language = language || 'zh';
           self.validate();
         }
-        Greetr.init.prototype = Greetr.prototype;
-        global.Greetr = global.G$ = Greetr;
-      }
-       (window, jQuery));
+        Greetr.init.prototype = Greetr.prototype;  // for shorthand
+        global.Greetr = global.G$ = Greetr; // using Greetr() and G$()
+      } (window, jQuery));
+
       $('#login').on('click', 'button', function() {
         let pj = G$(&quot;Po-Jung&quot;, &quot;Chen&quot;);
         pj.setLang($(&quot;#Lang&quot;).val()).greetHTML('#logMsg', true);
