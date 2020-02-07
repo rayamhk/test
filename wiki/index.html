@@ -783,6 +783,8 @@ Error message and password prompt
 
 <li>TW5 Highlight searched text plugin</li>
 
+<li>understanding-pdf</li>
+
 <li>Untitled</li>
 
 <li>Untitled 1</li>
@@ -11029,7 +11031,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200114090806418" list="English GettingStarted [[Table of Contents]]" modified="20200114091139412" title="$:/StoryList">
+<div list="understanding-pdf GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -18014,6 +18016,507 @@ TW5 Highlight searched text plugin
 
 !! Demo
 https://bimlas.gitlab.io/tw5-highlight-searched-text/</pre>
+</div>
+<div created="20200207023804942" modified="20200207024118966" tags="" title="understanding-pdf" type="text/html" url="http://www.printmyfolders.com/understanding-pdf">
+<pre>
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;&lt;span style=&quot;line-height:115%;font-family:Calibri,sans-serif;font-size:11pt&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;
+&lt;div&gt;&lt;/div&gt;
+Preface:&lt;/font&gt;&lt;/span&gt;&lt;/b&gt;&lt;span&gt;&lt;i&gt; I wish to acknowledge that this article was written with full reference to&lt;/i&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt; &lt;/span&gt;&lt;a href=&quot;http://www.adobe.com/devnet/acrobat/pdfs/PDF32000_2008.pdf&quot; style=&quot;color:rgb(0,0,0)&quot;&gt;http://www.adobe.com/devnet/acrobat/pdfs/PDF32000_2008.pdf&lt;/a&gt;. &lt;i&gt;Most of all that I have learned about PDFs are from the above reference. If you are really interested take time to read it. Surprisingly, it is easy and interesting to read! I am writing this tutorial out
+of my interest in knowing the PDF specification. My
+quest started when I tried hard but failed to extract text from a simple PDF
+file that contained a single page of text. Please let me know (&lt;a href=&quot;mailto:steve@printmyfolders.com&quot;&gt;steve@printmyfolders.com&lt;/a&gt;) if you find any errors. I have relied on the PDF specification (link on page top) to create this tutorial. This tutorial covers PDF files conforming to the ISO 32000-1 specification (Pages vi to viii in the PDF32000_2008.pdf give more information on this).&lt;/i&gt;&lt;/span&gt;&lt;i&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;
+&lt;/span&gt;&lt;/i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;
+&lt;/span&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;Imagine you are alone on a island with no internet, no means of communication apart from a phone where you can only make voice calls. Apart from this, you have all your needs met - you have a home to stay in, you have enough food to eat and you are comfortable. A plane will arrive in a week's time to take you home. All of a sudden, you remember that an important document, currently with you has to be submitted to a printer in a day's time. It is a simple one page invitation containing only text. How would you communicate this information to your printer?&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;Here is one way of doing it. You would grab a ruler, measure the width and height of your page and note it down. You will measure the exact location where each line starts. You will note down the font, its size and colour of all of your text. You will then call your printer and give her all these details. Provided you have given her enough details she should be able to replicate your document exactly as it is.&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;PDF works in a similar way. We give instructions so that, the PDF viewing app such as, Adobe Reader can understand our instructions and display the way we want it to. Of course, there is so much more to PDF than that. Rather than speaking to a person, we are instructing a&amp;nbsp; software. So we need structure, and follow specific rules.&lt;br&gt;&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;span style=&quot;background-color:rgb(204,204,204)&quot;&gt;Keep this imagery in mind and it will help you understand better.&lt;/span&gt;&lt;br&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;PDF files are interesting. If you were to open a PDF file in a text editor like Notepad, the contents may look like junk and probably not very interesting. But it will make a little more sense once you understand that PDF files follow a set pattern. &lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;blockquote dir=&quot;ltr&quot; style=&quot;margin-right:0px&quot;&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;font&gt;&lt;font style=&quot;background-color:rgb(204,204,204)&quot;&gt;&quot;&lt;font size=&quot;2&quot;&gt;&lt;i&gt;At the core of PDF is an advanced imaging model derived from the PostScript® page description language. This PDF Imaging Model enables the description of text and graphics in a device-independent and resolution-independent manner. To improve performance for interactive viewing, PDF defines a more structured format than that used by most PostScript language programs. Unlike Postscript, which is a programming language, PDF is based on a structured binary file format that is optimized for high performance in interactive viewing. PDF also includes objects, such as annotations and hypertext links, that are not part of the page content itself but are useful for interactive viewing and document interchange.&lt;/i&gt;&quot; (Quoted from &lt;font size=&quot;3&quot; face=&quot;Calibri&quot;&gt;Page vii of PDF32000_2008.pdf).&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;The basic building blocks of a PDF files are objects.&amp;nbsp;There are eight types of objects that are used in PDF files. Before we look at them we will briefly look at the character set of PDFs.&amp;nbsp;There are 3 types of characters - white-space, delimiter and  regular characters.&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;blockquote style=&quot;margin-right:0px&quot;&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;White-space characters:&lt;/b&gt;&lt;span style=&quot;background-color:rgb(255,255,255)&quot;&gt; Null, Horizontal tab, Line feed, Form feed, Carriage return and Space.&lt;/span&gt; &lt;i&gt;&lt;b&gt;Tip:&lt;/b&gt; If you need to remember them, imagine seeing them in sequence (except for null of course) being typed on an imaginary typewriter.&lt;/i&gt; White-space characters separate names and other objects from each other. Interestingly, PDF treats all white-space characters outside a comment, string or stream the same. Outside a comment, string or stream, PDF&amp;nbsp;considers any sequence of &lt;b&gt;&lt;i&gt;consecutive &lt;/i&gt;&lt;/b&gt;white-space characters as one character. What this means is that you may have 5 spaces but in reality it is considered as one. Note that this does not apply to white-space characters within strings, streams and comments.&amp;nbsp;The Carriage return and Line feed are considered as end-of-line (EOL) markers. EOL markers play a very important role in showing where a new line starts. Carriage return followed immediately by a Line feed is considered as one EOL marker.&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;Delimiter characters: &lt;/b&gt;(, ), &amp;lt;, &amp;gt;, [, ], {, }, / and % (4 pairs and 2 unique). These are used in the objects we would look at later. They basically act as delimiters (mark the boundary or border) for entities. &lt;i&gt;&lt;b&gt;Tip:&lt;/b&gt; If you need to remember them, imagine these characters ( ) being bent &amp;lt; &amp;gt; and then stretched [ ] and then bent again { } and then eventually made flat / %. &lt;/i&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;Regular characters:&lt;/b&gt; All characters other than White-space and Delimiter characters &lt;u&gt;including those that are not part of the standard ASCII character set&lt;/u&gt;. Please read the note below as it is critical you understand this.&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;i style=&quot;background-color:rgb(204,204,204)&quot;&gt;An interesting fact to note is that a PDF &lt;b&gt;may&lt;/b&gt; consist&amp;nbsp;entirely&amp;nbsp;of just ASCII characters or can consist of ASCII characters and Binary data. In simple terms, characters in ASCII files use only 7 out of the 8 bits in a byte while characters in the Binary files use all the 8 bits in the byte. This allows a possibility of 128 unique characters for ASCII files and 256 unique characters for Binary files. Most PDF files&amp;nbsp;that are encrypted or contain images will have binary data (images are represented in binary). PDF files that contain binary data get corrupted when edited or even opened and saved&amp;nbsp;in normal text editors like Notepad. It is critical that we understand the difference between ASCII and Binary files as other areas of the PDF specification touch on them.&amp;nbsp;&lt;/i&gt;&lt;i style=&quot;font-size:10pt;background-color:rgb(204,204,204)&quot;&gt;Here is an interesting link that explains the difference between Binary and ASCII files.&lt;/i&gt;&lt;i style=&quot;font-size:10pt&quot;&gt;&amp;nbsp;&lt;/i&gt;&lt;a href=&quot;http://www.cs.umd.edu/class/spring2003/cmsc311/Notes/BitOp/asciiBin.html&quot; style=&quot;background-color:transparent;font-size:10pt&quot; target=&quot;_blank&quot;&gt;http://www.cs.umd.edu/class/spring2003/cmsc311/Notes/BitOp/asciiBin.html&lt;/a&gt;&lt;span style=&quot;background-color:transparent;font-size:10pt&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;blockquote style=&quot;margin-right:0px&quot;&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;i style=&quot;background-color:rgb(204,204,204)&quot;&gt;&lt;br&gt;
+&lt;/i&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;i style=&quot;background-color:rgb(204,204,204)&quot;&gt;You may also wonder why you don't see any text (that can be seen when opened using a reader) or its equivalent when opening a PDF file in a text editor or even binary editor. There may be two reasons. The first and most common reason is that the content stream (where the text is stored/kept) is encoded (transformed/changed) to conserve space. This is what happens with most files.The second reason could be that the PDF file is encrypted purposely to keep the text secure.&lt;/i&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;&lt;u&gt;Objects:&lt;br&gt;
+&lt;br&gt;
+&lt;/u&gt;&lt;/b&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;Here are the objects that make use of the characters we looked at above.&lt;b&gt;&lt;u&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;Each of these objects have a corresponding class in PDFBox. Have a look at this link &lt;a href=&quot;https://pdfbox.apache.org/1.8/architecture.html&quot; target=&quot;_blank&quot;&gt;https://pdfbox.apache.org/1.8/architecture.html&lt;/a&gt; under the section &quot;The COS&amp;nbsp; Model&quot;&lt;u&gt;&lt;br&gt;
+&lt;/u&gt;&lt;/b&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;1. Boolean objects: &lt;/b&gt;The keywords &lt;i&gt;true&lt;/i&gt; and &lt;i&gt;false&lt;/i&gt;.&amp;nbsp;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;2. Numeric objects: &lt;/b&gt;There are two types; integer &amp;amp; real. Integers are numbers
+without any decimal points and can have a + or – symbol preceding it. For
+instance, the number 10. Real numbers must have a decimal point. For instance, 10.5, 0.0, +5.0,
+-1.0. Real numbers cannot be expressed in exponential format.&amp;nbsp;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;3. String Objects: &lt;/b&gt;Strings contain characters (can be zero characters as well).
+They can be literal characters within parenthesis or hexadecimal data within
+angle brackets. Notice that the parenthesis and angle brackets are delimiter characters.&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;code&gt;(I love Java (and PDF))&lt;/code&gt;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;i&gt;There are escape characters that can be used. Refer to
+the PDF specification for more details.&amp;nbsp;The sequence \ddd where ddd is an octal character code can be used to represent characters outside the printable ASCII character set. Be aware that, some of the escape characters, especially the ones that cause characters to move, for instance \n (newline), did not have any visual effects when I added them to a string displayed by the PDF. You can replace one of the characters &lt;/i&gt;&lt;i&gt;&lt;i&gt;in the string I have used in the sample PDF&amp;nbsp;&lt;/i&gt;and notice no difference.&lt;br&gt;
+&lt;/i&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;We can also use octal characters (usually to represent character outside the printable ASCII character set) when using parenthesis. An octal character is represented in the format \ddd. In the following example \052 represents * (asterisk), a printable ASCII character.
+
+&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;code&gt;(I love Java (and \052PDF))&lt;/code&gt;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;Here is an example of a String represented with hexadecimal numbers.&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;code&gt;&amp;lt;48454C4C4F&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;Each pair is taken as a value. In the above example, the hexadecimal value
+48 is decimal 72 which is the ASCII equivalent of H. Likewise 45 is E, 4C is L and 4F is O. The above string is same as the string (HELLO). If the final hexadecimal digit is on its own (without another digit to make a pair) a zero
+is attached to the end.&lt;br&gt;
+&lt;br&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;&amp;lt;4845C&amp;gt;&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt; &lt;br&gt;
+will be considered as&lt;br&gt;
+&lt;br&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;&amp;lt;4845C0&amp;gt;&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;b style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;br&gt;
+4. Name Objects:&lt;/b&gt;&lt;b&gt; &lt;/b&gt;Names consist of a sequence of characters (except null). A
+forward slash / must be used to introduce the name. In case hash (#) is part of the
+name, use # followed by its hexadecimal code 23. To represent characters using
+their hexadecimal value use # followed by the hexadecimal value. All characters
+that are not regular characters have to be represented by the # followed by
+their hexadecimal value. Please refer to the PDF specification for more details.&lt;br&gt;
+&lt;br&gt;
+&lt;/div&gt;
+&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt; &lt;/code&gt;&lt;/span&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;/MyName&lt;/code&gt;&lt;/span&gt;&lt;i&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;code&gt; represents&lt;/code&gt;&lt;/span&gt; &lt;/i&gt;&lt;code&gt;MyName&lt;/code&gt;
+&lt;/div&gt;
+&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;/My#20Name&lt;/code&gt;&lt;i style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;code&gt; represents&lt;/code&gt;&lt;/i&gt;&lt;code&gt; My Name
+
+&lt;/code&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;/All#20#23Numbers&lt;/code&gt;&lt;/span&gt;&lt;i style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;code&gt; represents&lt;/code&gt;&lt;/i&gt;&lt;code&gt; All #Numbers&lt;/code&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/div&gt;
+&lt;br&gt;
+&lt;b style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;br&gt;
+5. Array Objects: &lt;/b&gt;These are similar to the arrays found in computer languages but differ in that they can contain different object types (including strings, names
+ and even other arrays). Arrays are represented within square brackets. As you can see, the values are separated by spaces.&lt;br&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;[false 170 85.5 (Hello) /My#20Name]&lt;/code&gt;&lt;/div&gt;
+&lt;/span&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;Arrays are single dimensional but can include other arrays
+which can hold arrays themselves.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;b style=&quot;color:rgb(0,0,0)&quot;&gt;
+&lt;div&gt;6. Dictionary Objects: &lt;br&gt;
+&lt;/div&gt;
+&lt;/b&gt;
+&lt;div&gt;These are similar to an actual dictionary, where a description follows a word. The description here can be any object (including
+another dictionary) but the name is always a &lt;i&gt;Name&lt;/i&gt; object that we just
+discussed. The key (Name) is unique (there cannot be two similar Names). A
+dictionary is represented within &amp;lt;&amp;lt; &amp;gt;&amp;gt;.&lt;br&gt;
+&lt;br&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;code&gt;&amp;lt;&amp;lt; /Name (Steve)&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;code&gt;/Age 99&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;code&gt;/Address &amp;lt;&amp;lt; /Number 1234&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;span&gt;&lt;code&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/code&gt;&lt;/span&gt;&lt;code&gt;/Street
+(Java Street)&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;span&gt;&lt;code&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/code&gt;&lt;/span&gt;&lt;code&gt;/Suburb
+(Java Town)&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;span&gt;&lt;code&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/code&gt;&lt;/span&gt;&lt;code&gt;/PostCode
+(4321)&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;text-align:left&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;code&gt;&amp;nbsp;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;b style=&quot;color:rgb(0,0,0)&quot;&gt;7. Stream Objects:&lt;/b&gt; Streams are similar to strings except that can be of unlimited length. They are usually used to represent large data that cannot fit into a String.
+An image, for instance, can be represented as a stream. As you will see later, the contents of each page in PDF is represented as a 'Contents' stream. It consists of a dictionary followed by the
+keyword ‘stream’, newline, the stream’s data and the keyword ‘endstream’. &lt;br&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;i&gt;&lt;code&gt;dictionary&lt;/code&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;……….&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;endstream&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;While the stream consists of the data, the dictionary contains information about the stream itself. Here are the keys that are common for most stream dictionaries. Out of these the only mandatory key is Length.&lt;br&gt;
+&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;Length &lt;/b&gt;- &lt;b&gt;Mandatory entry &lt;/b&gt;that contains the length (number of bytes) of the stream. An error occurs if the stream has more bytes of data that the length mentioned in the dictionary. &lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;Filter&lt;/b&gt; - The name(s) of the filter(s) used to decode the data on the stream. Can be a name or an array. The filters are used in the order supplied&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;DecodeParms&lt;/b&gt; - Parameter dictionary used by the filters. Can be a dictionary or array. Parameters are values used by the filters. If the filter uses the default parameters, it can be&amp;nbsp; skipped.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;F &lt;/b&gt;- From PDF specification version 1.2, the stream contents can be stored in an external file. This shows the file where it is stored. In this case the contents between stream and endstream are ignored.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;FFilter &lt;/b&gt;- Similar to Filter entry but for the stream's external file.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;FDecodeParms &lt;/b&gt;- Similar to DecodeParms but for stream's external file's filter&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;b&gt;DL &lt;/b&gt;- An approximate size of the contents (after decoding) in the stream. This will help determine if there is enough disk space for the stream.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;span&gt;&lt;b&gt;8. Null object &lt;/b&gt;- Refers to a non existent object and denoted by the keyword &lt;b&gt;null&lt;/b&gt;.&lt;/span&gt; &lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;span&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;span&gt;&lt;br&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;&lt;span&gt;Other components of a PDF file.&lt;/span&gt; &lt;/b&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;Comments: &lt;/b&gt;The comment is represented by the percentage sign i.e. %. This is commonly used to describe the version of PDF specification used in creating the PDF file.&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,0)&quot;&gt; &lt;/div&gt;
+&lt;div&gt;&lt;font color=&quot;#0000ff&quot;&gt;&lt;br&gt;
+&lt;/font&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;%PDF-1.7&lt;/code&gt;&lt;/div&gt;
+&lt;/font&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;
+&amp;nbsp;&lt;/div&gt;
+&lt;b&gt;
+&lt;div&gt;
+Indirect Objects:&amp;nbsp;&lt;/div&gt;
+&lt;/b&gt;
+&lt;div&gt;An object (for example, a string) that has
+been given a unique object identifier, that other objects can use to refer to itself is called an indirect object. This is different from the '&lt;i&gt;Name&lt;/i&gt;' object that we looked at earlier. Looking at any PDF file in its raw form (for instance, by opening it in a text editor) you will notice lots of indirect objects.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;The identifier has two parts. The first part is
+the object number that can be any positive integer. The second part is the
+generation number which is always zero in the first non-updated version of the PDF file. You declare an indirect object within the keywords
+‘obj’ and ’endobj’. Be aware that the combination of the object number and
+generation number has to be unique.&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;1 0 obj&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;margin-left:40px&quot;&gt;&lt;code&gt;(my
+biography)&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;The object number is 1 and the generation number is 0. The
+indirect object is the string object &lt;i&gt;(my biography)&lt;/i&gt;.&lt;span&gt;&amp;nbsp; &lt;/span&gt;If another object wanted to refer to this object, it would quote the object
+number, followed by space, generation number, followed by space and then R.&lt;/p&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;1 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;It is not an error if one was to refer to a non existing indirect object.&lt;/p&gt;
+&lt;b style=&quot;color:rgb(0,0,0)&quot;&gt;File Structure:&lt;/b&gt; A PDF file will initially have the following structure. However, if the file is updated or edited, additional elements may be added to the end of the file.&lt;br&gt;&lt;div&gt;
+
+&amp;nbsp;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;span&gt;&lt;span&gt;1.&lt;span style=&quot;font:7pt/normal &amp;quot;Times New Roman&amp;quot;;font-size-adjust:none;font-stretch:normal&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;A Header (not more than a line) showing the 
+PDF specification this file follows.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;span&gt;&lt;span&gt;2.&lt;span style=&quot;font:7pt/normal &amp;quot;Times New Roman&amp;quot;;font-size-adjust:none;font-stretch:normal&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+
+
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;A File Body that has the objects of the file&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;span&gt;&lt;span&gt;3.&lt;span style=&quot;font:7pt/normal &amp;quot;Times New Roman&amp;quot;;font-size-adjust:none;font-stretch:normal&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;A Cross-reference table that has info about
+indirect objects&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;span&gt;&lt;span&gt;4.&lt;span style=&quot;font:7pt/normal &amp;quot;Times New Roman&amp;quot;;font-size-adjust:none;font-stretch:normal&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;A Trailer that shows the location of the
+cross-reference table and special objects within the body of the file. &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;color:rgb(0,0,0);margin-left:40px&quot;&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;File Header:&lt;/b&gt; This denotes the PDF specification version of the PDF file. %PDF- followed by version number 1.N, where N is
+a digit between 0 &amp;amp; 7.&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;code&gt;%PDF-1.2&lt;/code&gt;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;As mentioned earlier this is actually a comment that is used to specify the PDF version.&lt;/p&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;Beginning with version 1.4 the document's catalog dictionary
+is used instead of this. If the file has binary data, there will be at least
+four binary characters, immediately after the header. This is to show PDF reading applications (like Adobe reader) that the PDF has binary data. Again, when opening&amp;nbsp;some PDF files in&amp;nbsp;their raw form (as in a text editor) you may notice the four binary characters just after the first comment.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;File Body:&lt;/b&gt; The File body consists of indirect objects (discussed
+earlier). These objects represent text and other details (like font type etc.) used in displaying PDF. &lt;span&gt;&amp;nbsp;&lt;/span&gt;As of version 1.5, the body can also contain
+object streams.&amp;nbsp;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;Cross-Reference Table:&lt;/b&gt; This table is similar to a directory. It contains the location of each object within the PDF file. By looking at the entries in this table, the PDF reading application (for example, Adobe Reader), can easily locate an object within the file. This saves time as the object is accessed in a random manner (rather than reading every line of the file). The cross-reference table can have &lt;i&gt;one or more&lt;/i&gt; sections. Each of these sections can have one or more subsections. &lt;br&gt;&lt;/p&gt;&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; From PDF version 1.5 onward the cross-reference table can be stored as a stream and if so you will not be able to view the table as shown below when opening with a text editor.&lt;br&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;Each section begins with the word '&lt;b&gt;xref&lt;/b&gt;'. Following this line are two numbers separated by a single space. The first number is the object number of the first of the series of objects listed below it. The second number refers to the number of entries in that subsection. For a PDF file that has been created for the first time or a PDF file that has not been incrementally updated, there shall be only one subsection and the object numbering starts with 0. Notice that the object numbers have to be consecutive. In the example below, it is safe to assume that entries for objects 1, 2, 3 &amp;amp; 4 will follow.&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;
+&lt;p style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;xref&lt;/code&gt;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0 5&amp;nbsp;&lt;/code&gt;&lt;/span&gt;&lt;code&gt;&amp;nbsp;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;Following this are the entries for each object. Each entry shall be exactly 20 bytes long. The entries are of the format&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;&lt;i&gt;&lt;code&gt;nnnnnnnnnn ggggg meol&lt;/code&gt;&lt;/i&gt;&lt;/div&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:80px&quot;&gt;&lt;i&gt;&lt;span style=&quot;color:rgb(0,0,255)&quot;&gt;nnnnnnnnnn &lt;/span&gt;- &lt;/i&gt;This is a ten digit value. This reveals how far the object is from the start of the file. For instance, the value 100 denotes that the object is 100 bytes from the start of the file.&amp;nbsp;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:80px&quot;&gt;&lt;i&gt;&lt;span style=&quot;color:rgb(0,0,255)&quot;&gt;ggggg &lt;/span&gt;- &lt;/i&gt;5-digit generation number&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:80px&quot;&gt;&lt;i&gt;&lt;span style=&quot;color:rgb(0,0,255)&quot;&gt;m &lt;/span&gt;- &lt;/i&gt;can be either 'n' or 'f'. 'n' denotes that the object is still in use and 'f' denotes that the object has been deleted and is free.&amp;nbsp;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0);margin-left:80px&quot;&gt;&lt;i&gt;&lt;span style=&quot;color:rgb(0,0,255)&quot;&gt;eol &lt;/span&gt;- &lt;/i&gt;end of line. Consists of 2 chars.&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;The ten digits, followed by space, followed by five digits, followed by space, followed by a single character and the &lt;i&gt;eol&lt;/i&gt; make exactly 20 digits. If the first two numbers are not long enough, to be ten and five digits respectively, zeroes are added to the front.&amp;nbsp;&lt;/p&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;Let's come back to the 0 5 that we saw in the example earlier.The 0 denotes the object number of the first object in this subsection. The value 5 denotes that there are 5 entries (including the one for 0) and that the remaining four entries are for objects with object numbers 1, 2, 3 and 4. The first entry at the cross-reference table is for object 0. Object 0 will have 0000000000 as its first ten digits (if there are no other free objects) and will always have 65535 as its 5-digit generation number. It also shall have 'f' as the character.&amp;nbsp;&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot; style=&quot;margin-left:80px&quot;&gt;
+&lt;p style=&quot;color:rgb(0,0,0)&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;&lt;code&gt;xref&lt;/code&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;div&gt;&lt;font color=&quot;#0000ff&quot;&gt;&lt;code&gt;0 2&lt;/code&gt;&lt;/font&gt;&lt;/div&gt;
+&lt;div&gt;&lt;font color=&quot;#0000ff&quot;&gt;&lt;code&gt;
+0000000000 65535 f&lt;/code&gt;&lt;/font&gt;&lt;/div&gt;
+&lt;div&gt;&lt;font color=&quot;#0000ff&quot;&gt;&lt;code&gt;...........&lt;/code&gt;&lt;/font&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;br&gt;
+If there are object(s) that have been deleted and are free then the ten digit number will be changed to denote the &lt;i&gt;n&lt;/i&gt;&lt;sup&gt;th&lt;/sup&gt; entry of the next free object. To make it easy to understand let's look at an example.&lt;br&gt;
+&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;xref&lt;/code&gt;&lt;/span&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0 4&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;
+0000000003 65535 f&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;
+0000000015 00000 n&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;
+0000000075 00000 n&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;
+0000000000 00005 f&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&amp;nbsp;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt; &lt;br&gt;
+&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;The 0 4 denotes that there are four entries - Entry for object 0 followed by entries for objects 1, 2 &amp;amp; 3&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;. The first ten digits (&lt;/span&gt;0000000003) &lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;of the first entry for object 0 points to the next free object, which is, object 3. If there had been another free object, then the 4th entry will have the object number of the next free object. In this case, as there are no other free objects it points back to object 0. Objects 1 &amp;amp; 2 are 15 &amp;amp; 75 bytes (respectively) away from the start of the file. This basically informs lets the PDF application know that object 3 is free and therefore it can be used to refer to another data.&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;Let's look at another example&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;xref&lt;/code&gt;&lt;/span&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0 4&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0000000003 65535 f&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0000000015 00000 n&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0000000075 00000 n&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0000000000 00005 f&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;9 2&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0000000099 00000 n&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;0000000150 00000 n&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;
+&lt;div&gt;In the above case, in addition to objects 0, 1, 2, 3 there are two other objects 9 &amp;amp; 10.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;An object cannot be entered in more than one subsection within a section.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;When an indirect object is deleted, its entry is marked as free (by changing the n to f) and linked to the linked list of free objects. It's generation number is increased by 1. The object's generation number gets updated each time the object gets deleted and can go upto a maximum of 65,535. For instance, an indirect object that was referenced as 1 0 will become 1 1 when reused.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/span&gt;
+&lt;div style=&quot;text-align:right&quot;&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;&lt;b&gt;Trailer:&lt;/b&gt; The end of a PDF file is read first by the PDF reading application. The trailer holds information about the location and details of the Cross-reference table.&amp;nbsp;The trailer has three parts. The first part has the keyword &lt;i&gt;trailer&lt;/i&gt; followed by a dictionary that holds values for certain fields.&amp;nbsp;&amp;nbsp;
+&lt;div&gt;The second part has the keyword &lt;i&gt;startxref&lt;/i&gt;, and in the next line, a number. The number denotes how far (in bytes) the keyword &lt;i&gt;xref&lt;/i&gt; (of the last section of the cross-reference table) is from the start of the file.&amp;nbsp;The very next line has the value %%EOF to denote the end of the file.&amp;nbsp;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;A random PDF taken from my computer has this trailer. Looking at this trailer I can assume that the &lt;i&gt;xref&lt;/i&gt; of the last section of the cross-reference table is found 361441 bytes from the beginning of the file.&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;trailer&lt;/code&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt; /Size 62 /Root 1 0 R /Info 2 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/ID [(X$X@&amp;gt;66...)(X$X@&amp;gt;66...)]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;startxref&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;361441&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;%%EOF&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;&amp;nbsp;The following keys are mandatory for the trailer dictionary.
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;&lt;i&gt;Size&lt;/i&gt;&lt;/b&gt; - Total number of entries in the cross reference table (combination of original &amp;amp; update sections). The value has to be an integer. In the example above there are 62 entries including an entry for object 0. &lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;i&gt;&lt;b&gt;Root&lt;/b&gt;&lt;/i&gt; - Is an indirect reference to the PDF's catalog (which we will learn later). In the example above, I can assume that the indirect object 1 is the catalog.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;Some keys are mandatory when certain capabilities are used. We may look at the &lt;i&gt;&lt;b&gt;Info&lt;/b&gt;&lt;/i&gt; &amp;amp; &lt;b&gt;&lt;i&gt;ID &lt;/i&gt;&lt;/b&gt;keys later.&lt;i&gt;&amp;nbsp;&lt;/i&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:right&quot;&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;&lt;b&gt;Incremental Updates:&lt;/b&gt; The team that developed the PDF specification was smart enough to include a special feature. When a PDF gets updated, the changes are added to the end of the file rather than updating the original content. This feature saves time (as the whole file need not be modified). However, this also makes me wonder what happens when many changes take place. Does the size of the PDF file increase massively?
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;When a PDF gets an incremental update, in addition to the data being added, a new cross-reference section is created. This new section contains entries for all the objects that were deleted, replaced or changed. As we learnt earlier deleted objects have the 'f' letter at the end of the cross-reference entry. This means that if say object 5, existed before and was deleted during the update the new cross section will have the same entry but with 'f' as the last character in the entry for object 5. &lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;When the PDF file gets updated, along with a new cross-reference section a new trailer is added. This contains all the entries from the previous trailer but will have a different value for the &lt;i&gt;Prev&lt;/i&gt; entry in the dictionary. The &lt;i&gt;Prev&lt;/i&gt; entry will have the location of the previous cross-reference section. &lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;i&gt;%%EOF&lt;/i&gt; will continue to be the last line for the new trailer as well. Hopefully we will discuss this in detail later.&lt;/div&gt;
+&lt;b&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;PDF Document Structure: &lt;/div&gt;&lt;/b&gt;The structure of a PDF file is like the different levels of hierarchy found in a typical company. Similar to the CEO, the Document Catalog dictionary sits at the top of the hierarchy. You can actually view the structure of a PDF using the PDFDebugger tool - I have included more details in this webpage &lt;a href=&quot;http://www.printmyfolders.com/view-structure-of-a-pdf&quot; target=&quot;_blank&quot;&gt;http://www.printmyfolders.com/view-structure-of-a-pdf&lt;/a&gt;&lt;br&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;As we saw earlier a PDF reading application will look at the trailer of the PDF first. The trailer will have a Root entry that has the location of the catalog. This is similar to a person (&lt;i&gt;PDF reading application&lt;/i&gt;) approaching the CEO (&lt;i&gt;Document Catalog&lt;/i&gt;) after finding her contact details via the contact section (&lt;i&gt;Trailer&lt;/i&gt;) on the company's website (&lt;i&gt;PDF file&lt;/i&gt;).&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Document Catalog:&lt;/b&gt; The Document Catalog is a dictionary that refers to other objects that define the PDF file. Basically, the Document Catalog is like the centre from where every information about the PDF file can be found. Being a dictionary it consists of various keys. We will&amp;nbsp; for the time being only look at the mandatory keys.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Type&lt;/b&gt; - will always be &lt;i&gt;&lt;b&gt;Catalog&lt;/b&gt;&lt;/i&gt; (type Name)
+&lt;div&gt;&lt;b&gt;Pages&lt;/b&gt; - An indirect reference to the object that is the root of the &lt;b&gt;page tree &lt;/b&gt;(will look at this later)&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;A PDF file that I created using a free PDF creating software has this Catalog Dictionary &lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;1 0 obj&lt;/code&gt;&lt;/span&gt;
+&lt;div style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;&amp;lt;&amp;lt;/Type /Catalog /Pages 3 0 R&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;span style=&quot;font-family:verdana,sans-serif&quot;&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255)&quot;&gt;
+&lt;div&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;You will notice that each of these dictionaries always start with a '/Type' entry that descirbes what type of dictionary it is. In this case, it is a 'Catalog' dictionary.&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;color:rgb(0,0,0)&quot;&gt;An application that reads the above Catolog dictionary will know that it needs to read the 'Pages' dictionary (indirect object 3) to get information about the pages in this PDF file.&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;&lt;b&gt;Page Tree:&lt;/b&gt;&amp;nbsp; &lt;i&gt;Page Tree&lt;/i&gt; is the name of the structure used to describe the pages in a PDF file. It has two type of nodes - &lt;i&gt;page tree nodes &lt;/i&gt;and&lt;i&gt; &lt;/i&gt;&lt;i&gt;page objects.&lt;/i&gt; Each page in a PDF file is represented as a Page object. Each of these objects is called as 'leaf' node in the Page Tree. 
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Page Tree Nodes:&lt;/b&gt; The mandatory keys are &lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Type&lt;/b&gt; - will always be &lt;i&gt;&lt;b&gt;Pages&lt;/b&gt;&lt;/i&gt; for a Page Tree node
+&lt;div&gt;&lt;b&gt;Parent&lt;/b&gt; - the page tree node which is this node's parent. Not allowed in root node.&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Kids&lt;/b&gt; - an array referring to the children of this node. The children can only be page tree nodes or page objects&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Count&lt;/b&gt; - the number of page objects that are descendants of this node&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;The PDF that I had created earlier has this page tree (remember that the Catalog Dictionary was pointing to indirect object 3). &lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);font-family:verdana,sans-serif;margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;3 0 obj&lt;/code&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt; /Type /Pages /Kids [&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;4 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;] /Count 1&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/Rotate 0&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;This Page tree node has only one kid which is object 4. The &lt;i&gt;&lt;b&gt;Parent&lt;/b&gt;&lt;/i&gt; key is missing and therefore this is the root node.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;As the /Count is 1, we can safely assume that there is only 1 page under this Page tree (which based on the /Kids array is indirect object 4.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;As menioned earlier, you will notice that this dictionary too has an entry '/Type' that reveals what type of dictionary it is. &lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Page Objects&lt;/b&gt;: This is a dictionary that reveals the page itself characteristics. Some of the keys are &lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);margin-left:80px&quot;&gt;&lt;i&gt;&lt;b&gt;Note:&lt;/b&gt; &lt;/i&gt;Most of the keys are new to me. I have purposefully left out keys that make no sense to me at this moment. As I learn more about the PDF specification I will hopefully cover them in detail. &lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Type &lt;/b&gt;- Will always be Page&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Parent &lt;/b&gt;- An indirect reference to the parent of this page&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;LastModified &lt;/b&gt;- Date and time when this page was last modified &lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Resources &lt;/b&gt;- The resources required by this page. This usually refers to the font used on this page and other info.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;MediaBox&lt;/b&gt; - A rectangle that defines the boundary inside which the page has to be displayed.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Contents&lt;/b&gt; - A content stream that describes the contents of this page.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Rotate&lt;/b&gt; - In multiples of 90. Rotates the page by the number of degrees before displaying.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Thumb&lt;/b&gt; - A stream object that gives the thumbnail image for this page.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Dur&lt;/b&gt; - the number of seconds the page will be displayed in presentations before automatically moving on to the next page.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Trans &lt;/b&gt;- A dictionary advising what transition to use when displaying the page during presentation.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Annots &lt;/b&gt;- This is an array of dictionaries containing references to all the annotations for this page&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;AA &lt;/b&gt;- This is the short form for additional-actions. This dictionary defines the actions that need to be taken when the file is open or closed.&lt;/div&gt;
+&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;b&gt;Metadata &lt;/b&gt;- A stream that contains metadata for this page&lt;/div&gt;
+&lt;div&gt;&amp;nbsp; &lt;br&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+Here is a grab from a sample PDF that I created using a free PDF creating software.
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;4 0 obj&lt;/code&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt;/Type/Page/MediaBox [0 0 595 842]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/Rotate 0/Parent 3 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/Resources&amp;lt;&amp;lt;/ProcSet[/PDF /Text]&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/ExtGState 10 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/Font 11 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/Contents 5 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;nbsp;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;3 0 obj&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt; /Type /Pages /Kids [&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;4 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;] /Count 1&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;/Rotate 0&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;nbsp;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;1 0 obj&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt;/Type /Catalog /Pages 3 0 R&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;
+&lt;div&gt;As you can see Object 1 is the catalog that directs the PDF reading application to the root of the page tree (Object 3). Object 3, the root node had only one kid (Object 4) and obviously cannot have a parent. Object 4 is 'displayed' within a rectangle (0 0 595 842) and is not rotated (Rotate 0) and has Object 3 as its parent. It's 'resources' as well as its contents (Object 5) are included. Here is Object 5 from my file. &lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;As we had discussed earlier, the stream in this object starts with a dictionary that shows the length of the stream (which is stored in Object 6). We will discuss more about Content streams further down. &lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;5 0 obj&lt;/code&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt;/Length 6 0 R/Filter /FlateDecode&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;xMK.1.鶵u*j.czi2&amp;amp; 7KnSK..Z?].&quot;6.3w&amp;gt;^&amp;amp;s@MQ...K.d\&amp;gt;}q...&amp;nbsp;&amp;nbsp;&amp;nbsp; ).|.ѣ'o1lA.ۥ&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;S-lE,.C.W.&amp;amp;#xf01d2;YGKM\vjEG.'|F[j.:..2f2Ź^.uujNWǌY::si/.L9,ČGPY1k/.%'f!endstream&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;&amp;nbsp;&lt;b&gt;Page attributes are inherited:&lt;/b&gt; Here is an interesting fact. Certain attributes in a page can be inherited from its parent or any of its ancestors in the page tree. The eliminates the need to keep repeating similar attributes for every child, grandchild etc. If an ancestor defines a value for an attribute, that value can be replaced or changed by the child.
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Name Dictionary:&lt;/b&gt; Rather than referring to the objects by their references, some objects can be referred to by their names. The link between the names and their references is stored in the PDF file's &lt;i&gt;name dictionary&lt;/i&gt;. One of the optional keys in the Catalog, &lt;i&gt;Names&lt;/i&gt; is used to used to specify the &lt;i&gt;Name Dictionary&lt;/i&gt;. Please refer to the PDF specification for more details.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;
+&lt;div&gt;&lt;b&gt;Content Streams:&lt;/b&gt; This is a stream (an object in PDF, if you remember) that has instructions on how to display text &amp;amp; graphics on the corresponding page. In Object 5, of my PDF file, mentioned earlier and repeated below we can see a stream. This stream gives the PDF reader (for instance Adobe Reader) the instructions on how to display.&lt;/div&gt;
+&lt;div&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div style=&quot;color:rgb(0,0,255);margin-left:80px&quot;&gt;
+&lt;div class=&quot;sites-codeblock sites-codesnippet-block&quot;&gt;&lt;code&gt;5 0 obj&lt;/code&gt;
+&lt;div&gt;&lt;code&gt;&amp;lt;&amp;lt;/Length 6 0 R/Filter /FlateDecode&amp;gt;&amp;gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;xMK.1.鶵u*j.czi2&amp;amp; 7KnSK..Z?].&quot;6.3w&amp;gt;^&amp;amp;s@MQ...K.d\&amp;gt;}q...&amp;nbsp;&amp;nbsp;&amp;nbsp; ).|.ѣ'o1lA.ۥ&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;S-lE,.C.W.&amp;amp;#xf01d2;YGKM\vjEG.'|F[j.:..2f2Ź^.uujNWǌY::si/.L9,ČGPY1k/.%'f!endstream&lt;/code&gt;&lt;/div&gt;
+&lt;div&gt;&lt;code&gt;endobj&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;The data in the stream makes no sense because the data has been encoded (converted from its original form to another). In the following sections we will look more in detail about the structure of these data and understand how they form instructions for the PDF reading application to display the page.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;Note that unlike other objects in a PDF file, the instructions in the object stream are read and followed sequentially (one after the other).&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;Before proceeding further we will try to create a simple PDF file from what we have learnt so far.&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Sample PDF file:&lt;/b&gt; Here is a sample PDF file that I created with help from the specification. You can copy this file from &lt;a href=&quot;http://www.printmyfolders.com/Home/sample-pdf&quot;&gt;here&lt;/a&gt; and save it in a text editor like notepad. Save it with a filename but with a file extension &quot;pdf&quot;. In notepad, you will have to save as &quot;filename.pdf&quot; (Quotes inclusive). You can then view it with a PDF reader (for instance using Acrobat Reader). &lt;b&gt;Note:&lt;/b&gt; Not all PDF files are as simple as this. This PDF file that is very basic and just displays a single line of text.&lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div&gt;Article continues at&amp;nbsp;&lt;a href=&quot;http://www.printmyfolders.com/Home/understanding-the-portable-document-format-pdf-part-2&quot;&gt;Understanding the Portable Document Format (PDF): Part 2&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;&amp;nbsp;&lt;/div&gt;
+&lt;div style=&quot;text-align:left&quot;&gt;
+&lt;div&gt;&lt;div&gt;I love your feedback and suggestions. Please leave a comment below or contact me at&amp;nbsp;&lt;a href=&quot;mailto:steve@printmyfolders.com&quot;&gt;steve@printmyfolders.com.&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;div class=&quot;sites-embed-align-left-wrapping-off&quot;&gt;&lt;div class=&quot;sites-embed-border-off sites-embed sites-embed-full-width&quot; style=&quot;width:100%;&quot;&gt;&lt;h4 class=&quot;sites-embed-title&quot;&gt;Please leave your comments or suggestions&lt;/h4&gt;&lt;div class=&quot;sites-embed-object-title&quot; style=&quot;display:none;&quot;&gt;Google Spreadsheet Form&lt;/div&gt;&lt;div class=&quot;sites-embed-content sites-embed-type-spreadsheet-form&quot;&gt;&lt;iframe src=&quot;http://docs.google.com/forms/viewform?bc=transparent&amp;amp;embedded=true&amp;amp;f=Arial%252C%2BVerdana%252C%2Bsans-serif&amp;amp;hl=en_GB&amp;amp;htc=%2523666666&amp;amp;id=18fO6f2YLA_Ea6MaMkDBfkP3C1LjDEcaSmunSmKixFg4&amp;amp;lc=%25234e7dbf&amp;amp;pli=1&amp;amp;tc=%2523000000&amp;amp;ttl=0&quot; title=&quot;Google Spreadsheet Form&quot; allowtransparency=&quot;true&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot; id=&quot;179677655&quot; width=&quot;100%&quot; height=&quot;500&quot; frameborder=&quot;0&quot;&gt; &lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;br&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;br&gt;&lt;/div&gt;</pre>
 </div>
 <div title="Untitled" type="text/html">
 <pre>&lt;html&gt;
