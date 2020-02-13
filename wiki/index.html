@@ -605,6 +605,12 @@ Error message and password prompt
 
 <li>Find and replace trying 2</li>
 
+<li>Git 使用者設定</li>
+
+<li>Git 其它方便的設定</li>
+
+<li>Git 新增、初始 Repository</li>
+
 <li>Grammar</li>
 
 <li>Home</li>
@@ -692,6 +698,8 @@ Error message and password prompt
 <li>New Tiddler</li>
 
 <li>New Tiddler (not work) too many problem</li>
+
+<li>New Tiddler 1</li>
 
 <li>New Tiddler mark up</li>
 
@@ -11033,7 +11041,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="常用終端機命令列指令 GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="[[New Tiddler 1]] [[Git 新增、初始 Repository]] [[Git 其它方便的設定]] [[Git 使用者設定]] 常用終端機命令列指令 GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -12305,6 +12313,162 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 
 &quot;&quot;&quot; 
 &quot;;;|&lt;br&gt;||abc|123||gih|789&quot;&gt;&gt;</pre>
+</div>
+<div created="20200213025029703" modified="20200213025757023" tags="Git" title="Git 使用者設定">
+<pre>!! Git 使用者設定
+
+要開始使用 Git，首先要做的第一件事（應該也只要做一次就好），就是設定使用者的 Email 信箱以及使用者名稱。請打開你的終端機視窗，輸入下面這兩行指令：
+
+```
+$ git config --global user.name &quot;Eddie Kao&quot;
+$ git config --global user.email &quot;eddie@5xruby.tw&quot;
+
+$ git config --list
+user.name=Eddie Kao
+user.email=eddie@5xruby.tw
+
+```
+
+!! 設定檔的位置
+
+不管是透過終端機指令或是圖形介面工具做的設定，所有 Git 相關的設定，預設會在自己帳號下的 .gitconfig 這個檔案裡，所以使用一般的文字編輯器，直接手動修改這個檔案也會有一樣的效果：
+
+檔案：~/.gitconfig
+
+```
+[user]
+  name = Eddie Kao
+	email = eddie@digik.com.tw
+[core]
+	excludesfile = /Users/eddie/.gitignore_global
+  # ...略...
+```
+
+!! 【狀況題】可以每個專案設定不同的作者嗎？
+你可能有注意到剛剛前面在做設定的時候有多加了一個 --global 的參數，意思是要做全域（Global）的設定。但偶爾會遇到一些特別的狀況，例如是要幫特定的專案設定不同的作者（不要問我什麼時候會需要做這件事），可以在該專案目錄下進行 Git 設定的時候，加上 --local 參數：
+
+```
+ $ git config --local user.name Sherly
+ $ git config --local user.email sherly@5xruby.tw
+```
+這樣一來，在這個專案進行操作的時候，就會使用特別幫這個專案設定的使用者名稱及 Email 來進行操作。離開這個專案後的 Git 操作，就還是會使用預設的 Global 設定</pre>
+</div>
+<div created="20200213025904794" modified="20200213030854465" tags="Git" title="Git 其它方便的設定">
+<pre>!! 其它方便的設定
+工程師大多有著懶惰的美德，討厭重複的工作，所以常會幫自己設定一些方便的設定，以下是一些我自己在 Git 上常會做的方便設定。
+
+!! 更換編輯器
+一般來說，Vim 是 Git 預設的編輯器，所以在終端機下使用 Git，對新手的麻煩之一就是或多或少都會遇到 Vim 這個編輯器。雖然我們在超精簡 Vim 操作介紹章節介紹了這個神奇的編輯器大概怎麼使用，但對平常沒在用，或用不習慣的人來說還是會覺得很麻煩。
+
+不過還好，不一定要用 Vim，你可以在終端機下執行這個指令：
+
+```
+$ git config --global core.editor emacs
+```
+這樣就可以把預設的 Vim 編輯器換成 Emacs 了（咦？好像沒比較好？）
+
+其實除了 Vim 或 Emacs 之外，也可以使用 Sublime Text、Atom 或是 Visual Studio Code 比較現代的文字編輯器。只是你需要先 Google 一下怎麼從終端機啟動這些應用程式，然後就可以用一樣的方法把 Vim 換掉了。
+
+如果在操作 Git 的過程中跳出 Vim 這個問題對你一直很困擾，那建議可以搭配圖形介面軟體使用。
+
+!! 懶得打字，或常打錯字
+雖然 Git 指令不長，但有時候就懶得打那麼多字（例如 checkout 指令就有 8 個字母），或是有些指令就是常會打錯（例如 status 指令我就常打成 state）。
+
+遇到這種狀況，我們可以在 Git 裡設定一些「縮寫」，然後就可以少打幾個字。只要在終端機下執行：
+
+```
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.st status
+```
+設定之後，輸入 git co 指令就跟 git checkout 會有一樣的效果，git st 就有 git status 的效果，一下就省了很多個鍵。
+
+而且還可以再加一些參數進去，例如每次在看 log 的時候，為了看比較精簡的資訊，都得要輸入 git log --oneline --graph 這麼長的指令，改用 Alias 設定的話：
+
+```
+$ git config --global alias.l &quot;log --oneline --graph&quot;
+```
+這樣之後只要輸入 git l 就可以有原來 --oneline --graph 的效果了：
+
+```
+$ git l
+*   cc200b5 (HEAD -&gt; master) Merge branch 'cat'
+|\
+| * 0d1d15d (cat) add cat 2
+| * 0d392fb add cat 1
+|/
+* 657fce7 (origin/master, origin/HEAD) add container
+* abb4f43 update index page
+* cef6e40 create index page
+* cc797cd init commit
+```
+或是甚至可以再把格式弄複雜一點，把 Commit 時間的人跟時間都加進來：
+
+```
+$ git config --global alias.ls 'log --graph --pretty=format:&quot;%h &lt;%an&gt; %ar %s&quot;'
+```
+尾巴那段看起來有點複雜的 format 的參數就是印出 Commit 的各別資訊，參數代表的意思請執行 git help log 後查閱關於 format 有關的段落。用起來的樣子就會像這樣：
+
+```
+$ git ls
+*   cc200b5 &lt;Eddie Kao&gt; 9 seconds ago Merge branch 'cat'
+|\
+| * 0d1d15d &lt;Eddie Kao&gt; 18 seconds ago add cat 2
+| * 0d392fb &lt;Eddie Kao&gt; 20 seconds ago add cat 1
+|/
+* 657fce7 &lt;Eddie Kao&gt; 13 days ago add container
+* abb4f43 &lt;Eddie Kao&gt; 13 days ago update index page
+* cef6e40 &lt;Eddie Kao&gt; 2 weeks ago create index page
+* cc797cd &lt;Eddie Kao&gt; 2 weeks ago init commit
+```
+這樣甚至不需要圖形介面工具也可以輕鬆的看 log。上面這些 Alias 的設定，也可直接到 ~/.gitconfig 裡修改：
+
+```
+[alias]
+  co = checkout
+  br = branch
+  st = status
+  l = log --oneline --graph
+  ls = log --graph --pretty=format:&quot;%h &lt;%an&gt; %ar %s&quot;
+```
+不要小看這幾個字的差別，每次少敲幾次鍵盤，長期累積下來也是很驚人的。</pre>
+</div>
+<div created="20200213030357548" modified="20200213030844357" tags="Git" title="Git 新增、初始 Repository">
+<pre>!! 新增、初始 Repository
+終於，我們要開始使用 Git 了，喔耶！
+
+!! 如果是全新的開始…
+我假設這是你第一次使用 Git，所以就先從建立一個全新的目錄開始來練練手感吧。請打開你的終端機視窗，並試著操作以下指令。在指令後面的 # 符號是說明，不需要跟著輸入：
+
+```
+$ cd /tmp                  # 切換至 /tmp 目錄
+$ mkdir git-practice       # 建立 git-practice 目錄
+$ cd git-practice          # 切換至 git-practice 目錄
+$ git init                 # 初始化這個目錄，讓 Git 對這個目錄開始進行版控
+Initialized empty Git repository in /private/tmp/git-practice/.git/
+```
+在上面這個範例中主要做了幾件事：
+
+使用 mkdir 指令建立了 git-practice 目錄。
+
+使用 cd 指令切換到剛剛建立的 git-practice 目錄。
+
+使用 git init 指令初始化這個目錄，主要目的是要讓 Git 開始對這個目錄進行版本控制。
+
+其中，第 3 步這個指令會在這個目錄裡建立一個 .git 目錄，整個 Git 的精華就都是在這個目錄裡了。如果各位有興趣可以先看一下這個目錄裡面的內容，不過現在並不打算介紹裡面的細節，請各位先體會一下使用 Git 的手感，待後面的章節會再慢慢介紹這個目錄裡到底在賣什麼藥。
+
+小數點開頭的目錄或檔案名稱（例如 .git），在一些作業系統中預設是隱藏的，可能會需要開啟檢視隱藏檔之類的設定才看得到。
+
+!! 如果本來就有的目錄…
+如果想針對本來就存在的目錄進行版控，其實只要到那個目錄下執行 git init 指令即可。
+
+!! 如果這個目錄不想再被 Git 控制？
+其實 Git 的版控很單純，全部就是只靠那個 .git 目錄在做事而已，所以如果這個目錄不想被版控，或是只想給客戶不含版控紀錄的內容的話，只要把那個 .git 目錄移除，Git 就對這個目錄失去控制權了。
+
+也就是說，整個專案目錄裡，什麼檔案或目錄刪了都救得回來，但 .git 目錄只要刪了就沒辦法了。
+
+!! 為什麼一直用 /tmp 目錄，其它目錄可以嗎？
+在本書的範例中，我常會在 /tmp 目錄下進行練習，那是因為在 MacOS 系列的作業系統，/tmp 目錄裡的東西在下次電腦重新開機（或當機）的時候就全部被清空，所以不需要再手動整理。這算是我在練習的時候的個人喜好，你要使用其它目錄也是可以的，但如果是重要的檔案，千萬不要跟我一樣放在這個地方喔。</pre>
 </div>
 <div created="20190918090847329" modified="20190918090919702" tags="English" title="Grammar">
 <pre>&lt;&lt;list-links &quot;[tag[Grammar]sort[title]]&quot;&gt;&gt;
@@ -16516,6 +16680,192 @@ lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/rus
 
 
 </pre>
+</div>
+<div created="20200213031110926" modified="20200213033821047" tags="" title="New Tiddler 1">
+<pre>!! 把檔案交給 Git 控管
+在上個章節我們對目錄進行了 Git 的初始化，讓 Git 開始可以管理這個目錄，接下來，我們就來看看 Git 是怎麼操作的。
+
+!! 把檔案交給 Git
+在開始之前，我想先介紹 git status 這個指令。這個指令的用途是用來查詢現在這個目錄的「狀態」，先在剛剛建立的 git-practice 目錄下執行這個指令：
+
+```
+$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+```
+ 
+在這個目錄裡，現在除了 Git 幫你產生的那個 .git 隱藏目錄外什麼都沒有，所以上面這段訊息就是要跟你說「現在沒東西可以提交（nothing to commit）」。接下來，在這個目錄裡透過系統指令建立一個內容為 “hello, git” 並命名為 welcome.html 的檔案：
+
+```
+$ echo &quot;hello, git&quot; &gt; welcome.html
+```
+
+這個步驟要用一般的文字編輯器或檔案管理員來完成也沒關係，總之就是在這個目錄裡建立一個叫做 welcome.html 的檔案就行了。接著，我們再次使用 git status 指令，來看一下這個目錄的狀態：
+
+```
+$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+	welcome.html
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+```
+這時候的狀態跟剛才一開始不太一樣了，現在可以看到這個 welcome.html 檔案目前的狀態是 Untracked files，意思是這個檔案尚未被加到 Git 版控系統裡，還沒開始正式被 Git「追蹤」，它只是剛剛才加入這個目錄而已。
+
+把檔案交給 Git
+既然目前這個檔案是 Untracked，接下來就是要把 welcome.html 這個檔案交給 Git，讓 Git 開始「追蹤」它，使用的指令是 git add 後面加上檔案名稱：
+
+```
+$ git add welcome.html
+```
+
+在終端機執行這個指令不會有任何的輸出結果，如果是使用 SourceTree，可以在那個檔案上按滑鼠右鍵，然後選擇「Add to index」, 就可以把這個檔案交給 Git 來管控了。再次使用 git status 指令看一下目前的狀態：
+
+```
+$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+	new file:   welcome.html
+```
+
+有注意到嗎？剛才那個檔案從 Untracked 變成 new file 狀態了。這個表示這個檔案已經被安置到暫存區（Staging Area），等待稍後跟其它檔案一起被存到儲存庫裡。
+
+而這個暫存區也稱之索引（index），所以在上圖中，SourceTree 的選單才會用「Add to index」字樣。基本上暫存區跟索引是一樣的意思。為了讓大家比較方便理解，本書將統一使用「暫存區」的用法。至於為什麼要有這樣的設計，請見下一章「工作區、暫存區與儲存庫」的介紹。
+
+!! 小提示
+其實這個 add 指令看起來很簡單，但背後 Git 其實幫你做了不少事，詳情請參閱「【超冷知識】在 .git 目錄裡有什麼東西？Part 1」章節說明。
+
+如果你覺得 git add welcome.html 這樣一次只加一個檔案有點麻煩，你也可以使用萬用字元（wildcard character）：
+
+```
+$ git add *.html
+```
+
+就可把所有附檔名是 html 的檔案全部都加到暫存區。而如果想要一口氣把全部的檔案加到暫存區，可直接使用 --all 參數：
+
+```
+$ git add --all
+```
+
+!! 【狀況題】如果在 git add 之後又修改了那個檔案的內容？
+想像一下這個情境：
+
+你新增了一個檔案叫做 abc.txt。
+然後，執行 git add abc.txt 把檔案加至暫存區。
+接著編輯 abc.txt 檔案。
+完成編輯後，接著你可能會想要進行 Commit，把剛剛修改的內容存下來。這是新手可能會犯的錯誤之一，以為 Commit 指令就會把所有的異動都存下來，事實上這樣的想法是不太正確的。執行一下 git status 指令，看一下目前的狀態：
+
+$ git status
+On branch master
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+	new file:   abc.txt
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+	modified:   abc.txt
+
+ 
+咦？你發現 abc.txt 這個檔案變成 2 個了嗎？其實你在第 2 步的確有把 abc.txt 加到暫存區沒錯，但你在第 3 步又編輯了那個檔案，對 Git 來說，編輯的內容並沒有再次被加到暫存區，所以這時候在暫存區裡的資料還是你在第 2 步時候加進來的那個檔案。
+
+如果確定這個修改是你要的，就請再次使用 git add abc.txt 指令，再把 abc.txt 加至暫存區。
+
+豆知識
+其實這樣的動作會產生一些 Unreachable 的沒人愛邊緣物件，這部份算是比較進階的內容，有興趣可參閱「【冷知識】你知道 Git 有資源回收機制嗎？」章節內容。
+
+【冷知識】”–all” 跟 “.” 參數有什麼不一樣？
+有時候會看到別人說「git add . 指令也可以把所有的檔案全部加到暫存區喔！」，這樣的說法其實不完全正確，這得看以下幾種情況而決定：
+
+1. Git 版本
+在比較舊版本（1.x 版）的 Git， git add . 這個指令會把「新增的檔案」（也就是 Untracked 狀態的檔案）以及有「修改過的檔案」加到暫存區沒錯，但是不會處理「刪除檔案」的行為。讓我畫個表格簡單說明一下：
+
+使用參數	新增檔案	修改檔案	刪除檔案
+--all	O	O	O
+.	O	O	X
+不過，在 Git 2.x 版之後變成這樣：
+
+使用參數	新增檔案	修改檔案	刪除檔案
+--all	O	O	O
+.	O	O	O
+也就是說，在 Git 2.x 之後，這兩個參數在功能上就沒什麼差別了。
+
+2. 執行指令時候的目錄位置
+舉個例子來說：
+
+image
+
+在專案的根目錄的 index.html 以及在 css 目錄的 main.css 都有修改，如果是在根目錄執行 git add .，這兩個檔案都會被加進暫存區，但如果是在 css 目錄下執行，僅會加入 main.css，index.html 的狀態不會改變。
+
+那是因為 git add . 這個指令會把目前當下這個目錄，以及它的子目錄、子子目錄、子子子目錄…裡的異動全部加到暫存區，但在這個目錄的以外的就不歸它管了。而 git add --all 指令就沒這個問題，這個指令不管在專案的哪一層目錄執行，效果都是一樣的，在這個專案裡所有的異動都會被加至暫存區。
+
+
+ 
+所以，回到原來的問題「--all 跟 . 參數有什麼不一樣？」，答案會跟所使用的 Git 版本不同以及執行指令時的目錄而有所差異。
+
+把暫存區的內容提交到倉庫裡存檔
+如果僅是透過 git add 指令把異動加到暫存區是不夠的，這樣還不算是完成整個流程。要讓暫存區的內容永久的存下來的話，使用的是 git commit 指令：
+
+$ git commit -m &quot;init commit&quot;
+[master (root-commit) dfccf0c] init commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.html
+在後面加上的 -m &quot;init commit&quot; 是指要要說明「你在這次的 Commit 做了什麼事」，只要使用簡單、清楚的文字說明就好，中、英文都可，重點是清楚，讓不久之後的你或是你的同事能很快的明白就行了。
+
+如果是使用 SourceTree，可點擊左上角的「Commit」按鈕，就可以開始輸入訊息：
+
+image
+
+輸入完訊息，按下右下角的「Commit」按鈕，即可完成這次的 Commit。
+
+當完成了這個動作後，對 Git 來說就是「把暫存區的東西存放到儲存庫（Repository）裡」，翻譯成白話文就是「我完成一個存檔（或備份）的動作了」，也是建立了一個我們在第一個章節所提到的「版本」。關於儲存庫，我們會在下個章節「工作區、暫存區與儲存庫」介紹。
+
+注意！
+要完成 Commit 指令才算是完成整個流程喔！
+
+到底 Commit 了哪些東西？
+請先記住一個很重要的觀念：「Git 每次的 Commit 都只會處理暫存區（Staging Area）裡的內容」。也就是說，如果在執行 git commit 指令的時候，那些還沒被加到暫存區裡的檔案，就不會被 Commit 到儲存庫裡。
+
+舉例來說，如果你新增了一個檔案，但卻沒有執行 git add 指令把這個檔案加至暫存區的話，在執行 git commit 指令的時候那個檔案就會被無視喔。
+
+那個訊息是什麼？很重要嗎？
+對，很重要！很重要！很重要！（因為重要所以要說三次）
+
+在 Commit 的時候，如果沒有輸入這個訊息，Git 預設是不會讓你完成 Commit 這件事的。它最主要的目的就是告訴你自己以及其它人「這次的修改做了什麼」。以下是幾點關於訊息的建議：
+
+儘量不要使用太過情緒性的字眼（我知道開發者有時候工作會有低潮或遇到澳州來的客人），避免不必要的問題。
+英文、中文都沒關係，重點是要簡單、清楚。
+儘量不要使用像 bug fixed 這樣模糊的描述，因為沒人知道你修了什麼 bug。但如果有搭配其它的系統使用，則可使用 #34 bug fixed，因為這樣可以知道這次的 Commit 修正了第 34 號的 bug。
+等等，我怎麼跳出一個奇怪的視窗了
+在執行 commit 指令時，如果沒有在後面加上訊息參數，預設會跳出一個黑黑的畫面，那個就是傳說中的編輯器 - Vim。那是個對新手不太友善的編輯器，各位可參考「超精簡 Vim 操作介紹」章節的介紹，或是直接使用 SourceTree 之類的圖形介面軟體來處理輸入提交訊息的問題。
+
+【冷知識】一定要有東西才能 Commit 嗎？
+只要加上 --allow-empty 參數，沒東西也是可以 Commit 的：
+
+$ git commit --allow-empty -m &quot;空的&quot;
+[master 76a5b84] 空的
+
+$ git commit --allow-empty -m &quot;空的&quot;
+[master f4f568c] 空的
+
+$ git commit --allow-empty -m &quot;空的&quot;
+[master 7653117] 空的
+這樣就做了 3 個空的 Commit 出來，基本上這沒什麼意義，但有時候我們在上 Git 課的時候就會滿方便的，可以不用新增檔案就快速產生 Commit 來練習合併。</pre>
 </div>
 <div created="20191109114334828" modified="20191111025649930" tags="Testcase" title="New Tiddler mark up">
 <pre>\define .zli(src)
