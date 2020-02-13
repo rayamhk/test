@@ -701,6 +701,8 @@ Error message and password prompt
 
 <li>New Tiddler 1</li>
 
+<li>New Tiddler 2</li>
+
 <li>New Tiddler mark up</li>
 
 <li>old stuff</li>
@@ -11041,7 +11043,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[New Tiddler 1]] [[Git 新增、初始 Repository]] [[Git 其它方便的設定]] [[Git 使用者設定]] 常用終端機命令列指令 GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="[[New Tiddler 2]] [[New Tiddler 1]] [[Git 新增、初始 Repository]] [[Git 其它方便的設定]] [[Git 使用者設定]] 常用終端機命令列指令 GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -16866,6 +16868,44 @@ $ git commit --allow-empty -m &quot;空的&quot;
 $ git commit --allow-empty -m &quot;空的&quot;
 [master 7653117] 空的
 這樣就做了 3 個空的 Commit 出來，基本上這沒什麼意義，但有時候我們在上 Git 課的時候就會滿方便的，可以不用新增檔案就快速產生 Commit 來練習合併。</pre>
+</div>
+<div created="20200213035133118" modified="20200213035143304" tags="" title="New Tiddler 2">
+<pre>工作區、暫存區與儲存庫
+在上個章節「把檔案交給 Git 控管」介紹到可以使用 git add 指令把檔案加至暫存區（Staging Area），然後可使用 git commit 指令把暫存區的內容移往儲存庫（Repository）。
+
+在 Git 裡，主要可以分成「工作目錄（Working Directory）」、「暫存區（Staging Area）」以及「儲存庫（Repository）」三個區塊，透過不同的 Git 指令，可以把檔案移往不同的區域：
+
+image
+
+git add 指令把檔案從工作目錄移至暫存區（或索引）。
+git commit 指令把暫存區的內容移至儲存庫。
+請記得，要執行 Commit 指令，也就是要存放到 Repository 才算是完成整個流程喔。
+
+基本上，只要記得這三個區塊怎麼操作，在本機端的 Git 操作應該就沒太大的問題了。不管是用指令操作，或是用圖形介面工具操作，請一定要親自操作、熟悉這個流程。
+
+一定要二段式嗎？
+會覺得要先 add 再 commit 有點囉嗦嗎？你可以在 Commit 的時候多加一個 -a 的參數，縮短這個流程：
+
+$ git commit -a -m &quot;update content&quot;
+這樣即使沒有先 add 也可以完成 Commit。但要注意的是這個 -a 參數只對已經存在 Repository 的檔案有效，對還是新加入的檔案（也就是 Untracked file）是無效的。
+
+或是，如果你是使用像是 SourceTree 之類的圖形介面工具，可以勾一勾檔案，填寫 Commit 訊息後，按下 Commit 按鈕就可完成提交的流程：
+
+image
+
+雖然圖形介面工具可以讓你省一些麻煩，它實際上的運作原理也是一樣的，這也是為什麼在本書一直強調的，要學好 Git 一定要了解它的運作原理。
+
+為什麼要二段式這麼麻煩？
+先 add 再 commit 這樣二段式感覺可能有點麻煩，但也是有好處的。你可以想像你有一個倉庫，在倉庫門口有個小廣場，這個廣場的概念就像跟暫存區一樣，你把要存放到倉庫的貨物先放到這邊（git add），然後等收集的差不多了就可以打開倉庫門，把在廣場上的貨物送進倉庫裡（git commit），並且記錄下來這批貨是什麼用途的、誰送來的。
+
+當然，你也可以每來一件貨物就開倉門存一次、紀錄一次，但這樣一來開倉庫的次數就會非常多。老實說這樣也沒什麼過錯，只是因為太過零碎的 Commit，有時候要查閱紀錄可能會有點不太方便；另外，過於零碎的 Commit 也可能給你的同事帶來一些困擾，例如要進行 Code Review 的時候，比較有整理的 Commit 可以一次看到比較完整的內容，而不需要一個一個 Commit 慢慢看。
+
+所以，什麼時候要 Commit？
+這個問題沒有標準答案，你可以很多檔案修改好再一口氣全部一起 Commit，也可只改一個字就 Commit。常見的 Commit 的時間點有：
+
+完成一個「任務」的時候：不管是大到完成一整個電子商務的金流系統，還是小至只加了一個頁面甚至只是改幾個字，都算是「任務」。
+下班的時候：雖然可能還沒完全搞定任務，但至少先 Commit 今天的進度，除了備份之外，也讓公司知道你今天有在努力工作。（然後帶回家繼續苦命的做？）
+你想要 Commit 的時候就可以 Commit。</pre>
 </div>
 <div created="20191109114334828" modified="20191111025649930" tags="Testcase" title="New Tiddler mark up">
 <pre>\define .zli(src)
