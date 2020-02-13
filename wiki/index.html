@@ -817,6 +817,8 @@ Error message and password prompt
 
 <li>執筆忘字</li>
 
+<li>常用終端機命令列指令</li>
+
 <li>強調副詞</li>
 
 <li>恰當的副詞</li>
@@ -10848,8 +10850,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191112113231234" modified="20191112113231798" title="$:/state/shiraz/slider-macro/TiddlyWiki News/BJ Tools-1491930177">
 <pre>no</pre>
 </div>
-<div created="20190925111220464" modified="20191220115022648" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20190925111220464" modified="20200213021910948" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20190927103152783" modified="20191220102458514" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11031,7 +11033,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="understanding-pdf GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="常用終端機命令列指令 GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -11179,8 +11181,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191220113640735" modified="20191220113641443" title="$:/temp/Scripts in Tiddlywiki-74788543">
 <pre>no</pre>
 </div>
-<div created="20191218122249729" modified="20191220112032834" title="$:/temp/search">
-<pre>slider-macro</pre>
+<div created="20191218122249729" modified="20200213015508619" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20191220092332290" modified="20191220094744146" title="$:/temp/Shiraz - a set of css and macros--1384611741">
 <pre>no</pre>
@@ -18018,8 +18020,7 @@ TW5 Highlight searched text plugin
 https://bimlas.gitlab.io/tw5-highlight-searched-text/</pre>
 </div>
 <div created="20200207023804942" modified="20200207024118966" tags="" title="understanding-pdf" type="text/html" url="http://www.printmyfolders.com/understanding-pdf">
-<pre>
-&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;br&gt;
+<pre>&lt;div style=&quot;margin-left:40px&quot;&gt;&lt;br&gt;
 &lt;/div&gt;
 &lt;div&gt;&lt;b&gt;&lt;span style=&quot;line-height:115%;font-family:Calibri,sans-serif;font-size:11pt&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;
 &lt;div&gt;&lt;/div&gt;
@@ -19035,6 +19036,87 @@ Hobbit/You guys, this cat is nothing like my grandma’s cat.（nothing like sth
 <pre>跣底
 巴閉
 弔詭</pre>
+</div>
+<div created="20200213015511126" modified="20200213022528841" tags="PC" title="常用終端機命令列指令">
+<pre>!!常用終端機命令列指令
+
+|Windows|MacOS / Linux|說明|h
+|cd	|cd	|切換目錄|
+|cd	|pwd	|取得目前所在的位置|
+|dir	|ls	|列出目前的檔案列表|
+|mkdir	|mkdir	|建立新的目錄|
+|無	|touch	|建立檔案|
+|copy	|cp	|複製檔案|
+|move	|mv	|移動檔案|
+|del	|rm	|刪除檔案|
+|cls	|clear	|清除畫面上的內容|
+
+
+!!Example: MacOS/Linux
+
+```
+# 切換到 /tmp 目錄（絕對路徑）
+$ cd /tmp
+
+# 切換到 my_project 目錄（相對路徑）
+$ cd my_project
+
+# 往上一層目錄移動
+$ cd ..
+
+# 切換到使用者的 home 目錄中的 project 裡的 namecards 目錄
+# 這個 &quot;~&quot; 符號表示 home 目錄
+$ cd ~/project/namecards/
+
+# 顯示目前所在目錄
+$ pwd
+/tmp
+
+# ls 檔案列表, -al (a=&gt;.檔案 eg: .gitignore, l-=&gt;權限,擁有者,建立修改時間
+$ ls -al
+total 56
+drwxr-xr-x  18 user  wheel   612 Dec 18 02:20 .
+drwxrwxrwt  24 root  wheel   816 Dec 18 02:19 ..
+-rw-r--r--   1 user  wheel   543 Dec 18 02:19 .gitignore
+-rw-r--r--   1 user  wheel  1729 Dec 18 02:19 Gemfile
+-rw-r--r--   1 user  wheel  4331 Dec 18 02:20 Gemfile.lock
+
+# touch 建立 index.html 檔案 / 更新修改時間 
+$ touch index.html
+
+# mkdir 在目前所在目錄建立demo目錄。
+$ mkdir demo
+
+# index.html 複製一份成 about.html：
+$ cp index.html about.html
+
+# index.html 更名成 info.html：
+$ mv index.html info.html
+
+# 刪除 index.html：
+$ rm index.html
+
+# 刪除在這個目錄裡所有的 html 檔：
+$ rm *.html
+
+```
+
+!!Example: Windows
+
+```
+# 切換到 D 槽的 5xruby 目錄（絕對路徑）
+C:\&gt; cd D:\5xruby
+
+# 切換到 5xruby 目錄（相對路徑）
+D:\&gt; cd 5xruby
+
+# 往上一層目錄移動
+D:\5xruby&gt; cd ..
+
+# 顯示目前所在目錄
+D:\5xruby&gt; cd
+D:\5xruby
+```</pre>
 </div>
 <div created="20190918101019939" modified="20190920031133323" tags="Usage" title="強調副詞" type="text/vnd.tiddlywiki">
 <pre>!![英文不夠溜？7個老外最愛用的「強調副詞」，讓你講話更生動](https://www.thenewslens.com/article/12660)
