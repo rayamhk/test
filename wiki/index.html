@@ -835,6 +835,8 @@ Error message and password prompt
 
 <li>中诺电话机使用说明书</li>
 
+<li>使用git push不再需要輸入帳號密碼</li>
+
 <li>六人行（Friends），老友記中經典台詞</li>
 
 <li>執筆忘字</li>
@@ -10875,7 +10877,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20200214024136517" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20200214112536352" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -11061,7 +11063,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200214014953166" list="[[Git 個人學習筆記及心得]] [[Git submodule]] [[Git 檔案控管]] GettingStarted [[Table of Contents]]" modified="20200214020930607" title="$:/StoryList">
+<div created="20200214102222450" list="[[使用git push不再需要輸入帳號密碼]] Git [[Git 個人學習筆記及心得]] GettingStarted [[Table of Contents]]" modified="20200214102319238" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -12623,7 +12625,7 @@ user.email=eddie@5xruby.tw
 ```
 這樣一來，在這個專案進行操作的時候，就會使用特別幫這個專案設定的使用者名稱及 Email 來進行操作。離開這個專案後的 Git 操作，就還是會使用預設的 Global 設定</pre>
 </div>
-<div created="20200214021143080" modified="20200214023255749" tags="Git" title="Git 個人學習筆記及心得">
+<div created="20200214021143080" modified="20200214110504124" tags="Git" title="Git 個人學習筆記及心得">
 <pre>https://www.itread01.com/content/1546642995.html
 
 !! 一、認識 GitHub
@@ -12661,466 +12663,482 @@ Git 是個版本控制系統，說明白點就是進行程式碼的各種管理�
 
 
 
-&lt;h3 id=&quot;221-本地庫常用-git-命令&quot;&gt;2.2.1 本地庫常用 Git 命令&lt;/h3&gt;
+!!2.2.1 本地庫常用 Git 命令
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;git init： 初始化一個目錄，其實初始化完畢然後本地多出了一個 &lt;code&gt;.git&lt;/code&gt;的隱藏目錄，這個目錄管理著一個程式碼庫的版本資訊。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git add： 把一個檔案從&lt;code&gt;untracked&lt;/code&gt;（未被追蹤）狀態轉為到 &lt;code&gt;staged&lt;/code&gt;狀態，直白的講，就是把檔案提交到&lt;code&gt;暫緩區&lt;/code&gt;，這個時候還沒真正意義上的程式碼提交。格式為：&lt;code&gt;git add .&lt;/code&gt;提交所有改動，&lt;code&gt;git add hello.txt&lt;/code&gt;提交指定檔案的改動。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git commit： 這步才是真正的程式碼提交到倉庫，格式為：&lt;code&gt;git commit&lt;/code&gt;或者加引數&lt;code&gt;git commit -m “這次的提交說明資訊”&lt;/code&gt;，前者會進入一個頁面，輸入 i 可以進入編輯介面，再寫上這次的提交的註釋說明資訊（一般用來記錄本次提交的主要意圖），然後按 ESC鍵退出編輯返回到命令模式，然後連續輸入兩個大寫的 “Z”（用 Shift 鍵或 Capslock 鍵都可以），就儲存並退出了；後者的話直接可以寫上提交的註釋說明資訊。&lt;/p&gt;
+*git init： 初始化一個目錄，其實初始化完畢然後本地多出了一個 `.git`的隱藏目錄，這個目錄管理著一個程式碼庫的版本資訊。
+*git add： 把一個檔案從`untracked`（未被追蹤）狀態轉為到 `staged`狀態，直白的講，就是把檔案提交到`暫緩區`，這個時候還沒真正意義上的程式碼提交。格式為：`git add .`提交所有改動，`git add hello.txt`提交指定檔案的改動。
+*git commit： 這步才是真正的程式碼提交到倉庫，格式為：`git commit`或者加引數`git commit -m “這次的提交說明資訊”`，前者會進入一個頁面，輸入 i 可以進入編輯介面，再寫上這次的提交的註釋說明資訊（一般用來記錄本次提交的主要意圖），然後按 ESC鍵退出編輯返回到命令模式，然後連續輸入兩個大寫的 “Z”（用 Shift 鍵或 Capslock 鍵都可以），就儲存並退出了；後者的話直接可以寫上提交的註釋說明資訊。
 
-&lt;blockquote&gt;
-  &lt;p&gt;如果在提交的時候出現提示設定郵箱和使用者名稱，是為了保證提交的準確性，在提交的時候 user.name 和 user.email 會進入日誌，這些資訊，是追蹤程式碼變更的關鍵，比如是誰修改的。以後會隨更新內容一起被永久納入歷史記錄。&lt;/p&gt;
-  
-  &lt;blockquote&gt;
-    &lt;p&gt;PS：在設定使用者名稱的時候，可以使用任意的字元。Git 實際上是使用 email 進行關聯每次提交的，只不過使用 username 作為標示符來進行顯示。當你的 email 地址和 github上的 email 地址一致時，則會使用 Github 上面的 name 來進行顯示。&lt;/p&gt;
-  &lt;/blockquote&gt;
-  
-  &lt;p&gt;如果工作中只涉及一個 git 伺服器，用一個全域性配置就可以了。&lt;/p&gt;
-  
-  &lt;p&gt;&lt;strong&gt;全域性配置：&lt;/strong&gt;&lt;/p&gt;
-  
-  &lt;pre class=&quot;prettyprint prettyprinted hljs coffeescript&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs fsharp&quot;&gt;&lt;span class=&quot;pln&quot;&gt;git config &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-built_in&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; user&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;name &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;strivebo&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
-git config &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-built_in&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; user&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;email &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;6b0218031e11092b0c060a020745080406&quot;&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;[email&amp;nbsp;protected]&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-  
-  &lt;p&gt;&lt;strong&gt;非全域性配置，某個專案下的配置：&lt;/strong&gt;(去掉&lt;code&gt;--global&lt;/code&gt;)&lt;/p&gt;
-  
-  &lt;pre class=&quot;prettyprint prettyprinted hljs css&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs avrasm&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-tag&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-preprocessor&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;name&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;str&quot;&gt;&quot;&lt;span class=&quot;hljs-selector-tag&quot;&gt;strivebo&lt;/span&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
-&lt;span class=&quot;hljs-selector-tag&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-preprocessor&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;email&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;str&quot;&gt;&quot;&lt;/span&gt;&lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;91f8e2f9e4ebf3d1f6fcf0f8fdbff2fefc&quot;&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-selector-attr&quot;&gt;[email&amp;nbsp;protected]&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;span class=&quot;str&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-  
-  &lt;p&gt;&lt;strong&gt;可以使用命令來檢視修改後的配置：&lt;/strong&gt;&lt;/p&gt;
-  
-  &lt;pre class=&quot;prettyprint prettyprinted hljs css&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs avrasm&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-tag&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;config&lt;/span&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-tag&quot;&gt;--&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-selector-tag&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-preprocessor&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;name&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;或&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-preprocessor&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;name&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
-&lt;span class=&quot;hljs-selector-tag&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;config&lt;/span&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-tag&quot;&gt;--&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-selector-tag&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-preprocessor&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;email&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;或&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;hljs-selector-tag&quot;&gt;user&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-preprocessor&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-selector-class&quot;&gt;email&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-  
-  &lt;p&gt;&lt;strong&gt;取消全域性配置：&lt;/strong&gt;&lt;/p&gt;
-  
-  &lt;pre class=&quot;prettyprint prettyprinted hljs php&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs php&quot;&gt;&lt;span class=&quot;pln&quot;&gt;git config &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;unset&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; user&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;name
-git config &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;unset&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; user&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;email
+&lt;&lt;&lt;
+如果在提交的時候出現提示設定郵箱和使用者名稱，是為了保證提交的準確性，在提交的時候 user.name 和 user.email 會進入日誌，這些資訊，是追蹤程式碼變更的關鍵，比如是誰修改的。以後會隨更新內容一起被永久納入歷史記錄。
 
-git config &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; user&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;name    &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;#(檢視)全域性配置賬戶是否已經移除&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
-git config &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; user&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;email   &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;#(檢視)全域性配置郵箱是否已經移除&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git reset –hard ： 版本回退操作，比如我想把當前的版本回退到上一個版本，要使用什麼命令呢？可以使用如下2種命令，第一種是：&lt;code&gt;git reset --hard HEAD^&lt;/code&gt;。那麼如果要回退到上上個版本只需把 &lt;code&gt;HEAD^&lt;/code&gt; 改成 &lt;code&gt;HEAD^^&lt;/code&gt; 以此類推。那如果要回退到前100個版本的話，使用上面的方法肯定不方便，我們可以使用下面的簡便命令操作：&lt;code&gt;git reset --hard HEAD~100&lt;/code&gt; 即可。&lt;/p&gt;
+ &lt;&lt;&lt;
+PS：在設定使用者名稱的時候，可以使用任意的字元。Git 實際上是使用 email 進行關聯每次提交的，只不過使用 username 作為標示符來進行顯示。當你的 email 地址和 github上的 email 地址一致時，則會使用 Github 上面的 name 來進行顯示。
 
-&lt;blockquote&gt;
-  &lt;p&gt;假設： 我進行了兩次修改，第一次 readme.txt 檔案添加了2222，第二次添加了3333，我已經使用回退操作回到了第一次的修改，即現在文字內容為2222，但我其實又想回到第二次的修改，該怎麼辦呢（如何恢復3333內容呢）？這裡可以：&lt;/p&gt;
-  
-  &lt;blockquote&gt;
-    &lt;p&gt;可以通過如下命令即可獲取到版本號：&lt;code&gt;git reflog&lt;/code&gt;，可以看到增加內容3333的版本號是多少比如為 6fcfc89，我們現在可以命令：&lt;code&gt;git reset --hard 6fcfc89&lt;/code&gt; 來恢復了。  &lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git status： 檢視倉庫檔案狀態。可以加引數 -s，即&lt;code&gt;git status -s&lt;/code&gt;，加個 -s 用簡潔模式檢視當前修改和倉庫裡面差別多少，可以看到有多少檔案被新增了，多少被修改了，多少被刪除了。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git log： 檢視提交歷史記錄，即版本歷史資訊，比如誰提交的，什麼時間啊。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git diff： （不加選項引數）可以顯示工作目錄和暫存區之間的不同。換句話說，這條指令可以讓你看到「如果你現在把所有檔案都 add，你會向暫存區中增加哪些內容」。比如&lt;code&gt;git diff develop&lt;/code&gt;，檢視當前版本和 develop 分支的差異。 &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git diff –cached： 檢視已經暫存起來的檔案和上次提交的版本之間的差異。&lt;code&gt;git diff –cached filename&lt;/code&gt; 檢視已經暫存起來的某個檔案和上次提交的版本之間的差異。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git diff –staged： 使用 &lt;code&gt;git diff --staged&lt;/code&gt; 可以顯示暫存區和上一條提交之間的不同。換句話說，這條指令可以讓你看到「如果你立即輸入 git commit，你將會提交什麼」。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git branch： 檢視有哪些分支，並且能看到當前處於哪個分支上。PS：初始化倉庫後預設有 master 這個主分支，一般情況下不會輕易在該主分支操作。新建分支可以使用&lt;code&gt;git branch &amp;lt;newBranch&amp;gt;&lt;/code&gt;格式，如 &lt;code&gt;git branch dev&lt;/code&gt;新建分支 dev，其內容和和主分支一模一樣。&lt;/p&gt;
+如果工作中只涉及一個 git 伺服器，用一個全域性配置就可以了。
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;git branch -a&lt;/code&gt;：檢視本地和遠端所有分支&lt;/p&gt;
+''全域性配置：''
+
+```
+git config --global user.name &quot;strivebo&quot;
+git config --global user.email &quot;[email protected]&quot;
+```
+
+''非全域性配置，某個專案下的配置：''(去掉`--global`)
+
+```
+git config user.name &quot;strivebo&quot;
+git config user.email &quot;[email protected]&quot;
+```
+
+''可以使用命令來檢視修改後的配置：''
+
+```
+git config --global user.name 或 git config user.name
+git config --global user.email 或 git config user.email
+```
+
+''取消全域性配置：''
+
+```
+git config --global --unset user.name
+git config --global --unset user.email
+
+git config --global user.name    #(檢視)全域性配置賬戶是否已經移除
+git config --global user.email   #(檢視)全域性配置郵箱是否已經移除
+```
+
+&lt;&lt;&lt;
+
+*git reset –hard ： 版本回退操作，比如我想把當前的版本回退到上一個版本，要使用什麼命令呢？可以使用如下2種命令，第一種是：`git reset --hard HEAD^`。那麼如果要回退到上上個版本只需把 `HEAD^` 改成 `HEAD^^` 以此類推。那如果要回退到前100個版本的話，使用上面的方法肯定不方便，我們可以使用下面的簡便命令操作：`git reset --hard HEAD~100` 即可。
+
+&lt;&lt;&lt;
+
+
+
+
+  假設： 我進行了兩次修改，第一次 readme.txt 檔案添加了2222，第二次添加了3333，我已經使用回退操作回到了第一次的修改，即現在文字內容為2222，但我其實又想回到第二次的修改，該怎麼辦呢（如何恢復3333內容呢）？這裡可以：
   
-  &lt;p&gt;&lt;code&gt;git branch -r&lt;/code&gt;：檢視遠端所有分支&lt;/p&gt;
+  &lt;&lt;&lt;
+    可以通過如下命令即可獲取到版本號：`git reflog`，可以看到增加內容3333的版本號是多少比如為 6fcfc89，我們現在可以命令：`git reset --hard 6fcfc89` 來恢復了。  
+  &lt;&lt;&lt;
+&lt;&lt;&lt;
+*git status： 檢視倉庫檔案狀態。可以加引數 -s，即`git status -s`，加個 -s 用簡潔模式檢視當前修改和倉庫裡面差別多少，可以看到有多少檔案被新增了，多少被修改了，多少被刪除了。
+*git log： 檢視提交歷史記錄，即版本歷史資訊，比如誰提交的，什麼時間啊。
+*git diff： （不加選項引數）可以顯示工作目錄和暫存區之間的不同。換句話說，這條指令可以讓你看到「如果你現在把所有檔案都 add，你會向暫存區中增加哪些內容」。比如`git diff develop`，檢視當前版本和 develop 分支的差異。 
+*git diff –cached： 檢視已經暫存起來的檔案和上次提交的版本之間的差異。`git diff –cached filename` 檢視已經暫存起來的某個檔案和上次提交的版本之間的差異。
+*git diff –staged： 使用 `git diff --staged` 可以顯示暫存區和上一條提交之間的不同。換句話說，這條指令可以讓你看到「如果你立即輸入 git commit，你將會提交什麼」。
+*git branch： 檢視有哪些分支，並且能看到當前處於哪個分支上。PS：初始化倉庫後預設有 master 這個主分支，一般情況下不會輕易在該主分支操作。新建分支可以使用`git branch &amp;lt;newBranch&amp;gt;`格式，如 `git branch dev`新建分支 dev，其內容和和主分支一模一樣。
+
+&lt;&lt;&lt;
+  `git branch -a`：檢視本地和遠端所有分支
   
-  &lt;p&gt;&lt;code&gt;git branch -v&lt;/code&gt;：檢視遠端分支詳細資訊&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git checkout a： 切換到 a 分支。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git checkout -b a： 有人就說了，我要先新建再切換，未免有點麻煩，有沒有一步到位的，有的：&lt;code&gt;git checkout -b a&lt;/code&gt; 表示新建分支 a 並同時切換到分支 a。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git merge： 合併分支程式碼，比如合併 dev 分程式碼，需要先切換到 master 分支，再&lt;code&gt;git merge dev&lt;/code&gt;即可合併 dev 分支程式碼。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git merge – about： 會嘗試恢復到你執行合併前的狀態。 但當執行命令前，在工作目錄中有未儲藏、未提交的修改時它不能完美處理，除此之外它都工作地很好。由於現在 Git 倉庫處於衝突待解決的中間狀態，所以如果你最終決定放棄這次 merge，也需要執行一次 merge –abort 來手動取消它。輸入這行程式碼，你的 Git 倉庫就會回到 merge 前的狀態。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git branch -d： 刪除分支。 假如這個分支新建錯了，或者a分支的程式碼已經順利合併到 master 分支來了，那麼 a 分支沒用了，需要刪除，這個時候執行 &lt;code&gt;git branch -d a&lt;/code&gt; 就可以把a分支刪除了。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git branch -D： 強制刪除。有些時候可能會刪除失敗，比如如果 a 分支的程式碼還沒有合併到 master，你執行 &lt;code&gt;git branch -d a&lt;/code&gt; 是刪除不了的，它會智慧的提示你 a 分支還有未合併的程式碼，但是如果你非要刪除，那就執行 &lt;code&gt;git branch -D a&lt;/code&gt; 就可以**強制刪除**a分支。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git tag： 新建標籤。我們在客戶端開發的時候經常有版本的概念，比如 v1.0、v1.1 之類的，不同的版本肯定對應不同的程式碼，所以我一般要給我們的程式碼加上標籤（即把某次提交標記為某個 tags，如 v1.0），這樣假設 v1.1 版本出了一個新 bug，但是又不曉得v1.0 是不是有這個 bug，有了標籤就可以順利切換到 v1.0 的程式碼，重新打個包測試了。所以如果想要新建一個標籤很簡單，比如 &lt;code&gt;git tag v1.0&lt;/code&gt; 就代表我在當前程式碼狀態下新建了一個 v1.0 的標籤，輸入 git tag 可以檢視歷史 tag 記錄。 想要切換到某個 tag，執行：&lt;code&gt;git checkout v1.0&lt;/code&gt;，就可以切換到 v1.0 的程式碼狀態。&lt;/p&gt;&lt;/li&gt;
+  `git branch -r`：檢視遠端所有分支
+  
+  `git branch -v`：檢視遠端分支詳細資訊
+&lt;&lt;&lt;
+*git checkout a： 切換到 a 分支。
+*git checkout -b a： 有人就說了，我要先新建再切換，未免有點麻煩，有沒有一步到位的，有的：`git checkout -b a` 表示新建分支 a 並同時切換到分支 a。
+*git merge： 合併分支程式碼，比如合併 dev 分程式碼，需要先切換到 master 分支，再`git merge dev`即可合併 dev 分支程式碼。
+*git merge – about： 會嘗試恢復到你執行合併前的狀態。 但當執行命令前，在工作目錄中有未儲藏、未提交的修改時它不能完美處理，除此之外它都工作地很好。由於現在 Git 倉庫處於衝突待解決的中間狀態，所以如果你最終決定放棄這次 merge，也需要執行一次 merge –abort 來手動取消它。輸入這行程式碼，你的 Git 倉庫就會回到 merge 前的狀態。
+*git branch -d： 刪除分支。 假如這個分支新建錯了，或者a分支的程式碼已經順利合併到 master 分支來了，那麼 a 分支沒用了，需要刪除，這個時候執行 `git branch -d a` 就可以把a分支刪除了。
+*git branch -D： 強制刪除。有些時候可能會刪除失敗，比如如果 a 分支的程式碼還沒有合併到 master，你執行 `git branch -d a` 是刪除不了的，它會智慧的提示你 a 分支還有未合併的程式碼，但是如果你非要刪除，那就執行 `git branch -D a` 就可以**強制刪除**a分支。
+*git tag： 新建標籤。我們在客戶端開發的時候經常有版本的概念，比如 v1.0、v1.1 之類的，不同的版本肯定對應不同的程式碼，所以我一般要給我們的程式碼加上標籤（即把某次提交標記為某個 tags，如 v1.0），這樣假設 v1.1 版本出了一個新 bug，但是又不曉得v1.0 是不是有這個 bug，有了標籤就可以順利切換到 v1.0 的程式碼，重新打個包測試了。所以如果想要新建一個標籤很簡單，比如 `git tag v1.0` 就代表我在當前程式碼狀態下新建了一個 v1.0 的標籤，輸入 git tag 可以檢視歷史 tag 記錄。 想要切換到某個 tag，執行：`git checkout v1.0`，就可以切換到 v1.0 的程式碼狀態。
 &lt;/ul&gt;
 
 
 
-&lt;h3 id=&quot;222-操作遠端倉庫相關-git-命令&quot;&gt;2.2.2 操作遠端倉庫相關 Git 命令&lt;/h3&gt;
+!!2.2.2 操作遠端倉庫相關 Git 命令
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;git clone： 遠端 clone 即複製/克隆一個完整的 repository (倉庫，即專案程式碼)到本地，克隆倉庫時所使用的遠端主機自動被 Git 命名為&lt;code&gt;origin&lt;/code&gt;，如果想用其他的主機名，需要用&lt;code&gt;git clone&lt;/code&gt;命令的&lt;code&gt;-o&lt;/code&gt;選項指定。格式為：&lt;code&gt;git clone -o jQuery https://github.com/jquery/jquery.git&lt;/code&gt;，然後&lt;code&gt;git remote&lt;/code&gt;命令檢視，可以看到名字為遠端主機名 jQuery。&lt;/p&gt;
+*git clone： 遠端 clone 即複製/克隆一個完整的 repository (倉庫，即專案程式碼)到本地，克隆倉庫時所使用的遠端主機自動被 Git 命名為`origin`，如果想用其他的主機名，需要用`git clone`命令的`-o`選項指定。格式為：`git clone -o jQuery https://github.com/jquery/jquery.git`，然後`git remote`命令檢視，可以看到名字為遠端主機名 jQuery。
 
-&lt;blockquote&gt;
-  &lt;p&gt;這裡要特別說下，這裡克隆可以有兩種方式，一種 https 方式，一種 ssh 。&lt;/p&gt;
+&lt;&lt;&lt;
+  這裡要特別說下，這裡克隆可以有兩種方式，一種 https 方式，一種 ssh 。
   
-  &lt;p&gt;1、如果是 https 方式，複製倉庫 https 地址進行 clone 操作，如：&lt;code&gt;git clone https://github.com/strivebo/git-practice.git&lt;/code&gt;&lt;/p&gt;
+  1、如果是 https 方式，複製倉庫 https 地址進行 clone 操作，如：`git clone https://github.com/strivebo/git-practice.git`
   
-  &lt;p&gt;這樣克隆下來的專案倉庫，注意觀察&lt;code&gt;.git&lt;/code&gt;資料夾下的&lt;code&gt;config&lt;/code&gt;中的檔案 url：&lt;/p&gt;
+  這樣克隆下來的專案倉庫，注意觀察`.git`資料夾下的`config`中的檔案 url：
   
   &lt;pre class=&quot;prettyprint prettyprinted hljs coffeescript&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs coffeescript&quot;&gt;&lt;span class=&quot;pun&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;remote &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;origin&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
   url &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;&lt;span class=&quot;pln&quot;&gt;https&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;//gi&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;thub.com/strivebo/git-practice.git&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
   fetch &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;refs&lt;/span&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;heads&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;*:refs&lt;/span&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-regexp&quot;&gt;/remotes/origin/&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;*
 [branch &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;master&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;]
   remote = origin
-  merge = refs/heads/master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+  merge = refs/heads/master&lt;/span&gt;`&lt;/pre&gt;
   
-  &lt;p&gt;2、如果是 ssh 方式，複製倉庫的 ssh 地址進行 clone 操作，如：&lt;code&gt;git clone &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;583f312c183f312c302d3a763b3735&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/git-practice.git&lt;/code&gt;&lt;/p&gt;
+  2、如果是 ssh 方式，複製倉庫的 ssh 地址進行 clone 操作，如：`git clone &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;583f312c183f312c302d3a763b3735&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/git-practice.git`
   
-  &lt;p&gt;這樣克隆下來的專案倉庫，注意觀察&lt;code&gt;.git&lt;/code&gt;資料夾下的&lt;code&gt;config&lt;/code&gt;中的檔案 url：&lt;/p&gt;
+  這樣克隆下來的專案倉庫，注意觀察`.git`資料夾下的`config`中的檔案 url：
   
   &lt;pre class=&quot;prettyprint prettyprinted hljs ruby&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs ruby&quot;&gt;&lt;span class=&quot;pun&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;remote &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;str&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;origin&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
   url &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; git&lt;/span&gt;&lt;span class=&quot;hljs-variable&quot;&gt;&lt;span class=&quot;pln&quot;&gt;@github&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;com&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;:&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;strivebo&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;practice&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;git
   fetch &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;refs&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;heads&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;/*&lt;/span&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;:refs/remotes/origin/*&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;
 [branch &lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;master&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;com&quot;&gt;]
   remote = origin
-  merge = refs/heads/master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+  merge = refs/heads/master&lt;/span&gt;`&lt;/pre&gt;
   
-  &lt;p&gt;（&lt;strong&gt;注：&lt;/strong&gt; https 方式下 url 為 「https 地址」，shh 方式下 url 為「ssh 地址」（我就這麼任性瞎說了，反正意思明白就行），所以假設你採用的 https 方式 clone 下來的專案可以通過修改這個 url 為「ssh 地址」變為了 「ssh 方式 clone 下來的」。）&lt;/p&gt;
+  （''注：'' https 方式下 url 為 「https 地址」，shh 方式下 url 為「ssh 地址」（我就這麼任性瞎說了，反正意思明白就行），所以假設你採用的 https 方式 clone 下來的專案可以通過修改這個 url 為「ssh 地址」變為了 「ssh 方式 clone 下來的」。）
   
-  &lt;p&gt;兩者的區別有，若採用的 https 方式，則每次提交程式碼至 github 時，都要求輸入 github 賬號和密碼才能提交，若 ssh 方式，則不需要每次的輸入。但是當然在這之前，你得要新增 ssh 。&lt;/p&gt;
+  兩者的區別有，若採用的 https 方式，則每次提交程式碼至 github 時，都要求輸入 github 賬號和密碼才能提交，若 ssh 方式，則不需要每次的輸入。但是當然在這之前，你得要新增 ssh 。
   
   
   
-  &lt;p&gt;這裡引用我看到的網上資料關於 https 和 SSH 的區別說下：&lt;/p&gt;
+  這裡引用我看到的網上資料關於 https 和 SSH 的區別說下：
   
-  &lt;blockquote&gt;
-    &lt;p&gt;1、前者可以隨意克隆 github上的專案，而不管是誰的；而後者則是你必須是你要克隆的專案的擁有者或管理員，且需要先新增 SSH key ，否則無法克隆。&lt;/p&gt;
+  &lt;&lt;&lt;
+    1、前者可以隨意克隆 github上的專案，而不管是誰的；而後者則是你必須是你要克隆的專案的擁有者或管理員，且需要先新增 SSH key ，否則無法克隆。
     
-    &lt;p&gt;2、https url 在 push 的時候是需要驗證使用者名稱和密碼的；而 SSH 在 push 的時候，是不需要輸入使用者名稱的，如果配置 SSH key 的時候設定了密碼，則需要輸入密碼的，否則直接是不需要輸入密碼的。&lt;/p&gt;
-  &lt;/blockquote&gt;
+    2、https url 在 push 的時候是需要驗證使用者名稱和密碼的；而 SSH 在 push 的時候，是不需要輸入使用者名稱的，如果配置 SSH key 的時候設定了密碼，則需要輸入密碼的，否則直接是不需要輸入密碼的。
+  &lt;&lt;&lt;
   
-  &lt;p&gt;&lt;strong&gt;關於如何新增 ssh 我也在這裡說下步驟：&lt;/strong&gt; &lt;/p&gt;
+  ''關於如何新增 ssh 我也在這裡說下步驟：'' 
   
-  &lt;p&gt;​ 1、Linux 與 Mac 都是預設安裝了 SSH ，而 Windows 系統安裝了 Git Bash（即安裝了 Git 就有這個） 應該也是帶了 SSH 的，在終端輸入&lt;code&gt;ssh&lt;/code&gt;命令可以檢視是否安裝了 ssh；&lt;/p&gt;
+  ​ 1、Linux 與 Mac 都是預設安裝了 SSH ，而 Windows 系統安裝了 Git Bash（即安裝了 Git 就有這個） 應該也是帶了 SSH 的，在終端輸入`ssh`命令可以檢視是否安裝了 ssh；
   
-  &lt;p&gt;​ 2、緊接著輸入 &lt;code&gt;ssh-keygen -t rsa&lt;/code&gt; 或者&lt;code&gt;ssh-keygen -t rsa -C &quot;註釋&quot;&lt;/code&gt;格式 ，就是指定 rsa 演算法生成金鑰，接著連續三個回車鍵（不需要輸入密碼）然後就會生成兩個檔案 id_rsa 和 id_rsa.pub ，而 id_rsa 是金鑰，id_rsa.pub 就是公鑰。這兩檔案預設分別在如下目錄裡生成： Linux/Mac 系統 在 &lt;code&gt;~/.ssh&lt;/code&gt; 下，win系統在 &lt;code&gt;/c/Documents and Settings/username/.ssh&lt;/code&gt; 下， 都是隱藏目錄，大家應該能找到的；&lt;/p&gt;
+  ​ 2、緊接著輸入 `ssh-keygen -t rsa` 或者`ssh-keygen -t rsa -C &quot;註釋&quot;`格式 ，就是指定 rsa 演算法生成金鑰，接著連續三個回車鍵（不需要輸入密碼）然後就會生成兩個檔案 id_rsa 和 id_rsa.pub ，而 id_rsa 是金鑰，id_rsa.pub 就是公鑰。這兩檔案預設分別在如下目錄裡生成： Linux/Mac 系統 在 `~/.ssh` 下，win系統在 `/c/Documents and Settings/username/.ssh` 下， 都是隱藏目錄，大家應該能找到的；
   
-  &lt;p&gt;&lt;strong&gt;PS：&lt;/strong&gt; 其實在連續安回車鍵中會提示輸入一個密碼以及確認密碼，這個密碼會在你提交專案時使用，如果為&lt;code&gt;空&lt;/code&gt;的話（即直接按回車鍵，也即未設定密碼）提交專案程式碼時則不用輸入密碼；&lt;/p&gt;
+  ''PS：'' 其實在連續安回車鍵中會提示輸入一個密碼以及確認密碼，這個密碼會在你提交專案時使用，如果為`空`的話（即直接按回車鍵，也即未設定密碼）提交專案程式碼時則不用輸入密碼；
   
-  &lt;p&gt;​ 3、接下來要做的是把 id_rsa.pub 的內容新增到 GitHub 上（PS：如何新增自行網上搜下，就不多說了），這樣你本地的 id_rsa 金鑰跟 GitHub 上的 id_rsa.pub 公鑰進行配對，授權成功，這樣就可以不用像 https 方式每次輸入賬號和密碼進行驗證身份才能提交了。（你就理解為，SSH 就好比進行了身份驗證的這種理解。）&lt;/p&gt;
+  ​ 3、接下來要做的是把 id_rsa.pub 的內容新增到 GitHub 上（PS：如何新增自行網上搜下，就不多說了），這樣你本地的 id_rsa 金鑰跟 GitHub 上的 id_rsa.pub 公鑰進行配對，授權成功，這樣就可以不用像 https 方式每次輸入賬號和密碼進行驗證身份才能提交了。（你就理解為，SSH 就好比進行了身份驗證的這種理解。）
   
-  &lt;p&gt;​ 4、SSH key 新增成功之後，輸入 &lt;code&gt;ssh -T &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;9bfcf2efdbfcf2eff3eef9b5f8f4f6&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;&lt;/code&gt; 進行測試，如果出現以下提示，再輸入 yes 出現如下圖則證明新增成功了。（圖我就不截了，我覺得問題應該不大）&lt;/p&gt;
+  ​ 4、SSH key 新增成功之後，輸入 `ssh -T &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;9bfcf2efdbfcf2eff3eef9b5f8f4f6&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;` 進行測試，如果出現以下提示，再輸入 yes 出現如下圖則證明新增成功了。（圖我就不截了，我覺得問題應該不大）
   
-  &lt;p&gt;對於命令 &lt;code&gt;ssh-keygen&lt;/code&gt;新增不同引數的含義的說明可以看這篇文章：&lt;a href=&quot;http://blog.csdn.net/u011686226/article/details/52412393&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt; ssh-keygen引數說明&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+  對於命令 `ssh-keygen`新增不同引數的含義的說明可以看這篇文章：&lt;a href=&quot;http://blog.csdn.net/u011686226/article/details/52412393&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt; ssh-keygen引數說明&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;
   
-  &lt;blockquote&gt;
-    &lt;p&gt;看完該文之後，我也能解釋下了。首先&lt;code&gt;ssh-keygen&lt;/code&gt;用於為 生成、管理和轉換認證金鑰，包括 RSA 和 DSA 兩種金鑰。 金鑰型別可以用 &lt;strong&gt;-t&lt;/strong&gt; 選項指定。如果沒有指定則預設生成用於 SSH-2 的 RSA 金鑰。&lt;strong&gt;-c&lt;/strong&gt;      要求修改私鑰和公鑰檔案中的註釋。本選項只支援 RSA1 金鑰。程式將提示輸入私鑰檔名、密語(如果存在)、新註釋。&lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git remote： 列出所有的遠端倉庫。從別處 clone 來的，預設都會有一個別名”origin”的倉庫。帶上 -v 可以看到具體 URL。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git remote add： 新增遠端倉庫地址。其實這些操作都是在本地，並沒有實際牽涉到遠端。另外 github 裡面fork 過來的，預設叫”upstream”。該命令完整格式為：&lt;code&gt;git remote add &amp;lt;主機名&amp;gt; &amp;lt;網址&amp;gt;&lt;/code&gt;，如&lt;code&gt;git remote add orgin &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;c5a2acb185a2acb1adb0a7eba6aaa8&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/git-practice.git&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git remote rw： 刪除遠端倉庫地址。格式為：&lt;code&gt;git remote rm &amp;lt;主機名&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git remote rename： 用於遠端主機的改名。完整格式為：&lt;strong&gt;&lt;code&gt;git remote rename &amp;lt;原主機名&amp;gt; &amp;lt;新主機名&amp;gt;&lt;/code&gt;&lt;/strong&gt;  &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git fetch： 一旦遠端主機的版本庫有了更新（Git 術語叫做 commit），需要將這些更新取回本地，這時就要用到&lt;code&gt;git fetch&lt;/code&gt;命令。格式為：&lt;code&gt;git fetch &amp;lt;遠端主機名&amp;gt;&lt;/code&gt;，預設情況下，&lt;code&gt;git fetch&lt;/code&gt;取回所有分支（branch）的更新。&lt;/p&gt;
+  &lt;&lt;&lt;
+    看完該文之後，我也能解釋下了。首先`ssh-keygen`用於為 生成、管理和轉換認證金鑰，包括 RSA 和 DSA 兩種金鑰。 金鑰型別可以用 ''-t'' 選項指定。如果沒有指定則預設生成用於 SSH-2 的 RSA 金鑰。''-c''      要求修改私鑰和公鑰檔案中的註釋。本選項只支援 RSA1 金鑰。程式將提示輸入私鑰檔名、密語(如果存在)、新註釋。
+  &lt;&lt;&lt;
+&lt;&lt;&lt;
+*git remote： 列出所有的遠端倉庫。從別處 clone 來的，預設都會有一個別名”origin”的倉庫。帶上 -v 可以看到具體 URL。
+*git remote add： 新增遠端倉庫地址。其實這些操作都是在本地，並沒有實際牽涉到遠端。另外 github 裡面fork 過來的，預設叫”upstream”。該命令完整格式為：`git remote add &amp;lt;主機名&amp;gt; &amp;lt;網址&amp;gt;`，如`git remote add orgin &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;c5a2acb185a2acb1adb0a7eba6aaa8&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/git-practice.git`
+*git remote rw： 刪除遠端倉庫地址。格式為：`git remote rm &amp;lt;主機名&amp;gt;`
+*git remote rename： 用於遠端主機的改名。完整格式為：''`git remote rename &amp;lt;原主機名&amp;gt; &amp;lt;新主機名&amp;gt;`''  
+*git fetch： 一旦遠端主機的版本庫有了更新（Git 術語叫做 commit），需要將這些更新取回本地，這時就要用到`git fetch`命令。格式為：`git fetch &amp;lt;遠端主機名&amp;gt;`，預設情況下，`git fetch`取回所有分支（branch）的更新。
 
-&lt;blockquote&gt;
-  &lt;p&gt;1、如果只想取回特定分支的更新，可以指定分支名，格式為：&lt;strong&gt;&lt;code&gt;git fetch &amp;lt;遠端主機名&amp;gt; &amp;lt;分支名&amp;gt;&lt;/code&gt;&lt;/strong&gt;， 另外，所取回的更新，在本地主機上要用”遠端主機名/分支名”的形式讀取，比如&lt;code&gt;origin&lt;/code&gt;主機的&lt;code&gt;master&lt;/code&gt;，就要用&lt;code&gt;origin/master&lt;/code&gt;讀取。&lt;/p&gt;
+&lt;&lt;&lt;
+  1、如果只想取回特定分支的更新，可以指定分支名，格式為：''`git fetch &amp;lt;遠端主機名&amp;gt; &amp;lt;分支名&amp;gt;`''， 另外，所取回的更新，在本地主機上要用”遠端主機名/分支名”的形式讀取，比如`origin`主機的`master`，就要用`origin/master`讀取。
   
-  &lt;p&gt;2、取回遠端主機的更新以後，可以在它的基礎上，使用&lt;code&gt;git checkout&lt;/code&gt;命令建立一個新的分支，&lt;code&gt;git checkout -b newBrach origin/master&lt;/code&gt;，該命令表示，在&lt;code&gt;origin/master&lt;/code&gt;的基礎上，建立一個新分支。此外，也可以使用&lt;code&gt;git merge&lt;/code&gt;命令或者&lt;code&gt;git rebase&lt;/code&gt;命令，在本地分支上合併遠端分支。&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git pull： &lt;code&gt;git pull&lt;/code&gt;命令的作用是，取回遠端主機某個分支的更新，再與本地的指定分支合併。相當於 fetch後，再進行 merge。其完整格式為：&lt;strong&gt;&lt;code&gt;git pull &amp;lt;遠端主機名&amp;gt; &amp;lt;遠端分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;&lt;/code&gt;&lt;/strong&gt;，如取回&lt;code&gt;origin&lt;/code&gt;主機的&lt;code&gt;next&lt;/code&gt;分支，與本地的&lt;code&gt;master&lt;/code&gt;分支合併，可以這樣寫：&lt;code&gt;git pull origin next:master&lt;/code&gt;&lt;/p&gt;
+  2、取回遠端主機的更新以後，可以在它的基礎上，使用`git checkout`命令建立一個新的分支，`git checkout -b newBrach origin/master`，該命令表示，在`origin/master`的基礎上，建立一個新分支。此外，也可以使用`git merge`命令或者`git rebase`命令，在本地分支上合併遠端分支。
+&lt;&lt;&lt;
+*git pull： `git pull`命令的作用是，取回遠端主機某個分支的更新，再與本地的指定分支合併。相當於 fetch後，再進行 merge。其完整格式為：''`git pull &amp;lt;遠端主機名&amp;gt; &amp;lt;遠端分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;`''，如取回`origin`主機的`next`分支，與本地的`master`分支合併，可以這樣寫：`git pull origin next:master`
 
-&lt;blockquote&gt;
-  &lt;p&gt;如果遠端分支是與當前分支合併，則冒號後面的部分可以省略，即&lt;code&gt;git pull origin next&lt;/code&gt;，該命令表示，取回&lt;code&gt;origin/next&lt;/code&gt;分支，再與當前分支合併。實質上，這等同於先做&lt;code&gt;git fetch&lt;/code&gt;，再做&lt;code&gt;git merge&lt;/code&gt;&lt;/p&gt;
+&lt;&lt;&lt;
+  如果遠端分支是與當前分支合併，則冒號後面的部分可以省略，即`git pull origin next`，該命令表示，取回`origin/next`分支，再與當前分支合併。實質上，這等同於先做`git fetch`，再做`git merge`
   
-  &lt;p&gt;在某些場合，Git會自動在本地分支與遠端分支之間，建立一種追蹤關係（tracking）。比如，&lt;strong&gt;在&lt;code&gt;git clone&lt;/code&gt;的時候，所有本地分支預設與遠端主機的同名分支，建立追蹤關係，也就是說，本地的&lt;code&gt;master&lt;/code&gt;分支自動”追蹤”&lt;code&gt;origin/master&lt;/code&gt;分支。&lt;/strong&gt; Git 也允許手動建立追蹤關係。&lt;/p&gt;
+  在某些場合，Git會自動在本地分支與遠端分支之間，建立一種追蹤關係（tracking）。比如，''在`git clone`的時候，所有本地分支預設與遠端主機的同名分支，建立追蹤關係，也就是說，本地的`master`分支自動”追蹤”`origin/master`分支。'' Git 也允許手動建立追蹤關係。
   
-  &lt;p&gt;&lt;code&gt;git branch --set-upstream master origin/next&lt;/code&gt;該命令指定&lt;code&gt;master&lt;/code&gt;分支追蹤&lt;code&gt;origin/next&lt;/code&gt;分支&lt;/p&gt;
+  `git branch --set-upstream master origin/next`該命令指定`master`分支追蹤`origin/next`分支
   
-  &lt;p&gt;1、如果當前分支與遠端分支存在追蹤關係，&lt;code&gt;git pull&lt;/code&gt;就可以省略遠端分支名。&lt;code&gt;git pull origin&lt;/code&gt;該命令表示，本地的當前分支自動與對應的&lt;code&gt;origin&lt;/code&gt;主機”追蹤分支”（remote-tracking branch）進行合併&lt;/p&gt;
+  1、如果當前分支與遠端分支存在追蹤關係，`git pull`就可以省略遠端分支名。`git pull origin`該命令表示，本地的當前分支自動與對應的`origin`主機”追蹤分支”（remote-tracking branch）進行合併
   
-  &lt;p&gt;2、如果當前分支只有一個追蹤分支，連遠端主機名都可以省略，&lt;code&gt;git pull&lt;/code&gt;該命令表示，當前分支自動與唯一一個追蹤分支進行合併&lt;/p&gt;
+  2、如果當前分支只有一個追蹤分支，連遠端主機名都可以省略，`git pull`該命令表示，當前分支自動與唯一一個追蹤分支進行合併
   
-  &lt;p&gt;3、合併需要採用rebase模式，可以使用&lt;code&gt;--rebase&lt;/code&gt;選項。&lt;code&gt;git pull --rebase &amp;lt;遠端主機名&amp;gt; &amp;lt;遠端分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  3、合併需要採用rebase模式，可以使用`--rebase`選項。`git pull --rebase &amp;lt;遠端主機名&amp;gt; &amp;lt;遠端分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;`
   
-  &lt;p&gt;4、如果遠端主機刪除了某個分支，預設情況下，&lt;code&gt;git pull&lt;/code&gt; 不會在拉取遠端分支的時候，刪除對應的本地分支。這是為了防止，由於其他人操作了遠端主機，導致&lt;code&gt;git pull&lt;/code&gt;不知不覺刪除了本地分支。但是，你可以改變這個行為，加上引數 &lt;code&gt;-p&lt;/code&gt; 就會在本地刪除遠端已經刪除的分支。&lt;code&gt;git pull -p&lt;/code&gt; 該命令等同於：&lt;/p&gt;
+  4、如果遠端主機刪除了某個分支，預設情況下，`git pull` 不會在拉取遠端分支的時候，刪除對應的本地分支。這是為了防止，由於其他人操作了遠端主機，導致`git pull`不知不覺刪除了本地分支。但是，你可以改變這個行為，加上引數 `-p` 就會在本地刪除遠端已經刪除的分支。`git pull -p` 該命令等同於：
   
   &lt;pre class=&quot;prettyprint prettyprinted hljs nginx&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs brainfuck&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;fetch&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;prune&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;origin&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; 
-&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;fetch&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;p&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git push： &lt;code&gt;git push&lt;/code&gt;命令用於將本地分支的更新，推送到遠端主機。它的格式與&lt;code&gt;git pull&lt;/code&gt;命令相仿。其完整格式為：&lt;strong&gt;&lt;code&gt;git push &amp;lt;遠端主機名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;遠端分支名&amp;gt;&lt;/code&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;fetch&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;p&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt;
+&lt;&lt;&lt;
+*git push： `git push`命令用於將本地分支的更新，推送到遠端主機。它的格式與`git pull`命令相仿。其完整格式為：''`git push &amp;lt;遠端主機名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;遠端分支名&amp;gt;`'' 
 
-&lt;blockquote&gt;
-  &lt;p&gt;1、如果省略遠端分支名，則表示將本地分支推送與之存在”追蹤關係”的遠端分支（通常兩者同名），如果該遠端分支不存在，則會被新建。&lt;code&gt;git push origin master&lt;/code&gt;該命令表示，將本地的&lt;code&gt;master&lt;/code&gt;分支推送到&lt;code&gt;origin&lt;/code&gt;主機的&lt;code&gt;master&lt;/code&gt;分支。如果後者不存在，則會被新建。&lt;/p&gt;
+&lt;&lt;&lt;
+  1、如果省略遠端分支名，則表示將本地分支推送與之存在”追蹤關係”的遠端分支（通常兩者同名），如果該遠端分支不存在，則會被新建。`git push origin master`該命令表示，將本地的`master`分支推送到`origin`主機的`master`分支。如果後者不存在，則會被新建。
   
-  &lt;p&gt;2、如果省略本地分支名，則表示刪除指定的遠端分支，因為這等同於推送一個空的本地分支到遠端分支。&lt;code&gt;git push origin :master&lt;/code&gt;等同於&lt;code&gt;git push origin --delete master&lt;/code&gt;該命令表示刪除&lt;code&gt;origin&lt;/code&gt;主機的&lt;code&gt;master&lt;/code&gt;分支。&lt;/p&gt;
+  2、如果省略本地分支名，則表示刪除指定的遠端分支，因為這等同於推送一個空的本地分支到遠端分支。`git push origin :master`等同於`git push origin --delete master`該命令表示刪除`origin`主機的`master`分支。
   
-  &lt;p&gt;3、如果當前分支與遠端分支之間存在追蹤關係，則本地分支和遠端分支都可以省略。&lt;code&gt;git push origin&lt;/code&gt;該命令表示，將當前分支推送到&lt;code&gt;origin&lt;/code&gt;主機的對應分支。&lt;/p&gt;
+  3、如果當前分支與遠端分支之間存在追蹤關係，則本地分支和遠端分支都可以省略。`git push origin`該命令表示，將當前分支推送到`origin`主機的對應分支。
   
-  &lt;p&gt;4、如果當前分支只有一個追蹤分支，那麼主機名都可以省略。&lt;code&gt;git push&lt;/code&gt;&lt;/p&gt;
+  4、如果當前分支只有一個追蹤分支，那麼主機名都可以省略。`git push`
   
-  &lt;p&gt;5、如果當前分支與多個主機存在追蹤關係，則可以使用&lt;code&gt;-u&lt;/code&gt;選項指定一個預設主機，這樣後面就可以不加任何引數使用&lt;code&gt;git push&lt;/code&gt;。&lt;code&gt;git push -u origin master&lt;/code&gt;該命令將本地的&lt;code&gt;master&lt;/code&gt;分支推送到&lt;code&gt;origin&lt;/code&gt;主機，同時指定&lt;code&gt;origin&lt;/code&gt;為預設主機，後面就可以不加任何引數使用&lt;code&gt;git push&lt;/code&gt;了。&lt;/p&gt;
+  5、如果當前分支與多個主機存在追蹤關係，則可以使用`-u`選項指定一個預設主機，這樣後面就可以不加任何引數使用`git push`。`git push -u origin master`該命令將本地的`master`分支推送到`origin`主機，同時指定`origin`為預設主機，後面就可以不加任何引數使用`git push`了。
   
-  &lt;p&gt;備註：不帶任何引數的&lt;code&gt;git push&lt;/code&gt;，預設只推送當前分支，這叫做 simple 方式。此外，還有一種matching 方式，會推送所有有對應的遠端分支的本地分支。Git 2.0版本之前，預設採用 matching 方法，現在改為預設採用 simple 方式。如果要修改這個設定，可以採用&lt;code&gt;git config&lt;/code&gt;命令。&lt;/p&gt;
+  備註：不帶任何引數的`git push`，預設只推送當前分支，這叫做 simple 方式。此外，還有一種matching 方式，會推送所有有對應的遠端分支的本地分支。Git 2.0版本之前，預設採用 matching 方法，現在改為預設採用 simple 方式。如果要修改這個設定，可以採用`git config`命令。
   
   &lt;pre class=&quot;prettyprint prettyprinted hljs shell&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs php&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; git config &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;--&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;bash&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; push&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;bash&quot;&gt;default&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; matching&lt;/span&gt;
 &lt;span class=&quot;hljs-meta&quot;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;com&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 或者&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;
 &lt;span class=&quot;hljs-meta&quot;&gt;
-$&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; git config &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;--&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;bash&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; push&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;bash&quot;&gt;default&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; simple&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+$&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; git config &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;--&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;bash&quot;&gt;global&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; push&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;&lt;span class=&quot;kwd&quot;&gt;&lt;span class=&quot;bash&quot;&gt;default&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; simple&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt;
   
-  &lt;p&gt;還有一種情況，就是不管是否存在對應的遠端分支，將本地的所有分支都推送到遠端主機，這時需要使用&lt;code&gt;--all&lt;/code&gt;選項。&lt;/p&gt;
+  還有一種情況，就是不管是否存在對應的遠端分支，將本地的所有分支都推送到遠端主機，這時需要使用`--all`選項。
   
-  &lt;pre class=&quot;prettyprint prettyprinted hljs shell&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs brainfuck&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;push&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;all&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;origin&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+  &lt;pre class=&quot;prettyprint prettyprinted hljs shell&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs brainfuck&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-meta&quot;&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;push&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;&lt;span class=&quot;bash&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;all&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;bash&quot;&gt;origin&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt;
   
-  &lt;p&gt;上面命令表示，將所有本地分支都推送到&lt;code&gt;origin&lt;/code&gt;主機。&lt;/p&gt;
+  上面命令表示，將所有本地分支都推送到`origin`主機。
   
-  &lt;p&gt;如果遠端主機的版本比本地版本更新，推送時Git會報錯，要求先在本地做&lt;code&gt;git pull&lt;/code&gt;合併差異，然後再推送到遠端主機。這時，如果你一定要推送，可以使用&lt;code&gt;--force&lt;/code&gt;選項。&lt;/p&gt;
+  如果遠端主機的版本比本地版本更新，推送時Git會報錯，要求先在本地做`git pull`合併差異，然後再推送到遠端主機。這時，如果你一定要推送，可以使用`--force`選項。
   
-  &lt;pre class=&quot;prettyprint prettyprinted hljs nginx&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs brainfuck&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;push&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;force&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;origin&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+  &lt;pre class=&quot;prettyprint prettyprinted hljs nginx&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs brainfuck&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;git&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;push&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-literal&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;force&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&lt;span class=&quot;pln&quot;&gt;origin&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt;
   
-  &lt;p&gt;上面命令使用&lt;code&gt;--force&lt;/code&gt;選項，結果導致遠端主機上更新的版本被覆蓋。除非你很確定要這樣做，否則應該儘量避免使用&lt;code&gt;--force&lt;/code&gt;選項。&lt;/p&gt;
+  上面命令使用`--force`選項，結果導致遠端主機上更新的版本被覆蓋。除非你很確定要這樣做，否則應該儘量避免使用`--force`選項。
   
-  &lt;p&gt;最後，&lt;code&gt;git push&lt;/code&gt;不會推送標籤（tag），除非使用&lt;code&gt;--tags&lt;/code&gt;選項。&lt;code&gt;git push origin --tags&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
+  最後，`git push`不會推送標籤（tag），除非使用`--tags`選項。`git push origin --tags`
+&lt;&lt;&lt;
 &lt;/ul&gt;
 
-&lt;p&gt;關於&lt;code&gt;git clone&lt;/code&gt; 、&lt;code&gt;git remote&lt;/code&gt;、&lt;code&gt;git fetch&lt;/code&gt;、&lt;code&gt;git pull&lt;/code&gt;、&lt;code&gt;git push&lt;/code&gt;的使用是操作遠端倉庫最常用的命令，強烈建議去看阮一峰這篇日誌文章：&lt;a href=&quot;https://www.ruanyifeng.com/blog/2014/06/git_remote.html&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;Git遠端操作詳解&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;。&lt;/p&gt;
+關於`git clone` 、`git remote`、`git fetch`、`git pull`、`git push`的使用是操作遠端倉庫最常用的命令，強烈建議去看阮一峰這篇日誌文章：&lt;a href=&quot;https://www.ruanyifeng.com/blog/2014/06/git_remote.html&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;Git遠端操作詳解&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;。
 
 
 
-&lt;h1 id=&quot;三實戰學習&quot;&gt;三、實戰學習&lt;/h1&gt;
+!!三、實戰學習
 
 
 
-&lt;h2 id=&quot;31-程式碼提交到-github-上&quot;&gt;3.1 程式碼提交到 GitHub 上&lt;/h2&gt;
+!!3.1 程式碼提交到 GitHub 上
 
-&lt;p&gt;1、採用 https 方式克隆 github 上倉庫(專案)：&lt;code&gt;git clone https://github.com/strivebo/git-practice.git&lt;/code&gt;&lt;/p&gt;
+1、採用 https 方式克隆 github 上倉庫(專案)：`git clone https://github.com/strivebo/git-practice.git`
 
-&lt;p&gt;2、採用 ssh 方式克隆：&lt;code&gt;git clone &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;ea8d839eaa8d839e829f88c4898587&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/git-practice.git&lt;/code&gt;&lt;/p&gt;
+2、採用 ssh 方式克隆：`git clone &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;ea8d839eaa8d839e829f88c4898587&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/git-practice.git`
 
-&lt;p&gt;3、如果想要在克隆至本地時指定別的目錄名稱，可以在後面加個引數，如：&lt;code&gt;git clone https://github.com/strivebo/git-practice.git git-practice-another&lt;/code&gt;，手動指定本地倉庫的根目錄名稱為 git-practice-another。&lt;/p&gt;
+3、如果想要在克隆至本地時指定別的目錄名稱，可以在後面加個引數，如：`git clone https://github.com/strivebo/git-practice.git git-practice-another`，手動指定本地倉庫的根目錄名稱為 git-practice-another。
 
 
 
-&lt;blockquote&gt;
-  &lt;p&gt;從github上clone一個專案到本地的時候，有use HTTPS和use SSH兩種方式，這兩種主要是在push項到github上時有所不同。完成一個push操作，需要對其內容進行安全管理，這裡提供了ssh和https兩種方式。而在clone專案到本地時，做出選擇後，就已經決定了push的方式。&lt;/p&gt;
+&lt;&lt;&lt;
+  從github上clone一個專案到本地的時候，有use HTTPS和use SSH兩種方式，這兩種主要是在push項到github上時有所不同。完成一個push操作，需要對其內容進行安全管理，這裡提供了ssh和https兩種方式。而在clone專案到本地時，做出選擇後，就已經決定了push的方式。
   
-  &lt;p&gt;ssh使用了RSA，即非對稱加密的方式，存在一個公鑰和私鑰。可以生成一個本地的一組祕鑰，然後將公鑰複製到github的settings/profile下。&lt;/p&gt;
-&lt;/blockquote&gt;
+  ssh使用了RSA，即非對稱加密的方式，存在一個公鑰和私鑰。可以生成一個本地的一組祕鑰，然後將公鑰複製到github的settings/profile下。
+&lt;&lt;&lt;
 
-&lt;p&gt;使用 https 方式，每次需要驗證使用者身份資訊。&lt;/p&gt;
-
-
+使用 https 方式，每次需要驗證使用者身份資訊。
 
 
 
-&lt;h3 id=&quot;1採用的是https克隆&quot;&gt;1、採用的是https克隆&lt;/h3&gt;
 
-&lt;p&gt;解釋下 &lt;code&gt;your branch is ahead of 'origin/master' by 2 commits.&lt;/code&gt;&lt;/p&gt;
+
+!!1、採用的是https克隆
+
+解釋下 `your branch is ahead of 'origin/master' by 2 commits.`
 
 &lt;ol&gt;
-&lt;li&gt;Git 提示你的當前 branch 已經領先於（ “ahead of” ）’origin/master’ 兩個提交了&lt;/li&gt;
-&lt;li&gt;origin/master 的中的 origin 是遠端倉庫的名稱，是你在用 clone 指令初始化本地倉庫時 Git 自動幫你起的預設名稱；master 是 origin 上的分支名稱。&lt;/li&gt;
+*Git 提示你的當前 branch 已經領先於（ “ahead of” ）’origin/master’ 兩個提交了
+*origin/master 的中的 origin 是遠端倉庫的名稱，是你在用 clone 指令初始化本地倉庫時 Git 自動幫你起的預設名稱；master 是 origin 上的分支名稱。
 &lt;/ol&gt;
 
-&lt;p&gt;對於現在來說，可以暫時把 origin/master 簡單理解為「中央倉庫」，也就是說，這句話是告訴你，你的本地倉庫已經領先中央倉庫兩個提交了。&lt;/p&gt;
+對於現在來說，可以暫時把 origin/master 簡單理解為「中央倉庫」，也就是說，這句話是告訴你，你的本地倉庫已經領先中央倉庫兩個提交了。
 
-&lt;p&gt;然後可以使用&lt;/p&gt;
+然後可以使用
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;git push &lt;/p&gt;
+*git push 
 
-&lt;blockquote&gt;
-  &lt;p&gt;提交發布至中央伺服器（這裡即指 GitHub）。 &lt;br&gt;
-  由於這是聯網操作，所以在這個過程 GitHub 會再次向你索要賬戶和密碼。填入正確的賬戶和密碼，push 操作就完成了。這時你再去你的 GitHub 倉庫頁面可以看到提交記錄。說明你已經成功把本地倉庫的提交推送到了伺服器了。&lt;/p&gt;
+&lt;&lt;&lt;
+  提交發布至中央伺服器（這裡即指 GitHub）。 &lt;br&gt;
+  由於這是聯網操作，所以在這個過程 GitHub 會再次向你索要賬戶和密碼。填入正確的賬戶和密碼，push 操作就完成了。這時你再去你的 GitHub 倉庫頁面可以看到提交記錄。說明你已經成功把本地倉庫的提交推送到了伺服器了。
   
-  &lt;p&gt;PS：如果覺得一遍遍地輸入密碼很煩，可以按照&lt;a href=&quot;https://link.juejin.im/?target=https%3A%2F%2Fhelp.github.com%2Farticles%2Fcaching-your-github-password-in-git%2F&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;這個頁面&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt; 提供的方案來把密碼儲存起來。另外還有一個更簡單但安全性低一些的方案。執行這行程式碼：&lt;code&gt;git config credential.helper store&lt;/code&gt;在這之後你只需要再輸入一次密碼， Git 就會把你的密碼儲存下來，這之後就再也不用輸入了。說它「安全性低」，是因為這條指令會讓 Git 把你的密碼以明文形式儲存在你的電腦上。具體這兩種儲存密碼的方案選擇哪個，看你自己了。&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
+  PS：如果覺得一遍遍地輸入密碼很煩，可以按照&lt;a href=&quot;https://link.juejin.im/?target=https%3A%2F%2Fhelp.github.com%2Farticles%2Fcaching-your-github-password-in-git%2F&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;這個頁面&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt; 提供的方案來把密碼儲存起來。另外還有一個更簡單但安全性低一些的方案。執行這行程式碼：`git config credential.helper store`在這之後你只需要再輸入一次密碼， Git 就會把你的密碼儲存下來，這之後就再也不用輸入了。說它「安全性低」，是因為這條指令會讓 Git 把你的密碼以明文形式儲存在你的電腦上。具體這兩種儲存密碼的方案選擇哪個，看你自己了。
+&lt;&lt;&lt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;總結：&lt;/strong&gt;&lt;/p&gt;
+''總結：''
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;從 GitHub 把中央倉庫 clone 到本地（使用命令： &lt;code&gt;git clone&lt;/code&gt;） &lt;br&gt;
-把寫完的程式碼提交（先用 &lt;code&gt;git add 檔名&lt;/code&gt; 把檔案新增到暫存區，再用 &lt;code&gt;git commit&lt;/code&gt; 提交）&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在這個過程中，可以使用 &lt;code&gt;git status&lt;/code&gt; 來隨時檢視工作目錄的狀態 &lt;br&gt;
-每個檔案有 “changed / unstaged”（已修改）, “staged”（已修改並暫存）, “commited”（已提交） 三種狀態，以及一種特殊狀態 “untracked”（未跟蹤）&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;提交一次或多次之後，把本地提交 &lt;code&gt;push&lt;/code&gt; 到中央倉庫（&lt;code&gt;git push&lt;/code&gt;）…&lt;/p&gt;&lt;/li&gt;
+*從 GitHub 把中央倉庫 clone 到本地（使用命令： `git clone`） &lt;br&gt;
+把寫完的程式碼提交（先用 `git add 檔名` 把檔案新增到暫存區，再用 `git commit` 提交）
+*在這個過程中，可以使用 `git status` 來隨時檢視工作目錄的狀態 &lt;br&gt;
+每個檔案有 “changed / unstaged”（已修改）, “staged”（已修改並暫存）, “commited”（已提交） 三種狀態，以及一種特殊狀態 “untracked”（未跟蹤）
+*提交一次或多次之後，把本地提交 `push` 到中央倉庫（`git push`）…
 &lt;/ol&gt;
 
 
 
-&lt;h3 id=&quot;2採用的是ssh方式克隆&quot;&gt;2、採用的是ssh方式克隆&lt;/h3&gt;
+!!2、採用的是ssh方式克隆
 
-&lt;p&gt;先要進行 ssh 新增。&lt;/p&gt;
+先要進行 ssh 新增。
 
-&lt;p&gt;&lt;strong&gt;SHH&lt;/strong&gt;&lt;/p&gt;
+''SHH''
 
-&lt;blockquote&gt;
-  &lt;p&gt;你擁有了一個 GitHub 賬號之後，就可以自由的 clone 或者下載其他專案，也可以建立自己的專案，但是你沒法提交程式碼。仔細想想也知道，肯定不可能隨意就能提交程式碼的，如果隨意可以提交程式碼，那麼GitHub 上的專案豈不亂了套了，所以提交程式碼之前一定是需要某種授權的，而 GitHub 上一般都是基於 SSH 授權的。那麼什麼是 SSH 呢？ 簡單點說，SSH是一種網路協議，用於計算機之間的加密登入。目前是每一臺 Linux 電腦的標準配置。而大多數 Git 伺服器都會選擇使用 SSH 公鑰來進行授權，所以想要在 GitHub 提交程式碼的第一步就是要先新增 SSH key 配置。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;&lt;&lt;
+  你擁有了一個 GitHub 賬號之後，就可以自由的 clone 或者下載其他專案，也可以建立自己的專案，但是你沒法提交程式碼。仔細想想也知道，肯定不可能隨意就能提交程式碼的，如果隨意可以提交程式碼，那麼GitHub 上的專案豈不亂了套了，所以提交程式碼之前一定是需要某種授權的，而 GitHub 上一般都是基於 SSH 授權的。那麼什麼是 SSH 呢？ 簡單點說，SSH是一種網路協議，用於計算機之間的加密登入。目前是每一臺 Linux 電腦的標準配置。而大多數 Git 伺服器都會選擇使用 SSH 公鑰來進行授權，所以想要在 GitHub 提交程式碼的第一步就是要先新增 SSH key 配置。
+&lt;&lt;&lt;
 
-&lt;p&gt;ssh 設定步驟： &lt;br&gt;
-1. Git Bash下輸入&lt;code&gt;ssh&lt;/code&gt;出現如下則表示本機已經安裝 ssh，否則自行安裝下載。 &lt;br&gt;
+ssh 設定步驟： &lt;br&gt;
+1. Git Bash下輸入`ssh`出現如下則表示本機已經安裝 ssh，否則自行安裝下載。 &lt;br&gt;
 2. 緊接著輸入 ssh-keygen -t rsa ，什麼意思呢？就是指定 rsa 演算法生成金鑰，接著連續三個回  &lt;br&gt;
-  車鍵（不需要輸入密碼） ，然後就會生成兩個檔案 &lt;code&gt;id_rsa&lt;/code&gt; 和 &lt;code&gt;id_rsa.pub&lt;/code&gt; ，而 &lt;strong&gt;id_rsa 是金鑰&lt;/strong&gt;，&lt;strong&gt;id_rsa.pub 就是公鑰&lt;/strong&gt;。 &lt;br&gt;
+  車鍵（不需要輸入密碼） ，然後就會生成兩個檔案 `id_rsa` 和 `id_rsa.pub` ，而 ''id_rsa 是金鑰''，''id_rsa.pub 就是公鑰''。 &lt;br&gt;
   這兩檔案預設分別在如下目錄裡生成：  &lt;br&gt;
   Linux/Mac 系統 在 ~/.ssh 下，win系統在 /c/Documents and Settings/username/.ssh 下， 都是隱藏檔案。 &lt;br&gt;
 3. 接下來要做的是把 id_rsa.pub 的內容新增到 GitHub 上，這樣你本地的 id_rsa 金鑰跟 GitHub 上的 id_rsa.pub 公鑰進行配對，授權成功才可以提交程式碼。 &lt;br&gt;
-4. SSH key 新增成功之後，輸入 ssh -T &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;67000e1327000e130f12054904080a&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt; 進行測試。&lt;/p&gt;
+4. SSH key 新增成功之後，輸入 ssh -T &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;67000e1327000e130f12054904080a&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt; 進行測試。
 
-&lt;p&gt;最後就是 &lt;code&gt;push&lt;/code&gt;、&lt;code&gt;pull&lt;/code&gt;的操作了。新增 SSH key 成功之後，我們就有許可權向 GitHub 上我們自己的專案提交程式碼了！執行：&lt;code&gt;git push origin master&lt;/code&gt; 進行程式碼提交。&lt;/p&gt;
+最後就是 `push`、`pull`的操作了。新增 SSH key 成功之後，我們就有許可權向 GitHub 上我們自己的專案提交程式碼了！執行：`git push origin master` 進行程式碼提交。
 
-&lt;p&gt;&lt;strong&gt;問題：&lt;/strong&gt; 假設我們本地有個 test2 的專案，我們需要的是在 GitHub 上建一個 test 的專案，然後把本地 test2 上的所有程式碼 commit 記錄提交到 GitHub 上的 test 專案。&lt;/p&gt;
+''問題：'' 假設我們本地有個 test2 的專案，我們需要的是在 GitHub 上建一個 test 的專案，然後把本地 test2 上的所有程式碼 commit 記錄提交到 GitHub 上的 test 專案。
 
-&lt;blockquote&gt;
-  &lt;p&gt;第一步就是在 GitHub 上建一個 test 專案，這個想必大家都會了，就不用多講了。&lt;/p&gt;
+&lt;&lt;&lt;
+  第一步就是在 GitHub 上建一個 test 專案，這個想必大家都會了，就不用多講了。
   
-  &lt;p&gt;第二步把本地 test2 專案與 GitHub 上的 test 專案進行關聯，切換到 test2 目錄，執行如下命  &lt;br&gt;
-  令：&lt;code&gt;git remote add origin &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;0c6b65784c6b657864796e226f6361&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/test.git&lt;/code&gt;&lt;/p&gt;
+  第二步把本地 test2 專案與 GitHub 上的 test 專案進行關聯，切換到 test2 目錄，執行如下命  &lt;br&gt;
+  令：`git remote add origin &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;0c6b65784c6b657864796e226f6361&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/test.git`
   
-  &lt;p&gt;什麼意思呢？就是新增一個遠端倉庫，他的地址是 &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;adcac4d9edcac4d9c5d8cf83cec2c0&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/test.git ，而 origin 是給這個專案的遠端倉庫起的名字，是的，名字你可以隨便取，只不過大家公認的只有一個遠端倉庫時名字就是 origin ，為什麼要給遠端倉庫取名字？因為我們可能一個專案有多個遠端倉庫？比如 GitHub 一個，比如公司一個，這樣的話提交到不同的遠端倉庫就需要指定不同的倉庫名字了。&lt;/p&gt;
+  什麼意思呢？就是新增一個遠端倉庫，他的地址是 &lt;a href=&quot;/cdn-cgi/l/email-protection&quot; class=&quot;__cf_email__&quot; data-cfemail=&quot;adcac4d9edcac4d9c5d8cf83cec2c0&quot;&gt;[email&amp;nbsp;protected]&lt;/a&gt;:strivebo/test.git ，而 origin 是給這個專案的遠端倉庫起的名字，是的，名字你可以隨便取，只不過大家公認的只有一個遠端倉庫時名字就是 origin ，為什麼要給遠端倉庫取名字？因為我們可能一個專案有多個遠端倉庫？比如 GitHub 一個，比如公司一個，這樣的話提交到不同的遠端倉庫就需要指定不同的倉庫名字了。
   
-  &lt;p&gt;檢視我們當前專案有哪些遠端倉庫可以執行如下命令： &lt;code&gt;git remote -v&lt;/code&gt; ，接下來，我們本地的倉庫就可以向遠端倉庫進行程式碼提交了：&lt;code&gt;git push origin master&lt;/code&gt;，就是預設向 GitHub 上的 test 目錄提交了程式碼，而這個程式碼是在 master 分支。當然你可以提交到指定的分支。&lt;/p&gt;
-&lt;/blockquote&gt;
+  檢視我們當前專案有哪些遠端倉庫可以執行如下命令： `git remote -v` ，接下來，我們本地的倉庫就可以向遠端倉庫進行程式碼提交了：`git push origin master`，就是預設向 GitHub 上的 test 目錄提交了程式碼，而這個程式碼是在 master 分支。當然你可以提交到指定的分支。
+&lt;&lt;&lt;
 
-&lt;p&gt;&lt;strong&gt;兩種方式的區別：&lt;/strong&gt; git 使用 https 協議，每次 pull, push 都要輸入密碼，相當的煩。使用 git 協議，然後使用 ssh 金鑰。這樣可以省去每次都輸密碼。&lt;/p&gt;
-
-
-
-&lt;h1 id=&quot;四問題和筆記&quot;&gt;四、問題和筆記&lt;/h1&gt;
+''兩種方式的區別：'' git 使用 https 協議，每次 pull, push 都要輸入密碼，相當的煩。使用 git 協議，然後使用 ssh 金鑰。這樣可以省去每次都輸密碼。
 
 
 
-&lt;h2 id=&quot;41-問題列表&quot;&gt;4.1 問題列表&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;問題 1：&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;對於前面這個「假設我們本地有個 test2 的專案，我們需要的是在 GitHub 上建一個 test 的專案，然後把本地 test2 上的所有程式碼 commit 記錄提交到 GitHub 上的 test 專案。」情況，我在練習的時候出現了問題，錯誤是：fatal the current branch master has no upstream branch.&lt;/p&gt;
-
-&lt;p&gt;先參考這幾篇文章看看：&lt;/p&gt;
+!!四、問題和筆記
 
 
 
-&lt;p&gt;&lt;strong&gt;我的總結：&lt;/strong&gt; 如果沒有配置 ssh(採用 ssh 方式)，那採用以下方式：&lt;/p&gt;
+!!4.1 問題列表
 
-&lt;p&gt;&lt;code&gt;git remote add origin https://github.com/strivebo/test.git&lt;/code&gt;（https方式地址克隆）&lt;/p&gt;
+''問題 1：''
 
-&lt;p&gt;&lt;strong&gt;然後：(下面是引用的網上一個人的解決方式)&lt;/strong&gt;&lt;/p&gt;
+對於前面這個「假設我們本地有個 test2 的專案，我們需要的是在 GitHub 上建一個 test 的專案，然後把本地 test2 上的所有程式碼 commit 記錄提交到 GitHub 上的 test 專案。」情況，我在練習的時候出現了問題，錯誤是：fatal the current branch master has no upstream branch.
 
-&lt;blockquote&gt;
-  &lt;p&gt;此時如果 origin 的 master 分支上有一些本地沒有的提交，push 會失敗.&lt;/p&gt;
+先參考這幾篇文章看看：
+
+
+
+''我的總結：'' 如果沒有配置 ssh(採用 ssh 方式)，那採用以下方式：
+
+`git remote add origin https://github.com/strivebo/test.git`（https方式地址克隆）
+
+''然後：(下面是引用的網上一個人的解決方式)''
+
+&lt;&lt;&lt;
+  此時如果 origin 的 master 分支上有一些本地沒有的提交，push 會失敗.
   
-  &lt;p&gt;所以解決的辦法是, 首先設定本地master的上游分支:&lt;code&gt;git branch --set-upstream-to=origin/master&lt;/code&gt;    &lt;/p&gt;
+  所以解決的辦法是, 首先設定本地master的上游分支:`git branch --set-upstream-to=origin/master`    
   
-  &lt;p&gt;然後pull:&lt;code&gt;git pull --rebase&lt;/code&gt;  &lt;/p&gt;
+  然後pull:`git pull --rebase`  
   
-  &lt;p&gt;最後再push:&lt;code&gt;git push&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+  最後再push:`git push`
+&lt;&lt;&lt;
 
-&lt;p&gt;&lt;br&gt; &lt;br&gt;
-&lt;strong&gt;問題2：官網下載的 Git 與 TortoiseGit 客戶端有什麼關係嗎？&lt;/strong&gt;&lt;/p&gt;
+&lt;br&gt; &lt;br&gt;
+''問題2：官網下載的 Git 與 TortoiseGit 客戶端有什麼關係嗎？''
 
 
 
-&lt;blockquote&gt;
+&lt;&lt;&lt;
   &lt;ul&gt;
-  &lt;li&gt;&lt;p&gt;Git自帶GUI介面。使用 &lt;code&gt;git gui&lt;/code&gt; 命令可以開啟它。在這個介面中可以完成commit、merge、push、pull等等常用操作。&lt;/p&gt;
+  *Git自帶GUI介面。使用 `git gui` 命令可以開啟它。在這個介面中可以完成commit、merge、push、pull等等常用操作。
   
-  &lt;p&gt;…….&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;TortoiseGit沒有整合Git。在&lt;a href=&quot;https://code.google.com/p/tortoisegit/&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;TortoiseGit&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;官方網站可以下載到它。有32bit和64bit版本，同時也有中文語言包（但我不建議你安裝）。安裝完畢之後，如果你沒有安裝過 Git，那麼還需要去下載&lt;a href=&quot;https://msysgit.github.com/&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;msysGit&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;來安裝。因為TortoiseGit其實只是一個殼，它需要呼叫 Git 命令列才能發揮作用。（現在你知道我為什麼推薦你用命令行了麼？）如果你不安裝msysGit，那麼在執行TortoiseGit的時候會彈出這個提示：&lt;/p&gt;
+  …….
+  *TortoiseGit沒有整合Git。在&lt;a href=&quot;https://code.google.com/p/tortoisegit/&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;TortoiseGit&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;官方網站可以下載到它。有32bit和64bit版本，同時也有中文語言包（但我不建議你安裝）。安裝完畢之後，如果你沒有安裝過 Git，那麼還需要去下載&lt;a href=&quot;https://msysgit.github.com/&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;msysGit&lt;/a&gt;&lt;span class=&quot;hu-external&quot;&gt;&lt;/span&gt;來安裝。因為TortoiseGit其實只是一個殼，它需要呼叫 Git 命令列才能發揮作用。（現在你知道我為什麼推薦你用命令行了麼？）如果你不安裝msysGit，那麼在執行TortoiseGit的時候會彈出這個提示：
   
-  &lt;p&gt;為什麼TortoiseGit不像TortoiseSVN一樣，把SVN命令列工具整合在安裝包中呢？我猜想是以下幾點原因：&lt;/p&gt;
+  為什麼TortoiseGit不像TortoiseSVN一樣，把SVN命令列工具整合在安裝包中呢？我猜想是以下幾點原因：
   
-  &lt;p&gt;​   - Git官方從未出過Windows版本二進位制包；&lt;/p&gt;
+  ​   - Git官方從未出過Windows版本二進位制包；
   
-  &lt;p&gt;​   - msysGit和TortoiseGit是兩個不同的團隊開發的；&lt;/p&gt;
+  ​   - msysGit和TortoiseGit是兩個不同的團隊開發的；
   
-  &lt;p&gt;​   - msysGit和TortoiseGit的更新週期差異較大；&lt;/p&gt;
+  ​   - msysGit和TortoiseGit的更新週期差異較大；
   
-  &lt;p&gt;​   - TortoiseGit團隊希望安裝包更小；&lt;/p&gt;
+  ​   - TortoiseGit團隊希望安裝包更小；
   
-  &lt;p&gt;​   - TortoiseGit團隊給使用者更靈活的選擇Git版本的權利。&lt;/p&gt;&lt;/li&gt;
+  ​   - TortoiseGit團隊給使用者更靈活的選擇Git版本的權利。
   &lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;&lt;&lt;
 
-&lt;p&gt;&lt;br&gt; &lt;br&gt;
-&lt;strong&gt;問題3：Git 如何 clone 非 master 分支的程式碼？&lt;/strong&gt;&lt;/p&gt;
+&lt;br&gt; &lt;br&gt;
+''問題3：Git 如何 clone 非 master 分支的程式碼？''
 
-&lt;p&gt;問題描述：&lt;/p&gt;
+問題描述：
 
-&lt;blockquote&gt;
-  &lt;p&gt;在從github上clone專案下來的時候，如 https 方式克隆某個具有多個分支的專案： &lt;br&gt;
-  &lt;code&gt;git clone https://github.com/TeamNewPipe/NewPipe.git&lt;/code&gt;    注：該分支預設分支為 dev 分支，其他分支有 master 、multyservice 分支。&lt;/p&gt;
+&lt;&lt;&lt;
+  在從github上clone專案下來的時候，如 https 方式克隆某個具有多個分支的專案： &lt;br&gt;
+  `git clone https://github.com/TeamNewPipe/NewPipe.git`    注：該分支預設分支為 dev 分支，其他分支有 master 、multyservice 分支。
   
-  &lt;p&gt;出現的問題是：克隆完畢，使用&lt;code&gt;git branch&lt;/code&gt;檢視本地分支，只能看到 dev 分支。（&lt;code&gt;git branch -a&lt;/code&gt;可以檢視到本地和遠端所有分支情況。）&lt;strong&gt;是隻能克隆到 github 專案的預設分支，其他分支沒有克隆下來嗎？&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+  出現的問題是：克隆完畢，使用`git branch`檢視本地分支，只能看到 dev 分支。（`git branch -a`可以檢視到本地和遠端所有分支情況。）''是隻能克隆到 github 專案的預設分支，其他分支沒有克隆下來嗎？''
+&lt;&lt;&lt;
 
-&lt;p&gt;更具體的描述問題：&lt;/p&gt;
+更具體的描述問題：
 
-&lt;blockquote&gt;
-  &lt;p&gt;當我們想 clone 別人的在分支中修改的 code 時，我們在 github 中看到往往是 master，並且我們 clone 下來的也是也是 master，如下圖，是一個工程的不同分支，當我點選不同的分支，其 clone 的 https 卻是一樣的，那麼該如何clone我想要的分支呢？&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;&lt;&lt;
+  當我們想 clone 別人的在分支中修改的 code 時，我們在 github 中看到往往是 master，並且我們 clone 下來的也是也是 master，如下圖，是一個工程的不同分支，當我點選不同的分支，其 clone 的 https 卻是一樣的，那麼該如何clone我想要的分支呢？
+&lt;&lt;&lt;
 
-&lt;p&gt;參考的解決方式：&lt;/p&gt;
+參考的解決方式：
 
 
 
-&lt;blockquote&gt;
-  &lt;p&gt;新的解決辦法：先&lt;code&gt;git branch -a&lt;/code&gt;列出本地和遠端所有分支，比如某個遠端分支為 origin/daily/1.4.1，然後再直接使用&lt;code&gt;git checkout origin/daily/1.4.1&lt;/code&gt;&lt;/p&gt;
+&lt;&lt;&lt;
+  新的解決辦法：先`git branch -a`列出本地和遠端所有分支，比如某個遠端分支為 origin/daily/1.4.1，然後再直接使用`git checkout origin/daily/1.4.1`
   
-  &lt;p&gt;​&lt;/p&gt;
+  ​
   
-  &lt;p&gt;舊的解決方法：1、先在本地建立與遠端分支同名分支名稱；2、切換到該本地分支；3、建立上游分支,即&lt;code&gt;git branch --set-upstream-to=origin/daily/1.4.1 daily/1.4.1&lt;/code&gt;，這樣完成與上游分支的關聯，然後 pull 就好了。&lt;/p&gt;
-&lt;/blockquote&gt;
+  舊的解決方法：1、先在本地建立與遠端分支同名分支名稱；2、切換到該本地分支；3、建立上游分支,即`git branch --set-upstream-to=origin/daily/1.4.1 daily/1.4.1`，這樣完成與上游分支的關聯，然後 pull 就好了。
+&lt;&lt;&lt;
 
 
 
-&lt;blockquote&gt;
-  &lt;p&gt;Git 預設只顯示預設分支的資料，還需要手動切換到我們需要的分支並顯示出來。&lt;/p&gt;
+&lt;&lt;&lt;
+  Git 預設只顯示預設分支的資料，還需要手動切換到我們需要的分支並顯示出來。
   
   &lt;pre class=&quot;prettyprint prettyprinted hljs nginx&quot; style=&quot;&quot;&gt;&lt;code class=&quot; hljs lasso&quot;&gt;&lt;span class=&quot;pln&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;git&lt;/span&gt; branch
-git checkout &lt;/span&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;b&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;本地分支名字&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; origin&lt;/span&gt;&lt;span class=&quot;hljs-subst&quot;&gt;&lt;span class=&quot;pun&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;遠端分支名字&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+git checkout &lt;/span&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;&lt;span class=&quot;pun&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt;b&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; &lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;本地分支名字&lt;/span&gt;&lt;span class=&quot;pln&quot;&gt; origin&lt;/span&gt;&lt;span class=&quot;hljs-subst&quot;&gt;&lt;span class=&quot;pun&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pun&quot;&gt;遠端分支名字&lt;/span&gt;`&lt;/pre&gt;
   
-  &lt;p&gt;這樣大功告成。&lt;/p&gt;
+  這樣大功告成。
   
   
   
-  &lt;blockquote&gt;
-    &lt;p&gt;使用 &lt;code&gt;git checkout -b aaa origin/aaa&lt;/code&gt;。該語句作用是在本地建立新的分支，分支的名稱是 aaa，aaa 也是我想要 clone 的分支的名字，這裡為了便於理解將本地的分支名字和 clone 的分支名字設為一樣，其實 -b 後面的 aaa 可以隨意設定。 &lt;/p&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
+  &lt;&lt;&lt;
+    使用 `git checkout -b aaa origin/aaa`。該語句作用是在本地建立新的分支，分支的名稱是 aaa，aaa 也是我想要 clone 的分支的名字，這裡為了便於理解將本地的分支名字和 clone 的分支名字設為一樣，其實 -b 後面的 aaa 可以隨意設定。 
+  &lt;&lt;&lt;
+&lt;&lt;&lt;
 
-&lt;p&gt;&lt;strong&gt;親測，② 的方式是 ok 的！&lt;/strong&gt; &lt;/p&gt;
+''親測，② 的方式是 ok 的！'' 
 
-&lt;p&gt;&lt;br&gt; &lt;br&gt;
-&lt;strong&gt;問題4：git pull 和 git fetch 有什麼區別？&lt;/strong&gt; &lt;/p&gt;
+&lt;br&gt; &lt;br&gt;
+''問題4：git pull 和 git fetch 有什麼區別？'' 
 
 
 
-&lt;p&gt;首先，你的每一個操作都是要指明【來源】和【目標】的，而對於 pull 來說，【目標】就是當前分支；&lt;/p&gt;
+首先，你的每一個操作都是要指明【來源】和【目標】的，而對於 pull 來說，【目標】就是當前分支；
 
-&lt;p&gt;其次，你得清楚 git 是有 tracking 的概念的，所謂 tracking 就是把【來源】和【目標】繫結在一起，節省一些操作是需要輸入的引數。&lt;/p&gt;
+其次，你得清楚 git 是有 tracking 的概念的，所謂 tracking 就是把【來源】和【目標】繫結在一起，節省一些操作是需要輸入的引數。
 
-&lt;p&gt;那麼，假設你的 master 和 develop 都是 tracking 了的，於是：&lt;/p&gt;
+那麼，假設你的 master 和 develop 都是 tracking 了的，於是：
 
-&lt;blockquote&gt;
-  &lt;p&gt;當你在 master 下，&lt;code&gt;git pull&lt;/code&gt;等於 fetch origin，然後 merge origin/master；&lt;/p&gt;
+&lt;&lt;&lt;
+當你在 master 下，`git pull`等於 fetch origin，然後 merge origin/master；
   
-  &lt;p&gt;當你在 develop 下，&lt;code&gt;git pull&lt;/code&gt;等於 fetch origin，然後 merge origin/develop&lt;/p&gt;
-&lt;/blockquote&gt;
+  當你在 develop 下，`git pull`等於 fetch origin，然後 merge origin/develop
+&lt;&lt;&lt;
 
-&lt;h2 id=&quot;42-筆記&quot;&gt;4.2 筆記&lt;/h2&gt;
+!!4.2 筆記
 
-&lt;p&gt;&lt;strong&gt;筆記1：在本地倉庫初始化後，不進行 commit 提交，則新建不了分支；進行了commit提交，則真正建立了master 分支。&lt;/strong&gt; &lt;/p&gt;
+''筆記1：在本地倉庫初始化後，不進行 commit 提交，則新建不了分支；進行了commit提交，則真正建立了master 分支。'' 
 
-&lt;p&gt;這裡引用阮一峰老師的 Git 文章寫的：&lt;/p&gt;
+這裡引用阮一峰老師的 Git 文章寫的：
 
-&lt;blockquote&gt;
-  &lt;p&gt;在某些場合，Git 會自動在本地分支與遠端分支之間，建立一種追蹤關係（tracking）。比如，在 git clone 的時候，所有本地分支預設與遠端主機的同名分支，建立追蹤關係，也就是說，本地的master分支自動”追蹤” origin/master 分支。Git 也允許手動建立追蹤關係：&lt;code&gt;git branch --set-upstream master origin/next&lt;/code&gt; 該命令指定 master 分支追蹤 origin/next 分支。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;&lt;&lt;
+在某些場合，Git 會自動在本地分支與遠端分支之間，建立一種追蹤關係（tracking）。比如，在 git clone 的時候，所有本地分支預設與遠端主機的同名分支，建立追蹤關係，也就是說，本地的master分支自動”追蹤” origin/master 分支。Git 也允許手動建立追蹤關係：
 
-&lt;p&gt;&lt;br&gt; &lt;br&gt;
-&lt;strong&gt;筆記2：重新命名分支及遠端分支名稱：&lt;/strong&gt;&lt;/p&gt;
+```
+git branch --set-upstream master origin/next
+```
 
-&lt;p&gt;在 git 中重新命名遠端分支，其實就是先刪除遠端分支，然後重新命名本地分支，再重新提交一個遠端分支。&lt;/p&gt;
+ 該命令指定 master 分支追蹤 origin/next 分支。
+&lt;&lt;&lt;
 
-&lt;blockquote&gt;
-  &lt;ol&gt;
-  &lt;li&gt;&lt;p&gt;刪除分支的命令是： &lt;br&gt;
-  在 Git1.7 之後可以使用這個命令&lt;code&gt;git push origin --delete &amp;lt;遠端分支名稱&amp;gt;&lt;/code&gt;，否則用這個也可以：&lt;code&gt;git push origin :&amp;lt;遠端分支名稱&amp;gt;&lt;/code&gt; 表示推送一個空分支到遠端分支，其實就相當於刪除遠端分支。&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;重新命名本地分支：&lt;code&gt;git branch -m &amp;lt;舊名稱&amp;gt; &amp;lt;新名稱&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;p&gt;重新提交：&lt;code&gt;git push origin &amp;lt;新名稱&amp;gt;:&amp;lt;新名稱&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+''筆記2：重新命名分支及遠端分支名稱：''
+
+在 git 中重新命名遠端分支，其實就是先刪除遠端分支，然後重新命名本地分支，再重新提交一個遠端分支。
+
+&lt;&lt;&lt;  &lt;ol&gt;
+  *刪除分支的命令是： &lt;br&gt;
+  在 Git1.7 之後可以使用這個命令`git push origin --delete &amp;lt;遠端分支名稱&amp;gt;`，否則用這個也可以：`git push origin :&amp;lt;遠端分支名稱&amp;gt;` 表示推送一個空分支到遠端分支，其實就相當於刪除遠端分支。
+  *重新命名本地分支：`git branch -m &amp;lt;舊名稱&amp;gt; &amp;lt;新名稱&amp;gt;`
+  *重新提交：`git push origin &amp;lt;新名稱&amp;gt;:&amp;lt;新名稱&amp;gt;`
   &lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;&lt;&lt;
 
-&lt;h1 id=&quot;五git-圖形化工具教程&quot;&gt;五、Git 圖形化工具教程&lt;/h1&gt;
+!! 五、Git 圖形化工具教程
 
-&lt;p&gt;&lt;strong&gt;SourceTree：&lt;/strong&gt;&lt;/p&gt;
+''SourceTree：''
 
 
 
-&lt;p&gt;資料：&lt;/p&gt;
+資料：
 
             &lt;/div&gt;</pre>
 </div>
@@ -19996,6 +20014,190 @@ source: http://www.doc88.com/p-8428529652807.html
 !! 长途锁控
 
 * 将锁箭头指到红点时,凡是以`“0”`开头的号码均不能拨出,其它开头的号码则不受限制。将锁箭头指到绿点时,为开锁状态,任何号码都可拨打。</pre>
+</div>
+<div created="20200214112540522" modified="20200214113802946" tags="" title="使用git push不再需要輸入帳號密碼">
+<pre>!! 使用git push不再需要輸入帳號密碼
+
+一般使用git push時需要輸入github的帳號密碼,確認之後才能夠進行push,如果使用ssh後可以不需要再次輸入囉!
+
+!! 首先是官方的教學文章
+
+基本上照著官方提供的方法做就可能達到功能了!
+
+以下範例的作業系統為 windows
+
+!! 1.檢查ssh keys
+
+```
+$ cd ~/.ssh
+# Checks to see if there is a directory named &quot;.ssh&quot; in your user directory
+```
+
+如果出現&quot;No such file or directory&quot;, 代表先前在電腦上還未新增過ssh keys, 如果已經有了，請至 ~/.ssh 自行將檔案刪除或備份.
+
+這邊假設從未新增過ssh keys
+
+!! 2.新增ssh keys
+
+```
+$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+# Creates a new ssh key, using the provided email as a label
+# Generating public/private rsa key pair.
+# Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]
+```
+
+mail部份換成你的mail,輸入
+
+```
+$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot; 
+```
+
+後會提醒你，按下Enter後會在 /c/Users/you/ssh/ 新增 is_rsa 檔案.
+
+接下來會要你設定passphrase
+
+```
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+```
+
+因為要達到不輸入帳號密碼的功能,所以passphrase基本上就不設定了，直接按Enter不做輸入,如果設定的話，git push後還要再打密碼.....
+
+之後會出現
+
+```
+Your identification has been saved in /c/Users/you/.ssh/id_rsa.
+# Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.
+# The key fingerprint is:
+# 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+```
+
+代表ssh keys新增成功囉!
+
+在你的 ~/.ssh 底下會新增一個id_rsa.pub 的檔案
+
+
+!! 3.在github上新增ssh keys
+
+輸入
+
+```
+$clip &lt; ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+```
+
+然後到github的account setting,點選左邊的SSH Keys-&gt;Add SSH Key, 到 ~/.ssh底下，打開 id_rsa.pub, 會看到ssh-rsa開頭，你的email結尾的文字, 全選後copy,  在github的key textfield貼上, 點選Add Key, 確認你的github密碼後就是新增成功囉!
+
+
+!! 4.測試ssh@github
+
+測試剛剛所新增的ssh是否已經成功可以在github上working了?
+
+```
+$ssh -T git@github.com
+# Attempts to ssh to github
+```
+
+應該會出現warning
+
+```
+The authenticity of host 'github.com (207.97.227.239)' can't be established.
+# RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+# Are you sure you want to continue connecting (yes/no)?
+```
+
+代表成功偵測到了，輸入 yes 後會看到
+
+```
+Hi username! You've successfully authenticated, but GitHub does not
+# provide shell access.
+```
+
+這樣子就新增成功了!
+
+!! 5.git remote
+
+在git remote新增repo才能維護遠端檔案
+
+到github點選你要的repository
+
+複製ssh位址
+
+格式大約是git@github.com:帳號/repo名稱.git
+
+```
+$git remote add origin git@github.com:帳號/repo名稱.git
+```
+
+之後就能夠直接git push不再需要輸入帳號密碼囉!
+
+
+
+
+以上為學習筆記，
+如有錯誤請指正，謝謝:)
+
+張貼時間：29th May 2013，張貼者：Anonymous
+ 
+0 新增留言
+
+學習筆記
+搜尋
+傳統模式 翻卡模式 雜誌模式 拼貼模式 側欄模式 快照模式 時間表模式
+MAY
+30
+STS(Spring Tool Suite)已經新增了Library，但是在COMPILE時卻找不到JAR檔?
+這幾天在嘗試使用STS練習SpringMVC時
+
+發生了很奇怪的事情
+
+已經新增了Spring的Library
+
+但有時卻撈不到JAR檔，卡了幾天的時間才解決
+
+我是使用Maven解決這問題的
+
+在建立SpringMVC project時
+
+IDE就會自動將Maven include進來
+
+所以只要在 ./pom.xml 新增一些code就可以囉!
+
+以Spring DAO、Spring JDBC、Spring-webmvc為例
+
+在 &lt;dependencies&gt;&lt;/dependencies&gt;裡新增
+
+&lt;!-- spring-dao --&gt; &lt;dependency&gt; &lt;groupId&gt;org.
+
+使用git push不再需要輸入帳號密碼
+一般使用git push時
+
+需要輸入github的帳號密碼
+
+確認之後才能夠進行push
+
+如果使用ssh後可以不需要再次輸入囉!
+
+首先是官方的教學文章
+
+基本上照著官方提供的方法做就可能達到功能了!
+
+以下範例的作業系統為 windows
+
+1.檢查ssh keys
+
+$ cd ~/.ssh # Checks to see if there is a directory named &quot;.ssh&quot; in your user directory
+
+如果出現&quot;No such file or directory&quot;
+
+代表先前在電腦上還未新增過ssh keys
+
+如果已經有了，請至 ~/.ssh
+
+
+
+載入中
+動態檢視主題. 技術提供：Blogger.</pre>
 </div>
 <div created="20200114090820881" modified="20200114091216593" tags="English" title="六人行（Friends），老友記中經典台詞">
 <pre>六人行（Friends），老友記中經典台詞
