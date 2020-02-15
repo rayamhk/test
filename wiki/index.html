@@ -713,6 +713,8 @@ Error message and password prompt
 
 <li>New Tiddler (not work) too many problem</li>
 
+<li>New Tiddler 1</li>
+
 <li>New Tiddler mark up</li>
 
 <li>old stuff</li>
@@ -846,6 +848,8 @@ Error message and password prompt
 <li>強調副詞</li>
 
 <li>恰當的副詞</li>
+
+<li>給程式設計師的Vim入門圖解說明</li>
 
 <li>鋪瓦用沙漿拌合比例及構成</li>
 
@@ -11063,7 +11067,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200214102222450" list="[[使用git push不再需要輸入帳號密碼]] Git [[Git 個人學習筆記及心得]] GettingStarted [[Table of Contents]]" modified="20200214102319238" title="$:/StoryList">
+<div list="[[New Tiddler 1]] 給程式設計師的Vim入門圖解說明 GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -17721,6 +17725,23 @@ lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/rus
 
 </pre>
 </div>
+<div created="20200215082649738" modified="20200215085145024" tags="" title="New Tiddler 1">
+<pre>https://www.keycdn.com/blog/vim-commands
+
+|Cursor |Movement|h
+| `h` / `l` |to left / right one char, eg `5h` |
+| `j` / `k` |to down / up one line, eg `2k` |
+| `H` / `M` / `L` |to screen top / middle / bottom |
+| `b` / `w` |to start prev / next of word |
+| `e` |to end of word |
+| `0` / `$` |to begin / end of line |
+| `(` / `)` |to prev / next sentence, eg `3(` |
+| `{` / `}` |to prev / next paragraph or block |
+| `^f` / `^b` |to one page forward / back |
+| `gg` / `G` |to start / end of the file |
+| `#G` |to number of line, eg `10G` |
+</pre>
+</div>
 <div created="20191109114334828" modified="20191111025649930" tags="Testcase" title="New Tiddler mark up">
 <pre>\define .zli(src)
 &lt;dt&gt;&lt;pre&gt;&lt;$text text=&lt;&lt;__src__&gt;&gt; /&gt;&lt;/pre&gt;&lt;/dt&gt;&lt;dd&gt;&lt;$wikify text=&lt;&lt;__src__&gt;&gt; name=v mode &gt;&lt;&lt;v&gt;&gt;&lt;/$wikify&gt;&lt;/dd&gt;
@@ -20657,6 +20678,34 @@ Seriously…不論在任何場合，你都要有良好的溝通能力，
 * undeniably  無可否認地
  
 把形容詞構建為副詞來用，是英語「生動化」 最簡易的方法，一旦你掌握了這個語言訣竅，你的英語能力將會很快進入一個更高的領域！</pre>
+</div>
+<div created="20200215080935841" modified="20200215081443776" tags="vim" title="給程式設計師的Vim入門圖解說明">
+<pre>http://blog.vgod.tw/2009/12/08/vim-cheat-sheet-for-programmers/
+
+將編刪指令加上動作，如d3w就是刪除三個字
+使用者可以隨意組合～
+
+補充：ctrl-w H/J/K/L會將目前的視窗弄到最左/下/上/右
+而且會盡量變成最大化，這個功能也蠻好用的
+
+ctrl-W o 將目前視窗唯一化
+ctrl-w ctrl-w跳到下一個視窗
+
+```
+movement
+character
+h j k l
+word
+w b  prev/next
+W B  prev/next(skip)
+e    word end
+      
+        0
+        k  
+0 W w h   l b B $
+        j
+        $
+```</pre>
 </div>
 <div created="20190916114542034" modified="20190918090437996" tags="DIY" title="鋪瓦用沙漿拌合比例及構成">
 <pre>!鋪瓦用沙漿拌合比例及構成
