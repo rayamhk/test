@@ -611,6 +611,8 @@ Error message and password prompt
 
 <li>Git</li>
 
+<li>Git Aliases</li>
+
 <li>Git submodule</li>
 
 <li>Git 使用者設定</li>
@@ -713,8 +715,6 @@ Error message and password prompt
 
 <li>New Tiddler (not work) too many problem</li>
 
-<li>New Tiddler 1</li>
-
 <li>New Tiddler mark up</li>
 
 <li>old stuff</li>
@@ -754,6 +754,8 @@ Error message and password prompt
 <li>regexp pattern</li>
 
 <li>regulator expression collection</li>
+
+<li>Remove Git tracking</li>
 
 <li>Reveal Example (System tiddlers)</li>
 
@@ -818,6 +820,8 @@ Error message and password prompt
 <li>use filter for default value of parameters</li>
 
 <li>Use of wikitext</li>
+
+<li>Vim Commands</li>
 
 <li>Widget Module</li>
 
@@ -10881,7 +10885,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20200214112536352" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20200216042457879" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -10983,8 +10987,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20191121112650863" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20200214020745186" title="$:/state/tab/sidebar--595412856">
-<pre>Table of Contents</pre>
+<div created="20190925111211913" modified="20200216035249035" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191111025314112" modified="20191111030215213" title="$:/state/toc/Contents-DIY--1339420835">
 <pre>close</pre>
@@ -11067,7 +11071,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[New Tiddler 1]] 給程式設計師的Vim入門圖解說明 GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div created="20200216012220484" list="[[Vim Commands]] [[Remove Git tracking]] GettingStarted [[Table of Contents]]" modified="20200216035252434" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -11215,8 +11219,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191220113640735" modified="20191220113641443" title="$:/temp/Scripts in Tiddlywiki-74788543">
 <pre>no</pre>
 </div>
-<div created="20191218122249729" modified="20200213015508619" title="$:/temp/search">
-<pre></pre>
+<div created="20191218122249729" modified="20200216012210887" title="$:/temp/search">
+<pre>copy</pre>
 </div>
 <div created="20191220092332290" modified="20191220094744146" title="$:/temp/Shiraz - a set of css and macros--1384611741">
 <pre>no</pre>
@@ -12343,6 +12347,16 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 <div created="20200214020845645" modified="20200214020917879" tags="Contents" title="Git">
 <pre>&lt;&lt;list-links &quot;[tag[Git]sort[title]]&quot;&gt;&gt;
 </pre>
+</div>
+<div created="20200216013147818" modified="20200216020050699" tags="" title="Git Aliases">
+<pre>
+
+&lt;&lt;wikitext-copy 
+&quot;&quot;&quot;git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+&quot;&quot;&quot;&gt;&gt;</pre>
 </div>
 <div created="20200213091707749" modified="20200213094026122" tags="Git" title="Git submodule">
 <pre>https://josephj.com/entry.php?id=342
@@ -17725,23 +17739,6 @@ lorem. &lt;russ class=&quot;fred&quot;&gt;---- #3 Nor is this Latin.----&lt;/rus
 
 </pre>
 </div>
-<div created="20200215082649738" modified="20200215085145024" tags="" title="New Tiddler 1">
-<pre>https://www.keycdn.com/blog/vim-commands
-
-|Cursor |Movement|h
-| `h` / `l` |to left / right one char, eg `5h` |
-| `j` / `k` |to down / up one line, eg `2k` |
-| `H` / `M` / `L` |to screen top / middle / bottom |
-| `b` / `w` |to start prev / next of word |
-| `e` |to end of word |
-| `0` / `$` |to begin / end of line |
-| `(` / `)` |to prev / next sentence, eg `3(` |
-| `{` / `}` |to prev / next paragraph or block |
-| `^f` / `^b` |to one page forward / back |
-| `gg` / `G` |to start / end of the file |
-| `#G` |to number of line, eg `10G` |
-</pre>
-</div>
 <div created="20191109114334828" modified="20191111025649930" tags="Testcase" title="New Tiddler mark up">
 <pre>\define .zli(src)
 &lt;dt&gt;&lt;pre&gt;&lt;$text text=&lt;&lt;__src__&gt;&gt; /&gt;&lt;/pre&gt;&lt;/dt&gt;&lt;dd&gt;&lt;$wikify text=&lt;&lt;__src__&gt;&gt; name=v mode &gt;&lt;&lt;v&gt;&gt;&lt;/$wikify&gt;&lt;/dd&gt;
@@ -18396,6 +18393,19 @@ as
 ^.*                 &lt;- bol with 0~n nos of char
 ```
 </pre>
+</div>
+<div created="20200216012113200" modified="20200216012801823" tags="" title="Remove Git tracking">
+<pre>!! Windows Command Prompt (cmd) User
+&lt;&lt;wikitext-copy 
+&quot;&quot;&quot;FOR /F &quot;tokens=*&quot; %G IN ('DIR /B /AD /S *.git*') DO RMDIR /S /Q &quot;%G&quot;
+&quot;&quot;&quot;
+&gt;&gt;
+
+!! Linux, Mac, or Unix based operating systems
+&lt;&lt;wikitext-copy 
+&quot;&quot;&quot;rm -R .git/
+&quot;&quot;&quot;
+&gt;&gt;</pre>
 </div>
 <div created="20191104122202907" modified="20191111030009255" tags="Testcase" title="Reveal Example (System tiddlers)">
 <pre>\define linkifytitle(title)
@@ -19806,6 +19816,23 @@ Here is a grab from a sample PDF that I created using a free PDF creating softwa
 [search&lt;currentTiddler&gt;]  &lt;--variable
 ```
 
+</pre>
+</div>
+<div created="20200215082649738" modified="20200216035309998" tags="" title="Vim Commands">
+<pre>https://www.keycdn.com/blog/vim-commands
+
+|Cursor |Movement|h
+| `h` / `l` |to left / right one char, eg `5h` |
+| `j` / `k` |to down / up one line, eg `2k` |
+| `H` / `M` / `L` |to screen top / middle / bottom |
+| `b` / `w` |to start prev / next of word |
+| `e` |to end of word |
+| `0` / `$` |to begin / end of line |
+| `(` / `)` |to prev / next sentence, eg `3(` |
+| `{` / `}` |to prev / next paragraph or block |
+| `^f` / `^b` |to one page forward / back |
+| `gg` / `G` |to start / end of the file |
+| `#G` |to number of line, eg `10G` |
 </pre>
 </div>
 <div class="text-linebreak" created="20191116033107333" modified="20191116040856673" tags="[[TiddlyWiki Dev]]" title="Widget Module">
