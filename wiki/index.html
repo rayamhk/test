@@ -817,6 +817,8 @@ Error message and password prompt
 
 <li>Untitled 1</li>
 
+<li>Upp - macro &quot;Versioning&quot; F7</li>
+
 <li>Usage</li>
 
 <li>use filter for default value of parameters</li>
@@ -10989,7 +10991,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20191121112650863" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20200216035249035" title="$:/state/tab/sidebar--595412856">
+<div created="20190925111211913" modified="20200221010442614" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20191111025314112" modified="20191111030215213" title="$:/state/toc/Contents-DIY--1339420835">
@@ -11073,7 +11075,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="[[Upp - macro &quot;Versioning&quot; F7]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -12351,8 +12353,7 @@ arrayfnr={{{ [&lt;arrayfnr&gt;removeprefix&lt;p1&gt;removeprefix[||]] }}} /&gt;
 </pre>
 </div>
 <div created="20200216013147818" modified="20200216020050699" tags="" title="Git Aliases">
-<pre>
-&lt;&lt;wikitext-copy 
+<pre>&lt;&lt;wikitext-copy 
 &quot;&quot;&quot;git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
@@ -13248,7 +13249,7 @@ https://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/
 
 Git 是分散式的版本控制系統, 從架設、簡易操作、設定, 此篇主要是整理 基本操作、遠端操作 等.
 
-註: Git 的範圍太廣了, 把這篇當作是初學入門就好了. ������
+註: Git 的範圍太廣了, 把這篇當作是初學入門就好了. ������
 
 !!! 注意事項
 
@@ -19952,6 +19953,153 @@ Here is a grab from a sample PDF that I created using a free PDF creating softwa
 &lt;!--StartFragment--&gt;&lt;pre style=&quot;box-sizing: border-box; overflow: auto; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;code style=&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;&quot;&gt;inherit&lt;/code&gt;&lt;/pre&gt;&lt;!--EndFragment--&gt;
 &lt;/body&gt;
 &lt;/html&gt;</pre>
+</div>
+<div created="20200221010446212" modified="20200221011150687" tags="" title="Upp - macro &quot;Versioning&quot; F7">
+<pre>
+```
+#ifndef _VersionRBT_h_
+#define _VersionRBT_h_
+
+#define V_RELEASE 0
+#define V_BUILD 0
+#define V_TEST 0
+#define N_2_S0(x) #x
+#define N_2_S(x) N_2_S0(x)
+#define V_VERSION &quot;v &quot; N_2_S(V_RELEASE) &quot;.&quot; N_2_S(V_BUILD) &quot;.&quot; N_2_S(V_TEST)
+
+
+//=============================================================================
+//history will be updated by the Versioning-macro..
+// and can be accessed with something like:
+//	{
+//		std:: string s{&quot;History\n&quot;};
+//		for (auto p:VersionHistory&lt;&gt;) { s+=&quot;    [&quot;; s+=p.first; s+=&quot;] -&gt; &quot;; s+=p.second; s+=&quot;\n&quot;; }
+//		PromptOK(DeQtf(s.c_str()));
+//	}
+
+#include &lt;map&gt;
+
+template&lt;typename S=std::string&gt; struct MVHIST
+{
+    std::map&lt;S, S&gt; m;
+    MVHIST(const S &amp;k, const S &amp;v) { m[k]=v; }
+    MVHIST&lt;S&gt;&amp; operator()(const S &amp;k, const S &amp;v) { m[k]=v; return *this; }
+    operator std::map&lt;S, S&gt;() { return m; }
+};
+
+template&lt;typename S=std::string&gt; std::map&lt;S, S&gt; VersionHistory=MVHIST&lt;S&gt;
+//HISTORY (insertion-point, leave this comment in place - see macro)
+;
+
+
+#endif
+```
+
+```
+macro &quot;Versioning&quot; F7
+{
+	ClearConsole();
+	curpos = GetCursor();
+	curfile = FileName();
+	versionfile = PackageDir(MainPackage()) + &quot;/&quot; + &quot;VersionRBT.h&quot;;
+	EditFile(versionfile);
+	
+	.reason = void; .version = void;
+	.pT = void; .pB = void; .pR = void; .rbq = void;
+	dT = &quot;V_TEST &quot;; dB = &quot;V_BUILD &quot;; dR = &quot;V_RELEASE &quot;; dH = &quot;//HISTORY&quot;;
+	
+	reason = Input(&quot;Reason for compile (q|Q to quit): &quot;);
+	if (is_void(reason) || (reason == &quot;&quot;)) reason = &quot;q&quot;;
+	
+	.getv = @(D, &amp;V)
+	{
+		SetCursor(0);
+		if (Find(D, 1, 1))
+		{
+			p = GetCursor(); l = GetLine(p); lp = GetLinePos(l); ll = GetLineLength(l);
+			c = lp + ll - p;
+			V = Get(p, c);
+		}
+	};
+	
+	.setv = @(D, &amp;P, A)
+	{
+		SetCursor(0);
+		if (Find(D, 1, 1))
+		{
+			p = GetCursor(); l = GetLine(p); lp = GetLinePos(l); ll = GetLineLength(l);
+			c = lp + ll - p;
+			if (A) { t = Get(p, c); w = to_number(t); w++; t = to_string(w); n = Get(lp, ll - c) + t; }
+			else { n = Get(lp, ll - c) + &quot;0&quot;; }
+			P = Get(lp, ll);
+			Remove(lp, ll);
+			Insert(lp, n);
+		}
+	};
+	
+	.resv = @(D, P)
+	{
+		if (!is_void(P))
+		{
+			SetCursor(0);
+			if (Find(D, 1, 1))
+			{
+				p = GetCursor(); l = GetLine(p); lp = GetLinePos(l); ll = GetLineLength(l);
+				Remove(lp, ll); Insert(lp, P);
+			}
+		}
+	};
+	
+	.addhist = @(H, V, R)
+	{
+		SetCursor(0);
+		if (Find(H, 1, 1))
+		{
+			s = &quot;(\&quot;&quot; + V + &quot;\&quot;, \&quot;&quot; + R + &quot;\&quot;)\n&quot;;
+			p = GetCursor(); l = GetLine(p); lp = GetLinePos(l);
+			Insert(lp, s);
+		}
+	};
+	
+	.reshist = @(H)
+	{
+		SetCursor(0);
+		if (Find(H, 1, 1))
+		{
+			p = GetCursor(); l = (GetLine(p) - 1); lp = GetLinePos(l); ll = (GetLineLength(l) + 1);
+			Remove(lp, ll);
+		}
+	};
+	
+	if ((reason!=&quot;q&quot;)&amp;&amp;(reason!=&quot;Q&quot;))
+	{
+		if (BuildMode()==0) { setv(dT, pT, 1); }  //Debug.. (T++)
+		else //Build or Release.. (B++ T0) or (R++ B0 T0)
+		{
+			while (!((rbq==&quot;b&quot;)||(rbq==&quot;B&quot;)||(rbq==&quot;r&quot;)||(rbq==&quot;R&quot;)||(rbq==&quot;q&quot;)||(rbq==&quot;Q&quot;)))
+			{
+				rbq = Input(&quot;Build|Release|Quit [b|B|r|R|q|Q] &quot;);
+				if (is_void(rbq)) rbq = &quot;q&quot;; if (count(rbq)&gt;1) rbq = void;
+			}
+			
+			if ((rbq==&quot;b&quot;)||(rbq==&quot;B&quot;)) { setv(dB, pB, 1); setv(dT, pT, 0); }
+			else { if ((rbq==&quot;r&quot;)||(rbq==&quot;R&quot;)) { setv(dR, pR, 1); setv(dB, pB, 0); setv(dT, pT, 0); }}
+		}
+	
+		if (rbq!=&quot;q&quot;)
+		{
+			getv(dR, rr); getv(dB, bb); getv(dT, tt);
+			version = &quot;v&quot; + rr + &quot;.&quot; + bb + &quot;.&quot; + tt;
+			addhist(dH, version, reason);
+			
+			if (!Build()) { resv(dT, pT); resv(dB, pB); resv(dR, pR); reshist(dH); }
+		}
+	}
+	EditFile(curfile);
+	SetCursor(curpos);
+}
+```
+</pre>
 </div>
 <div created="20190919032222259" modified="20190919032300813" tags="English" title="Usage">
 <pre>&lt;&lt;list-links &quot;[tag[Usage]sort[title]]&quot;&gt;&gt;
