@@ -635,6 +635,8 @@ Error message and password prompt
 
 <li>Grammar</li>
 
+<li>Gtest Example</li>
+
 <li>Home</li>
 
 <li>Homophones: The Most Confusing Words in English</li>
@@ -10895,7 +10897,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20200304112034843" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20200311084236566" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -11081,7 +11083,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200307033305882" list="Mega.nz Bazzar GettingStarted [[Table of Contents]]" modified="20200307033322556" title="$:/StoryList">
+<div list="GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -13772,6 +13774,142 @@ $ git commit --allow-empty -m &quot;空的&quot;
 <div created="20190918090847329" modified="20190918090919702" tags="English" title="Grammar">
 <pre>&lt;&lt;list-links &quot;[tag[Grammar]sort[title]]&quot;&gt;&gt;
 </pre>
+</div>
+<div created="20200311075108125" modified="20200311075801126" tags="" title="Gtest Example">
+<pre>```
+#include &lt;iostream&gt;
+
+using namespace std;
+
+#include &lt;gtest/gtest.h&gt;
+
+struct LinkNode {
+  int _data;
+  LinkNode* _next;
+  LinkNode(const int&amp; data) : _data(data), _next(NULL) {}
+};
+
+class Link {
+ public:
+
+  Link() : pHead(new LinkNode(0)) {}
+
+  void PushBack(const int&amp; data) {
+    if (pHead == NULL)
+      return;
+    LinkNode* newNode = new LinkNode(data);
+    if (pHead-&gt;_next == NULL) {  //第一次插入结点
+      pHead-&gt;_next = newNode;
+    } else {  //找到最后一个结点直接尾插
+      LinkNode* cur = pHead-&gt;_next;
+      while (cur-&gt;_next) {
+        cur = cur-&gt;_next;
+      }
+      cur-&gt;_next = newNode;
+    }
+  }
+
+  void PopBack() {
+    if (pHead == NULL)
+      return;
+    LinkNode* cur = pHead;
+    LinkNode* prev = NULL;
+    while (cur-&gt;_next) {
+      prev = cur;
+      cur = cur-&gt;_next;
+    }
+    prev-&gt;_next = NULL;
+    delete cur;
+  }
+
+  LinkNode* FindNode(const int&amp; data) {
+    if (pHead == NULL)
+      return NULL;
+    LinkNode* cur = pHead-&gt;_next;
+    while (cur) {
+      if (cur-&gt;_data == data)
+        return cur;
+      cur = cur-&gt;_next;
+    }
+    return NULL;
+  }
+
+  bool Delete(int data) {
+    LinkNode* pos = FindNode(data);
+    if (pos == NULL)
+      return false;
+    LinkNode* cur = pHead-&gt;_next;
+    while (cur-&gt;_next != pos) {
+      cur = cur-&gt;_next;
+    }
+    cur-&gt;_next = pos-&gt;_next;
+    delete pos;
+    return true;
+  }
+
+  void Destroy() {
+    if (pHead == NULL)
+      return;
+    LinkNode* cur = pHead-&gt;_next;
+    while (cur) {
+      LinkNode* del = cur;
+      cur = cur-&gt;_next;
+      delete del;
+      del = NULL;
+    }
+    delete pHead;  //删除头结点
+  }
+  LinkNode* pHead;
+};
+
+class TestLink : public testing::Test {
+ public:
+  virtual void SetUp() {
+    cout &lt;&lt; &quot;SetUp&quot; &lt;&lt; endl;
+    for (int i = 1; i &lt;= 5; i++) {
+      link.PushBack(i);
+    }
+  }
+  virtual void TearDown() {
+    cout &lt;&lt; &quot;TearDown&quot; &lt;&lt; endl;
+    link.Destroy();
+  }
+  Link link;
+};
+
+TEST_F(TestLink, PushBack) {
+  ASSERT_FALSE(link.pHead == NULL);
+  link.PushBack(9);
+  LinkNode* res = link.FindNode(9);
+  ASSERT_FALSE(res == NULL);
+}
+
+TEST_F(TestLink, PopBack) {
+  for (int i = 1; i &lt;= 5; i++) {
+    link.PopBack();
+  }
+}
+
+TEST_F(TestLink, FindNode) {
+  ASSERT_TRUE(link.FindNode(3));
+  ASSERT_TRUE(link.FindNode(2));
+  ASSERT_TRUE(link.FindNode(4));
+  ASSERT_TRUE(link.FindNode(5));
+  ASSERT_TRUE(link.FindNode(1));
+  ASSERT_FALSE(link.FindNode(7));
+}
+
+TEST_F(TestLink, Delete) {
+  ASSERT_FALSE(link.pHead == NULL);
+  ASSERT_TRUE(link.Delete(3) == true);
+  ASSERT_TRUE(link.Delete(9) == false);
+}
+
+int main(int argc, char* argv[]) {
+  testing::InitGoogleTest(&amp;argc, argv);
+  return RUN_ALL_TESTS();
+}
+```</pre>
 </div>
 <div created="20191111024923861" modified="20191111024955177" title="Home">
 <pre>{{Table of Contents}}</pre>
