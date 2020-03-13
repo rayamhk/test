@@ -635,7 +635,9 @@ Error message and password prompt
 
 <li>Grammar</li>
 
-<li>Gtest Example</li>
+<li>Gtest Example 1</li>
+
+<li>Gtest Example 2</li>
 
 <li>Home</li>
 
@@ -11083,7 +11085,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div created="20200313023249184" list="Abbreviation Bazzar Mega.nz [[Gtest Example 1]] [[Gtest Example 2]] GettingStarted [[Table of Contents]]" modified="20200313024418655" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -13775,7 +13777,33 @@ $ git commit --allow-empty -m &quot;空的&quot;
 <pre>&lt;&lt;list-links &quot;[tag[Grammar]sort[title]]&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20200311075108125" modified="20200311075801126" tags="" title="Gtest Example">
+<div created="20200313023659874" modified="20200313024348699" tags="C++" title="Gtest Example 1">
+<pre>```
+#include &lt;iostream&gt;
+
+using namespace std;
+
+#include &lt;gtest/gtest.h&gt;
+
+int Abs(int x) {
+  return x &gt; 0 ? x : -x;
+}
+
+TEST(IsAbsTest, HandlerTrueReturn) {
+  ASSERT_TRUE(Abs(1) == 1)
+      &lt;&lt; &quot;Abs(1)=1&quot;;  // ASSERT_TRUE期待结果是true,operator&lt;&lt;输出一些自定义的信息
+  ASSERT_TRUE(Abs(-1) == 1) &lt;&lt; &quot;Abs(-1)=1&quot;;
+  ASSERT_FALSE(Abs(-2) == -2);  //期待结果是false
+  ASSERT_EQ(Abs(1), Abs(-1));
+  ASSERT_NE(Abs(-1), 0);
+  ASSERT_LT(Abs(-1), 2);
+  ASSERT_GT(Abs(-1), 0);
+  ASSERT_LE(Abs(-1), 2);
+  ASSERT_GE(Abs(-1), 0);
+}
+```</pre>
+</div>
+<div created="20200311075108125" modified="20200313024310530" tags="C++" title="Gtest Example 2">
 <pre>```
 #include &lt;iostream&gt;
 
