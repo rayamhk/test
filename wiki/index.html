@@ -831,6 +831,8 @@ Error message and password prompt
 
 <li>Upp - macro &quot;Versioning&quot; F7</li>
 
+<li>Upp Guilock Example</li>
+
 <li>Usage</li>
 
 <li>use filter for default value of parameters</li>
@@ -10901,7 +10903,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20200311084236566" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20200325022336423" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -11087,7 +11089,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[Shotcut setting]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="[[Upp Guilock Example]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -20351,6 +20353,95 @@ macro &quot;Versioning&quot; F7
 }
 ```
 </pre>
+</div>
+<div created="20200325015454935" modified="20200325020203698" tags="Upp" title="Upp Guilock Example">
+<pre>```
+#include &lt;CtrlLib/CtrlLib.h&gt;
+
+using namespace Upp;
+
+class testIndicator : public TopWindow {
+ private:
+  ProgressIndicator progress;
+  Button button;
+
+ public:
+  typedef testIndicator CLASSNAME;
+
+  void myCallBack() {
+    Thread().Run([&amp;]() {
+      GuiLock __;  // Since we are in thread we cant modify GUI, Except if we
+                   // create a struct Name GuiLock wich will give ctrl of GUI to
+                   // this thread
+      button.Disable();  // Action on GUI
+      GuiUnlock _;  // Release the GUI Ctrl (if not done then the gui can freze
+                    // because main thread wich processe Mouse/key Ctrl and
+                    // other GUI things is stuck since it don't have Ctrl of GUI
+                    // anymore)
+
+      for (int e = 0; e &lt; 11; e++) {
+        if (Thread::IsShutdownThreads()) {
+          break;
+        }
+        GuiLock __3;
+        progress = e;
+        GuiUnlock _3;  // It's important to release before Sleep Else the main
+                       // thread wont be able to refresh GUI during the sleep
+                       // (because this thread keep the control of GUI))
+        Sleep(1000);
+      }
+
+      GuiLock __2;  // Same as before
+      button.Enable();
+      GuiUnlock _2;
+
+      return;
+    });
+  }
+
+  testIndicator() {
+    Title(&quot;Exemple ProgressBar&quot;);
+    SetRect(0, 0, 220, 70);
+
+    Add(button.LeftPos(30, 150).TopPos(10, 20));
+    button.SetLabel(&quot;Increase progressBar&quot;);
+    button &lt;&lt;= THISBACK(myCallBack);
+
+    Add(progress.LeftPos(10, 200).TopPos(40, 20));
+    progress.Set(0, 10);
+  }
+
+  ~testIndicator() {
+    Thread::ShutdownThreads();  // Thread released
+  }
+};
+
+GUI_APP_MAIN {
+  testIndicator().Run();
+}
+```
+
+or 
+
+```
+void myCallBack() {
+  button.Disable();  // Action on GUI
+  ProcessEvents();
+  for (int e = 0; e &lt; 11; e++) {
+    progress = e;
+    ProcessEvents();
+    for (int i = 0; i &lt; 100; i++) {
+      Sleep(10);
+      ProcessEvents();
+    }
+    // Same as Sleep(1000) but with a better control on GUI (however it wont
+    // 'sleep' for 1 second now, but for 1 sec +  100 * (processEvents() Time)
+  }
+  button.Enable();
+  ProcessEvents();
+  return;
+}
+```</pre>
 </div>
 <div created="20190919032222259" modified="20190919032300813" tags="English" title="Usage">
 <pre>&lt;&lt;list-links &quot;[tag[Usage]sort[title]]&quot;&gt;&gt;
