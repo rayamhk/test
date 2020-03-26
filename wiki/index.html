@@ -525,6 +525,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/NewTagName</li>
+
 <li>$:/temp/Scripts in Tiddlywiki--1384611741</li>
 
 <li>$:/temp/Scripts in Tiddlywiki--726435399</li>
@@ -593,6 +595,8 @@ Error message and password prompt
 
 <li>DIY</li>
 
+<li>Draft of 'FFmpeg cheat sheet'</li>
+
 <li>Draft of 'New Tiddler'</li>
 
 <li>Draft of 'Recent State Tiddlers 1'</li>
@@ -608,6 +612,8 @@ Error message and password prompt
 <li>Extract Contents Between Html Tags</li>
 
 <li>FBDown.net - Facebook Video Downloader</li>
+
+<li>FFmpeg cheat sheet</li>
 
 <li>Find and replace trying</li>
 
@@ -10903,7 +10909,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20200325022336423" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20200326033000385" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -11089,7 +11095,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[Upp Guilock Example]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="[[Draft of 'FFmpeg cheat sheet']] GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -11215,11 +11221,11 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1280&quot;
+            &quot;text&quot;: &quot;1418&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;720&quot;
+            &quot;text&quot;: &quot;798&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -11227,6 +11233,9 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
         }
     }
 }</pre>
+</div>
+<div created="20200326033007872" modified="20200326033013665" title="$:/temp/NewTagName">
+<pre>ffmpeg</pre>
 </div>
 <div created="20191220091352323" modified="20191220102723797" title="$:/temp/Scripts in Tiddlywiki--1384611741">
 <pre>no</pre>
@@ -12021,6 +12030,193 @@ catCounter()     // 3 cat
 &lt;&lt;toc-expandable &quot;DIY&quot;&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div created="20200326030739868" draft.of="FFmpeg cheat sheet" draft.title="FFmpeg cheat sheet" modified="20200326033005020" tags="" title="Draft of 'FFmpeg cheat sheet'">
+<pre>! FFmpeg cheat sheet
+
+A list of useful commands for the ffmpeg command line tool.
+
+Download FFmpeg: https://www.ffmpeg.org/download.html
+
+Full documentation: https://www.ffmpeg.org/ffmpeg.html
+
+!! Basic conversion
+
+```
+ffmpeg -i in.mp4 out.avi
+```
+
+!!! Remux an MKV file into MP4
+
+```
+ffmpeg -i in.mkv -c:v copy -c:a copy out.mp4
+```
+
+!! Trimming
+
+Without re-encoding:
+
+```
+ffmpeg -ss [start] -i in.mp4 -t [duration] -c copy out.mp4
+```
+
+* [[-ss|http://ffmpeg.org/ffmpeg-all.html#Main-options]] specifies the start time, e.g. `00:01:23.000` or `83` (in seconds)
+* [[-t|http://ffmpeg.org/ffmpeg-all.html#Main-options]] specifies the duration of the clip (same format).
+* Recent `ffmpeg` also has a flag to supply the end time with `-to`.
+* [[-c|http://ffmpeg.org/ffmpeg-all.html#Main-options]] copy copies the first video, audio, and subtitle bitstream from the input to the output file without re-encoding them. This won't harm the quality and make the command run within seconds.
+
+With re-encoding:
+
+If you leave out the `-c copy` option, `ffmpeg` will automatically re-encode the output video and audio according to the format you chose. For high quality video and audio, read the [[x264 Encoding Guide|https://ffmpeg.org/trac/ffmpeg/wiki/x264EncodingGuide]] and the [[AAC Encoding Guide|http://ffmpeg.org/trac/ffmpeg/wiki/AACEncodingGuide]], respectively.
+
+For example:
+
+```
+ffmpeg -ss [start] -i in.mp4 -t [duration] -c:v libx264 -c:a aac -strict experimental -b:a 128k out.mp4
+```
+
+!! Mux video and audio from another video
+
+To copy the video from in0.mp4 and audio from in1.mp4:
+
+```
+ffmpeg -i in0.mp4 -i in1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4
+```
+
+* With [[-c copy|http://ffmpeg.org/ffmpeg.html#Stream-copy]] the streams will be `stream copied`, not re-encoded, so there will be no quality loss. If you want to re-encode, see [[FFmpeg Wiki: H.264 Encoding Guide|https://trac.ffmpeg.org/wiki/Encode/H.264]].
+* The `-shortest` option will cause the output duration to match the duration of the shortest input stream.
+* See the [[-map option documentation|http://ffmpeg.org/ffmpeg.html#Advanced-options]] for more info.
+
+!! Concat demuxer
+
+First, make a text file.
+
+```
+file 'in1.mp4'
+file 'in2.mp4'
+file 'in3.mp4'
+file 'in4.mp4'
+```
+
+Then, run `ffmpeg`:
+
+```
+ffmpeg -f concat -i list.txt -c copy out.mp4
+```
+
+!! Delay audio/video
+
+Delay video by 3.84 seconds:
+
+```
+ffmpeg -i in.mp4 -itsoffset 3.84 -i in.mp4 -map 1:v -map 0:a -vcodec copy -acodec copy out.mp4
+```
+
+Delay audio by 3.84 seconds:
+
+```
+ffmpeg -i in.mp4 -itsoffset 3.84 -i in.mp4 -map 0:v -map 1:a -vcodec copy -acodec copy out.mp4
+```
+
+!! Burn subtitles
+
+Use the [[libass|http://ffmpeg.org/ffmpeg.html#ass]] library (make sure your ffmpeg install has the library in the configuration `--enable-libass`).
+
+First convert the subtitles to .ass format:
+
+```
+ffmpeg -i sub.srt sub.ass
+```
+
+Then add them using a video filter:
+
+```
+ffmpeg -i in.mp4 -vf ass=sub.ass out.mp4
+```
+
+!! Extract the frames from a video
+
+To extract all frames from between 1 and 5 seconds, and also between 11 and 15 seconds:
+
+```
+ffmpeg -i in.mp4 -vf select='between(t,1,5)+between(t,11,15)' -vsync 0 out%d.png
+```
+
+To extract one frame per second only:
+
+```
+ffmpeg -i in.mp4 -fps=1 -vsync 0 out%d.png
+```
+
+!! Rotate a video
+
+Rotate 90 clockwise:
+
+```
+ffmpeg -i in.mov -vf &quot;transpose=1&quot; out.mov
+```
+
+For the transpose parameter you can pass:
+
+```
+0 = 90CounterCLockwise and Vertical Flip (default)
+1 = 90Clockwise
+2 = 90CounterClockwise
+3 = 90Clockwise and Vertical Flip
+```
+
+Use `-vf &quot;transpose=2,transpose=2&quot;` for 180 degrees.
+
+!! Download &quot;Transport Stream&quot; video streams
+
+1. Locate the playlist file, e.g. using Chrome &gt; F12 &gt; Network &gt; Filter: m3u8
+2. Download and concatenate the video fragments:
+
+```
+ffmpeg -i &quot;path_to_playlist.m3u8&quot; -c copy -bsf:a aac_adtstoasc out.mp4
+```
+
+If you get a &quot;Protocol 'https not on whitelist 'file,crypto'!&quot; error, add the `protocol_whitelist` option:
+
+```
+ffmpeg -protocol_whitelist &quot;file,http,https,tcp,tls&quot; -i &quot;path_to_playlist.m3u8&quot; -c copy -bsf:a aac_adtstoasc out.mp4
+```
+
+!! Mute some of the audio
+
+To replace the first 90 seconds of audio with silence:
+
+```
+ffmpeg -i in.mp4 -vcodec copy -af &quot;volume=enable='lte(t,90)':volume=0&quot; out.mp4
+```
+
+To replace all audio between 1'20&quot; and 1'30&quot; with silence:
+
+```
+ffmpeg -i in.mp4 -vcodec copy -af &quot;volume=enable='between(t,80,90)':volume=0&quot; out.mp4
+```
+
+!! Deinterlace
+
+Deinterlacing using &quot;yet another deinterlacing filter&quot;.
+
+```
+ffmpeg -i in.mp4 -vf yadif out.mp4
+```
+
+!! Create a video slideshow from images
+
+Parameters: `-r` marks the image framerate (inverse time of each image); `-vf fps=25` marks the true framerate of the output.
+
+```
+ffmpeg -r 1/5 -i img%03d.png -c:v libx264 -vf fps=25 -pix_fmt yuv420p out.mp4
+```
+
+!! Extract images from a video
+
+* Extract all frames: `ffmpeg -i input.mp4 thumb%04d.jpg -hide_banner`
+* Extract a frame each second: `ffmpeg -i input.mp4 -vf fps=1 thumb%04d.jpg -hide_banner`
+* Extract only one frame: `ffmpeg -i input.mp4 -ss 00:00:10.000 -vframes 1 thumb.jpg`</pre>
+</div>
 <div created="20191018075737072" draft.title="中诺电话机使用说明书" modified="20191018075737072" title="Draft of 'New Tiddler'">
 <pre></pre>
 </div>
@@ -12295,6 +12491,193 @@ http://tw-regexp.tiddlyspot.com/#Extract%20Contents%20between%20Html%20Tags</pre
 <div created="20191119102544829" modified="20191119102738906" tags="[[Online Tools]]" title="FBDown.net - Facebook Video Downloader">
 <pre>: Url: https://www.fbdown.net/index.php
 : Test: success</pre>
+</div>
+<div created="20200326030739868" modified="20200326032855071" tags="" title="FFmpeg cheat sheet">
+<pre>! FFmpeg cheat sheet
+
+A list of useful commands for the ffmpeg command line tool.
+
+Download FFmpeg: https://www.ffmpeg.org/download.html
+
+Full documentation: https://www.ffmpeg.org/ffmpeg.html
+
+!! Basic conversion
+
+```
+ffmpeg -i in.mp4 out.avi
+```
+
+!!! Remux an MKV file into MP4
+
+```
+ffmpeg -i in.mkv -c:v copy -c:a copy out.mp4
+```
+
+!! Trimming
+
+Without re-encoding:
+
+```
+ffmpeg -ss [start] -i in.mp4 -t [duration] -c copy out.mp4
+```
+
+* [[-ss|http://ffmpeg.org/ffmpeg-all.html#Main-options]] specifies the start time, e.g. `00:01:23.000` or `83` (in seconds)
+* [[-t|http://ffmpeg.org/ffmpeg-all.html#Main-options]] specifies the duration of the clip (same format).
+* Recent `ffmpeg` also has a flag to supply the end time with `-to`.
+* [[-c|http://ffmpeg.org/ffmpeg-all.html#Main-options]] copy copies the first video, audio, and subtitle bitstream from the input to the output file without re-encoding them. This won't harm the quality and make the command run within seconds.
+
+With re-encoding:
+
+If you leave out the `-c copy` option, `ffmpeg` will automatically re-encode the output video and audio according to the format you chose. For high quality video and audio, read the [[x264 Encoding Guide|https://ffmpeg.org/trac/ffmpeg/wiki/x264EncodingGuide]] and the [[AAC Encoding Guide|http://ffmpeg.org/trac/ffmpeg/wiki/AACEncodingGuide]], respectively.
+
+For example:
+
+```
+ffmpeg -ss [start] -i in.mp4 -t [duration] -c:v libx264 -c:a aac -strict experimental -b:a 128k out.mp4
+```
+
+!! Mux video and audio from another video
+
+To copy the video from in0.mp4 and audio from in1.mp4:
+
+```
+ffmpeg -i in0.mp4 -i in1.mp4 -c copy -map 0:0 -map 1:1 -shortest out.mp4
+```
+
+* With [[-c copy|http://ffmpeg.org/ffmpeg.html#Stream-copy]] the streams will be `stream copied`, not re-encoded, so there will be no quality loss. If you want to re-encode, see [[FFmpeg Wiki: H.264 Encoding Guide|https://trac.ffmpeg.org/wiki/Encode/H.264]].
+* The `-shortest` option will cause the output duration to match the duration of the shortest input stream.
+* See the [[-map option documentation|http://ffmpeg.org/ffmpeg.html#Advanced-options]] for more info.
+
+!! Concat demuxer
+
+First, make a text file.
+
+```
+file 'in1.mp4'
+file 'in2.mp4'
+file 'in3.mp4'
+file 'in4.mp4'
+```
+
+Then, run `ffmpeg`:
+
+```
+ffmpeg -f concat -i list.txt -c copy out.mp4
+```
+
+!! Delay audio/video
+
+Delay video by 3.84 seconds:
+
+```
+ffmpeg -i in.mp4 -itsoffset 3.84 -i in.mp4 -map 1:v -map 0:a -vcodec copy -acodec copy out.mp4
+```
+
+Delay audio by 3.84 seconds:
+
+```
+ffmpeg -i in.mp4 -itsoffset 3.84 -i in.mp4 -map 0:v -map 1:a -vcodec copy -acodec copy out.mp4
+```
+
+!! Burn subtitles
+
+Use the [[libass|http://ffmpeg.org/ffmpeg.html#ass]] library (make sure your ffmpeg install has the library in the configuration `--enable-libass`).
+
+First convert the subtitles to .ass format:
+
+```
+ffmpeg -i sub.srt sub.ass
+```
+
+Then add them using a video filter:
+
+```
+ffmpeg -i in.mp4 -vf ass=sub.ass out.mp4
+```
+
+!! Extract the frames from a video
+
+To extract all frames from between 1 and 5 seconds, and also between 11 and 15 seconds:
+
+```
+ffmpeg -i in.mp4 -vf select='between(t,1,5)+between(t,11,15)' -vsync 0 out%d.png
+```
+
+To extract one frame per second only:
+
+```
+ffmpeg -i in.mp4 -fps=1 -vsync 0 out%d.png
+```
+
+!! Rotate a video
+
+Rotate 90 clockwise:
+
+```
+ffmpeg -i in.mov -vf &quot;transpose=1&quot; out.mov
+```
+
+For the transpose parameter you can pass:
+
+```
+0 = 90CounterCLockwise and Vertical Flip (default)
+1 = 90Clockwise
+2 = 90CounterClockwise
+3 = 90Clockwise and Vertical Flip
+```
+
+Use `-vf &quot;transpose=2,transpose=2&quot;` for 180 degrees.
+
+!! Download &quot;Transport Stream&quot; video streams
+
+1. Locate the playlist file, e.g. using Chrome &gt; F12 &gt; Network &gt; Filter: m3u8
+2. Download and concatenate the video fragments:
+
+```
+ffmpeg -i &quot;path_to_playlist.m3u8&quot; -c copy -bsf:a aac_adtstoasc out.mp4
+```
+
+If you get a &quot;Protocol 'https not on whitelist 'file,crypto'!&quot; error, add the `protocol_whitelist` option:
+
+```
+ffmpeg -protocol_whitelist &quot;file,http,https,tcp,tls&quot; -i &quot;path_to_playlist.m3u8&quot; -c copy -bsf:a aac_adtstoasc out.mp4
+```
+
+!! Mute some of the audio
+
+To replace the first 90 seconds of audio with silence:
+
+```
+ffmpeg -i in.mp4 -vcodec copy -af &quot;volume=enable='lte(t,90)':volume=0&quot; out.mp4
+```
+
+To replace all audio between 1'20&quot; and 1'30&quot; with silence:
+
+```
+ffmpeg -i in.mp4 -vcodec copy -af &quot;volume=enable='between(t,80,90)':volume=0&quot; out.mp4
+```
+
+!! Deinterlace
+
+Deinterlacing using &quot;yet another deinterlacing filter&quot;.
+
+```
+ffmpeg -i in.mp4 -vf yadif out.mp4
+```
+
+!! Create a video slideshow from images
+
+Parameters: `-r` marks the image framerate (inverse time of each image); `-vf fps=25` marks the true framerate of the output.
+
+```
+ffmpeg -r 1/5 -i img%03d.png -c:v libx264 -vf fps=25 -pix_fmt yuv420p out.mp4
+```
+
+!! Extract images from a video
+
+* Extract all frames: `ffmpeg -i input.mp4 thumb%04d.jpg -hide_banner`
+* Extract a frame each second: `ffmpeg -i input.mp4 -vf fps=1 thumb%04d.jpg -hide_banner`
+* Extract only one frame: `ffmpeg -i input.mp4 -ss 00:00:10.000 -vframes 1 thumb.jpg`</pre>
 </div>
 <div created="20191116045629728" modified="20191118122942023" tags="Test" title="Find and replace trying">
 <pre>\define dp(n,s)
