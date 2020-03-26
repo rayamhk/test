@@ -723,6 +723,8 @@ Error message and password prompt
 
 <li>Mega.nz</li>
 
+<li>Merged mp4 files with avidemux has artifacts on clip</li>
+
 <li>My CSS</li>
 
 <li>New Tiddler</li>
@@ -11091,7 +11093,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[FFmpeg cheat sheet]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div list="[[Merged mp4 files with avidemux has artifacts on clip]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -18124,6 +18126,17 @@ width:16px;
 !! Software
 *Apk
 **jeejen.family.apk - 极简桌面 小米</pre>
+</div>
+<div created="20200326081135337" modified="20200326081434432" tags="[[Video ]]" title="Merged mp4 files with avidemux has artifacts on clip">
+<pre>It doesn't depend on muxer. The artifacts result from the first I-frame of the appended video being dropped due to decoding timestamp (dts) going back in time.
+
+The workaround in this particular case is to delete the last frame (it is an I-frame) of the first video prior to appending the second one:
+
+*Load the first video, navigate to the last frame (&quot;END&quot; / &quot;E&quot; with alternative keyboard shortcuts enabled)
+*Go to the previous frame (&quot;LEFT&quot;), set the marker A
+*Delete the segment (&quot;DEL&quot;)
+*Now append the second video
+</pre>
 </div>
 <div created="20191113112521518" modified="20191115031239749" tags="$:/tags/Stylesheet" title="My CSS" type="text/css">
 <pre>.text-linebreak .tc-tiddler-body {
