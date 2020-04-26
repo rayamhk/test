@@ -11898,12 +11898,28 @@ Hi, I'm $(name)$ and I live in $(address)$.
 |SysExecTest|win-14091||with little amend|
 |Treetest||win-14091||</pre>
 </div>
-<div created="20200426032955033" modified="20200426034035223" tags="" title="belender animation">
+<div created="20200426032955033" modified="20200426040150009" tags="" title="belender animation">
 <pre>Let's MODEL, RIG and ANIMATE a MECH in 10 MINUTES - ep 18
 
 https://www.youtube.com/watch?v=deaQeIje-pQ
 
 tips
+
+!! make a rig
+
+* create middle armature
+* create side armature
+* create ik control armature, clear parent (`alt-P`)
+* create pole armature, clear parent
+* select the armature for target ik, create ik constraint,
+** then select target ik control and pole control
+** and setup chaining eg. `2` 
+** and pole angle eg.` 90'`correctly
+* disable the further unwanted rotation e.g. foot at relations/inheriat rotation 
+** and add constraint `copy rotation` 
+** and select target ik and space local - local
+* select all armature and `symmetric` to create another side armature
+
 
 assign vertics group to
 
