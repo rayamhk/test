@@ -585,11 +585,11 @@ Error message and password prompt
 
 <li>Bazzar</li>
 
-<li>belender animation</li>
-
 <li>BJ Tools</li>
 
-<li>blender shortcut</li>
+<li>Blender animation</li>
+
+<li>Blender shortcut</li>
 
 <li>Bricks Demo - CSS Construction Set + Soft Redesign</li>
 
@@ -638,6 +638,8 @@ Error message and password prompt
 <li>Git 新增、初始 Repository</li>
 
 <li>Git 檔案控管</li>
+
+<li>Godot Texture Mapping, Painting Walls, AO</li>
 
 <li>Grammar</li>
 
@@ -11097,7 +11099,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div list="[[belender animation]] GettingStarted [[Table of Contents]]" title="$:/StoryList">
+<div created="20200426112451537" list="[[Blender shortcut]] [[Blender animation]] [[Godot Texture Mapping, Painting Walls, AO]] GettingStarted [[Table of Contents]]" modified="20200426113254333" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -11898,7 +11900,14 @@ Hi, I'm $(name)$ and I live in $(address)$.
 |SysExecTest|win-14091||with little amend|
 |Treetest||win-14091||</pre>
 </div>
-<div created="20200426032955033" modified="20200426040150009" tags="" title="belender animation">
+<div created="20191112104404104" modified="20191112104540241" tags="[[TiddlyWiki News]]" title="BJ Tools">
+<pre>!! Brief
+A collection of TW related projects
+
+!! Demo
+http://bjtools.tiddlyspot.com</pre>
+</div>
+<div created="20200426032955033" modified="20200426113249967" tags="Blender" title="Blender animation">
 <pre>Let's MODEL, RIG and ANIMATE a MECH in 10 MINUTES - ep 18
 
 https://www.youtube.com/watch?v=deaQeIje-pQ
@@ -11944,14 +11953,7 @@ walk cycle
 * copy all ( `ctrl-c`) to flip version (`ctrl-shift-v`) to frame 13 
 * copy frame0 to frame 25</pre>
 </div>
-<div created="20191112104404104" modified="20191112104540241" tags="[[TiddlyWiki News]]" title="BJ Tools">
-<pre>!! Brief
-A collection of TW related projects
-
-!! Demo
-http://bjtools.tiddlyspot.com</pre>
-</div>
-<div created="20200409015821649" modified="20200409021022046" tags="blender" title="blender shortcut">
+<div created="20200409015821649" modified="20200426113325584" tags="Blender" title="Blender shortcut">
 <pre>|Shortcut|Action|h
 |Basics||h
 |Shift + A|Add object/node|
@@ -14284,6 +14286,53 @@ $ git commit --allow-empty -m &quot;空的&quot;
 ```
 
 這樣就做了 3 個空的 Commit 出來，基本上這沒什麼意義，但有時候我們在上 Git 課的時候就會滿方便的，可以不用新增檔案就快速產生 Commit 來練習合併。</pre>
+</div>
+<div created="20200426112528332" modified="20200426114652490" tags="Blender Godot" title="Godot Texture Mapping, Painting Walls, AO">
+<pre>https://www.youtube.com/watch?v=XMfiojwtuKo
+
+
+!! Texture Mapping
+
+MeshInstance/SpatialMaterial/Albedo/
+
+* select color or texture
+
+!!! MeshInstance/SpatialMaterial/Normal Map/
+* enable, 
+* select texture, 
+* scale for shadow direction, and strongness, eg: -3
+
+!!! MeshInstance/SpatialMaterial/UV 1/
+* triplanar, enable
+* scale adjust x, y, x, eg. 0.1
+ 
+!! Export for blend
+
+!!! Adjust PBSDF
+* image -&gt; mix -&gt; color
+* image -&gt; colorramp -&gt; roughness
+* image -&gt; separate RGB -&gt; Invert (channel B) -&gt; combine RGB -&gt; normal
+
+Name the object and material correctly
+Apply scale to 1:1:1 if possible
+* gl2.0
+
+
+!! Structure of spatial
+!!! Usually:
+
+* Spatial(scene root)
+** StaticBody
+*** MeshInstance
+*** CollisionShape
+
+!!! For A Mesh Library:
+* Spatial(scene root)
+** MeshInstance
+*** StaticBody
+**** CollisionShape
+
+</pre>
 </div>
 <div created="20190918090847329" modified="20190918090919702" tags="English" title="Grammar">
 <pre>&lt;&lt;list-links &quot;[tag[Grammar]sort[title]]&quot;&gt;&gt;
