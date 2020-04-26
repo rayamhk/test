@@ -14287,7 +14287,7 @@ $ git commit --allow-empty -m &quot;空的&quot;
 
 這樣就做了 3 個空的 Commit 出來，基本上這沒什麼意義，但有時候我們在上 Git 課的時候就會滿方便的，可以不用新增檔案就快速產生 Commit 來練習合併。</pre>
 </div>
-<div created="20200426112528332" modified="20200426114652490" tags="Blender Godot" title="Godot Texture Mapping, Painting Walls, AO">
+<div created="20200426112528332" modified="20200426115716545" tags="Blender Godot" title="Godot Texture Mapping, Painting Walls, AO">
 <pre>https://www.youtube.com/watch?v=XMfiojwtuKo
 
 
@@ -14308,14 +14308,15 @@ MeshInstance/SpatialMaterial/Albedo/
  
 !! Export for blend
 
-!!! Adjust PBSDF
-* image -&gt; mix -&gt; color
-* image -&gt; colorramp -&gt; roughness
-* image -&gt; separate RGB -&gt; Invert (channel B) -&gt; combine RGB -&gt; normal
-
-Name the object and material correctly
-Apply scale to 1:1:1 if possible
-* gl2.0
+* Adjust PBSDF
+&gt;* image -&gt; mix -&gt; color
+&gt;* image -&gt; colorramp -&gt; roughness
+&gt;* image -&gt; separate RGB -&gt; Invert (channel B) -&gt; combine RGB -&gt; normal
+* Name the object and material correctly
+* Adjust the size and apply scale to 1:1:1 if possible
+* Export to gltf 2.0
+&gt;* click selected object
+&gt;* format: glTF embedded  
 
 
 !! Structure of spatial
