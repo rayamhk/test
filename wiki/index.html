@@ -645,6 +645,8 @@ Error message and password prompt
 
 <li>Godot 101 - Importing 3D Objects</li>
 
+<li>Godot 101 - USING AREAS</li>
+
 <li>Godot Texture Mapping, Painting Walls, AO</li>
 
 <li>Grammar</li>
@@ -11105,7 +11107,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200429085319692" list="[[Godot 101 - CREATING A 3D CHARACTER]] [[Godot 101 - Importing 3D Objects]] [[Godot Texture Mapping, Painting Walls, AO]] GettingStarted [[Table of Contents]]" modified="20200429085319692" title="$:/StoryList">
+<div created="20200429085319692" list="[[Godot 101 - USING AREAS]] [[Godot 101 - CREATING A 3D CHARACTER]] [[Godot 101 - Importing 3D Objects]] [[Godot Texture Mapping, Painting Walls, AO]] GettingStarted [[Table of Contents]]" modified="20200429085319692" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -14424,6 +14426,17 @@ func _process(delta):
 ```
 
 </pre>
+</div>
+<div created="20200429120237876" modified="20200429131459406" tags="Godot" title="Godot 101 - USING AREAS">
+<pre>Layer Names/3D Physics: Name the first three layers “environment”, “player”, and “pickups”.
+
+
+```
+extends Area
+
+func _on_Coin_body_entered(body):
+    queue_free()
+```</pre>
 </div>
 <div created="20200426112528332" modified="20200426125808803" tags="Blender Godot" title="Godot Texture Mapping, Painting Walls, AO">
 <pre>https://www.youtube.com/watch?v=XMfiojwtuKo
