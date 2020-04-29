@@ -641,6 +641,8 @@ Error message and password prompt
 
 <li>Git 檔案控管</li>
 
+<li>Godot 101 - CREATING A 3D CHARACTER</li>
+
 <li>Godot 101 - Importing 3D Objects</li>
 
 <li>Godot Texture Mapping, Painting Walls, AO</li>
@@ -11103,7 +11105,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200429085319692" list="[[Godot 101 - Importing 3D Objects]] [[Godot Texture Mapping, Painting Walls, AO]] GettingStarted [[Table of Contents]]" modified="20200429085319692" title="$:/StoryList">
+<div created="20200429085319692" list="[[Godot 101 - CREATING A 3D CHARACTER]] [[Godot 101 - Importing 3D Objects]] [[Godot Texture Mapping, Painting Walls, AO]] GettingStarted [[Table of Contents]]" modified="20200429085319692" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -14301,6 +14303,88 @@ $ git commit --allow-empty -m &quot;空的&quot;
 ```
 
 這樣就做了 3 個空的 Commit 出來，基本上這沒什麼意義，但有時候我們在上 Git 課的時候就會滿方便的，可以不用新增檔案就快速產生 Commit 來練習合併。</pre>
+</div>
+<div created="20200429115031023" modified="20200429115835135" tags="Godot" title="Godot 101 - CREATING A 3D CHARACTER">
+<pre>Input Map
+
+|Input Action	|Key|h
+|move_forward	|W|
+|move_back	|S|
+|strafe_right	|D|
+|strafe_left	|A|
+|jump	|Space|
+
+
+```
+extends KinematicBody
+
+var gravity = Vector3.DOWN * 12  # strength of gravity
+var speed = 4  # movement speed
+var jump_speed = 6  # jump strength
+var spin = 0.1  # rotation speed
+
+var velocity = Vector3()
+var jump = false
+
+func get_input():
+    velocity.x = 0
+    velocity.z = 0
+    if Input.is_action_pressed(&quot;move_forward&quot;):
+        velocity.z -= speed
+    if Input.is_action_pressed(&quot;move_back&quot;):
+        velocity.z += speed
+    if Input.is_action_pressed(&quot;strafe_right&quot;):
+        velocity.x += speed
+    if Input.is_action_pressed(&quot;strafe_left&quot;):
+        velocity.x -= speed
+
+func _physics_process(delta):
+    velocity += gravity * delta
+    get_input()
+    velocity = move_and_slide(velocity, Vector3.UP)
+```
+
+```
+func _unhandled_input(event):
+    if event is InputEventMouseMotion:
+        if event.relative.x &gt; 0:
+            rotate_y(-lerp(0, spin, event.relative.x/10))
+        elif event.relative.x &lt; 0:
+            rotate_y(-lerp(0, spin, event.relative.x/10)
+```
+
+```
+func get_input():
+    var vy = velocity.y
+    velocity = Vector3()
+    if Input.is_action_pressed(&quot;move_forward&quot;):
+        velocity += -transform.basis.z * speed
+    if Input.is_action_pressed(&quot;move_back&quot;):
+        velocity += transform.basis.z * speed
+    if Input.is_action_pressed(&quot;strafe_right&quot;):
+        velocity += transform.basis.x * speed
+    if Input.is_action_pressed(&quot;strafe_left&quot;):
+        velocity += -transform.basis.x * speed
+    velocity.y = vy
+```
+
+!! Jumping:
+
+append to: get_input():
+
+```
+    jump = false
+    if Input.is_action_just_pressed(&quot;jump&quot;):
+        jump = true
+```
+
+append to: _physics_process()
+
+```
+    if jump and is_on_floor():
+        velocity.y = jump_speed
+```
+</pre>
 </div>
 <div created="20200429085328742" modified="20200429092554127" tags="Godot" title="Godot 101 - Importing 3D Objects">
 <pre>!! Import 3d object
