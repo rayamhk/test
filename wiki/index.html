@@ -601,6 +601,8 @@ Error message and password prompt
 
 <li>Closure</li>
 
+<li>Create animated GIFs from MP4 with FFmpeg</li>
+
 <li>DIY</li>
 
 <li>Draft of 'New Tiddler'</li>
@@ -11115,7 +11117,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20200521075345568" list="[[Godot Texture Mapping, Painting Walls, AO]] [[3D Astar Pathfinding with Gridmaps in Godot 3 (notes)]] [[Godot 101 - CREATING A 3D CHARACTER]] [[Godot 101 - USING AREAS]] [[Build Your First Android App in Kotlin]] GettingStarted [[Table of Contents]]" modified="20200521075528129" title="$:/StoryList">
+<div created="20200521075345568" list="[[Create animated GIFs from MP4 with FFmpeg]] [[Godot Texture Mapping, Painting Walls, AO]] [[3D Astar Pathfinding with Gridmaps in Godot 3 (notes)]] [[Godot 101 - CREATING A 3D CHARACTER]] [[Godot 101 - USING AREAS]] [[Build Your First Android App in Kotlin]] GettingStarted [[Table of Contents]]" modified="20200521075528129" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -12554,6 +12556,46 @@ dogCounter()     // 3 dog
 catCounter()     // 3 cat
 
 ```</pre>
+</div>
+<div created="20200521082058643" modified="20200521083935985" tags="" title="Create animated GIFs from MP4 with FFmpeg">
+<pre>The basic command to create an animated GIF from a mpeg4 is:
+
+```
+ffmpeg -i input.mp4 output.gif
+```
+
+To reduce the size of the file, try to reduce the size of the images (-s) or the number of frames per second (-r) as:
+
+```
+ffmpeg -i input.mp4 -r 12 -s 320x180 output.gif
+```
+
+To get a better qty, create a palette.png by `palettegen` filter
+
+```
+ffmpeg -i input.mp4 -filter_complex &quot;[0:v] palettegen&quot; palette.png
+```
+
+and to use the new palette with our mpeg video type:
+
+```
+ffmpeg -i input.mp4 -i palette.png -r 12 -s 320x180 -filter_complex &quot;[0:v][1:v] paletteuse&quot; prettyOutput.gif
+```
+
+
+
+
+
+```
+#!/bin/bash
+mkdir 30gif
+for f in *.mp4; do
+  duration=$(ffprobe -loglevel error -show_entries format=duration -of default=nk=1:nw=1 &quot;$f&quot;)
+  ffmpeg -i &quot;$f&quot; -filter_complex &quot;[0:v]select='lt(mod(t,${duration}/10),3)',setpts=N/(FRAME_RATE*TB),scale=560:340:force_original_aspect_ratio=decrease,pad=560:340:(ow-iw)/2:(oh-ih)/2,setsar=1,split[v0][v1];[v0]palettegen[p];[v1][p]paletteuse[v]&quot; -map &quot;[v]&quot; &quot;30gif/${f%.mp4}.gif&quot;
+done
+```
+
+</pre>
 </div>
 <div created="20190918090341398" modified="20190918090415513" tags="Contents" title="DIY">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
