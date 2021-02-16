@@ -467,6 +467,8 @@ Error message and password prompt
 
 <li>$:/state/toc/Contents-TiddlyWiki--565514155</li>
 
+<li>$:/state/toc/Contents-Upp--1876907615</li>
+
 <li>$:/state/toc/Contents-中文筆記--1876907615</li>
 
 <li>$:/state/toc/Contents-中文筆記--565514155</li>
@@ -731,6 +733,8 @@ Error message and password prompt
 
 <li>Just for test</li>
 
+<li>Learn condition variables</li>
+
 <li>Let vs Var or Closure</li>
 
 <li>List of Shadow Tiddlers</li>
@@ -758,6 +762,8 @@ Error message and password prompt
 <li>Mega.nz</li>
 
 <li>Merged mp4 files with avidemux has artifacts on clip</li>
+
+<li>Multithreading in U++</li>
 
 <li>My CSS</li>
 
@@ -11051,11 +11057,11 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20191121112650863" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20200221010442614" title="$:/state/tab/sidebar--595412856">
+<div created="20190925111211913" modified="20210216010547066" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20210215024627059" modified="20210215024627059" title="$:/state/toc/Contents-C++--1876907615">
-<pre>open</pre>
+<div created="20210215024627059" modified="20210216014800323" title="$:/state/toc/Contents-C++--1876907615">
+<pre>close</pre>
 </div>
 <div created="20191111025314112" modified="20191111030215213" title="$:/state/toc/Contents-DIY--1339420835">
 <pre>close</pre>
@@ -11120,6 +11126,9 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190930094021136" modified="20191217032241552" title="$:/state/toc/Contents-TiddlyWiki--565514155">
 <pre>close</pre>
 </div>
+<div created="20210216014802435" modified="20210216014802435" title="$:/state/toc/Contents-Upp--1876907615">
+<pre>open</pre>
+</div>
 <div created="20191119103302112" modified="20191119103529445" title="$:/state/toc/Contents-中文筆記--1876907615">
 <pre>close</pre>
 </div>
@@ -11153,7 +11162,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20210215022405759" list="GettingStarted [[Table of Contents]] [[Use of Mutex]] DIY" modified="20210215024629880" title="$:/StoryList">
+<div created="20210216010548843" list="[[Learn condition variables]] [[Multithreading in U++]] [[Use of Mutex]] GettingStarted [[Table of Contents]]" modified="20210216010548843" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -17619,6 +17628,107 @@ inputs.forEach(input =&gt; {
 &lt;&lt;details1&gt;&gt;
 </pre>
 </div>
+<div created="20210216020508937" modified="20210216023509662" tags="C++" title="Learn condition variables">
+<pre>source: https://medium.com/swlh/c-thread-synchronization-at-the-restaurant-ab0d125a0b7b
+
+!!How it works
+At least two threads and one is waiting for the notification of an event (such as writing a value) produced by the other.
+
+* `std::condition_variable` internally keeps a list (initially empty) of threads that are currently using it to wait for a notification
+* Data to be shared: variables, mutex, condition variables
+
+!!!Thread to notify
+```
+std::lock_guard&lt;std::mutex&gt; lg(mutex_name);    // step 1
+/* Here the thread can safely perform 
+    * operations on the shared variable */
+condition.notify_one();                       // step 2
+// or condition.notify_all();
+```
+
+!!!Thread to wait
+```
+std::unique_lock&lt;std::mutex&gt; ul(mutex_name);    // step 1
+condition.wait(ul, &lt;optional_condition_check&gt;); // step 2
+/* Here the thread has received the notification
+     * and can safely perform the operations
+     * on the shared variable */
+ul.unlock();                                    // step 3
+```
+
+!!THE RESTAURANT EXAMPLE
+Let’s code the restaurant example, using a class to synchronize the two threads.
+
+!!! The waiter operations
+* Notify the chef of a new order
+* Sit and wait until the chef hits the bell
+* Serve the dishes
+
+!!! The chef operations
+* Wait until a new order come
+* Cook the dishes on the order
+* Hit the bell to notify the waiter
+
+!!! The chef and the waiter must share:
+* The variable: orderStatus
+* The mutex protecting the order: std::mutex order;
+* The condition variable: std::condition_variable orderBell;
+
+```
+#include &lt;thread&gt;
+#include &lt;mutex&gt;
+#include &lt;condition_variable&gt;
+#include &lt;iostream&gt;
+
+class Restaurant {
+    enum class Status { idle, newOrder, ready };
+    Status orderStatus = Status::idle;
+    std::mutex order;
+    std::condition_variable orderBell;
+    
+public:
+
+    void chef() {
+        
+        std::unique_lock&lt;std::mutex&gt; ul(order);
+        orderBell.wait(ul, [=]() { return orderStatus == Status::newOrder; });
+        //cook the order
+        orderStatus = Status::ready;
+        orderBell.notify_one();
+      
+    }
+
+    void waiter() {
+        {
+            std::lock_guard&lt;std::mutex&gt; lg(order); 
+            orderStatus = Status::newOrder;
+            orderBell.notify_one();
+        } // lg out of its scope = order.unlock()
+        
+        std::unique_lock&lt;std::mutex&gt; ul(order);
+        orderBell.wait(ul, [=]() { return orderStatus == Status::ready; });
+        orderStatus = Status::idle;
+        ul.unlock();
+        //serve the dishes
+    }
+
+};
+
+
+int main() {
+    Restaurant restaurant;
+    std::thread chef(&amp;Restaurant::chef, std::ref(restaurant));
+    std::thread waiter(&amp;Restaurant::waiter, std::ref(restaurant));
+    chef.join();
+    waiter.join();
+    return 0;
+}
+```
+
+
+
+</pre>
+</div>
 <div created="20191217024920841" modified="20191217030921531" tags="Javascript" title="Let vs Var or Closure">
 <pre>Example 
 
@@ -18942,6 +19052,29 @@ The workaround in this particular case is to delete the last frame (it is an I-f
 *Go to the previous frame (&quot;LEFT&quot;), set the marker A
 *Delete the segment (&quot;DEL&quot;)
 *Now append the second video
+</pre>
+</div>
+<div created="20210216011355656" modified="20210216020451278" tags="C++ Upp" title="Multithreading in U++" type="text/vnd.tiddlywiki">
+<pre>
+
+| Upp::Thread | std::thread |h
+| t.Run(func) | std::thread t(func) |
+| t.Wait() | t.join() |
+| Upp::Mutex | std::mutex |h
+| m.Enter() | m.lock() |
+| m.Leave() | m.unlock() |
+| Upp::Mutex::Lock | std::lock_guard |h
+| Upp::Mutex::Lock gd(door); | std::lock_guard&lt;std::mutex&gt; gd(door); |
+| na | std::unique_lock |h
+| na | std::unique_lock&lt;std::mutex&gt; ul(door); |
+| na | std::shared_mutex |h
+| na | std::shared_lock |h
+| na | std::shared_lock&lt;std::shared_mutex&gt; sl(door); |
+| na | std::scoped_lock |h
+| na | std::scoped_lock&lt;std::mutex&gt; sl(door1, door2); |
+| Upp::ConditionVariable | std::condition_variable |h
+| cv.Wait(mmutex) | cv.wait(ul, &lt;condition_check&gt;);|
+| cv.Signal() | cv.notify_one(); cv.notify_all(); |
 </pre>
 </div>
 <div created="20191113112521518" modified="20191115031239749" tags="$:/tags/Stylesheet" title="My CSS" type="text/css">
