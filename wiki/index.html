@@ -11162,7 +11162,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20210216010548843" list="[[Learn condition variables]] [[Multithreading in U++]] [[Use of Mutex]] GettingStarted [[Table of Contents]]" modified="20210216010548843" title="$:/StoryList">
+<div created="20210330032643378" list="Home Git [[Git submodule]]" modified="20210330033205498" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -13225,8 +13225,8 @@ git config --global alias.ci commit
 git config --global alias.st status
 &quot;&quot;&quot;&gt;&gt;</pre>
 </div>
-<div created="20200213091707749" modified="20200213094026122" tags="Git" title="Git submodule">
-<pre>https://josephj.com/entry.php?id=342
+<div created="20200213091707749" modified="20210330033616889" tags="Git" title="Git submodule">
+<pre>Sources: https://josephj.com/entry.php?id=342
 
 已經用了 git submodule 好一陣子了，今天看到了 Git submodules in N easy steps 才覺得比較搞懂一些之前碰到的問題。趁機來整理、釐清之前常碰到的小問題吧~
 什麼是 Git Submodule
@@ -13240,7 +13240,8 @@ SVN/CVS 你可以用目錄區隔大小專案、都在同一個大的 Repository�
 但軟體開發團隊不太容易如此單純，有時需要給外包開發、有時需要分工、有時需要用 Open Source，光用以上的切分方式是沒辦法達成所有需求的、還是得將各自獨立的小河流連接起來。例如我先前在 WebRebuild 與 COSCUP 分享的 JavaScript Platform，為了分享把原始碼放了一份到 Github : http://github.com/josephj/javascript-platform-yui，但我的工作及部落格都有使用的需求，該怎麼做呢？如果每次都得 git clone 再 copy 檔案到兩個地方、這樣手工做真的是個很遜的解決方案。好在有 Git Submodule 可以幫忙解決!
 
 簡單來說，Git Submodule 可以輕易地將別人的 git 掛入到你目前 git 的任何位置。
-新增一個 Git Submodule
+
+!! 新增一個 Git Submodule
 
 例如我有目前本機有一個 josephj.git、在 /home/josephj/www 下，而我需要將 javascript platform 放到 /home/josephj/www/static/ 可以用以下幾行快速達成。
 
@@ -19056,7 +19057,6 @@ The workaround in this particular case is to delete the last frame (it is an I-f
 </div>
 <div created="20210216011355656" modified="20210216020451278" tags="C++ Upp" title="Multithreading in U++" type="text/vnd.tiddlywiki">
 <pre>
-
 | Upp::Thread | std::thread |h
 | t.Run(func) | std::thread t(func) |
 | t.Wait() | t.join() |
