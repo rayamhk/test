@@ -423,6 +423,12 @@ Error message and password prompt
 
 <li>$:/state/tab/sidebar--595412856</li>
 
+<li>$:/state/toc/C++-Gtest Example 1--841942787</li>
+
+<li>$:/state/toc/C++-Gtest Example 2--841942787</li>
+
+<li>$:/state/toc/C++-Multithreading in U++--841942787</li>
+
 <li>$:/state/toc/Contents-C++--1876907615</li>
 
 <li>$:/state/toc/Contents-DIY--1339420835</li>
@@ -10955,7 +10961,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20210215024412223" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20210416025432212" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -11060,6 +11066,15 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111211913" modified="20210216010547066" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
+<div created="20210416024953964" modified="20210416024953964" title="$:/state/toc/C++-Gtest Example 1--841942787">
+<pre>open</pre>
+</div>
+<div created="20210416024932411" modified="20210416024932411" title="$:/state/toc/C++-Gtest Example 2--841942787">
+<pre>open</pre>
+</div>
+<div created="20210416024746555" modified="20210416024926354" title="$:/state/toc/C++-Multithreading in U++--841942787">
+<pre>close</pre>
+</div>
 <div created="20210215024627059" modified="20210216014800323" title="$:/state/toc/Contents-C++--1876907615">
 <pre>close</pre>
 </div>
@@ -11162,7 +11177,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20210330032643378" list="Home Git [[Git submodule]]" modified="20210330033205498" title="$:/StoryList">
+<div created="20210416024518282" list="$:/ControlPanel GettingStarted [[Table of Contents]] Javascript" modified="20210416030034795" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20191218121724822" modified="20191218121729139" title="$:/temp/$:/temp/$:/temp/$:/temp/commander/logs/tid-2--1291313091--1291313091--1291313091">
@@ -14791,8 +14806,8 @@ Add FIx shadow ssoa</pre>
 <pre>&lt;&lt;list-links &quot;[tag[Grammar]sort[title]]&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20200313023659874" modified="20200313024348699" tags="C++" title="Gtest Example 1">
-<pre>```
+<div created="20200313023659874" modified="20210416025004452" tags="C++" title="Gtest Example 1">
+<pre>```c
 #include &lt;iostream&gt;
 
 using namespace std;
@@ -14817,8 +14832,8 @@ TEST(IsAbsTest, HandlerTrueReturn) {
 }
 ```</pre>
 </div>
-<div created="20200311075108125" modified="20200313024310530" tags="C++" title="Gtest Example 2">
-<pre>```
+<div created="20200311075108125" modified="20210416024948426" tags="C++" title="Gtest Example 2">
+<pre>```c
 #include &lt;iostream&gt;
 
 using namespace std;
@@ -15194,10 +15209,10 @@ https://icons8.com/icon/100523/cat-footprint</pre>
 <pre>&lt;&lt;list-links &quot;[tag[Javascript]sort[title]]&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20191106054534656" modified="20191106054851929" tags="Javascript" title="Javascript - Arrow function expression">
+<div created="20191106054534656" modified="20210416025132755" tags="Javascript" title="Javascript - Arrow function expression">
 <pre>!! Basic syntax
 
-```
+```javascript
 (param1, param2, …, paramN) =&gt; { statements } 
 (param1, param2, …, paramN) =&gt; expression
 // equivalent to: =&gt; { return expression; }
@@ -15211,7 +15226,7 @@ singleParam =&gt; { statements }
 ```
 
 !! Advanced syntax
-```
+```javascript
 // Parenthesize the body of a function to return an object literal expression:
 params =&gt; ({foo: bar})
 
@@ -15357,7 +15372,7 @@ var f = false;
 
 </pre>
 </div>
-<div created="20191031072226483" modified="20191118092101731" tags="Javascript" title="Javascript - 初學者學習分享">
+<div created="20191031072226483" modified="20210416025418475" tags="Javascript" title="Javascript - 初學者學習分享">
 <pre>!! 標籤`&lt;script&gt;`中是否要加入`type=&quot;text/javascript&quot;`問題
 : 老舊的實例可能會在`&lt;script&gt;` 標籤中使用type=&quot;text/javascript&quot;。現在已經不必這樣做了。JavaScript 是所有現代瀏覽器以及HTML5 中的默認腳本語言。
 
@@ -15389,7 +15404,7 @@ var f = false;
 !! 全域變數&amp;區域變數
 : 區域變數會在function執行結束後被刪除。
 : 全域變數會在葉面關閉後被刪除。
-```
+```javascript
 var x, y; // 為全域變數
 x=5;
 y=1;
@@ -15406,13 +15421,13 @@ alert(x+test()); //15
 
 !! 重新宣告~JavaScript 變量
 : 如果重新宣告~JavaScript 變量，該變量的值不會丟失, 在以下兩條語句執行後，變量myname 的值依然是&quot;wesley&quot;：
-```
+```javascript
 var myname=&quot;wesley&quot;;
 var myname;
 ```
 
 !! 陣列
-```
+```javascript
 var i;
 var color = new Array();
 color[0] = &quot;red&quot;;
@@ -15429,7 +15444,7 @@ for (i=0;i&lt;color.length;i++) {
 ```
 
 !! 物件
-```
+```javascript
 //建立物件
 var car={
 name:&quot;Volvo&quot;,
@@ -15455,7 +15470,7 @@ car.brake()
 
 !! 條件運算子
 : // condition ? val1 : val2 //
-```
+```javascript
  result = (score &gt;= 60) ? &quot;合格&quot; : &quot;不合格&quot;
 ```
 :這個語句把“合格”的值代入給變數 result，只要 score 是 60 以上。否則，把“不合格”的值代入給 score。
@@ -15463,7 +15478,7 @@ car.brake()
 !! Break 與Continue
 :break 語法用於跳出整個循環。
 :continue 語法用於套過符合條件循環中的一次。
-```
+```javascript
 for (i=0;i&lt;10;i++){
   if (i==3) break;
   x=x + &quot;The number is &quot; + i + &quot;&lt;br&gt;&quot;;
@@ -15657,8 +15672,8 @@ kbd {
 &lt;/html&gt;
 ```</pre>
 </div>
-<div created="20191118120739697" modified="20191118122901446" tags="Javascript" title="JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note">
-<pre>```
+<div created="20191118120739697" modified="20210416025713436" tags="Javascript" title="JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note">
+<pre>```html
 &lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 
@@ -17629,7 +17644,7 @@ inputs.forEach(input =&gt; {
 &lt;&lt;details1&gt;&gt;
 </pre>
 </div>
-<div created="20210216020508937" modified="20210216023509662" tags="C++" title="Learn condition variables">
+<div created="20210216020508937" modified="20210416024908329" tags="C++" title="Learn condition variables">
 <pre>source: https://medium.com/swlh/c-thread-synchronization-at-the-restaurant-ab0d125a0b7b
 
 !!How it works
@@ -17639,7 +17654,7 @@ At least two threads and one is waiting for the notification of an event (such a
 * Data to be shared: variables, mutex, condition variables
 
 !!!Thread to notify
-```
+```c
 std::lock_guard&lt;std::mutex&gt; lg(mutex_name);    // step 1
 /* Here the thread can safely perform 
     * operations on the shared variable */
@@ -17648,7 +17663,8 @@ condition.notify_one();                       // step 2
 ```
 
 !!!Thread to wait
-```
+```c
+
 std::unique_lock&lt;std::mutex&gt; ul(mutex_name);    // step 1
 condition.wait(ul, &lt;optional_condition_check&gt;); // step 2
 /* Here the thread has received the notification
@@ -17675,7 +17691,7 @@ Let’s code the restaurant example, using a class to synchronize the two thread
 * The mutex protecting the order: std::mutex order;
 * The condition variable: std::condition_variable orderBell;
 
-```
+```c
 #include &lt;thread&gt;
 #include &lt;mutex&gt;
 #include &lt;condition_variable&gt;
@@ -17730,11 +17746,11 @@ int main() {
 
 </pre>
 </div>
-<div created="20191217024920841" modified="20191217030921531" tags="Javascript" title="Let vs Var or Closure">
+<div created="20191217024920841" modified="20210416030008955" tags="Javascript" title="Let vs Var or Closure">
 <pre>Example 
 
 
-```
+```html
 &lt;button id=&quot;first&quot;&gt;First&lt;/button&gt;
 &lt;button id=&quot;second&quot;&gt;Second&lt;/button&gt;
 &lt;button id=&quot;third&quot;&gt;Third&lt;/button&gt;
@@ -17753,7 +17769,7 @@ for (var i = 0; i &lt; buttons.length; i ++) {
 
 Improvement 1, use closure
 
-```
+```javascript
 // 建立一個閉包把資料存在這個 function 當中
 function saveButtonName (buttonName){
   // buttonName 被儲存在閉包當中
@@ -17772,7 +17788,7 @@ for (var i = 0; i &lt; buttons.length; i ++) {
 
 Improvement 2, use `let`.
 
-```
+```javascript
 // 使用 ES6 寫法
 for (var i = 0; i &lt; buttons.length; i ++) {
   let buttonName =  buttons[i].innerHTML
@@ -19056,8 +19072,7 @@ The workaround in this particular case is to delete the last frame (it is an I-f
 </pre>
 </div>
 <div created="20210216011355656" modified="20210216020451278" tags="C++ Upp" title="Multithreading in U++" type="text/vnd.tiddlywiki">
-<pre>
-| Upp::Thread | std::thread |h
+<pre>| Upp::Thread | std::thread |h
 | t.Run(func) | std::thread t(func) |
 | t.Wait() | t.join() |
 | Upp::Mutex | std::mutex |h
@@ -21616,7 +21631,7 @@ void myCallBack() {
 !! Tips
 * newline is not allow between `{{{` and `}}}`</pre>
 </div>
-<div created="20210215022431267" modified="20210215031553926" tags="C++" title="Use of Mutex">
+<div created="20210215022431267" modified="20210416024718922" tags="C++" title="Use of Mutex">
 <pre>!Mutex
 
 This is just a short note of source at:
@@ -21625,7 +21640,8 @@ https://medium.com/swlh/c-mutex-write-your-first-concurrent-code-69ac8b332288
 
 !!Use of mutex
 
-```
+```c
+
 #include &lt;mutex&gt;
 #include &lt;vector&gt;
 
@@ -21646,7 +21662,8 @@ door.unlock();
 !!!Example
 Thread Safe Queue.h
 
-```
+```c
+
 #include &lt;mutex&gt;
 #include &lt;queue&gt;
 
@@ -21692,7 +21709,8 @@ ATTENTION EVERYONE
 
 !!Use of lock_guard:
 
-```
+```c
+
 #include &lt;mutex&gt;
 #include &lt;vector&gt;
 std::mutex door;    // mutex declaration
@@ -21713,7 +21731,8 @@ std::vector&lt;int&gt; v;
 
 !!!Example
 
-```
+```c
+
 #include &lt;mutex&gt;
 #include &lt;queue&gt;
 
@@ -21752,7 +21771,8 @@ When to use this?
 * With `std::condition_variable` (in the next article)
 * To lock a `std::shared_mutex `in exclusive mode (see below)
 
-```
+```c
+
 #include &lt;mutex&gt;
 #include &lt;vector&gt;
 std::mutex door; //mutex declaration
@@ -21784,7 +21804,8 @@ From C++17, `std::shared_mutex` models this two-types access:
 
 *Exclusive access: the resource is accessed just by one thread. This type of request is done using a unique lock.
 
-```
+```c
+
 #include &lt;shared_mutex&gt;
 #include &lt;vector&gt;
 std::shared_mutex door; //mutex declaration
@@ -21823,7 +21844,8 @@ C++17 's `std::scoped_lock` simultaneously lock (and then unlock) all the mutexe
 
 example(deletable)
 
-```
+```c
+
 #include &lt;iostream&gt;
 #include &lt;thread&gt;
 #include &lt;vector&gt;
