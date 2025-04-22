@@ -731,6 +731,8 @@ Error message and password prompt
 
 <li>Javascript - 初學者學習分享</li>
 
+<li>JavaScript Array Methods Summary</li>
+
 <li>Javascript Tips</li>
 
 <li>JavaScript30 - 01 - JavaScript Drum Kit - Gua's Note</li>
@@ -11004,7 +11006,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20190925111220464" modified="20200213091836382" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190927103152783" modified="20210416025432212" title="$:/state/sidebar">
+<div created="20190927103152783" modified="20250422012329659" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190928074706844" modified="20190928083337703" title="$:/state/slider-macro/Draft of 'macro/.ilink and .ilinka 1'/Code-614935023">
@@ -11106,8 +11108,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20250415015829884" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20250421013810943" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190925111211913" modified="20250422011217757" title="$:/state/tab/sidebar--595412856">
+<pre>Table of Contents</pre>
 </div>
 <div created="20210416024953964" modified="20210416024953964" title="$:/state/toc/C++-Gtest Example 1--841942787">
 <pre>open</pre>
@@ -11136,8 +11138,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024123749236" modified="20201221012219694" title="$:/state/toc/Contents-English--1876907615">
 <pre>close</pre>
 </div>
-<div created="20200214020751345" modified="20250415023924382" title="$:/state/toc/Contents-English--565514155">
-<pre>open</pre>
+<div created="20200214020751345" modified="20250422011222043" title="$:/state/toc/Contents-English--565514155">
+<pre>close</pre>
 </div>
 <div created="20201221012221206" modified="20210215022359110" title="$:/state/toc/Contents-Git--1876907615">
 <pre>close</pre>
@@ -11148,8 +11150,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191104032414089" modified="20210215022403526" title="$:/state/toc/Contents-Javascript--1876907615">
 <pre>close</pre>
 </div>
-<div created="20191106054032852" modified="20200214020928650" title="$:/state/toc/Contents-Javascript--565514155">
-<pre>close</pre>
+<div created="20191106054032852" modified="20250422013519145" title="$:/state/toc/Contents-Javascript--565514155">
+<pre>open</pre>
 </div>
 <div created="20191111025325575" modified="20191111025746273" title="$:/state/toc/Contents-Log--1339420835">
 <pre>close</pre>
@@ -11229,7 +11231,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20250421010359873" list="Disappointed 恰當的副詞 [[Homophones: The Most Confusing Words in English]] Word [[同事說&quot;Tell me about it&quot;，不是「告訴我」的意思！一次整理，除了ok、yes外的道地說法]] Showcase GettingStarted [[Table of Contents]]" modified="20250421013734692" title="$:/StoryList">
+<div created="20250422011225755" list="[[Javascript30 - 07 - Array Cardio Day 2 - Gua's Note]] [[JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note]] [[Javascript - By Value vs By Reference]] [[Javascript - prototype object]] [[js framework / library demo 4]] [[js framework / library demo 2]] [[js framework / library demo 1]] TiddlyWiki Showcase 中文筆記 Upp [[Let vs Var or Closure]] [[Javascript Tips]] [[Javascript - 初學者學習分享]] Javascript [[JavaScript Array Methods Summary]] Closure GettingStarted [[Table of Contents]]" modified="20250422014235285" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20250421012625819" modified="20250421012625819" title="$:/temp/$:/temp/$:/temp/$:/temp/$:/temp/$:/temp/search--179003655--179003655--179003655--179003655--179003655">
@@ -15555,7 +15557,7 @@ var f = false;
 
 </pre>
 </div>
-<div created="20191031072226483" modified="20210416025418475" tags="Javascript" title="Javascript - 初學者學習分享">
+<div created="20191031072226483" modified="20250422013508003" tags="Javascript" title="Javascript - 初學者學習分享">
 <pre>!! 標籤`&lt;script&gt;`中是否要加入`type=&quot;text/javascript&quot;`問題
 : 老舊的實例可能會在`&lt;script&gt;` 標籤中使用type=&quot;text/javascript&quot;。現在已經不必這樣做了。JavaScript 是所有現代瀏覽器以及HTML5 中的默認腳本語言。
 
@@ -15617,9 +15619,8 @@ color[0] = &quot;red&quot;;
 color[1] = &quot;blue&quot;;
 color[2] = &quot;green&quot;;
 
-/*或者使用下面這種方式
-var color=new Array(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;);
-*/
+// 或者使用下面這種方式
+var color1=new Array(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;);
 
 for (i=0;i&lt;color.length;i++) {
   document.write(color[i] + &quot;&lt;br&gt;&quot;);
@@ -15635,12 +15636,11 @@ color:&quot;blue&quot;,
 plate:&quot;AAA-8888&quot;
 };
 
-/*建立物件另一種方式
-car=new Object();
-car.name=&quot;Volvo&quot;;
-car.color=&quot;blue&quot;;
-car.plate=&quot;AAA-8888&quot;;
-*/
+// 建立物件另一種方式
+var car1=new Object();
+car1.name=&quot;Volvo&quot;;
+car1.color=&quot;blue&quot;;
+car1.plate=&quot;AAA-8888&quot;;
 
 //取得屬性兩種方法
 name=car.name;
@@ -15674,6 +15674,155 @@ for (i=0;i&lt;=10;i++){
 }
 //結果：0,1,2,4,5,6,7,8,9 跳過3
 ```
+</pre>
+</div>
+<div created="20250422015519599" modified="20250422020540255" tags="Javascript" title="JavaScript Array Methods Summary">
+<pre>source: https://tinodevclumsy.github.io/blog/javascript-array-methods-summary/
+
+! JavaScript Array Methods Summary
+
+; 1. push()
+: Adds values to the end of an array and returns the new length of the array.
+```
+let numbers = [1, 2, 3];
+numbers.push(4, 5, 6); // return 6
+// numbers: [1, 2, 3, 4, 5, 6]
+```
+; 2. pop()
+: Removes the last element from an array and returns the removed element.
+```
+let numbers = [1, 2, 3, 4];
+numbers.pop(); // removes 4
+let removedNumber = numbers.pop(); // 3
+```
+; 3. unshift()
+: Adds elements to the beginning of an array and returns the new length.
+```
+let numbers = [2, 3, 4];
+numbers.unshift(1); // return 4
+// numbers: [1, 2, 3, 4]
+```
+
+; 4. shift()
+: Removes the first element from an array and returns the removed element.
+```
+let numbers = [1, 2, 3, 4];
+numbers.shift(); // removes 1
+let removedNumber = numbers.shift(); // 2
+```
+
+; 5. concat()
+: Merges two or more arrays and returns a new array. (original arrays remain unchanged)
+```
+let numbers1 = [1, 2, 3];
+let numbers2 = [4, 5, 6];
+let combinedNumbers = numbers1.concat(numbers2); // [1, 2, 3, 4, 5, 6]
+```
+
+; 6. slice()
+: Extracts a section of an array and returns a new array. (original array remains unchanged)
+: ''slice(startIndex, endIndex)'': Includes elements up to but not including endIndex.
+```
+let numbers = [1, 2, 3, 4, 5];
+let slicedNumbers = numbers.slice(1, 4); // [2, 3, 4]
+let slicedNumbers2 = numbers.slice(2); // [3, 4, 5]
+let slicedNumbers3 = numbers.slice(-2); // [4, 5]
+```
+
+; 7. splice()
+: Used to add or remove elements from an array and modifies the original array.
+: ''splice(startIndex, deleteCount, item1, item2, ...)''
+```
+let numbers = [1, 2, 3, 4, 5];
+let splicedNumbers = numbers.splice(2, 2, 6, 7);
+console.log(numbers); // [1, 2, 6, 7, 5]
+console.log(splicedNumbers); // [3, 4]
+```
+
+; 8. fill()
+: Fills an array with a specific value.
+: ''fill(value, start, end)'': Fills from start up to but not including end.
+```
+let fillArray = new Array(5).fill(0); // [0, 0, 0, 0, 0]
+let fillArrayByRange = [1, 2, 3, 4, 5];
+fillArrayByRange.fill(0, 1, 3); // [1, 0, 0, 4, 5]
+```
+
+; 9. join(), split(), reverse()
+: ''join(separator)'': Converts array to string
+: ''split(separator)'': Converts string to array
+: ''reverse()'': Reverses an array (modifies original array)
+```
+const strArr = &quot;abc&quot;.split(''); // ['a', 'b', 'c']
+const joinedStr = strArr.join(','); // &quot;a,b,c&quot;
+const reversedStr = strArr.reverse().join(''); // &quot;cba&quot;
+```
+
+; 10. sort()
+: Sorts an array. By default, sorts as strings; for numbers, use a comparison function.
+```
+let numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+numbers.sort((a, b) =&gt; a - b); // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+```
+
+; 11. indexOf(), lastIndexOf()
+: Returns the index of a specific element, or -1 if not found
+: ''lastIndexOf()'' searches from the end of the array
+```
+let fruits = ['apple', 'banana', 'orange', 'apple', 'grape'];
+const lastIndex = fruits.lastIndexOf('apple'); // 3
+const kiwiIndex = fruits.indexOf('kiwi'); // -1
+```
+
+; 12. findIndex()
+: Returns the index of the first element that satisfies a condition.
+```
+let numbers = [10, 20, 30, 40, 50];
+const index = numbers.findIndex(element =&gt; element &gt; 30); // 3
+```
+
+; 13. find()
+: Returns the first element that satisfies a condition.
+```
+let persons = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' }
+];
+const foundPerson = persons.find(person =&gt; person.name === 'Charlie');
+console.log(foundPerson); // { id: 3, name: 'Charlie' }
+```
+
+; 14. some(), every()
+: ''some()'': Returns true if at least one element satisfies the condition
+: ''every()'': Returns true only if all elements satisfy the condition
+```
+const array1 = [1, 2, 3, 4, 5];
+const result1 = array1.some(element =&gt; element &gt; 4); // true
+const result2 = array1.every(element =&gt; element &gt; 4); // false
+```
+
+; 15. map()
+: Transforms each element and returns a new array.
+```
+const numbers = [1, 2, 3, 4, 5];
+const squaredNumbers = numbers.map(num =&gt; num * num); // [1, 4, 9, 16, 25]
+```
+
+; 16. reduce()
+: Accumulates array values into a single value.
+```
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, curr) =&gt; acc + curr, 0); // 15
+```
+
+; 17. filter()
+: Returns a new array with elements that satisfy a condition.
+```
+const numbers = [1, 2, 3, 4, 5, 6];
+const evenNumbers = numbers.filter(num =&gt; num % 2 === 0); // [2, 4, 6]
+```
+
 </pre>
 </div>
 <div created="20191120093617359" modified="20191121112907431" tags="Javascript" title="Javascript Tips">
