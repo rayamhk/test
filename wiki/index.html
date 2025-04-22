@@ -951,6 +951,8 @@ Error message and password prompt
 
 <li>中诺电话机使用说明书</li>
 
+<li>什麼是 HTML 5 中的資料屬性（data-* attribute）</li>
+
 <li>使用git push不再需要輸入帳號密碼</li>
 
 <li>六人行（Friends），老友記中經典台詞</li>
@@ -11063,8 +11065,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191030080005266" modified="20201221012026272" title="$:/state/tab--1128538129">
 <pre>Test of details macro</pre>
 </div>
-<div created="20191104113916189" modified="20250421012647324" title="$:/state/tab--1280166252">
-<pre>Recent System Tiddlers</pre>
+<div created="20191104113916189" modified="20250422024832124" title="$:/state/tab--1280166252">
+<pre>Recent 20</pre>
 </div>
 <div created="20191004082232960" modified="20191121111857561" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
@@ -11108,7 +11110,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024122253323" modified="20250415015829884" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20190925111211913" modified="20250422011217757" title="$:/state/tab/sidebar--595412856">
+<div created="20190925111211913" modified="20250422024839346" title="$:/state/tab/sidebar--595412856">
 <pre>Table of Contents</pre>
 </div>
 <div created="20210416024953964" modified="20210416024953964" title="$:/state/toc/C++-Gtest Example 1--841942787">
@@ -11138,8 +11140,8 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191024123749236" modified="20201221012219694" title="$:/state/toc/Contents-English--1876907615">
 <pre>close</pre>
 </div>
-<div created="20200214020751345" modified="20250422011222043" title="$:/state/toc/Contents-English--565514155">
-<pre>close</pre>
+<div created="20200214020751345" modified="20250422021649268" title="$:/state/toc/Contents-English--565514155">
+<pre>open</pre>
 </div>
 <div created="20201221012221206" modified="20210215022359110" title="$:/state/toc/Contents-Git--1876907615">
 <pre>close</pre>
@@ -11147,11 +11149,11 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191111025317595" modified="20191111025744447" title="$:/state/toc/Contents-Javascript--1339420835">
 <pre>close</pre>
 </div>
-<div created="20191104032414089" modified="20210215022403526" title="$:/state/toc/Contents-Javascript--1876907615">
-<pre>close</pre>
-</div>
-<div created="20191106054032852" modified="20250422013519145" title="$:/state/toc/Contents-Javascript--565514155">
+<div created="20191104032414089" modified="20250422020623702" title="$:/state/toc/Contents-Javascript--1876907615">
 <pre>open</pre>
+</div>
+<div created="20191106054032852" modified="20250422021647561" title="$:/state/toc/Contents-Javascript--565514155">
+<pre>close</pre>
 </div>
 <div created="20191111025325575" modified="20191111025746273" title="$:/state/toc/Contents-Log--1339420835">
 <pre>close</pre>
@@ -11231,7 +11233,7 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20191008092101670" modified="20191008092101670" title="$:/state/verTab/Showcase/difftext">
 <pre>yes</pre>
 </div>
-<div created="20250422011225755" list="[[Javascript30 - 07 - Array Cardio Day 2 - Gua's Note]] [[JavaScript30 - 04 - Array Cardio Day 1 - Gua's Note]] [[Javascript - By Value vs By Reference]] [[Javascript - prototype object]] [[js framework / library demo 4]] [[js framework / library demo 2]] [[js framework / library demo 1]] TiddlyWiki Showcase 中文筆記 Upp [[Let vs Var or Closure]] [[Javascript Tips]] [[Javascript - 初學者學習分享]] Javascript [[JavaScript Array Methods Summary]] Closure GettingStarted [[Table of Contents]]" modified="20250422014235285" title="$:/StoryList">
+<div created="20250422011225755" list="恰當的副詞" modified="20250422024842458" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20250421012625819" modified="20250421012625819" title="$:/temp/$:/temp/$:/temp/$:/temp/$:/temp/$:/temp/search--179003655--179003655--179003655--179003655--179003655">
@@ -22539,6 +22541,70 @@ source: http://www.doc88.com/p-8428529652807.html
 
 * 将锁箭头指到红点时,凡是以`“0”`开头的号码均不能拨出,其它开头的号码则不受限制。将锁箭头指到绿点时,为开锁状态,任何号码都可拨打。</pre>
 </div>
+<div created="20250422024026590" modified="20250422024404735" tags="HTML5" title="什麼是 HTML 5 中的資料屬性（data-* attribute）">
+<pre>source: https://pjchender.dev/html/html-data-attribute/
+
+! 什麼是 HTML 5 中的資料屬性（data-* attribute）
+
+在接觸 HTML5 一段時間，認識大部分的屬性名稱像是 src, img, type, ... 後，一定會看到像是 data-item, data-key, data-...這類的屬性名稱，但是如果你直接去 google &quot;data-item&quot; 或 &quot;data-key&quot; 你可能又查不到這個屬性，到底這是哪種屬性呢？又可以如何應用呢？
+
+!!HTML5 中的 data-* attribute 屬性
+
+之所以會有 data-* attribute 的出現，是因為在製作網頁的過程中，我們常常會添加一些自己需要用到的屬性名稱，以方便自己容易理解，但總不能每個人在自己的網頁裡面都定義自己的屬性名稱，於是為了要避免大家在 HTML 結構中隨意的添加屬性，在 HTML5 中就多了 data-* attribute 這個屬性，其中的 * 就是一個可以自定義的名稱，例如：data-key='83' 或者是 data-item='1'，這也就是為什麼如果你去 google &quot;data-key&quot; 或 &quot;data-item&quot; 會找不到東西的原因了！因為那是網頁工程師自己定義出來的字詞。
+
+在使用 data-* attribute 時，* 字號的地方不能包含大寫字母，也就是屬性名稱不能包含大寫字母，而屬性值則可以是任何的字串。例如說我們可以這樣用：
+
+```
+&lt;div id=&quot;slider&quot; data-type=&quot;slideShow&quot;&gt;
+  &lt;img class=&quot;photo&quot; data-item=&quot;1&quot; data-size=&quot;xs&quot; src=&quot;http://fakeimg.pl/350x200/?text=Hello&quot; /&gt;
+  &lt;img class=&quot;photo&quot; data-item=&quot;2&quot; data-size=&quot;lg&quot; src=&quot;http://fakeimg.pl/550x200/?text=Welcome&quot; /&gt;
+&lt;/div&gt;
+```
+
+使用 JS 取得 data-* attribute 的屬性值
+當我們要取得 data-* attribute 的屬性值時，我們可以簡單利用 JavaScript 中的 dataset 物件，就可以取得了，以上面的 HTML 為例，可以寫成這樣：
+
+```
+let slider = document.getElementById('slider');
+console.log(slider.dataset.type); //  &quot;slideShow
+
+let photo = document.querySelectorAll('.photo');
+console.log(photo[0].dataset.item); //  &quot;1&quot;
+console.log(photo[0].dataset.size); //  &quot;xs&quot;
+```
+
+如果你習慣使用的是 jQuery ，也可以用內建的 .data( ) 這個方法來獲取屬性值：
+
+```
+console.log($('#slider').data('type')); //  &quot;slideShow&quot;
+```
+
+透過 CSS 取得或選取 data-* attribute
+在 CSS 當中，我們一樣可以取得這個 data-* attribute 的內容，例如：
+
+```
+&lt;article data-content=&quot;Hello Everyone&quot;&gt;&lt;/article&gt;
+```
+
+如果我希望在 article 這個空的區塊中顯示 data-content 內容，只需要輸入在 CSS 的地方寫入：
+
+```
+article::before {
+  content: attr(data-content);
+}
+```
+如果我是希望選取具有某個屬性和屬性值的元素，我們也可以搭配使用 CSS 中的屬性選取器：
+
+```
+#slider img[data-size='xs'] {
+  width: 400px;
+}
+#slider img[data-size='lg'] {
+  width: 800px;
+}
+```
+</pre>
+</div>
 <div created="20200214112540522" modified="20200214113802946" tags="" title="使用git push不再需要輸入帳號密碼">
 <pre>!! 使用git push不再需要輸入帳號密碼
 
@@ -23200,8 +23266,10 @@ Seriously…不論在任何場合，你都要有良好的溝通能力，
 
 在注重文法之餘，只要掌握這7個副詞，你的英文口說也能變的更溜、更道地喔。一起跟著小編努力練習吧。</pre>
 </div>
-<div created="20190918093525656" modified="20190919032326355" tags="Usage" title="恰當的副詞">
-<pre>把英語說、寫得更生動比你想像還容易，只需要恰當的副詞。
+<div created="20190918093525656" modified="20250422025512415" tags="Usage" title="恰當的副詞">
+<pre>source: unknown 
+
+把英語說、寫得更生動比你想像還容易，只需要恰當的副詞。
 
 !!舉幾個例子：
  
@@ -23216,34 +23284,63 @@ Seriously…不論在任何場合，你都要有良好的溝通能力，
 三個例子中前者和後者的區別，僅僅是一個恰當的副詞，但其事半功倍的效果顯而易見。下面是一些很簡單的副詞，在日常寫作和談話中恰當使用這些副詞會讓你的語言更引人注目：
 
 * absurdly  荒謬地
+*&gt; The movie was ''absurdly'' funny, making everyone laugh out loud.
 * admittedly  無可否認地
+*&gt; ''Admittedly'', I was late to the meeting, but I had a valid reason.
 * astonishingly  令人驚訝地
+*&gt; She performed ''astonishingly'' well in the competition, winning first place.
 * certainly  的確
+*&gt; I will ''certainly'' attend the conference next month.
 * coincidentally  碰巧
+*&gt; ''Coincidentally'', I ran into my old friend at the café yesterday.
 * curiously  奇怪的是
+*&gt; ''Curiously'', the cat kept staring at the empty box.
 * definitely  肯定地
+*&gt; I am ''definitely'' going to try that new restaurant this weekend.
 * evidently  明顯地
+*&gt; He was ''evidently'' surprised by the unexpected announcement.
 * financially  經濟上說
+*&gt; ''Financially'', the company is doing better than last year.
 * frankly  坦率地說
+*&gt; ''Frankly'', I think we need to reconsider our strategy.
 * fortunately  幸運地，辛虧
+*&gt; ''Fortunately'', the weather cleared up just in time for our picnic.
 * honestly  說真的
+*&gt; ''Honestly'', I didn’t think the project would succeed.
 * hopefully  但願，我希望
+*&gt; ''Hopefully'', we will finish the project ahead of schedule.
 * in my opinion  在我看來
+*&gt; ''In my opinion'', this book is one of the best I’ve ever read.
 * indeed  是真的
+*&gt; The results were ''indeed'' impressive and exceeded our expectations.
 * incredibly  極其，比想像更（好，壞，容易，等等）
+*&gt; The athlete performed ''incredibly'' well, breaking the world record.
 * interestingly  有趣地，值得一提的是
+*&gt; ''Interestingly'', the study revealed unexpected trends in consumer behavior.
 * ironically   正話反說，出乎意料之外
+*&gt; ''Ironically'', he ended up losing the match despite training so hard.
 * luckily  幸虧
+*&gt; ''Luckily'', I found my keys just before I left the house.
 * miraculously  不可思議地，奇跡似的
+*&gt; The injured bird ''miraculously'' recovered and flew away.
 * more importantly  更重要的是
+*&gt; ''More importantly'', we need to ensure everyone's safety during the event.
 * mysteriously  令人費解
+*&gt; The lights went out ''mysteriously'', leaving everyone in darkness.
 * naturally  自然地，不用說
+*&gt; ''Naturally'', she was excited to receive the award.
 * superficially  表面上看
+*&gt; ''Superficially'', the problem seems simple, but it’s quite complex.
 * surprisingly  令人驚訝地
+*&gt; ''Surprisingly'', the quiet student gave the best presentation.
 * technically  嚴格意義上說
+*&gt; ''Technically'', the project is still in the planning phase.
 * theoretically  在理論上說
+*&gt; ''Theoretically'', this method should improve efficiency.
 * unexpectedly  出乎意料地
+*&gt; He ''unexpectedly'' won the lottery last week.
 * undeniably  無可否認地
+*&gt; The evidence is ''undeniably'' strong in this case.
  
 把形容詞構建為副詞來用，是英語「生動化」 最簡易的方法，一旦你掌握了這個語言訣竅，你的英語能力將會很快進入一個更高的領域！</pre>
 </div>
